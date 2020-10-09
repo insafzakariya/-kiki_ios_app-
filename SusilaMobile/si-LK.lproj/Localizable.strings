@@ -1,0 +1,188 @@
+/*
+ Localizable.strings
+ KiKi
+ 
+ Created by Isuru Jayathissa on 1/25/17.
+ Copyright © 2017 Isuru Jayathissa. All rights reserved.
+ */
+
+ALERT_TITLE = "KiKi";
+OK_BUTTON_TITLE = "නිවැරදී";
+CANCEL_BUTTON_TITLE = "අවලංගු කරන්න";
+DELETE_BUTTON_TITLE = "මකා දමන්න";
+YES = "ඔව්";
+NO = "NO";
+SETTINGS_BUTTON_TITLE = "KiKi";
+SIGN_BUTTON_TITLE = "KiKi";
+ERROR_UNKNOW = "මදවේලාවකට පසුව නැවත උත්සාහ කරන්න.";
+CONNECTION_TIME_OUT = "නියමිත කාලය ඉකුත්ව ඇත, නැවත උත්සාහක කිරීමට අවශ්‍ය ද?";
+LOADING_POPUP_TITLE = "KiKi";
+LOADING_POPUP_MESSAGE = "මඳක් රැඳී සිටින්න";
+
+NO_INTERNET_ALERT_TITLE = "KiKi";
+NO_INTERNET_ALERT_MESSAGE = "අන්තර්ජාලයට සම්බන්ධවිය නොහැක. කරුණාකර ඔබේ අන්තර්ජාල සබඳතාව පිරික්ෂා කරන්න.";
+NO_INTERNET_REQUIRE_ALERT_MESSAGE = "මේ සේවාව ලබා ගැනීමට අන්තර්ජාල පහසුකම අවශ්‍යවේ.";
+
+ERROR = "Error";
+OKAY = "Okay";
+
+// Login form validation
+LOGIN_ERROR_ALERT_TITLE = "KiKi";
+
+LOGIN_EMPTY_FIELD_ERROR_ALERT_MESSAGE = "පරිශීලක නාමය සහ මුරපදය හිස් විය නොහැක.";
+
+LOGIN_SEVERRETURN_FIELD_ERROR_ALERT_MESSAGE = "වලංගු නොවන ඇතුලත් වීමකි.";
+
+LOGIN_ERROR_IN_FIELDS = "වලංගු පරිශීලක නාමය සහ මුරපදය ඇතුළත් කරන්න.";
+
+LOGIN_ERROR_IN_FIELDS_WHEN_OFFLINE = "වලංගු පරිශීලක නාමය සහ මුරපදය ඇතුළත් කරන්න.";
+
+//Register Page
+
+ENTER_VALID_USERNAME = "පරිශීලක නාමය ඇතුළත් කරන්න.";
+
+ENTER_VALID_PASSWORD = "මුරපදය ඇතුළත් කරන්න.";
+
+PASSWORD_NOT_MATCH = "මුරපදය තහවුරුකිරීම, මුරපදය එකට ගැළපෙන්නේ නැත.";
+
+ENTER_VALID_NAME = "ඔබේ නම ඇතුළත් කරන්න.";
+
+LOGIN_SEVERRETURN_FIELD_ERROR_All_READY_REGI_ERROR_ALERT_MESSAGE = "මේ නාමය දැනටමත් ලියාපදිංචි කර ඇත.";
+
+ENTER_VALID_MOBILENO = "අවලන්ගු දුරකථන අංකයක්, කරුනාකර වලන්ගු දුරකතන අංකයක් ඇතුලත් කරන්න";
+ENTER_VALID_MOBILENO_SL = "දුරකථන අංකය ඇතුළත් කරන්න.";
+
+ENTER_VALID_COUNTRY = "ඔබේ රටේ දුරකථන කේත අංකය ඇතුළත් කරන්න ";
+
+ENTER_VALID_BIRTHDATE = "උපන් දිනය සඳහන් කරන්න.";
+
+ENTER_VALID_LANGUAGE = "භෂාව තෝරාගන්න";
+
+ENTER_VALID_GENDER = "ස්ත්‍රී පුරුෂ භාවය";
+
+ENTER_VALID_SMSCODE = "කෙටි පණිවුඩයේ අඩංගු කේතය ඇතුළත් කරන්න.";
+
+
+//Profile Page
+UPDATE_SUCCESS = "ඔබගේ තොරතුරු සාර්ථකව ඇතුළත් කරන ලදී";
+
+//HomeView
+
+LOGOUT_CONFIRM_ALERT_TITLE = "KiKi";
+LOGOUT_CONFIRM_ALERT_MESSAGE = "ඔබට ඉවත් වීමට අවශ්‍යද ?";
+ENTER_VALID_PROMOCODE = "ප්‍රවර්ධන අංකය හෝ සූරන ලද කාඩ් අංකය ඇතුළත් කරන්න";
+PACKAGE_ADDED_SUCCESSFULLY = "සාර්ථකව ඇතුළත් කරන ලදී.";
+ACTIVATE_THIS_PACKAGE = "ඔබට මෙම පැකේජය ක්‍රියාත්මක කිරීමට අවශ්‍ය ද?";
+PACKAGE_ALREADY_SUBSCRIBED = "ඔබ මෙම දිනපතා පැකේජය සාර්ථකව ඔබේ ගිණුමට ඇතුළත් කර ඇත.";
+EMPTY_LIST = "ඔබේ එකතුවෙේ කිසිවක් නැත.";
+
+
+//StarPage
+fbLogin = "ෆේස්බුක් හරහා පිවිසෙන්න";
+GLogin = "ගූග්ල් හරහා පිවිසෙන්න";
+dontHaveAccount = "ෆේස්බුක් හෝ ගූග්ල් ගිණුමක් නැද්ද?";
+loginWithEmail = "පරිශීලක නාමය හරහා  පිවිසෙන්න";
+or = "හෝ";
+CreateAccount = "ගිණුමක් සකසන්න";
+
+//RegisterPage
+RegisterNow = "ලියාපදිංචි වන්න";
+username = "පරිශීලක නාමය";
+usernamePlaceHolder = "පරිශීලක නාමය ඇතුළත් කරන්න";
+password = "මුර පදය";
+passwordPlaceHolder = "මුර පදය ඇතුළත් කරන්න";
+ConfirmPassword = "මුර පදය  නැවත තහවුරු කරන්න";
+TypeYourPasswordAgain = "නැවතත් ඔබේ මුර පදය ඇතුළත් කර තහවුරු  කරන්න";
+
+Confirm = "පිවිසෙන්න";
+
+RegisterBtn = "පිවිසෙන්න";
+
+//Login
+LoginBtn = "පිවිසෙන්න";
+Login = "පිවිසෙන්න";
+//Login = "Login වෙන්න";
+
+
+//confirm code
+EnterYourPhoneNumber = "ඔබේ දුරකතන අංකය ඇතුළත් කරන්න";
+TypeYourNumber = "123456789";
+
+//subcribePage
+//SubscribeToWatch = "නරඹන්න දායක වන්න කරන්න";
+PleaseActivateaPackageToUnlockAccess = "පැකේජය සක්‍රීය කරන්න";
+toExclusiveContentFromKiki = " විශේෂ වැඩසටහන් හා චිත්‍රපට නරඹන්න";
+SUBSCRIBENOW = "සක්‍රීය කරන්න";
+GOBACK = "ආපසු යන්න";
+
+//New Music UI
+PopularSongs = "ජනප්‍රිය ගීත";
+LatestSongs = "නවතම ගීත";
+RadioChannels = "රේඩියෝ චැනල්";
+PopularArtist = "ජනප්‍රිය ගායකයෝ";
+LastestPlaylist = "නවතම ගීත එකතු";
+Home = "ප්‍රධාන පිටුව";
+Browse = "සොයන්න";
+MySongs = "මගේ ගීත";
+ViewAll = "සියල්ල බලන්න";
+Add = "+ එකතු කරන්න";
+ByGenre = "ගීත වර්ගය";
+Byartist = "ගායක ගායිකාවන්";
+Song = "ගීතය";
+Artist = "ගායකයෝ";
+Playlists = "ගීත එකතු";
+Library = "මගේ එකතුව";
+YourPlaylist = "ඔබේ ගීත එකතු";
+Addtolibrary = "මගේ එකතුවට එක් කරන්න";
+AddtoPlaylist = "ගීත එකතුවට එක් කරන්න";
+AddtoPlaylistPlus = "+ ගීත එකතුවට එකතු කරන්න";
+KikiPlaylist = "Kiki ගීත එකතුව";
+
+AddedToPlayList = "ගීත එකතුවට එකතු කරන ලදී";
+NoPlayListFound = "ගීත එකතුවක් සොයාගැනීමට නොමැත";
+AddedToLibrary = "ඔබේ ගීත එකතුවට එක් කරන ලදී";
+ForgetPassword = "මුරපදය අමතකද?";
+SubscribeToWatch = "නැරඹීමට - සබ්ස්ක්‍රයිබ් කරන්න";
+SubscribeToListen = "සවන්දීමට - සබ්ස්ක්‍රයිබ් කරන්න";
+SubscribeNow = "සබ්ස්ක්‍රයිබ් කරන්න";
+GoBack = "ආපසු යන්න";
+PleaseActivatePackage = "Kiki වෙතින් පමණක්ලබා ගත හැකිදේ සඳහා ප්‍රවේශය විවෘත කරගැනීමට කරුණාකර පැකේජය ක්සක්‍රිය කරගන්න";
+Play = "වාදනය";
+NoSongsAddedToLibrary = "මගේ එකතුවට කිසිදු ගීතයක් එකතු කර නැත";
+NoArtistAddedToLibrary = "මගේ එකතුවට කිසිදු ගායකයකු එකතු කර නැත";
+NoPlayListAddedToLibrary = "මගේ එකතුවට කිසිදු ගීත ගොනුවක් එකතු කර නැත";
+NoSearchResultFound = "සෙවුම් ප්‍රතිපලයක් සොයා ගැනීමට නැත";
+
+ChildModeIsActivated = "දරුවන්ට අදාල වැඩසටහන්සක්‍රීය විය";
+ChildModeIsDeactivated = "දරුවන්ට අදාල වැඩසටහන්අක්‍රීය විය";
+PleaseEnterPasswordToActivateChildMode = "දරුවන්ට අදාල වැඩසටහන්ක්‍රියාත්මක කිරීමට මුරපදය යොදන්න";
+PleaseEnterPasswordToDeactivateChildMode = "දරුවන්ට අදාල වැඩසටහන්අක්‍රීය කිරීමට මුරපදය යොදන්න";
+DoYouWantToRemoveThisFromLibrary = "මෙය ඔබේ එකතුවෙන්ඉවත්කළ යුතුද? ";
+Edit = "සංස්කරණය කරන්න";
+Confirm = "සනාථ කරන්න";
+NoSubscribed = "No subscribed programs available. Please subscribe to your favorite programs from Maobile TV.";
+MY_LIST = "මාගේ එකතුව";
+ADD_TO_MY_LIST = "මාගේ එකතුවට එක් කරන්න";
+LIKE_THIS_VIDEO = "කැමතී";
+PLAY_NOW = "දැන් ප්ලේ කරන්න";
+PLAY_TRAILER = "PLAY TRAILER";
+CLOSE = "වසා දමන්න";
+CHILD_MODE = "චයිල්ඩ් මූඩ්";
+NEW_PLAYLIST = "නව එකතුව";
+NOTIFICATIONS = "දැනුම්දීම්";
+CREATE_NEW_PLAYLIST = "නව එකතුවක් සකස් කරන්න";
+REMOVED_FROM_LIBRARY = "ඔබේ එකතුවෙන් ඉවත් කරන්න";
+A_CONFIRMATION_CODE_WILL_SENT = "රහස් පදය සක්‍රීය කර ගැනීම සඳහා නිරවද්‍යතාව සහතික ";
+TO_YOUR_NUMBER_TO_RESET_THE_PASSWORD = "කරන අංකය ඔබේ දුරකතනය වෙත ලැබෙනු ඇත";
+PLEASE_CONFIRM_YOUR_CODE = "ඔබේ රහස් අංකය ඇතුළත් කරන්න";
+A_CONFIRMATION_CODE_HAS_BEEN_SENT_TO_YOUR_NUMBER = "රහස් පදය සක්‍රීය කර ගැනීම සඳහා නිරවද්‍යතාව සහතික කරන අංකය ඔබේ දුරකතනය වෙත යවන ලදී රහස් අංකය ඇතුළත් කරන්න ";
+RESET_PASSWORD = "රහස් පදය අලුත් කරන්න";
+RESEND_CODE = "රහස් අංකය නැවත එවන්න";
+OTP_CHARACTERS = "OPT - රහස් අංකය අංක 4 කින් යුක්ත විය යුතුයි";
+MORE_EPISODES = "තවත් කථාංග (Episodes)";
+CLEAR_ALL = "සියල්ල ඉවත් කරන්න";
+ADD_ALL = "+ එකතු කරන්න";
+DO_YOU_WANT_TO_REMOVE = "ඔබට ඉවත් කරන්න අවශ්‍යද? ";
+RECENT_SEARCH = "මෑතක දී කල සෙවුම්";
+UNSUBSCRIBE_THIS_PROGRAM = "මෙම වැඩසටහන unsubscribe කරන්න අවශ්‍යද ?";
+SEARCH = "සෙොයන්න";

@@ -1,0 +1,164 @@
+/*
+ Localizable.strings
+ KiKi
+ 
+ Created by Isuru Jayathissa on 1/25/17.
+ Copyright © 2017 Isuru Jayathissa. All rights reserved.
+ */
+
+ALERT_TITLE = "KiKi";
+OK_BUTTON_TITLE = "OK";
+CANCEL_BUTTON_TITLE = "Cancel";
+DELETE_BUTTON_TITLE = "Delete";
+YES = "YES";
+NO = "NO";
+SETTINGS_BUTTON_TITLE = "KiKi";
+SIGN_BUTTON_TITLE = "KiKi";
+ERROR_UNKNOW = "Please try again later.";
+CONNECTION_TIME_OUT = "Connection timed out, do you want to try again?";
+LOADING_POPUP_TITLE = "KiKi";
+LOADING_POPUP_MESSAGE = "Please wait.";
+NO_INTERNET_ALERT_TITLE = "KiKi";
+NO_INTERNET_ALERT_MESSAGE = "Unable to connect to the internet, please check your internet connection.";
+NO_INTERNET_REQUIRE_ALERT_MESSAGE = "This feature requires internet.";
+
+ERROR = "Error";
+OKAY = "Okay";
+
+// Login form validation
+LOGIN_ERROR_ALERT_TITLE = "KiKi";
+LOGIN_EMPTY_FIELD_ERROR_ALERT_MESSAGE = "Please enter a valid username and password.";
+LOGIN_SEVERRETURN_FIELD_ERROR_ALERT_MESSAGE = "Invalid credentials.";
+LOGIN_ERROR_IN_FIELDS = "Please enter a correct username and password.";
+LOGIN_ERROR_IN_FIELDS_WHEN_OFFLINE = "Please enter a correct username and password.";
+
+//Register Page
+ENTER_VALID_USERNAME = "Please enter a valid username.";
+ENTER_VALID_PASSWORD = "Please enter a valid password.";
+PASSWORD_NOT_MATCH = "Password does not match the confirm password.";
+ENTER_VALID_NAME = "Please enter a valid name.";
+LOGIN_SEVERRETURN_FIELD_ERROR_All_READY_REGI_ERROR_ALERT_MESSAGE = "User already registered.";
+ENTER_VALID_MOBILENO = "Invalid Mobile Number.";
+ENTER_VALID_MOBILENO_SL = "Invalid Mobile Number. Format 7XXXXXXXX.";
+ENTER_VALID_COUNTRY = "Please choose a valid country code.";
+ENTER_VALID_BIRTHDATE = "Please enter a valid birthdate.";
+ENTER_VALID_LANGUAGE = "Please choose a valid language.";
+ENTER_VALID_GENDER = "Please choose a valid gender.";
+ENTER_VALID_SMSCODE = "Please enter a valid code.";
+
+//Profile Page
+UPDATE_SUCCESS = "Profile is updated successfully";
+
+//HomeView
+LOGOUT_CONFIRM_ALERT_TITLE = "KiKi";
+LOGOUT_CONFIRM_ALERT_MESSAGE = "Are you sure you want to logout?";
+ENTER_VALID_PROMOCODE = "Please enter a valid Promo code or Scratch Card.";
+PACKAGE_ADDED_SUCCESSFULLY = " is activated successfully.";
+ACTIVATE_THIS_PACKAGE = "Are you sure want to activate this packge?";
+PACKAGE_ALREADY_SUBSCRIBED = "You have already subscribed to daily package, do you need to continue?";
+EMPTY_LIST = "List is empty.";
+
+//StarPage
+fbLogin = "Login";
+GLogin = "Login";
+dontHaveAccount = "Don't have Facebook or Gmail?";
+loginWithEmail = "Login with username";
+CreateAccount = "Create an account";
+
+//RegisterPage
+RegisterNow = "Register now";
+username = "Username";
+usernamePlaceHolder = "Type your username";
+password = "Password";
+passwordPlaceHolder = "Type your password";
+ConfirmPassword = "Confirm Password";
+TypeYourPasswordAgain = "Retype your password";
+RegisterBtn = "REGISTER";
+
+//Login
+LoginBtn = "LOGIN";
+Login = "Login";
+
+//confirm code
+EnterYourPhoneNumber = "Enter your phone number";
+TypeYourNumber = "Type your Number";
+Confirm = "CONFIRM";
+
+//subcribePage
+SubscribeToWatch = "Subscribe to watch";
+PleaseActivateaPackageToUnlockAccess = "Please activate a package to unlock access";
+toExclusiveContentFromKiki = " to exclusive content from Kiki.";
+SUBSCRIBENOW = "SUBSCRIBE NOW";
+GOBACK = "GO BACK";
+
+//New Music UI
+PopularSongs = "Popular Songs";
+LatestSongs = "Latest Songs";
+RadioChannels = "Radio Channels";
+PopularArtist = "Popular Artist";
+LastestPlaylist = "Lastest Playlists";
+Home = "Home";
+Browse = "Browse";
+MySongs = "Library";
+ViewAll = "View all";
+Add = "+ Add";
+ByGenre = "By Genre";
+Byartist = "By artist";
+Song = "Song";
+Artist = "Artist";
+Playlists = "Playlists";
+Library = "Library";
+YourPlaylist = "Your Playlist";
+Addtolibrary = "Add to library";
+AddtoPlaylist = "Add to Playlist";
+AddtoPlaylistPlus = "+ Add to Playlist";
+KikiPlaylist = "Kiki Playlist";
+
+AddedToPlayList = "Added to play list";
+NoPlayListFound = "No play list found";
+AddedToLibrary = "Added to library";
+ForgetPassword = "Forget password ?";
+SubscribeToListen = "Subscribe to listen";
+//SubscribeToWatch = "Subscribe to watch";
+SubscribeNow = "Subscribe now";
+GoBack = "Go back";
+PleaseActivatePackage = "Please activate a package to unlock access to exclusive content from KIKI";
+Play = "Play";
+NoSongsAddedToLibrary = "No songs added to library";
+NoArtistAddedToLibrary = "No artist added to library";
+NoPlayListAddedToLibrary = "No play list added to library";
+NoSearchResultFound = "No search result found";
+
+ChildModeIsActivated = "Child mode is activated";
+ChildModeIsDeactivated = "Child mode is deactivated";
+PleaseEnterPasswordToActivateChildMode = "Please enter password to activate child mode";
+PleaseEnterPasswordToDeactivateChildMode = "Please enter password to deactivate child mode";
+DoYouWantToRemoveThisFromLibrary = "Do you want to remove this from library? ";
+Edit = "Edit";
+Confirm = "Confirm";
+NoSubscribed = "No subscribed programs available. Please subscribe to your favorite programs from Maobile TV.";
+MY_LIST = "My List";
+ADD_TO_MY_LIST = "Add to my list";
+LIKE_THIS_VIDEO = "Like this video";
+PLAY_NOW = "PLAY NOW";
+PLAY_TRAILER = "PLAY TRAILER";
+CLOSE = "Close";
+CHILD_MODE = "Child Mode";
+NEW_PLAYLIST = "New playlist";
+NOTIFICATIONS = "Notifications";
+CREATE_NEW_PLAYLIST = "Create new playlist";
+REMOVED_FROM_LIBRARY = "Removed from library";
+A_CONFIRMATION_CODE_WILL_SENT = "A confirmation code will sent ";
+TO_YOUR_NUMBER_TO_RESET_THE_PASSWORD = "to your number to reset the password";
+PLEASE_CONFIRM_YOUR_CODE = "Please confirm your code";
+A_CONFIRMATION_CODE_HAS_BEEN_SENT_TO_YOUR_NUMBER = "A confirmation code has been sent to your number. please enter it to reset the password for ";
+RESET_PASSWORD = "RESET PASSWORD";
+RESEND_CODE = "Resend code";
+OTP_CHARACTERS = "OTP should be 4 characters";
+MORE_EPISODES = "MORE EPISODES";
+CLEAR_ALL = "Clear All";
+ADD_ALL = "+ Add all";
+DO_YOU_WANT_TO_REMOVE = "Do you want to remove? ";
+RECENT_SEARCH = "Recent search";
+UNSUBSCRIBE_THIS_PROGRAM = "Are you sure you want to unsubscribe this program?";
+SEARCH = "Search";

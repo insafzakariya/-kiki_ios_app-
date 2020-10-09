@@ -1,0 +1,327 @@
+
+/* Class = "UIButton"; normalTitle = "Update Profile"; ObjectID = "0bl-H6-4iF"; */
+"0bl-H6-4iF.normalTitle" = "Update Profile";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "0hz-KZ-5fX"; */
+"0hz-KZ-5fX.text" = "Label";
+
+/* Class = "UILabel"; text = "Home"; ObjectID = "0kw-hd-tPa"; */
+"0kw-hd-tPa.text" = "Home";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "17F-iY-7Ui"; */
+"17F-iY-7Ui.text" = "-";
+
+/* Class = "UILabel"; text = "Please contact kiki for activating new packages to view more content"; ObjectID = "26E-D1-ftA"; */
+"26E-D1-ftA.text" = "Please contact kiki for activating new packages to view more content";
+
+/* Class = "UILabel"; text = "Video"; ObjectID = "2HV-wb-8P8"; */
+"2HV-wb-8P8.text" = "Video";
+
+/* Class = "UIButton"; normalTitle = "720p"; ObjectID = "6AT-MW-AZZ"; */
+"6AT-MW-AZZ.normalTitle" = "720p";
+
+/* Class = "UILabel"; text = "▼"; ObjectID = "6CM-Ae-f2u"; */
+"6CM-Ae-f2u.text" = "▼";
+
+/* Class = "UILabel"; text = "Mobile No *:"; ObjectID = "7ou-Bn-NUy"; */
+"7ou-Bn-NUy.text" = "Mobile No *:";
+
+/* Class = "UILabel"; text = "You can't record the screen because of the content policy"; ObjectID = "8RB-vN-YCf"; */
+"8RB-vN-YCf.text" = "You can't record the screen because of the content policy";
+
+/* Class = "UIButton"; normalTitle = "Sort"; ObjectID = "8fV-3Y-ORk"; */
+"8fV-3Y-ORk.normalTitle" = "Sort";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "8gJ-DH-0Z3"; */
+"8gJ-DH-0Z3.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "9d7-eX-j6k"; */
+"9d7-eX-j6k.text" = "Label";
+
+/* Class = "UILabel"; text = "Kid's Mode :"; ObjectID = "9te-S4-xvX"; */
+"9te-S4-xvX.text" = "Kid's Mode :";
+
+/* Class = "UILabel"; text = "Code K"; ObjectID = "AKs-wZ-pHF"; */
+"AKs-wZ-pHF.text" = "Code K";
+
+/* Class = "UITabBarItem"; title = "Channel"; ObjectID = "B7S-BS-IQe"; */
+"B7S-BS-IQe.title" = "Channel";
+
+/* Class = "UIButton"; normalTitle = "Subscribe"; ObjectID = "B9G-NQ-73M"; */
+"B9G-NQ-73M.normalTitle" = "Subscribe";
+
+/* Class = "UIButton"; selectedTitle = "Subscribed"; ObjectID = "B9G-NQ-73M"; */
+"B9G-NQ-73M.selectedTitle" = "Subscribed";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "CCq-VH-FY2"; */
+"CCq-VH-FY2.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "CFn-L5-0Wf"; */
+"CFn-L5-0Wf.normalTitle" = "Logout";
+
+/* Class = "UIButton"; normalTitle = "Episodes"; ObjectID = "CiD-yZ-UOo"; */
+"CiD-yZ-UOo.normalTitle" = "Episodes";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "CsR-UX-Irz"; */
+"CsR-UX-Irz.text" = "Description";
+
+/* Class = "UILabel"; text = "Gender*:"; ObjectID = "CuV-14-exG"; */
+"CuV-14-exG.text" = "Gender*:";
+
+/* Class = "UILabel"; text = "▼"; ObjectID = "EEV-us-A0z"; */
+"EEV-us-A0z.text" = "▼";
+
+/* Class = "UIButton"; normalTitle = "Channels"; ObjectID = "EF4-KF-DLf"; */
+"EF4-KF-DLf.normalTitle" = "Channels";
+
+/* Class = "UILabel"; text = "Confirm Password:"; ObjectID = "FmC-eF-y5Z"; */
+"FmC-eF-y5Z.text" = "Confirm Password:";
+
+/* Class = "UIButton"; normalTitle = "Male"; ObjectID = "Frm-9c-fhq"; */
+"Frm-9c-fhq.normalTitle" = "Male";
+
+/* Class = "UIButton"; normalTitle = "Tamil"; ObjectID = "GL5-US-11W"; */
+"GL5-US-11W.normalTitle" = "தமிழ்";
+
+/* Class = "UILabel"; text = "List is empty"; ObjectID = "HJb-ZJ-8wL"; */
+"HJb-ZJ-8wL.text" = "List is empty";
+
+/* Class = "UILabel"; text = "Program"; ObjectID = "Hce-7z-a0H"; */
+"Hce-7z-a0H.text" = "Program";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "IYo-BQ-BcL"; */
+"IYo-BQ-BcL.text" = "Label";
+
+/* Class = "UILabel"; text = "Playlist"; ObjectID = "Iag-mr-8Gt"; */
+"Iag-mr-8Gt.text" = "Playlist";
+
+/* Class = "UILabel"; text = "Currently Activated Package"; ObjectID = "InU-OS-xje"; */
+"InU-OS-xje.text" = "Currently Activated Package";
+
+/* Class = "UIButton"; normalTitle = "I don't have Facebook or Gmail"; ObjectID = "Jsa-zr-cgC"; */
+"Jsa-zr-cgC.normalTitle" = "I don't have Facebook or Gmail";
+
+/* Class = "UILabel"; text = "List is empty"; ObjectID = "Kh6-eO-6Pv"; */
+"Kh6-eO-6Pv.text" = "List is empty";
+
+/* Class = "UIButton"; normalTitle = "Clear All"; ObjectID = "Kt2-fj-zNb"; */
+"Kt2-fj-zNb.normalTitle" = "Clear All";
+
+/* Class = "UILabel"; text = "Password*"; ObjectID = "M4X-aL-IwP"; */
+"M4X-aL-IwP.text" = "Password*";
+
+/* Class = "UIButton"; normalTitle = "Settings"; ObjectID = "OIW-ZI-9ue"; */
+"OIW-ZI-9ue.normalTitle" = "Settings";
+
+/* Class = "UILabel"; text = "Birthday:"; ObjectID = "OQZ-7m-w8h"; */
+"OQZ-7m-w8h.text" = "Birthday:";
+
+/* Class = "UIBarButtonItem"; title = "  Home"; ObjectID = "PL6-ag-yRI"; */
+"PL6-ag-yRI.title" = "  Home";
+
+/* Class = "UILabel"; text = "Register"; ObjectID = "PdD-e8-zaU"; */
+"PdD-e8-zaU.text" = "Register";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "R33-hi-kcN"; */
+"R33-hi-kcN.normalTitle" = "Next";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "R8f-FH-vLD"; */
+"R8f-FH-vLD.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Playlist"; ObjectID = "RmX-X9-Vf1"; */
+"RmX-X9-Vf1.title" = "Playlist";
+
+/* Class = "UIButton"; normalTitle = "Profile"; ObjectID = "RuI-VE-5h1"; */
+"RuI-VE-5h1.normalTitle" = "Profile";
+
+/* Class = "UILabel"; text = "Language*:"; ObjectID = "S9k-YZ-K0F"; */
+"S9k-YZ-K0F.text" = "Language*:";
+
+/* Class = "UILabel"; text = "List is empty"; ObjectID = "SMO-8Y-5vN"; */
+"SMO-8Y-5vN.text" = "List is empty";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Shx-d8-G5b"; */
+"Shx-d8-G5b.text" = "Label";
+
+/* Class = "UILabel"; text = "Log In"; ObjectID = "V6B-qy-FsA"; */
+"V6B-qy-FsA.text" = "Log In";
+
+/* Class = "UIButton"; normalTitle = "Tamil"; ObjectID = "V7L-Tj-5V0"; */
+"V7L-Tj-5V0.normalTitle" = "Tamil";
+
+/* Class = "UILabel"; text = "▼"; ObjectID = "Vdn-RJ-n1d"; */
+"Vdn-RJ-n1d.text" = "▼";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "XeU-GE-KXB"; */
+"XeU-GE-KXB.text" = "00:00";
+
+/* Class = "UIButton"; normalTitle = "1990 - 09 - 03 "; ObjectID = "Zcq-c4-Wle"; */
+"Zcq-c4-Wle.normalTitle" = "1990 - 09 - 03 ";
+
+/* Class = "UILabel"; text = "Birth Date *:"; ObjectID = "ahk-Io-QAR"; */
+"ahk-Io-QAR.text" = "Birth Date *:";
+
+/* Class = "UIButton"; normalTitle = "Package"; ObjectID = "b1s-Xp-ivK"; */
+"b1s-Xp-ivK.normalTitle" = "Package";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "b5g-BN-Cr8"; */
+"b5g-BN-Cr8.text" = "Subtitle";
+
+/* Class = "UIButton"; normalTitle = "Subscribe"; ObjectID = "bHB-bs-caW"; */
+"bHB-bs-caW.normalTitle" = "Subscribe";
+
+/* Class = "UIButton"; selectedTitle = "Subscribed"; ObjectID = "bHB-bs-caW"; */
+"bHB-bs-caW.selectedTitle" = "Subscribed";
+
+/* Class = "UITabBarItem"; title = "Video"; ObjectID = "bWC-Ka-eb0"; */
+"bWC-Ka-eb0.title" = "Video";
+
+/* Class = "UILabel"; text = "Channel"; ObjectID = "c7o-m3-Zh3"; */
+"c7o-m3-Zh3.text" = "Channel";
+
+/* Class = "UIButton"; normalTitle = "Go to FB Page"; ObjectID = "cAV-Cq-8vN"; */
+"cAV-Cq-8vN.normalTitle" = "Go to FB Page";
+
+/* Class = "UILabel"; text = "Premium Packages to activate"; ObjectID = "cGy-Is-Lhg"; */
+"cGy-Is-Lhg.text" = "Premium Packages to activate";
+
+/* Class = "UIButton"; normalTitle = "ENTER SCRATCH CARD / PROMO CODE"; ObjectID = "daw-Hq-I2F"; */
+"daw-Hq-I2F.normalTitle" = "ENTER SCRATCH CARD / PROMO CODE";
+
+/* Class = "UIButton"; normalTitle = "English"; ObjectID = "dq3-Og-Tf6"; */
+"dq3-Og-Tf6.normalTitle" = "English";
+
+/* Class = "UIButton"; normalTitle = "Contact Us"; ObjectID = "ejq-Lf-dJ6"; */
+"ejq-Lf-dJ6.normalTitle" = "Contact Us";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "gI6-aS-Oh3"; */
+"gI6-aS-Oh3.title" = "Home";
+
+/* Class = "UIButton"; normalTitle = "P"; ObjectID = "gQ9-q9-hkr"; */
+"gQ9-q9-hkr.normalTitle" = "P";
+
+/* Class = "UILabel"; text = "Mobile No*:"; ObjectID = "gvY-Cj-scc"; */
+"gvY-Cj-scc.text" = "Mobile No*:";
+
+/* Class = "UILabel"; text = "Telephone:"; ObjectID = "hUL-cP-Dpo"; */
+"hUL-cP-Dpo.text" = "Telephone:";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "hcp-w5-Bab"; */
+"hcp-w5-Bab.text" = "00:00";
+
+/* Class = "UILabel"; text = "Password:"; ObjectID = "htn-ex-edW"; */
+"htn-ex-edW.text" = "Password:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "icq-Ad-OVQ"; */
+"icq-Ad-OVQ.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Subscribed"; ObjectID = "jL3-pk-Lgn"; */
+"jL3-pk-Lgn.normalTitle" = "Subscribed";
+
+/* Class = "UIButton"; normalTitle = "sinhala"; ObjectID = "jch-Lh-eOj"; */
+"jch-Lh-eOj.normalTitle" = "සිංහල";
+
+/* Class = "UIButton"; normalTitle = "480p"; ObjectID = "k1I-Hk-iws"; */
+"k1I-Hk-iws.normalTitle" = "480p";
+
+/* Class = "UILabel"; text = "Enter Scratch Card / Promo Code"; ObjectID = "kAO-0e-bWg"; */
+"kAO-0e-bWg.text" = "Enter Scratch Card / Promo Code";
+
+/* Class = "UIButton"; normalTitle = "Sinhala"; ObjectID = "lGG-b4-i7h"; */
+"lGG-b4-i7h.normalTitle" = "Sinhala";
+
+/* Class = "UILabel"; text = "List is empty"; ObjectID = "ly5-Zd-gEy"; */
+"ly5-Zd-gEy.text" = "List is empty";
+
+/* Class = "UILabel"; text = "with"; ObjectID = "mj2-8e-ZMx"; */
+"mj2-8e-ZMx.text" = "with";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "n2m-md-V8C"; */
+"n2m-md-V8C.text" = "Login වෙන්න";
+
+/* Class = "UIButton"; normalTitle = "VIEW TV"; ObjectID = "n7k-Cv-lXT"; */
+"n7k-Cv-lXT.normalTitle" = "VIEW TV";
+
+/* Class = "UILabel"; text = "Choose language"; ObjectID = "nNH-Nd-CiN"; */
+"nNH-Nd-CiN.text" = "Choose language";
+
+/* Class = "UILabel"; text = "KiKi Gold"; ObjectID = "nel-Me-Eex"; */
+"nel-Me-Eex.text" = "KiKi Gold";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nfu-rt-Pp8"; */
+"nfu-rt-Pp8.text" = "Label";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "pCg-fC-QjJ"; */
+"pCg-fC-QjJ.text" = "00:00";
+
+/* Class = "UILabel"; text = "LabelLabelLabelLabel"; ObjectID = "ppb-3H-Fe5"; */
+"ppb-3H-Fe5.text" = "LabelLabelLabelLabel";
+
+/* Class = "UIButton"; normalTitle = "Auto"; ObjectID = "ptk-ok-AoV"; */
+"ptk-ok-AoV.normalTitle" = "Auto";
+
+/* Class = "UILabel"; text = "+909"; ObjectID = "qHq-VM-jFY"; */
+"qHq-VM-jFY.text" = "+909";
+
+/* Class = "UIButton"; normalTitle = "None"; ObjectID = "rGM-ga-F3G"; */
+"rGM-ga-F3G.normalTitle" = "None";
+
+/* Class = "UIButton"; normalTitle = "Sinhala"; ObjectID = "rJE-ny-t6T"; */
+"rJE-ny-t6T.normalTitle" = "Sinhala";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "rZH-Qr-HEG"; */
+"rZH-Qr-HEG.text" = "00:00";
+
+/* Class = "UILabel"; text = "Please enter your SMS verification code"; ObjectID = "rn2-3A-bSX"; */
+"rn2-3A-bSX.text" = "Please enter your SMS verification code";
+
+/* Class = "UILabel"; text = "Gender *:"; ObjectID = "roR-Ia-FZy"; */
+"roR-Ia-FZy.text" = "Gender *:";
+
+/* Class = "UILabel"; text = "All Songs"; ObjectID = "rq6-IM-kpX"; */
+"rq6-IM-kpX.text" = "All Songs";
+
+/* Class = "UILabel"; text = "Language *:"; ObjectID = "sYL-Do-Jcp"; */
+"sYL-Do-Jcp.text" = "Language *:";
+
+/* Class = "UIButton"; normalTitle = "English"; ObjectID = "spS-TQ-0Xp"; */
+"spS-TQ-0Xp.normalTitle" = "English";
+
+/* Class = "UIButton"; normalTitle = "OFF"; ObjectID = "srV-N5-DDm"; */
+"srV-N5-DDm.normalTitle" = "OFF";
+
+/* Class = "UILabel"; text = "Home"; ObjectID = "tHB-KP-yvL"; */
+"tHB-KP-yvL.text" = "Home";
+
+/* Class = "UIButton"; normalTitle = "Notifications"; ObjectID = "tw5-do-E7V"; */
+"tw5-do-E7V.normalTitle" = "Notifications";
+
+/* Class = "UILabel"; text = "Name:"; ObjectID = "txy-pK-z14"; */
+"txy-pK-z14.text" = "Name:";
+
+/* Class = "UILabel"; text = "Email:"; ObjectID = "utO-CW-xcd"; */
+"utO-CW-xcd.text" = "Email:";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "vCM-Jt-Pfw"; */
+"vCM-Jt-Pfw.normalTitle" = "Done";
+
+/* Class = "UILabel"; text = "+94"; ObjectID = "vdJ-IP-xV1"; */
+"vdJ-IP-xV1.text" = "+94";
+
+/* Class = "UILabel"; text = "You have been logged in. we need some info"; ObjectID = "vrq-oQ-Uh1"; */
+"vrq-oQ-Uh1.text" = "You have been logged in. we need some info";
+
+/* Class = "UIButton"; normalTitle = "License Agreement"; ObjectID = "w5z-dp-xNj"; */
+"w5z-dp-xNj.normalTitle" = "License Agreement";
+
+/* Class = "UILabel"; text = "Username:"; ObjectID = "wyW-dy-dbl"; */
+"wyW-dy-dbl.text" = "Username:";
+
+/* Class = "UILabel"; text = "Username*"; ObjectID = "xiA-Gl-RFk"; */
+"xiA-Gl-RFk.text" = "Username*";
+
+/* Class = "UITabBarItem"; title = "All Songs"; ObjectID = "y8b-2a-lYy"; */
+"y8b-2a-lYy.title" = "All Songs";
+
+/* Class = "UIButton"; normalTitle = "Play All"; ObjectID = "yDh-XK-kSo"; */
+"yDh-XK-kSo.normalTitle" = "Play All";

@@ -1,0 +1,393 @@
+
+/* Class = "UIButton"; normalTitle = "Update Profile"; ObjectID = "0bl-H6-4iF"; */
+"0bl-H6-4iF.normalTitle" = "Update Profile";
+
+/* Class = "UIButton"; normalTitle = "forget password ?"; ObjectID = "0fd-i3-ZLk"; */
+"0fd-i3-ZLk.normalTitle" = "forget password ?";
+
+/* Class = "UITextField"; placeholder = "Type your password again"; ObjectID = "2K8-GZ-YDc"; */
+"2K8-GZ-YDc.placeholder" = "Type your password again";
+
+/* Class = "UILabel"; text = "+94 117 696 300"; ObjectID = "2dk-e5-o5c"; */
+"2dk-e5-o5c.text" = "+94 117 696 300";
+
+/* Class = "UIButton"; normalTitle = "REGISTER"; ObjectID = "4aG-rj-3IY"; */
+"4aG-rj-3IY.normalTitle" = "REGISTER";
+
+/* Class = "UILabel"; text = "You Might Also Like"; ObjectID = "5IB-cb-yhu"; */
+"5IB-cb-yhu.text" = "You Might Also Like";
+
+/* Class = "UIButton"; normalTitle = "MUSIC"; ObjectID = "5UU-c2-p4q"; */
+"5UU-c2-p4q.normalTitle" = "MUSIC";
+
+/* Class = "UITextField"; placeholder = "Type your password"; ObjectID = "5xV-De-APJ"; */
+"5xV-De-APJ.placeholder" = "Type your password";
+
+/* Class = "UIButton"; normalTitle = "720p"; ObjectID = "6AT-MW-AZZ"; */
+"6AT-MW-AZZ.normalTitle" = "720p";
+
+/* Class = "UIButton"; normalTitle = "My List"; ObjectID = "6nc-Os-JOX"; */
+"6nc-Os-JOX.normalTitle" = "My List";
+
+/* Class = "UIButton"; normalTitle = "VIEW TV"; ObjectID = "8ID-RR-Djc"; */
+"8ID-RR-Djc.normalTitle" = "VIEW TV";
+
+/* Class = "UILabel"; text = "You can't record the screen because of the content policy"; ObjectID = "8RB-vN-YCf"; */
+"8RB-vN-YCf.text" = "You can't record the screen because of the content policy";
+
+/* Class = "UIButton"; normalTitle = "Profile"; ObjectID = "8sz-9a-9nJ"; */
+"8sz-9a-9nJ.normalTitle" = "Profile";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "8xg-TB-dZn"; Note = "fblogin"; */
+"8xg-TB-dZn.normalTitle" = "Login";
+
+/* Class = "UIButton"; normalTitle = "Create an account"; ObjectID = "9xE-nu-z2x"; */
+"9xE-nu-z2x.normalTitle" = "Create an account";
+
+/* Class = "UILabel"; text = "Code K"; ObjectID = "AKs-wZ-pHF"; */
+"AKs-wZ-pHF.text" = "Code K";
+
+/* Class = "UILabel"; text = "Confirm Password"; ObjectID = "Az3-VO-dc2"; */
+"Az3-VO-dc2.text" = "Confirm Password";
+
+/* Class = "UILabel"; text = "Don’t have Facebook or Gmail?"; ObjectID = "BLV-mN-KcA"; */
+"BLV-mN-KcA.text" = "Don’t have Facebook or Gmail?";
+
+/* Class = "UITextField"; placeholder = "Type your password"; ObjectID = "BP8-et-VVH"; */
+"BP8-et-VVH.placeholder" = "Type your password";
+
+/* Class = "UIViewController"; title = "Search"; ObjectID = "BtI-qJ-08s"; */
+"BtI-qJ-08s.title" = "Search";
+
+/* Class = "UIButton"; normalTitle = "English"; ObjectID = "CV0-0I-Of3"; */
+"CV0-0I-Of3.normalTitle" = "English";
+
+/* Class = "UIButton"; normalTitle = "Home"; ObjectID = "CfZ-9l-aTq"; */
+"CfZ-9l-aTq.normalTitle" = "Home";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "CsR-UX-Irz"; */
+"CsR-UX-Irz.text" = "Description";
+
+/* Class = "UILabel"; text = "සිංහල"; ObjectID = "E6Z-jX-6GR"; */
+"E6Z-jX-6GR.text" = "සිංහල";
+
+/* Class = "UIButton"; normalTitle = "Subscription"; ObjectID = "EF4-KF-DLf"; */
+"EF4-KF-DLf.normalTitle" = "Subscription";
+
+/* Class = "UIButton"; normalTitle = "MUSIC"; ObjectID = "EQq-4B-bwe"; */
+"EQq-4B-bwe.normalTitle" = "MUSIC";
+
+/* Class = "UILabel"; text = "(Username) your password has been reset."; ObjectID = "EnC-J7-uWK"; */
+"EnC-J7-uWK.text" = "(Username) your password has been reset.";
+
+/* Class = "UISearchBar"; G7Q-gq-ama.scopeButtonTitles[0] = "Title"; ObjectID = "G7Q-gq-ama"; */
+"G7Q-gq-ama.scopeButtonTitles[0]" = "Title";
+
+/* Class = "UISearchBar"; G7Q-gq-ama.scopeButtonTitles[1] = "Title"; ObjectID = "G7Q-gq-ama"; */
+"G7Q-gq-ama.scopeButtonTitles[1]" = "Title";
+
+/* Class = "UIButton"; normalTitle = "CONFIRM"; ObjectID = "Ggo-1l-L18"; */
+"Ggo-1l-L18.normalTitle" = "CONFIRM";
+
+/* Class = "UILabel"; text = "List is empty"; ObjectID = "HJb-ZJ-8wL"; */
+"HJb-ZJ-8wL.text" = "List is empty";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "IYo-BQ-BcL"; */
+"IYo-BQ-BcL.text" = "Label";
+
+/* Class = "UILabel"; text = "Playlist"; ObjectID = "Iag-mr-8Gt"; */
+"Iag-mr-8Gt.text" = "Playlist";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "IhB-yA-Ida"; */
+"IhB-yA-Ida.text" = "Username";
+
+/* Class = "UILabel"; text = "▼"; ObjectID = "IkQ-a7-SsC"; */
+"IkQ-a7-SsC.text" = "▼";
+
+/* Class = "UILabel"; text = "My List"; ObjectID = "J7A-eA-fGQ"; */
+"J7A-eA-fGQ.text" = "My List";
+
+/* Class = "UITextField"; placeholder = "1234"; ObjectID = "JdA-8Q-uEn"; */
+"JdA-8Q-uEn.placeholder" = "1234";
+
+/* Class = "UILabel"; text = "care@kiki.lk"; ObjectID = "Jim-IO-JSS"; */
+"Jim-IO-JSS.text" = "care@kiki.lk";
+
+/* Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "KUv-Il-Ucw"; */
+"KUv-Il-Ucw.normalTitle" = "NEXT";
+
+/* Class = "UILabel"; text = "+94"; ObjectID = "Kkk-56-37n"; */
+"Kkk-56-37n.text" = "+94";
+
+/* Class = "UIButton"; normalTitle = "Clear All"; ObjectID = "Kt2-fj-zNb"; */
+"Kt2-fj-zNb.normalTitle" = "Clear All";
+
+/* Class = "UILabel"; text = "Subscribe to watch"; ObjectID = "LWc-wV-oHL"; */
+"LWc-wV-oHL.text" = "Subscribe to watch";
+
+/* Class = "UILabel"; text = "Please activate a package to unlock access\nto exclusive content from Kiki."; ObjectID = "Liu-25-WiG"; */
+"Liu-25-WiG.text" = "Please activate a package to unlock access\nto exclusive content from Kiki.";
+
+/* Class = "UIButton"; normalTitle = "CONFIRM"; ObjectID = "LjD-cx-w9g"; */
+"LjD-cx-w9g.normalTitle" = "CONFIRM";
+
+/* Class = "UIButton"; normalTitle = "CONFIRM"; ObjectID = "M8w-rW-sIU"; */
+"M8w-rW-sIU.normalTitle" = "CONFIRM";
+
+/* Class = "UIButton"; normalTitle = "Login with email"; ObjectID = "Naq-Ag-4IA"; */
+"Naq-Ag-4IA.normalTitle" = "Login with email";
+
+/* Class = "UIButton"; normalTitle = "Login with email"; ObjectID = "Nkq-Kb-7Gi"; */
+"Nkq-Kb-7Gi.normalTitle" = "Login with email";
+
+/* Class = "UIButton"; normalTitle = "Settings"; ObjectID = "OIW-ZI-9ue"; */
+"OIW-ZI-9ue.normalTitle" = "Settings";
+
+/* Class = "UIButton"; normalTitle = "SUBSCRIBE NOW"; ObjectID = "PSr-Tv-wh2"; */
+"PSr-Tv-wh2.normalTitle" = "SUBSCRIBE NOW";
+
+/* Class = "UIButton"; normalTitle = "License Agreement"; ObjectID = "Pe7-CZ-Jg1"; */
+"Pe7-CZ-Jg1.normalTitle" = "License Agreement";
+
+/* Class = "UITextField"; placeholder = "Type your Number"; ObjectID = "Pi3-EG-dVS"; */
+"Pi3-EG-dVS.placeholder" = "Type your Number";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "Qsk-ag-UPr"; */
+"Qsk-ag-UPr.title" = "Item";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "R8f-FH-vLD"; */
+"R8f-FH-vLD.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Playlist"; ObjectID = "RmX-X9-Vf1"; */
+"RmX-X9-Vf1.title" = "Playlist";
+
+/* Class = "UIButton"; normalTitle = "Contact Support "; ObjectID = "RuI-VE-5h1"; */
+"RuI-VE-5h1.normalTitle" = "Contact Support ";
+
+/* Class = "UINavigationItem"; title = "Home"; ObjectID = "TPK-11-GEQ"; */
+"TPK-11-GEQ.title" = "Home";
+
+/* Class = "UIButton"; normalTitle = "Email Support"; ObjectID = "UdH-wj-5My"; */
+"UdH-wj-5My.normalTitle" = "Email Support";
+
+/* Class = "UIButton"; normalTitle = "Tamil"; ObjectID = "V7L-Tj-5V0"; */
+"V7L-Tj-5V0.normalTitle" = "Tamil";
+
+/* Class = "UIButton"; normalTitle = "PLAY"; ObjectID = "VOh-Y5-Ozd"; */
+"VOh-Y5-Ozd.normalTitle" = "PLAY";
+
+/* Class = "UILabel"; text = "ON"; ObjectID = "W2p-ge-nUW"; */
+"W2p-ge-nUW.text" = "ON";
+
+/* Class = "UITextField"; placeholder = "Retype your password"; ObjectID = "W3J-gm-kFe"; */
+"W3J-gm-kFe.placeholder" = "Retype your password";
+
+/* Class = "UILabel"; text = "You Might Also Like"; ObjectID = "WKP-Kb-Ec4"; */
+"WKP-Kb-Ec4.text" = "You Might Also Like";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "WV5-Ky-2en"; */
+"WV5-Ky-2en.text" = "Login";
+
+/* Class = "UILabel"; text = "Child Mode"; ObjectID = "WiS-bC-4qy"; */
+"WiS-bC-4qy.text" = "Child Mode";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "XN7-xL-UcZ"; */
+"XN7-xL-UcZ.text" = "Email";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "XeU-GE-KXB"; */
+"XeU-GE-KXB.text" = "00:00";
+
+/* Class = "UIButton"; normalTitle = "Create an account"; ObjectID = "Xfm-G5-5e4"; */
+"Xfm-G5-5e4.normalTitle" = "Create an account";
+
+/* Class = "UILabel"; text = "Phone Number"; ObjectID = "Xnu-JM-FBh"; */
+"Xnu-JM-FBh.text" = "Phone Number";
+
+/* Class = "UILabel"; text = "Language"; ObjectID = "YEU-9A-Fbt"; */
+"YEU-9A-Fbt.text" = "Language";
+
+/* Class = "UITextField"; placeholder = "Type your email"; ObjectID = "Yid-Fx-vP1"; */
+"Yid-Fx-vP1.placeholder" = "Type your email";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "YwA-Cd-EC8"; */
+"YwA-Cd-EC8.text" = "Password";
+
+/* Class = "UILabel"; text = "to your number to reset password."; ObjectID = "ZMA-3t-hfh"; */
+"ZMA-3t-hfh.text" = "to your number to reset password.";
+
+/* Class = "UILabel"; text = "Choose language"; ObjectID = "ZdO-Tc-wzZ"; */
+"ZdO-Tc-wzZ.text" = "Choose language";
+
+/* Class = "UIButton"; normalTitle = "தமிழ்"; ObjectID = "Zpf-gK-ubC"; */
+"Zpf-gK-ubC.normalTitle" = "தமிழ்";
+
+/* Class = "UIButton"; normalTitle = "සිංහල"; ObjectID = "aHe-GH-ZU1"; */
+"aHe-GH-ZU1.normalTitle" = "සිංහල";
+
+/* Class = "UIButton"; normalTitle = "GO BACK"; ObjectID = "aIm-IX-iBK"; */
+"aIm-IX-iBK.normalTitle" = "GO BACK";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "b5g-BN-Cr8"; */
+"b5g-BN-Cr8.text" = "Subtitle";
+
+/* Class = "UITextField"; placeholder = "Type your password"; ObjectID = "bKm-Ak-fmw"; */
+"bKm-Ak-fmw.placeholder" = "Type your password";
+
+/* Class = "UIButton"; normalTitle = "LOGIN"; ObjectID = "cDY-7Z-vff"; */
+"cDY-7Z-vff.normalTitle" = "LOGIN";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "cf0-ZV-mBt"; Note = "googleLogin"; */
+"cf0-ZV-mBt.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "dfQ-Sg-Ry0"; */
+"dfQ-Sg-Ry0.text" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "dou-gM-LoI"; */
+"dou-gM-LoI.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "English"; ObjectID = "dq3-Og-Tf6"; */
+"dq3-Og-Tf6.normalTitle" = "English";
+
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "ejq-Lf-dJ6"; */
+"ejq-Lf-dJ6.normalTitle" = "Logout";
+
+/* Class = "UIButton"; normalTitle = "RESET PASSWORD"; ObjectID = "ek0-TX-uZI"; */
+"ek0-TX-uZI.normalTitle" = "RESET PASSWORD";
+
+/* Class = "UILabel"; text = "A confirmation code will be sent"; ObjectID = "fMd-V5-NoM"; */
+"fMd-V5-NoM.text" = "A confirmation code will be sent";
+
+/* Class = "UILabel"; text = "A conformation code has been sent to your number. Please enter it to reset password."; ObjectID = "g43-Pr-aXu"; */
+"g43-Pr-aXu.text" = "A conformation code has been sent to your number. Please enter it to reset password.";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "gI6-aS-Oh3"; */
+"gI6-aS-Oh3.title" = "Home";
+
+/* Class = "UIButton"; normalTitle = "P"; ObjectID = "gQ9-q9-hkr"; */
+"gQ9-q9-hkr.normalTitle" = "P";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "giP-0v-6rY"; */
+"giP-0v-6rY.text" = "Name";
+
+/* Class = "UILabel"; text = "Number"; ObjectID = "hUL-cP-Dpo"; */
+"hUL-cP-Dpo.text" = "Number";
+
+/* Class = "UILabel"; text = "Enter your phone number"; ObjectID = "hXn-B2-mDr"; */
+"hXn-B2-mDr.text" = "Enter your phone number";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "hcp-w5-Bab"; */
+"hcp-w5-Bab.text" = "00:00";
+
+/* Class = "UILabel"; text = "OFF"; ObjectID = "hel-Vy-hTC"; */
+"hel-Vy-hTC.text" = "OFF";
+
+/* Class = "UILabel"; text = "Enter your phone number"; ObjectID = "htT-kx-3uI"; */
+"htT-kx-3uI.text" = "Enter your phone number";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "iBa-IK-oyH"; */
+"iBa-IK-oyH.text" = "Username";
+
+/* Class = "UIButton"; normalTitle = "VIDEO"; ObjectID = "j59-gz-BHQ"; */
+"j59-gz-BHQ.normalTitle" = "VIDEO";
+
+/* Class = "UILabel"; text = "+94"; ObjectID = "jhK-Zt-dF6"; */
+"jhK-Zt-dF6.text" = "+94";
+
+/* Class = "UIButton"; normalTitle = "480p"; ObjectID = "k1I-Hk-iws"; */
+"k1I-Hk-iws.normalTitle" = "480p";
+
+/* Class = "UIButton"; normalTitle = "Payment Methods"; ObjectID = "kOU-72-ZcF"; */
+"kOU-72-ZcF.normalTitle" = "Payment Methods";
+
+/* Class = "UILabel"; text = "English"; ObjectID = "kRi-vF-9rF"; */
+"kRi-vF-9rF.text" = "English";
+
+/* Class = "UIButton"; normalTitle = "Call Support"; ObjectID = "l8a-xL-qZb"; */
+"l8a-xL-qZb.normalTitle" = "Call Support";
+
+/* Class = "UIButton"; normalTitle = "Resend code"; ObjectID = "lsZ-jg-cDj"; */
+"lsZ-jg-cDj.normalTitle" = "Resend code";
+
+/* Class = "UITextField"; placeholder = "code"; ObjectID = "m0o-pS-Gg6"; */
+"m0o-pS-Gg6.placeholder" = "code";
+
+/* Class = "UILabel"; text = "Register now"; ObjectID = "mLe-wv-ebg"; */
+"mLe-wv-ebg.text" = "Register now";
+
+/* Class = "UILabel"; text = "Enter new password"; ObjectID = "mQM-9a-ujn"; */
+"mQM-9a-ujn.text" = "Enter new password";
+
+/* Class = "UIButton"; normalTitle = "VIEW TV"; ObjectID = "n7k-Cv-lXT"; */
+"n7k-Cv-lXT.normalTitle" = "VIEW TV";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nfu-rt-Pp8"; */
+"nfu-rt-Pp8.text" = "Label";
+
+/* Class = "UILabel"; text = "or"; ObjectID = "nt6-HW-5LA"; */
+"nt6-HW-5LA.text" = "or";
+
+/* Class = "UITextField"; placeholder = "Type your Number"; ObjectID = "oF3-oJ-aV0"; */
+"oF3-oJ-aV0.placeholder" = "Type your Number";
+
+/* Class = "UILabel"; text = "தமிழ்"; ObjectID = "ojx-Gl-0ei"; */
+"ojx-Gl-0ei.text" = "தமிழ்";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "pCg-fC-QjJ"; */
+"pCg-fC-QjJ.text" = "00:00";
+
+/* Class = "UIButton"; normalTitle = "Auto"; ObjectID = "ptk-ok-AoV"; */
+"ptk-ok-AoV.normalTitle" = "Auto";
+
+/* Class = "UIButton"; normalTitle = "None"; ObjectID = "rGM-ga-F3G"; */
+"rGM-ga-F3G.normalTitle" = "None";
+
+/* Class = "UIButton"; normalTitle = "Sinhala"; ObjectID = "rJE-ny-t6T"; */
+"rJE-ny-t6T.normalTitle" = "Sinhala";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "rZH-Qr-HEG"; */
+"rZH-Qr-HEG.text" = "00:00";
+
+/* Class = "UILabel"; text = "Please enter your SMS verification code"; ObjectID = "rn2-3A-bSX"; */
+"rn2-3A-bSX.text" = "Please enter your SMS verification code";
+
+/* Class = "UILabel"; text = "All Songs"; ObjectID = "rq6-IM-kpX"; */
+"rq6-IM-kpX.text" = "All Songs";
+
+/* Class = "UILabel"; text = "ON"; ObjectID = "sC1-aN-m7F"; */
+"sC1-aN-m7F.text" = "ON";
+
+/* Class = "UIButton"; normalTitle = "VIDEO"; ObjectID = "sPS-Lg-PZj"; */
+"sPS-Lg-PZj.normalTitle" = "VIDEO";
+
+/* Class = "UILabel"; text = "Please confirm your code"; ObjectID = "sbv-JB-vxE"; */
+"sbv-JB-vxE.text" = "Please confirm your code";
+
+/* Class = "UIButton"; normalTitle = "Child Mode"; ObjectID = "tw5-do-E7V"; */
+"tw5-do-E7V.normalTitle" = "Child Mode";
+
+/* Class = "UILabel"; text = "Please login with your new password."; ObjectID = "u8a-bB-vY4"; */
+"u8a-bB-vY4.text" = "Please login with your new password.";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "utO-CW-xcd"; */
+"utO-CW-xcd.text" = "Email";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "vCM-Jt-Pfw"; */
+"vCM-Jt-Pfw.normalTitle" = "Done";
+
+/* Class = "UILabel"; text = "Please enter your SMS verification code"; ObjectID = "vuc-6Z-lgX"; */
+"vuc-6Z-lgX.text" = "Please enter your SMS verification code";
+
+/* Class = "UITextField"; placeholder = "Type your email"; ObjectID = "xSK-gs-oUe"; */
+"xSK-gs-oUe.placeholder" = "Type your email";
+
+/* Class = "UIButton"; normalTitle = "LOGIN"; ObjectID = "xuz-gw-SGS"; */
+"xuz-gw-SGS.normalTitle" = "LOGIN";
+
+/* Class = "UITabBarItem"; title = "All Songs"; ObjectID = "y8b-2a-lYy"; */
+"y8b-2a-lYy.title" = "All Songs";
+
+/* Class = "UILabel"; text = "See All"; ObjectID = "yEl-7J-atK"; */
+"yEl-7J-atK.text" = "See All";
+
+/* Class = "UILabel"; text = "▼"; ObjectID = "yoJ-S1-dv0"; */
+"yoJ-S1-dv0.text" = "▼";

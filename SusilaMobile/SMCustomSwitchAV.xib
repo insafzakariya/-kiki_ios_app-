@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SMCustomSwitchAV" customModule="SusilaMobile" customModuleProvider="target">
+            <connections>
+                <outlet property="btnToggle" destination="yfa-x4-SqT" id="gXL-xM-San"/>
+                <outlet property="constHeadHeight" destination="GA4-nV-Xzm" id="GEf-lt-by6"/>
+                <outlet property="constHeadLeading" destination="2zd-Kg-Ggq" id="11E-aP-lEM"/>
+                <outlet property="constHeadWidth" destination="BJV-pL-Mtb" id="CeR-nJ-h7L"/>
+                <outlet property="constImgInsideLeading" destination="PeK-M7-xTk" id="KXT-Yk-y2I"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="RhT-Y4-y0e"/>
+                <outlet property="imgBack" destination="Jen-j1-1FB" id="kDt-IB-kHb"/>
+                <outlet property="imgHead" destination="FwG-AP-GhU" id="6q4-dt-pKx"/>
+                <outlet property="imgInside" destination="QQg-oT-C4C" id="irt-OC-Bqd"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jen-j1-1FB">
+                    <rect key="frame" x="0.0" y="3" width="60" height="24"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_white" translatesAutoresizingMaskIntoConstraints="NO" id="QQg-oT-C4C">
+                            <rect key="frame" x="4" y="1" width="22" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="S9c-tu-CaW"/>
+                                <constraint firstAttribute="width" constant="22" id="kTN-Dg-Bwc"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="QQg-oT-C4C" firstAttribute="leading" secondItem="Jen-j1-1FB" secondAttribute="leading" constant="4" id="PeK-M7-xTk"/>
+                        <constraint firstItem="QQg-oT-C4C" firstAttribute="top" secondItem="Jen-j1-1FB" secondAttribute="top" constant="1" id="Xvq-vz-oQa"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JnS-u5-GTC">
+                    <rect key="frame" x="30" y="0.0" width="30" height="30"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_white" translatesAutoresizingMaskIntoConstraints="NO" id="FwG-AP-GhU">
+                            <rect key="frame" x="4" y="4" width="22" height="22"/>
+                            <color key="backgroundColor" red="0.10980392156862745" green="0.50588235294117645" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="22" id="BJV-pL-Mtb"/>
+                                <constraint firstAttribute="height" constant="22" id="GA4-nV-Xzm"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="15"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.10980392156862745" green="0.50588235294117645" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="0fE-gR-33y"/>
+                        <constraint firstItem="FwG-AP-GhU" firstAttribute="centerX" secondItem="JnS-u5-GTC" secondAttribute="centerX" id="WWs-w3-8Ab"/>
+                        <constraint firstAttribute="height" constant="30" id="qcS-7G-GFA"/>
+                        <constraint firstItem="FwG-AP-GhU" firstAttribute="centerY" secondItem="JnS-u5-GTC" secondAttribute="centerY" id="x6T-SH-DK5"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfa-x4-SqT">
+                    <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="JnS-u5-GTC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="2zd-Kg-Ggq"/>
+                <constraint firstItem="Jen-j1-1FB" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="AJB-JW-Dgl"/>
+                <constraint firstItem="yfa-x4-SqT" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Cbv-zs-UYO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Jen-j1-1FB" secondAttribute="bottom" constant="3" id="Cfb-bJ-qvm"/>
+                <constraint firstItem="yfa-x4-SqT" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="DBG-SC-Um3"/>
+                <constraint firstItem="JnS-u5-GTC" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="NDN-uG-i14"/>
+                <constraint firstItem="JnS-u5-GTC" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="ZCm-9s-w4e"/>
+                <constraint firstItem="Jen-j1-1FB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="aVb-wV-HED"/>
+                <constraint firstItem="yfa-x4-SqT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dGn-1U-Z5g"/>
+                <constraint firstItem="yfa-x4-SqT" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="s2R-Fw-0aZ"/>
+                <constraint firstItem="Jen-j1-1FB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="3" id="z3a-EL-I2P"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.59999999999999" y="153.82308845577214"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="camera_white" width="48" height="48"/>
+        <image name="music_white" width="48" height="48"/>
+    </resources>
+</document>

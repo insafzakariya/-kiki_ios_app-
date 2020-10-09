@@ -1,0 +1,97 @@
+/* 
+  Localizable.strings
+  KiKi
+
+  Created by Isuru Jayathissa on 1/25/17.
+  Copyright © 2017 Isuru Jayathissa. All rights reserved.
+*/
+
+ALERT_TITLE = "KiKi";
+OK_BUTTON_TITLE = "OK";
+CANCEL_BUTTON_TITLE = "Cancel";
+DELETE_BUTTON_TITLE = "Delete";
+YES = "Yes";
+NO = "NO";
+SETTINGS_BUTTON_TITLE = "KiKi";
+SIGN_BUTTON_TITLE = "KiKi";
+ERROR_UNKNOW = "Please try again later.";
+CONNECTION_TIME_OUT = "Connection timed out, do you want to try again?";
+LOADING_POPUP_TITLE = "KiKi";
+LOADING_POPUP_MESSAGE = "Please wait.";
+NO_INTERNET_ALERT_TITLE = "KiKi";
+NO_INTERNET_ALERT_MESSAGE = "Unable to connect to the internet, please check your internet connection.";
+NO_INTERNET_REQUIRE_ALERT_MESSAGE = "This feature requires internet.";
+
+ERROR = "Error";
+OKAY = "Okay";
+
+// Login form validation
+LOGIN_ERROR_ALERT_TITLE = "KiKi";
+LOGIN_EMPTY_FIELD_ERROR_ALERT_MESSAGE = "Please enter a valid username and password.";
+LOGIN_SEVERRETURN_FIELD_ERROR_ALERT_MESSAGE = "Invalid credentials.";
+LOGIN_ERROR_IN_FIELDS = "Please enter a correct username and password.";
+LOGIN_ERROR_IN_FIELDS_WHEN_OFFLINE = "Please enter a correct username and password.";
+
+//Register Page
+ENTER_VALID_USERNAME = "Please enter a valid username.";
+ENTER_VALID_PASSWORD = "Please enter a valid password.";
+PASSWORD_NOT_MATCH = "Password does not match the confirm password.";
+ENTER_VALID_NAME = "Please enter a valid name.";
+LOGIN_SEVERRETURN_FIELD_ERROR_All_READY_REGI_ERROR_ALERT_MESSAGE = "User already registered.";
+ENTER_VALID_MOBILENO = "Invalid Mobile Number. Format 7XXXXXXXX.";
+ENTER_VALID_COUNTRY = "Please choose a valid country code.";
+ENTER_VALID_BIRTHDATE = "Please enter a valid birthdate.";
+ENTER_VALID_LANGUAGE = "Please choose a valid language.";
+ENTER_VALID_GENDER = "Please choose a valid gender.";
+ENTER_VALID_SMSCODE = "Please enter a valid code.";
+
+//Profile Page
+UPDATE_SUCCESS = "Profile is updated successfully";
+
+//HomeView
+LOGOUT_CONFIRM_ALERT_TITLE = "KiKi";
+LOGOUT_CONFIRM_ALERT_MESSAGE = "Are you sure you want to logout?";
+ENTER_VALID_PROMOCODE = "Please enter a valid Promo code or Scratch Card.";
+PACKAGE_ADDED_SUCCESSFULLY = " is activated successfully.";
+ACTIVATE_THIS_PACKAGE = "Are you sure want to activate this packge?";
+PACKAGE_ALREADY_SUBSCRIBED = "You have already subscribed to daily package, do you need to continue?";
+EMPTY_LIST = "List is empty.";
+
+///StarPage
+fbLogin = "සමග login වෙන්න";
+GLogin = "සමග login වෙන්න";
+dontHaveAccount = "Facebook හෝ Gmail නැතිද?";
+loginWithEmail = "Email විසින් පිවිසෙන්න";
+or = "හෝ";
+CreateAccount = "නව account එකක් සාදන්න";
+
+//RegisterPage
+RegisterNow = "Register වෙන්න";
+username = "Username";
+usernamePlaceHolder = "ඔබෙ email එක type කරන්න";
+password = "Password";
+passwordPlaceHolder = "ඔබේ password එක type කරන්න";
+ConfirmPassword = "Confirm Password";
+TypeYourPasswordAgain = "නැවතත් ඔබේ password එක type කරන්න";
+RegisterBtn = "පිවිසෙන්න";
+
+//Login
+LoginBtn = "Login";
+Login = "Login වෙන්න";
+
+//confirm code
+EnterYourPhoneNumber = "ඔබගේ දුරකථන නම්බරය type කරන්න";
+TypeYourNumber = "Type your Number";
+Confirm = "පිවිසෙන්න";
+
+//subcribePage
+SubscribeToWatch = "නරඹන්න Subscribe කරන්න";
+PleaseActivateaPackageToUnlockAccess = "පැකේජය active කර kiki හි ඇති";
+toExclusiveContentFromKiki = "විශේස shows නරඹන්න";
+SUBSCRIBENOW = "SUBSCRIBE කරන්න";
+GOBACK = "ආපසු යන්න";
+
+
+
+
+
