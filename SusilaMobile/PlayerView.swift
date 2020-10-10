@@ -61,7 +61,7 @@ class PlayerView: UIView, AVAudioPlayerDelegate {
             videoPlayer.seek(to: CMTimeMake(value: 0,timescale: 1))
             videoPlayer.pause()
             if let accessToken = Preferences.getAccessToken(){
-                let fileURL = NSURL(string: newSongUrl+"?token=\(Preferences.getAccessToken()!)")
+                let fileURL = NSURL(string: newSongUrl+"?token=\(accessToken)")
                 let avAsset = AVURLAsset(url: fileURL! as URL, options: nil)
                 let playerItem = AVPlayerItem(asset: avAsset)
                 NotificationCenter.default.removeObserver(NSNotification.Name.AVPlayerItemDidPlayToEndTime)
