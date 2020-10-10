@@ -443,9 +443,9 @@
 		83232C7A21F8314400415FED /* ta-LK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ta-LK"; path = "ta-LK.lproj/Main.strings"; sourceTree = "<group>"; };
 		83232C7B21F8314400415FED /* ta-LK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ta-LK"; path = "ta-LK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		83425FCA221ABCDB00F7D669 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		834A71D9221428A70031752E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		834A71DB221428A80031752E /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		834A71DC221428A90031752E /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		834A71D9221428A70031752E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		834A71DB221428A80031752E /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		834A71DC221428A90031752E /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Light.ttf"; path = "../Roboto-Light.ttf"; sourceTree = "<group>"; };
 		834CEC27220C11D900B095DA /* gradientColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradientColor.swift; sourceTree = "<group>"; };
 		836BF62A221BB62A003C32E8 /* SideShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideShowTableViewCell.swift; sourceTree = "<group>"; };
 		836BF62B221BB62A003C32E8 /* SideShowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideShowTableViewCell.xib; sourceTree = "<group>"; };
@@ -1114,9 +1114,6 @@
 		7E9F4F701E288E9B00EC9B69 = {
 			isa = PBXGroup;
 			children = (
-				834A71DB221428A80031752E /* Roboto-Bold.ttf */,
-				834A71DC221428A90031752E /* Roboto-Light.ttf */,
-				834A71D9221428A70031752E /* Roboto-Regular.ttf */,
 				7E9F4F7B1E288E9C00EC9B69 /* SusilaMobile */,
 				7E9F4F7A1E288E9C00EC9B69 /* Products */,
 				F43DEF71D8CCFBB380577685 /* Pods */,
@@ -1145,6 +1142,9 @@
 		7E9F4F8E1E28926F00EC9B69 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				834A71DB221428A80031752E /* Roboto-Bold.ttf */,
+				834A71DC221428A90031752E /* Roboto-Light.ttf */,
+				834A71D9221428A70031752E /* Roboto-Regular.ttf */,
 				58502D631E965B5C0085BD37 /* Assets.xcassets */,
 				7E9F4F881E288E9C00EC9B69 /* Info.plist */,
 				51025A971F81FB3800A3DB55 /* GoogleService-Info.plist */,
