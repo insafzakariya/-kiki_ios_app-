@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,7 +24,6 @@
 		519FBB262028D6DA0063F86E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519FBB242028D6D90063F86E /* Message.swift */; };
 		51CC19CF1F817A790020D2CC /* SMProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC19CE1F81759E0020D2CC /* SMProfileViewController.swift */; };
 		5801EAA51E530AC70059872F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5801EAA41E530AC70059872F /* BaseViewController.swift */; };
-		580CFF3C1FC71D7D005D9554 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581D0EE21FC5A68100390F95 /* IJKMediaFramework.framework */; };
 		583A71B41F8E51DE00BA58AA /* SMChannelListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583A71B31F8E51DE00BA58AA /* SMChannelListModel.swift */; };
 		583A71B61F8E531600BA58AA /* SMChannelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583A71B51F8E531600BA58AA /* SMChannelCollectionViewCell.swift */; };
 		58502D641E965B5C0085BD37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58502D631E965B5C0085BD37 /* Assets.xcassets */; };
@@ -40,8 +39,6 @@
 		58E8B5A61FC31E970068B8E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5A51FC31E970068B8E1 /* CoreGraphics.framework */; };
 		58E8B5A81FC31EA80068B8E1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5A71FC31EA80068B8E1 /* CoreMedia.framework */; };
 		58E8B5AA1FC31EB00068B8E1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5A91FC31EB00068B8E1 /* CoreVideo.framework */; };
-		58E8B5AC1FC31EC80068B8E1 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5AB1FC31EC80068B8E1 /* libbz2.tbd */; };
-		58E8B5AE1FC31ED70068B8E1 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5AD1FC31ED70068B8E1 /* libz.tbd */; };
 		58E8B5B01FC31F070068B8E1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5AF1FC31F060068B8E1 /* MediaPlayer.framework */; };
 		58E8B5B21FC31F160068B8E1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5B11FC31F160068B8E1 /* MobileCoreServices.framework */; };
 		58E8B5B41FC31F240068B8E1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5B31FC31F240068B8E1 /* OpenGLES.framework */; };
@@ -143,8 +140,6 @@
 		7E1216411E3A58F800B12288 /* KYEmbedMainControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E12163E1E3A58F800B12288 /* KYEmbedMainControllerSegue.swift */; };
 		7E1216441E3A607000B12288 /* SMMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1216431E3A607000B12288 /* SMMainMenuViewController.swift */; };
 		7E19A9221E42649900D2E7A9 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19A9211E42649900D2E7A9 /* String+Extensions.swift */; };
-		7E1DA2AE1FC960E7009CDCD9 /* IJKMediaFrameworkWithSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581D0EE41FC5A68100390F95 /* IJKMediaFrameworkWithSSL.framework */; };
-		7E1DA2B01FC960F0009CDCD9 /* IJKMediaFrameworkWithSSL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 581D0EE41FC5A68100390F95 /* IJKMediaFrameworkWithSSL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7E374D8A1E3B34BE002A8262 /* HomeTabIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E374D881E3B34BE002A8262 /* HomeTabIconCell.swift */; };
 		7E374D8B1E3B34BE002A8262 /* HomeTabIconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E374D891E3B34BE002A8262 /* HomeTabIconCell.xib */; };
 		7E374D8E1E3B3D6C002A8262 /* ChildExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E374D8C1E3B3D6C002A8262 /* ChildExampleViewController.swift */; };
@@ -238,51 +233,6 @@
 		CCDB0001205E33AB007AF0E8 /* version.sh in Resources */ = {isa = PBXBuildFile; fileRef = CCDB0000205E33AA007AF0E8 /* version.sh */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		580CFF3D1FC71D87005D9554 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 581D0EDB1FC5A68100390F95 /* IJKMediaPlayer.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E654EA891B6B27E600B0F2D0;
-			remoteInfo = IJKMediaFramework;
-		};
-		581D0EE11FC5A68100390F95 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 581D0EDB1FC5A68100390F95 /* IJKMediaPlayer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E654EA8A1B6B27E600B0F2D0;
-			remoteInfo = IJKMediaFramework;
-		};
-		581D0EE31FC5A68100390F95 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 581D0EDB1FC5A68100390F95 /* IJKMediaPlayer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5450B0431E63EA4300568494;
-			remoteInfo = IJKMediaFrameworkWithSSL;
-		};
-		581D0EE51FC5A68100390F95 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 581D0EDB1FC5A68100390F95 /* IJKMediaPlayer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E654EA941B6B27E600B0F2D0;
-			remoteInfo = IJKMediaFrameworkTests;
-		};
-		7E1DA2AA1FC960DD009CDCD9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 581D0EDB1FC5A68100390F95 /* IJKMediaPlayer.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 5450AFC11E63EA4300568494;
-			remoteInfo = IJKMediaFrameworkWithSSL;
-		};
-		7E1DA2B11FC960F0009CDCD9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 581D0EDB1FC5A68100390F95 /* IJKMediaPlayer.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 5450AFC11E63EA4300568494;
-			remoteInfo = IJKMediaFrameworkWithSSL;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		7E1DA2B31FC960F0009CDCD9 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -290,7 +240,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7E1DA2B01FC960F0009CDCD9 /* IJKMediaFrameworkWithSSL.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,7 +265,6 @@
 		519FBB242028D6D90063F86E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		51CC19CE1F81759E0020D2CC /* SMProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMProfileViewController.swift; sourceTree = "<group>"; };
 		5801EAA41E530AC70059872F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Source/BaseViewController.swift; sourceTree = "<group>"; };
-		581D0EDB1FC5A68100390F95 /* IJKMediaPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IJKMediaPlayer.xcodeproj; path = ios/IJKMediaPlayer/IJKMediaPlayer.xcodeproj; sourceTree = "<group>"; };
 		583A71B31F8E51DE00BA58AA /* SMChannelListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SMChannelListModel.swift; path = Source/ChannelList/SMChannelListModel.swift; sourceTree = "<group>"; };
 		583A71B51F8E531600BA58AA /* SMChannelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SMChannelCollectionViewCell.swift; path = Source/ChannelList/SMChannelCollectionViewCell.swift; sourceTree = "<group>"; };
 		58502D631E965B5C0085BD37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -559,15 +507,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E1DA2AE1FC960E7009CDCD9 /* IJKMediaFrameworkWithSSL.framework in Frameworks */,
-				580CFF3C1FC71D7D005D9554 /* IJKMediaFramework.framework in Frameworks */,
 				58E8B5B61FC31F640068B8E1 /* VideoToolbox.framework in Frameworks */,
 				7EAEDFC31F9B57CB0060E4F3 /* QuartzCore.framework in Frameworks */,
 				58E8B5B41FC31F240068B8E1 /* OpenGLES.framework in Frameworks */,
 				58E8B5B21FC31F160068B8E1 /* MobileCoreServices.framework in Frameworks */,
 				58E8B5B01FC31F070068B8E1 /* MediaPlayer.framework in Frameworks */,
-				58E8B5AE1FC31ED70068B8E1 /* libz.tbd in Frameworks */,
-				58E8B5AC1FC31EC80068B8E1 /* libbz2.tbd in Frameworks */,
 				58E8B5AA1FC31EB00068B8E1 /* CoreVideo.framework in Frameworks */,
 				58E8B5A81FC31EA80068B8E1 /* CoreMedia.framework in Frameworks */,
 				58E8B5A61FC31E970068B8E1 /* CoreGraphics.framework in Frameworks */,
@@ -645,16 +589,6 @@
 				51CC19CE1F81759E0020D2CC /* SMProfileViewController.swift */,
 			);
 			name = Profile;
-			sourceTree = "<group>";
-		};
-		581D0EDC1FC5A68100390F95 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				581D0EE21FC5A68100390F95 /* IJKMediaFramework.framework */,
-				581D0EE41FC5A68100390F95 /* IJKMediaFrameworkWithSSL.framework */,
-				581D0EE61FC5A68100390F95 /* IJKMediaFrameworkTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		583A71AD1F8E513300BA58AA /* ChannelList */ = {
@@ -1183,7 +1117,6 @@
 				834A71DB221428A80031752E /* Roboto-Bold.ttf */,
 				834A71DC221428A90031752E /* Roboto-Light.ttf */,
 				834A71D9221428A70031752E /* Roboto-Regular.ttf */,
-				581D0EDB1FC5A68100390F95 /* IJKMediaPlayer.xcodeproj */,
 				7E9F4F7B1E288E9C00EC9B69 /* SusilaMobile */,
 				7E9F4F7A1E288E9C00EC9B69 /* Products */,
 				F43DEF71D8CCFBB380577685 /* Pods */,
@@ -1741,9 +1674,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				7E1DA2AB1FC960DD009CDCD9 /* PBXTargetDependency */,
-				580CFF3E1FC71D87005D9554 /* PBXTargetDependency */,
-				7E1DA2B21FC960F0009CDCD9 /* PBXTargetDependency */,
 			);
 			name = SusilaMobile;
 			productName = SusilaMobile;
@@ -1774,7 +1704,7 @@
 				};
 			};
 			buildConfigurationList = 7E9F4F741E288E9B00EC9B69 /* Build configuration list for PBXProject "SusilaMobile" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1787,42 +1717,12 @@
 			mainGroup = 7E9F4F701E288E9B00EC9B69;
 			productRefGroup = 7E9F4F7A1E288E9C00EC9B69 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 581D0EDC1FC5A68100390F95 /* Products */;
-					ProjectRef = 581D0EDB1FC5A68100390F95 /* IJKMediaPlayer.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				7E9F4F781E288E9B00EC9B69 /* SusilaMobile */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		581D0EE21FC5A68100390F95 /* IJKMediaFramework.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = IJKMediaFramework.framework;
-			remoteRef = 581D0EE11FC5A68100390F95 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		581D0EE41FC5A68100390F95 /* IJKMediaFrameworkWithSSL.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = IJKMediaFrameworkWithSSL.framework;
-			remoteRef = 581D0EE31FC5A68100390F95 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		581D0EE61FC5A68100390F95 /* IJKMediaFrameworkTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = IJKMediaFrameworkTests.xctest;
-			remoteRef = 581D0EE51FC5A68100390F95 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7E9F4F771E288E9B00EC9B69 /* Resources */ = {
@@ -1861,13 +1761,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SusilaMobile/Pods-SusilaMobile-resources.sh",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SusilaMobile/Pods-SusilaMobile-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SusilaMobile/Pods-SusilaMobile-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1911,49 +1810,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SusilaMobile/Pods-SusilaMobile-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/GBVersionTracking/GBVersionTracking.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
-				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SusilaMobile/Pods-SusilaMobile-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GBVersionTracking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SusilaMobile/Pods-SusilaMobile-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2163,24 +2025,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		580CFF3E1FC71D87005D9554 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = IJKMediaFramework;
-			targetProxy = 580CFF3D1FC71D87005D9554 /* PBXContainerItemProxy */;
-		};
-		7E1DA2AB1FC960DD009CDCD9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = IJKMediaFrameworkWithSSL;
-			targetProxy = 7E1DA2AA1FC960DD009CDCD9 /* PBXContainerItemProxy */;
-		};
-		7E1DA2B21FC960F0009CDCD9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = IJKMediaFrameworkWithSSL;
-			targetProxy = 7E1DA2B11FC960F0009CDCD9 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		7E9F4F851E288E9C00EC9B69 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -2327,7 +2171,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2337,7 +2182,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 59BFF4939BB52C63241A2751 /* Pods-SusilaMobile.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
@@ -2356,8 +2200,12 @@
 				);
 				INFOPLIST_FILE = SusilaMobile/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 16.20;
+				PODS_PODFILE_DIR_PATH = "${SRCROOT}/";
 				PRODUCT_BUNDLE_IDENTIFIER = kiki.lk.mv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2373,7 +2221,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 94DDB9BE7D67036F48E17ADD /* Pods-SusilaMobile.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
@@ -2391,8 +2238,12 @@
 				);
 				INFOPLIST_FILE = SusilaMobile/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 16.20;
+				PODS_PODFILE_DIR_PATH = "${SRCROOT}/";
 				PRODUCT_BUNDLE_IDENTIFIER = kiki.lk.mv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
