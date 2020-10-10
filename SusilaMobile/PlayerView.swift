@@ -60,22 +60,24 @@ class PlayerView: UIView, AVAudioPlayerDelegate {
         willSet(newSongUrl) {
             videoPlayer.seek(to: CMTimeMake(value: 0,timescale: 1))
             videoPlayer.pause()
-            let fileURL = NSURL(string: newSongUrl+"?token=\(Preferences.getAccessToken()!)")
-            let avAsset = AVURLAsset(url: fileURL! as URL, options: nil)
-            let playerItem = AVPlayerItem(asset: avAsset)
-            NotificationCenter.default.removeObserver(NSNotification.Name.AVPlayerItemDidPlayToEndTime)
-            NotificationCenter.default.addObserver(self, selector: #selector(self.audioPlayerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
-            videoPlayer = AVPlayer(playerItem: playerItem)
-            //            isPlaying = false
-            currentPlayingTime = 0
-            if isPlaying {
-                timer?.invalidate()
-                startTimer()
+            if let accessToken = Preferences.getAccessToken(){
+                let fileURL = NSURL(string: newSongUrl+"?token=\(Preferences.getAccessToken()!)")
+                let avAsset = AVURLAsset(url: fileURL! as URL, options: nil)
+                let playerItem = AVPlayerItem(asset: avAsset)
+                NotificationCenter.default.removeObserver(NSNotification.Name.AVPlayerItemDidPlayToEndTime)
+                NotificationCenter.default.addObserver(self, selector: #selector(self.audioPlayerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
+                videoPlayer = AVPlayer(playerItem: playerItem)
+                //            isPlaying = false
+                currentPlayingTime = 0
+                if isPlaying {
+                    timer?.invalidate()
+                    startTimer()
+                }
+                let totalDurationDbl: Double = avAsset.duration.seconds
+                totalDuration = totalDurationDbl.isNaN || totalDurationDbl.isInfinite ? 0 : Int(totalDurationDbl)
+                lblTotalTime.text = getTimeAsString(time: totalDuration)
+                lblCurrentTime.text = "0:00"
             }
-            let totalDurationDbl: Double = avAsset.duration.seconds
-            totalDuration = totalDurationDbl.isNaN || totalDurationDbl.isInfinite ? 0 : Int(totalDurationDbl)
-            lblTotalTime.text = getTimeAsString(time: totalDuration)
-            lblCurrentTime.text = "0:00"
         }
         didSet {
             
@@ -150,12 +152,12 @@ class PlayerView: UIView, AVAudioPlayerDelegate {
                 imgSongThumb.sd_setImage(with: URL(string: decodedImage), placeholderImage: UIImage(named: "logo_grayscale"))
                 
                 //if let url = URL(string: currentPlayingList[self.currentPlayingIndex].image ?? "") {
-                   // imgSongThumb.contentMode = .scaleAspectFit
-                    
-                    //imgSongThumb.downloadImage(from: url)
-                   // imgSongThumb.layer.cornerRadius = 5
-                   // imgSongThumb.clipsToBounds = true
-             //   }
+                // imgSongThumb.contentMode = .scaleAspectFit
+                
+                //imgSongThumb.downloadImage(from: url)
+                // imgSongThumb.layer.cornerRadius = 5
+                // imgSongThumb.clipsToBounds = true
+                //   }
                 songURLString = currentPlayingList[self.currentPlayingIndex].url ?? "" //"https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8"
             }
         }
@@ -457,7 +459,7 @@ class PlayerView: UIView, AVAudioPlayerDelegate {
         } else {
             btnExpanRepeat.setBackgroundImage(repeat_gray, for: .normal)
         }
-               
+        
     }
     @IBAction func sliderActManual(_ sender: UISlider) {
         currentPlayingTime = Int(sender.value * Float(totalDuration))
@@ -522,27 +524,27 @@ class PlayerView: UIView, AVAudioPlayerDelegate {
         addAlertDialog.isHidden = true
         addAlertDialog.layer.zPosition = 1002
         addAlertDialog.btnCancel.addTarget(self, action: #selector(cancelClickAddAlertDialog), for: .touchUpInside)
-            
+        
         let tapAddToLibrary = PlaylistPlayGesture(target: self, action: #selector(buttonClick_AddToLibrary))
         addAlertDialog.lblAddToLibrary.isUserInteractionEnabled = true
         addAlertDialog.lblAddToLibrary.addGestureRecognizer(tapAddToLibrary)
-            
+        
         let tapAddToPlaylist = PlaylistPlayGesture(target: self, action: #selector(buttonClick_AddToPlaylist))
         //tapAddToPlaylist.id =
         addAlertDialog.lblAddToPlaylist.isUserInteractionEnabled = true
         addAlertDialog.lblAddToPlaylist.addGestureRecognizer(tapAddToPlaylist)
-            
+        
         addToPlaylistAlertDialog = AddToPlaylistAlertDialog(frame: getCenteredFrameForOverlay(300))
         addToPlaylistAlertDialog.isHidden = true
         addToPlaylistAlertDialog.layer.zPosition = 2002
         //addToPlaylistAlertDialog.scrollCollection = self
         addToPlaylistAlertDialog.btnCancel.addTarget(self, action: #selector(cancelClickAddToPlaylistAlertDialog), for: .touchUpInside)
-            
+        
         self.addSubview(addAlertDialog)
         self.addSubview(addToPlaylistAlertDialog)
         
         //DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
-       //     ProgressView.shared.hide()
+        //     ProgressView.shared.hide()
         //})
         
     }
@@ -606,12 +608,12 @@ class PlayerView: UIView, AVAudioPlayerDelegate {
     func alert(message: String) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
         self.window?.rootViewController?.present(alert, animated: true, completion: nil)
-
+        
         // change to desired number of seconds (in this case 5 seconds)
         let when = DispatchTime.now() + 1
         DispatchQueue.main.asyncAfter(deadline: when){
-          // your code with delay
-          alert.dismiss(animated: true, completion: nil)
+            // your code with delay
+            alert.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -657,7 +659,7 @@ class PlayerView: UIView, AVAudioPlayerDelegate {
         
         var xLength: CGFloat = 0
         for (_, tileData) in libraryAllPlaylists.enumerated(){
-           
+            
             
             let songTile = PlaylistTileAlertAllPlaylist(frame: CGRect(x: 10, y: xLength, width: UIScreen.main.bounds.width-10, height: UIScreen.main.bounds.width/6))
             songTile.lblTitle.text = tileData.name
@@ -709,14 +711,14 @@ class PlayerView: UIView, AVAudioPlayerDelegate {
     }
     
     /*func updateAction(content_Id:Int, screen_Id:Int, screen_Action_Id:Int, screen_Time:String) {
-        homeDataModel.updateAction(content_Id:content_Id, screen_Id:screen_Id, screen_Action_Id:screen_Action_Id, screen_Time:screen_Time, updateActionCallFinished: { (status, error, userInfo) in
-            if status{
-                DispatchQueue.main.async(execute: {
-                    print("Action Updated ", screen_Time)
-                })
-            }
-        })
-    }*/
+     homeDataModel.updateAction(content_Id:content_Id, screen_Id:screen_Id, screen_Action_Id:screen_Action_Id, screen_Time:screen_Time, updateActionCallFinished: { (status, error, userInfo) in
+     if status{
+     DispatchQueue.main.async(execute: {
+     print("Action Updated ", screen_Time)
+     })
+     }
+     })
+     }*/
     
 }
 
