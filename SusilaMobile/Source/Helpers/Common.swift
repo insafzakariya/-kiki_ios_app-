@@ -7,6 +7,8 @@
 
 import Reachability
 import FBSDKLoginKit
+import PhoneNumberKit
+
 class Common: NSObject {
 
     /**

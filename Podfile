@@ -23,7 +23,7 @@ pod 'IQKeyboardManager'
 pod 'Bolts'
 pod 'FBSDKLoginKit'
 pod 'SWXMLHash'
-
+pod 'PhoneNumberKit'
 pod 'Fabric'
 pod 'Crashlytics'
 

@@ -114,20 +114,6 @@
 		6D317A0421B9478800CF855C /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D317A0321B9478800CF855C /* PlaylistModel.swift */; };
 		6D39293A21EC90B60058B81C /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D39293921EC90B60058B81C /* Carousel.swift */; };
 		6D39293D21ECA07E0058B81C /* ScrollCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D39293C21ECA07E0058B81C /* ScrollCollection.swift */; };
-		6D83739321AB0B2700E5E9A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83738021AB0B2700E5E9A4 /* Constants.swift */; };
-		6D83739421AB0B2700E5E9A4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83738221AB0B2700E5E9A4 /* TextField.swift */; };
-		6D83739521AB0B2700E5E9A4 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83738321AB0B2700E5E9A4 /* PhoneNumber.swift */; };
-		6D83739621AB0B2700E5E9A4 /* RegexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83738421AB0B2700E5E9A4 /* RegexManager.swift */; };
-		6D83739721AB0B2700E5E9A4 /* MetadataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83738521AB0B2700E5E9A4 /* MetadataTypes.swift */; };
-		6D83739821AB0B2700E5E9A4 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83738621AB0B2700E5E9A4 /* ParseManager.swift */; };
-		6D83739921AB0B2700E5E9A4 /* PhoneNumberMetadata.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6D83738921AB0B2700E5E9A4 /* PhoneNumberMetadata.xml */; };
-		6D83739A21AB0B2700E5E9A4 /* PhoneNumberMetadata.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D83738A21AB0B2700E5E9A4 /* PhoneNumberMetadata.json */; };
-		6D83739B21AB0B2700E5E9A4 /* NSRegularExpression+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83738C21AB0B2700E5E9A4 /* NSRegularExpression+Swift.swift */; };
-		6D83739C21AB0B2700E5E9A4 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83738D21AB0B2700E5E9A4 /* Formatter.swift */; };
-		6D83739D21AB0B2700E5E9A4 /* MetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83738E21AB0B2700E5E9A4 /* MetadataManager.swift */; };
-		6D83739E21AB0B2700E5E9A4 /* PartialFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83738F21AB0B2700E5E9A4 /* PartialFormatter.swift */; };
-		6D83739F21AB0B2700E5E9A4 /* PhoneNumberKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83739021AB0B2700E5E9A4 /* PhoneNumberKit.swift */; };
-		6D8373A121AB0B2700E5E9A4 /* PhoneNumberParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D83739221AB0B2700E5E9A4 /* PhoneNumberParser.swift */; };
 		6DAB21FE21C7B96400239C86 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAB21FD21C7B96400239C86 /* PlayerView.swift */; };
 		6DAB220121C7B98200239C86 /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAB220021C7B98200239C86 /* PlayerView.xib */; };
 		6DFF526B21B94C1400F47794 /* GlobalPlaylistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFF526A21B94C1400F47794 /* GlobalPlaylistItem.swift */; };
@@ -365,22 +351,6 @@
 		6D317A0321B9478800CF855C /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
 		6D39293921EC90B60058B81C /* Carousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
 		6D39293C21ECA07E0058B81C /* ScrollCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollCollection.swift; sourceTree = "<group>"; };
-		6D83738021AB0B2700E5E9A4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		6D83738221AB0B2700E5E9A4 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		6D83738321AB0B2700E5E9A4 /* PhoneNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
-		6D83738421AB0B2700E5E9A4 /* RegexManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexManager.swift; sourceTree = "<group>"; };
-		6D83738521AB0B2700E5E9A4 /* MetadataTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetadataTypes.swift; sourceTree = "<group>"; };
-		6D83738621AB0B2700E5E9A4 /* ParseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseManager.swift; sourceTree = "<group>"; };
-		6D83738921AB0B2700E5E9A4 /* PhoneNumberMetadata.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PhoneNumberMetadata.xml; sourceTree = "<group>"; };
-		6D83738A21AB0B2700E5E9A4 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetadata.json; sourceTree = "<group>"; };
-		6D83738B21AB0B2700E5E9A4 /* PhoneNumberKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberKit.h; sourceTree = "<group>"; };
-		6D83738C21AB0B2700E5E9A4 /* NSRegularExpression+Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Swift.swift"; sourceTree = "<group>"; };
-		6D83738D21AB0B2700E5E9A4 /* Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
-		6D83738E21AB0B2700E5E9A4 /* MetadataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetadataManager.swift; sourceTree = "<group>"; };
-		6D83738F21AB0B2700E5E9A4 /* PartialFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartialFormatter.swift; sourceTree = "<group>"; };
-		6D83739021AB0B2700E5E9A4 /* PhoneNumberKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberKit.swift; sourceTree = "<group>"; };
-		6D83739121AB0B2700E5E9A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6D83739221AB0B2700E5E9A4 /* PhoneNumberParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberParser.swift; sourceTree = "<group>"; };
 		6DAB21FD21C7B96400239C86 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		6DAB220021C7B98200239C86 /* PlayerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
 		6DFF526A21B94C1400F47794 /* GlobalPlaylistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPlaylistItem.swift; sourceTree = "<group>"; };
@@ -958,53 +928,6 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		6D83737F21AB0B2700E5E9A4 /* PhoneNumberKit */ = {
-			isa = PBXGroup;
-			children = (
-				6D83738021AB0B2700E5E9A4 /* Constants.swift */,
-				6D83738121AB0B2700E5E9A4 /* UI */,
-				6D83738321AB0B2700E5E9A4 /* PhoneNumber.swift */,
-				6D83738421AB0B2700E5E9A4 /* RegexManager.swift */,
-				6D83738521AB0B2700E5E9A4 /* MetadataTypes.swift */,
-				6D83738621AB0B2700E5E9A4 /* ParseManager.swift */,
-				6D83738721AB0B2700E5E9A4 /* Resources */,
-				6D83738B21AB0B2700E5E9A4 /* PhoneNumberKit.h */,
-				6D83738C21AB0B2700E5E9A4 /* NSRegularExpression+Swift.swift */,
-				6D83738D21AB0B2700E5E9A4 /* Formatter.swift */,
-				6D83738E21AB0B2700E5E9A4 /* MetadataManager.swift */,
-				6D83738F21AB0B2700E5E9A4 /* PartialFormatter.swift */,
-				6D83739021AB0B2700E5E9A4 /* PhoneNumberKit.swift */,
-				6D83739121AB0B2700E5E9A4 /* Info.plist */,
-				6D83739221AB0B2700E5E9A4 /* PhoneNumberParser.swift */,
-			);
-			path = PhoneNumberKit;
-			sourceTree = "<group>";
-		};
-		6D83738121AB0B2700E5E9A4 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				6D83738221AB0B2700E5E9A4 /* TextField.swift */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		6D83738721AB0B2700E5E9A4 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				6D83738821AB0B2700E5E9A4 /* Original */,
-				6D83738A21AB0B2700E5E9A4 /* PhoneNumberMetadata.json */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		6D83738821AB0B2700E5E9A4 /* Original */ = {
-			isa = PBXGroup;
-			children = (
-				6D83738921AB0B2700E5E9A4 /* PhoneNumberMetadata.xml */,
-			);
-			path = Original;
-			sourceTree = "<group>";
-		};
 		7E0586921E57246E000AE68E /* RegistrationFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -1164,7 +1087,6 @@
 				83A8FA6921F5D70D008B84CD /* LanguageSelect */,
 				6D3179DD21B84EAE00CF855C /* Tabs */,
 				6D3179D621B83CED00CF855C /* Dashboard */,
-				6D83737F21AB0B2700E5E9A4 /* PhoneNumberKit */,
 				CCC87AC21EED333F00732312 /* Constant.swift */,
 				2C4C54EF229132370097FA01 /* Utils.swift */,
 				CCC87AC31EED333F00732312 /* Util.swift */,
@@ -1688,7 +1610,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 1130;
-				ORGANIZATIONNAME = "Isuru Jayathissa";
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					7E9F4F781E288E9B00EC9B69 = {
 						CreatedOnToolsVersion = 8.1;
@@ -1746,9 +1668,7 @@
 				58502D641E965B5C0085BD37 /* Assets.xcassets in Resources */,
 				838962EB21F5955E0071392F /* Main.storyboard in Resources */,
 				836BF62D221BB62A003C32E8 /* SideShowTableViewCell.xib in Resources */,
-				6D83739921AB0B2700E5E9A4 /* PhoneNumberMetadata.xml in Resources */,
 				51025A981F81FBC000A3DB55 /* GoogleService-Info.plist in Resources */,
-				6D83739A21AB0B2700E5E9A4 /* PhoneNumberMetadata.json in Resources */,
 				CCC571AB1F83E16E005EFB34 /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1829,13 +1749,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D83739721AB0B2700E5E9A4 /* MetadataTypes.swift in Sources */,
 				2C75620F2132D9BB00725BDB /* SMSettingsPageViewController.swift in Sources */,
 				69451B1423FE63000064944C /* AddAlertDialog.swift in Sources */,
 				588D7F821F9F1D32008F19BA /* CachedImageView.swift in Sources */,
 				7E1216401E3A58F800B12288 /* KYEmbedDrawerControllerSegue.swift in Sources */,
 				6D3179F321B84F8800CF855C /* HomeViewController.swift in Sources */,
-				6D83739B21AB0B2700E5E9A4 /* NSRegularExpression+Swift.swift in Sources */,
 				7E12163F1E3A58F800B12288 /* KYDrawerController.swift in Sources */,
 				6D3179DC21B83D4300CF855C /* DashboardViewController.swift in Sources */,
 				588C420E1E548A8600C0E974 /* SMWebViewController.swift in Sources */,
@@ -1848,7 +1766,6 @@
 				CCC446951F9BBD390088868C /* SMNotificationCell.swift in Sources */,
 				CCC571AD1F83E16E005EFB34 /* CountryPicker.swift in Sources */,
 				6D39293A21EC90B60058B81C /* Carousel.swift in Sources */,
-				6D83739D21AB0B2700E5E9A4 /* MetadataManager.swift in Sources */,
 				58BC6D5D1E49A3BD00868FA0 /* AVPlayerVC.m in Sources */,
 				7E9F4F9C1E2894FC00EC9B69 /* ConstantsKiKi.swift in Sources */,
 				2CF40D9520C30F2100DDC432 /* SMSocialMediaLoginViewController.swift in Sources */,
@@ -1858,7 +1775,6 @@
 				7E0586991E572B25000AE68E /* SMPackageViewModel.swift in Sources */,
 				2C07B5E520F111F000EB7E16 /* SubtitleModel.swift in Sources */,
 				698A514423FAAE50009CC529 /* SongsTileAddedPlaylistDetails.swift in Sources */,
-				6D83739521AB0B2700E5E9A4 /* PhoneNumber.swift in Sources */,
 				6965B89823CC63EF00583040 /* Artist.swift in Sources */,
 				7E9F4FA91E28A42200EC9B69 /* ErrorHandler.swift in Sources */,
 				690BA4602403FB2E00B706B5 /* PlayListSongsTileAll.swift in Sources */,
@@ -1890,7 +1806,6 @@
 				69AFC4B123E420B4004D8C23 /* LibraryDataModel.swift in Sources */,
 				7EB507801E6DDA4000ED25F9 /* SMPlayerViewModel.swift in Sources */,
 				7E1216411E3A58F800B12288 /* KYEmbedMainControllerSegue.swift in Sources */,
-				6D83739F21AB0B2700E5E9A4 /* PhoneNumberKit.swift in Sources */,
 				69EB7AD4238E952800F90FCA /* LibraryViewController.swift in Sources */,
 				69F9CF56240672010027155D /* SongTileLibraryListSquareSongs.swift in Sources */,
 				697D6A1C2485A26900E60CEF /* SearchResultViewController.swift in Sources */,
@@ -1923,7 +1838,6 @@
 				69C817AF239E726700559BC0 /* GenreData.swift in Sources */,
 				690BA45A2403F73200B706B5 /* PlayListTile.swift in Sources */,
 				58C85E5B1ED3472C0098325E /* SMPackageTableViewCell.swift in Sources */,
-				6D83739321AB0B2700E5E9A4 /* Constants.swift in Sources */,
 				84CC5E47230BB4CA0097F736 /* Global.swift in Sources */,
 				7E4D2B2A1F7FD32800EA942F /* SMSubscribedListViewModel.swift in Sources */,
 				83A8FA6C21F5D72C008B84CD /* LanguageSelectViewController.swift in Sources */,
@@ -1951,14 +1865,12 @@
 				83E61A1221F61BA90070ABA2 /* String+LocalizedBundleTableName.swift in Sources */,
 				2C4C54F0229132370097FA01 /* Utils.swift in Sources */,
 				84AB9222232A67D900615576 /* SMNewPasswordController.swift in Sources */,
-				6D83739C21AB0B2700E5E9A4 /* Formatter.swift in Sources */,
 				84AB921E232A5F3300615576 /* SMVerificationViewController.swift in Sources */,
 				695710FD241119B100AE5F51 /* LibraryController.swift in Sources */,
 				7EB5077C1E6DC34A00ED25F9 /* SMEpisodesViewController.swift in Sources */,
 				589F5F9E1F8E627C004875A2 /* Channel.swift in Sources */,
 				69BD55B823F2A0540032497D /* SongsTileSelectPlaylistDetails.swift in Sources */,
 				69F4B01B2435B5DE000B2F82 /* SongTileLibraryAllArtists.swift in Sources */,
-				6D83739821AB0B2700E5E9A4 /* ParseManager.swift in Sources */,
 				69BD55B523F28DCC0032497D /* PlaylistTileSelectPlaylistSeeAll.swift in Sources */,
 				8440E6662373E21100A0C6FF /* ScrollCollectionBrowse.swift in Sources */,
 				6DFF545D21BE83F900F47794 /* Song.swift in Sources */,
@@ -1972,14 +1884,11 @@
 				84BFA4F22330F9AE004A1C43 /* SMVerificationViewModel.swift in Sources */,
 				83E8E62F220486EE006348D8 /* MainHomeViewController.swift in Sources */,
 				6965BC822486CBA600C144D9 /* ArtistDetailViewController.swift in Sources */,
-				6D83739421AB0B2700E5E9A4 /* TextField.swift in Sources */,
 				84B6133223264FED00116F6E /* SMResetViewController.swift in Sources */,
 				836BF62C221BB62A003C32E8 /* SideShowTableViewCell.swift in Sources */,
 				6DFF526B21B94C1400F47794 /* GlobalPlaylistItem.swift in Sources */,
-				6D83739621AB0B2700E5E9A4 /* RegexManager.swift in Sources */,
 				7EE625FC1E311C7100935352 /* SMRegisterViewModel.swift in Sources */,
 				6D317A0021B9257900CF855C /* AllSongsModel.swift in Sources */,
-				6D8373A121AB0B2700E5E9A4 /* PhoneNumberParser.swift in Sources */,
 				CC7B607A201DDE21005EE387 /* SMPaymentViewController.swift in Sources */,
 				83855CD92215819B00C21330 /* CollapsibleTableViewController.swift in Sources */,
 				583A71B61F8E531600BA58AA /* SMChannelCollectionViewCell.swift in Sources */,
@@ -2014,7 +1923,6 @@
 				83D2457C2224E36A00441DB3 /* MIBadgeButton.swift in Sources */,
 				69BDBE1D23953A5700DC4319 /* ScrollCollectionLibrary.swift in Sources */,
 				698A514123FA4728009CC529 /* PlaylistStatus.swift in Sources */,
-				6D83739E21AB0B2700E5E9A4 /* PartialFormatter.swift in Sources */,
 				83E8E6342204871F006348D8 /* HomeTableViewCell.swift in Sources */,
 				7E76C4EA1E4B825200DC5E87 /* SMLaunchViewController.swift in Sources */,
 				69EA24BE24054EFF00E94400 /* SongTileBrowseArtists.swift in Sources */,
