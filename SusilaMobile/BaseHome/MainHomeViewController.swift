@@ -240,8 +240,8 @@ class MainHomeViewController: UIViewController, UICollectionViewDataSource, UICo
             
             
             let channel = viewModel.channelList[indexPath.row]
-            Preferences.setChannelID(channel.id)
-            Preferences.setChannelName(channel.name)
+            UserDefaultsManager.setChannelID(channel.id)
+            UserDefaultsManager.setChannelName(channel.name)
         }
     }
 }

@@ -60,7 +60,7 @@ class PlayerView: UIView, AVAudioPlayerDelegate {
         willSet(newSongUrl) {
             videoPlayer.seek(to: CMTimeMake(value: 0,timescale: 1))
             videoPlayer.pause()
-            if let accessToken = Preferences.getAccessToken(){
+            if let accessToken = UserDefaultsManager.getAccessToken(){
                 let fileURL = NSURL(string: newSongUrl+"?token=\(accessToken)")
                 let avAsset = AVURLAsset(url: fileURL! as URL, options: nil)
                 let playerItem = AVPlayerItem(asset: avAsset)

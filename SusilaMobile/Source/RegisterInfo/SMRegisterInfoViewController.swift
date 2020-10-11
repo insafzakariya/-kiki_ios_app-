@@ -51,10 +51,10 @@ class SMRegisterInfoViewController: BaseViewController,CountryPickerDelegate,UIG
         mobileNoTextField.setLeftPaddingPoints(10)
 
 //        var phoneNum = Preferences.getMobeCode() ?? ""
-        var phoneNum = "\(Preferences.getMobileNo() ?? "")"
+        var phoneNum = "\(UserDefaultsManager.getMobileNo() ?? "")"
         var countryCode: String? = nil
         do {
-            let phoneNumber = try PhoneNumberKit().parse(Preferences.getMobileNo() ?? "", withRegion: PhoneNumberKit.defaultRegionCode(), ignoreType: true)
+            let phoneNumber = try PhoneNumberKit().parse(UserDefaultsManager.getMobileNo() ?? "", withRegion: PhoneNumberKit.defaultRegionCode(), ignoreType: true)
             phoneNum = "\(phoneNumber.nationalNumber)"
             countryCode = "+\(phoneNumber.countryCode)"
         } catch {
@@ -129,7 +129,7 @@ class SMRegisterInfoViewController: BaseViewController,CountryPickerDelegate,UIG
     }
     override func viewDidAppear(_ animated: Bool) {
         if (lblCode.text! == "+94") {
-            mobileNoTextField.placeholder = (Preferences.getMobeCode()?.isEmpty)! ? "123456789" : Preferences.getMobeCode()
+            mobileNoTextField.placeholder = (UserDefaultsManager.getMobeCode()?.isEmpty)! ? "123456789" : UserDefaultsManager.getMobeCode()
         }
     }
     @IBAction func tappedBackButton(_ sender: Any) {
@@ -163,7 +163,7 @@ class SMRegisterInfoViewController: BaseViewController,CountryPickerDelegate,UIG
         self.regionCode = countryCode
         self.ivFlag.image = flag
         if (lblCode.text! == "+94" && mobileNoTextField.text == "") {
-            mobileNoTextField.placeholder = (Preferences.getMobeCode()?.isEmpty)! ? "123456789" : Preferences.getMobeCode()
+            mobileNoTextField.placeholder = (UserDefaultsManager.getMobeCode()?.isEmpty)! ? "123456789" : UserDefaultsManager.getMobeCode()
         }
     }
     

@@ -78,10 +78,10 @@ class SMProfileViewController:BaseViewController,CountryPickerDelegate,UIGesture
     override func viewWillAppear(_ animated: Bool) {
 //        let locale = Locale.current
 //        let code = (locale as NSLocale).object(forKey: NSLocale.Key.countryCode) as! String?
-        let strPhoneNumber = "\(Preferences.getMobileNo() ?? "")"
+        let strPhoneNumber = "\(UserDefaultsManager.getMobileNo() ?? "")"
         strPhoneNumberOfUser = strPhoneNumber
         mobileNoTextField.text = strPhoneNumber
-        selectedLanguage = AuthUser.getLanguage(text: Preferences.getLanguage()!)
+        selectedLanguage = AuthUser.getLanguage(text: UserDefaultsManager.getLanguage()!)
         if selectedLanguage.rawValue == "SINHALA" {
             sinhalaImg.image = UIImage(named: "checkCircle")
             tamilImage.image = nil
@@ -130,7 +130,7 @@ class SMProfileViewController:BaseViewController,CountryPickerDelegate,UIGesture
 //        {
 //            btnBirthDate.setTitle("", for: .normal)
 //        }
-        memberName.text = "\(Preferences.getUsername() ?? "")"
+        memberName.text = "\(UserDefaultsManager.getUsername() ?? "")"
 //        memeberEmail.text = "Welcome \(Preferences.() ?? "")"
 
     }

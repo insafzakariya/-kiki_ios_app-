@@ -76,15 +76,15 @@ class SMLoginViewModel: NSObject {
 //                } else {
 //                    print("There is an issue")
 //                }
-                Preferences.setIsActiveUser(jsonData[AuthUser.JsonKeys.verified].bool ?? false)
-                Preferences.setAccessToken(jsonData[AuthUser.JsonKeys.access_token].string ?? nil)
-                Preferences.setUsername(jsonData[AuthUser.JsonKeys.name].string ?? "")
-                Preferences.setGender(jsonData[AuthUser.JsonKeys.gender].string ?? "")
-                Preferences.setLangauge(jsonData[AuthUser.JsonKeys.language].string ?? "")
-                Preferences.setMobileNo(jsonData[AuthUser.JsonKeys.mobile_number].string ?? "")
-                Preferences.setBirthDate(jsonData[AuthUser.JsonKeys.date_of_birth].string ?? "")
-                Preferences.setCountryCode(jsonData[AuthUser.JsonKeys.country].string ?? "")
-                Preferences.setUserId(jsonData[AuthUser.JsonKeys.id].stringValue)
+                UserDefaultsManager.setIsActiveUser(jsonData[AuthUser.JsonKeys.verified].bool ?? false)
+                UserDefaultsManager.setAccessToken(jsonData[AuthUser.JsonKeys.access_token].string ?? nil)
+                UserDefaultsManager.setUsername(jsonData[AuthUser.JsonKeys.name].string ?? "")
+                UserDefaultsManager.setGender(jsonData[AuthUser.JsonKeys.gender].string ?? "")
+                UserDefaultsManager.setLangauge(jsonData[AuthUser.JsonKeys.language].string ?? "")
+                UserDefaultsManager.setMobileNo(jsonData[AuthUser.JsonKeys.mobile_number].string ?? "")
+                UserDefaultsManager.setBirthDate(jsonData[AuthUser.JsonKeys.date_of_birth].string ?? "")
+                UserDefaultsManager.setCountryCode(jsonData[AuthUser.JsonKeys.country].string ?? "")
+                UserDefaultsManager.setUserId(jsonData[AuthUser.JsonKeys.id].stringValue)
                 self.delegate?.loginCallFinished!(true, error: nil, userInfo: nil)
                 //            }else{
                 //                Common.logout()
@@ -114,11 +114,11 @@ class SMLoginViewModel: NSObject {
             switch code {
             case 200, 201:
                 if (jsonData[AuthUser.JsonKeys.mobno].string) != "" || (jsonData[AuthUser.JsonKeys.mobno].string) != nil{
-                    Preferences.setWhitList(true)
-                    Preferences.setMobeCode(jsonData[AuthUser.JsonKeys.mobno].string ?? "")
+                    UserDefaultsManager.setWhitList(true)
+                    UserDefaultsManager.setMobeCode(jsonData[AuthUser.JsonKeys.mobno].string ?? "")
                 }
                 else{
-                    Preferences.setWhitList(false)
+                    UserDefaultsManager.setWhitList(false)
 //                    (jsonData[AuthUser.JsonKeys.mobno].string ?? "")
 
                 }

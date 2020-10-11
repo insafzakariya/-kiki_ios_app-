@@ -22,7 +22,7 @@ class SMLaunchViewController: UIViewController {
             bgImageView.image = UIImage(named: "BGImage_iPhone4s")
         }
         
-        if let accessToken = Preferences.getAccessToken(), !accessToken.isEmpty{
+        if let accessToken = UserDefaultsManager.getAccessToken(), !accessToken.isEmpty{
             checkKeepMeLogin()
             
         }else{
@@ -97,17 +97,17 @@ class SMLaunchViewController: UIViewController {
 //                                        mobileNumber: jsonData[AuthUser.JsonKeys.mobile_number].string)
 //                
                 
-                Preferences.setIsActiveUser(jsonData[AuthUser.JsonKeys.verified].bool ?? false)
-                Preferences.setAccessToken(jsonData[AuthUser.JsonKeys.access_token].string ?? nil)
-                Preferences.setUsername(jsonData[AuthUser.JsonKeys.name].string ?? "")
-                Preferences.setGender(jsonData[AuthUser.JsonKeys.gender].string ?? "")
-                Preferences.setLangauge(jsonData[AuthUser.JsonKeys.language].string ?? "")
-                Preferences.setMobileNo(jsonData[AuthUser.JsonKeys.mobile_number].string ?? "")
-                Preferences.setBirthDate(jsonData[AuthUser.JsonKeys.date_of_birth].string ?? "")
+                UserDefaultsManager.setIsActiveUser(jsonData[AuthUser.JsonKeys.verified].bool ?? false)
+                UserDefaultsManager.setAccessToken(jsonData[AuthUser.JsonKeys.access_token].string ?? nil)
+                UserDefaultsManager.setUsername(jsonData[AuthUser.JsonKeys.name].string ?? "")
+                UserDefaultsManager.setGender(jsonData[AuthUser.JsonKeys.gender].string ?? "")
+                UserDefaultsManager.setLangauge(jsonData[AuthUser.JsonKeys.language].string ?? "")
+                UserDefaultsManager.setMobileNo(jsonData[AuthUser.JsonKeys.mobile_number].string ?? "")
+                UserDefaultsManager.setBirthDate(jsonData[AuthUser.JsonKeys.date_of_birth].string ?? "")
                 
-                Preferences.setCountryCode(jsonData[AuthUser.JsonKeys.country].string ?? "")
+                UserDefaultsManager.setCountryCode(jsonData[AuthUser.JsonKeys.country].string ?? "")
                 
-                if Preferences.getIsActiveUser(){
+                if UserDefaultsManager.getIsActiveUser(){
                     (UIApplication.shared.delegate as! AppDelegate).gotoHomeView()
                 }else{
                     self.goToRegisterInfoView()

@@ -69,10 +69,10 @@ class SMRegisterInfoViewModel: NSObject {
                 
                 //Preferences.setUser(authUser)
                 //Preferences.setAccessToken(jsonData[AuthUser.JsonKeys.access_token].string ?? nil)
-                Preferences.setGender(jsonData[AuthUser.JsonKeys.gender].string ?? "")
-                Preferences.setLangauge(jsonData[AuthUser.JsonKeys.language].string ?? "")
-                Preferences.setMobileNo(jsonData[AuthUser.JsonKeys.mobile_number].string ?? "")
-                Preferences.setBirthDate(jsonData[AuthUser.JsonKeys.date_of_birth].string ?? "")
+                UserDefaultsManager.setGender(jsonData[AuthUser.JsonKeys.gender].string ?? "")
+                UserDefaultsManager.setLangauge(jsonData[AuthUser.JsonKeys.language].string ?? "")
+                UserDefaultsManager.setMobileNo(jsonData[AuthUser.JsonKeys.mobile_number].string ?? "")
+                UserDefaultsManager.setBirthDate(jsonData[AuthUser.JsonKeys.date_of_birth].string ?? "")
                 
                 if AuthUser.getLanguageServerCode(language: language) == "SI" {
                   Localize.setCurrentLanguage("si-LK")

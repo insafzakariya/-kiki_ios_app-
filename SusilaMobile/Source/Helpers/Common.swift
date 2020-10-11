@@ -64,8 +64,8 @@ class Common: NSObject {
     }
     
     class func logout(){
-        Preferences.setUser(nil)
-        Preferences.setAccessToken(nil)
+        UserDefaultsManager.setUser(nil)
+        UserDefaultsManager.setAccessToken(nil)
         
         let loginManager = LoginManager()
         loginManager.logOut() // this is an instance function

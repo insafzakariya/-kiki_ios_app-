@@ -47,10 +47,10 @@ class SMResetViewController: BaseViewController,CountryPickerDelegate,UIGestureR
         
         phoneNoText.setLeftPaddingPoints(10)
         
-        var phoneNum = "\(Preferences.getMobileNo() ?? "")"
+        var phoneNum = "\(UserDefaultsManager.getMobileNo() ?? "")"
         var countryCode: String? = nil
         do {
-            let phoneNumber = try PhoneNumberKit().parse(Preferences.getMobileNo() ?? "", withRegion: PhoneNumberKit.defaultRegionCode(), ignoreType: true)
+            let phoneNumber = try PhoneNumberKit().parse(UserDefaultsManager.getMobileNo() ?? "", withRegion: PhoneNumberKit.defaultRegionCode(), ignoreType: true)
             phoneNum = "\(phoneNumber.nationalNumber)"
             countryCode = "+\(phoneNumber.countryCode)"
         } catch {
@@ -116,7 +116,7 @@ class SMResetViewController: BaseViewController,CountryPickerDelegate,UIGestureR
     
     override func viewDidAppear(_ animated: Bool) {
         if (countryLabel.text! == "+94") {
-            phoneNoText.placeholder = (Preferences.getMobeCode()?.isEmpty)! ? "123456789" : Preferences.getMobeCode()
+            phoneNoText.placeholder = (UserDefaultsManager.getMobeCode()?.isEmpty)! ? "123456789" : UserDefaultsManager.getMobeCode()
         }
     }
     
@@ -146,7 +146,7 @@ class SMResetViewController: BaseViewController,CountryPickerDelegate,UIGestureR
         
         self.countryImage.image = flag
         if (countryLabel.text! == "+94" && phoneNoText.text == "") {
-            phoneNoText.placeholder = (Preferences.getMobeCode()?.isEmpty)! ? "123456789" : Preferences.getMobeCode()
+            phoneNoText.placeholder = (UserDefaultsManager.getMobeCode()?.isEmpty)! ? "123456789" : UserDefaultsManager.getMobeCode()
         }
     }
     

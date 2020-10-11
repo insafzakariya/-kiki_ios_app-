@@ -36,7 +36,7 @@ class SMSettingsPageViewController: MenuChiledViewController {
    
     
     @IBAction func tappedKidsModeButton(_ sender: Any) {
-        let kidsMode = Preferences.getSettingKidsMode()
+        let kidsMode = UserDefaultsManager.getSettingKidsMode()
         if (kidsMode) {
             let alert = UIAlertController(title: "KiKi", message: NSLocalizedString("PleaseEnterPasswordToDeactivateChildMode".localized(using: "Localizable"), comment: ""), preferredStyle: .alert)
             alert.addTextField { (textField) in
@@ -46,9 +46,9 @@ class SMSettingsPageViewController: MenuChiledViewController {
             alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: { (action: UIAlertAction!) in
                 let password = alert.textFields![0].text
                 
-                if (password == Preferences.getKidsModePassword()){
-                    Preferences.setSettingKidsModePassword("")
-                    Preferences.setSettingKidsMode(false)
+                if (password == UserDefaultsManager.getKidsModePassword()){
+                    UserDefaultsManager.setSettingKidsModePassword("")
+                    UserDefaultsManager.setSettingKidsMode(false)
                     self.setKidsModeButtonText(false)
                     self.displaySimpleAlert(NSLocalizedString("ChildModeIsDeactivated".localized(using: "Localizable"), comment: ""))
                 } else {
@@ -75,8 +75,8 @@ class SMSettingsPageViewController: MenuChiledViewController {
             
             alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: { (action: UIAlertAction!) in
                 let password = alert.textFields![0].text
-                Preferences.setSettingKidsModePassword(password)
-                Preferences.setSettingKidsMode(true)
+                UserDefaultsManager.setSettingKidsModePassword(password)
+                UserDefaultsManager.setSettingKidsMode(true)
                 self.setKidsModeButtonText(true)
                 self.displaySimpleAlert(NSLocalizedString("ChildModeIsActivated".localized(using: "Localizable"), comment: ""))
                 removeTextFieldObserver()
@@ -98,7 +98,7 @@ class SMSettingsPageViewController: MenuChiledViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setKidsModeButtonText(Preferences.getSettingKidsMode())
+        setKidsModeButtonText(UserDefaultsManager.getSettingKidsMode())
     }
     
     func setKidsModeButtonText(_ kidsMode: Bool) {

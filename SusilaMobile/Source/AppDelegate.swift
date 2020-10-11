@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }*/
         
         let translateSet = defaults.object(forKey: "LanguageSelect") as? String
-        if let accessToken = Preferences.getAccessToken(), !accessToken.isEmpty {
+        if let accessToken = UserDefaultsManager.getAccessToken(), !accessToken.isEmpty {
             
             let defaults = UserDefaults.standard
             
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if (isMusicMode()) {
                 gotoMusicView()
             } else {
-                if Preferences.getMobileNo() == nil || Preferences.getMobileNo() == ""{
+                if UserDefaultsManager.getMobileNo() == nil || UserDefaultsManager.getMobileNo() == ""{
                  
                     let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
@@ -185,7 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        if (Preferences.getAccessToken() != nil) {
+        if (UserDefaultsManager.getAccessToken() != nil) {
             checkPackage(false)
         }
     }
@@ -260,8 +260,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func gotoPackageView() {
-        Crashlytics.sharedInstance().setUserIdentifier(Preferences.getAccessToken() ?? "")
-        Crashlytics.sharedInstance().setUserName(Preferences.getUsername() ?? "")
+        Crashlytics.sharedInstance().setUserIdentifier(UserDefaultsManager.getAccessToken() ?? "")
+        Crashlytics.sharedInstance().setUserName(UserDefaultsManager.getUsername() ?? "")
     }
     
     func checkPackage(_ isAfterLogin: Bool) {
@@ -270,7 +270,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let package = userInfo?["currentPackage"] as? JSON{
                     let packageId = package[Package.JsonKeys.id].numberValue
                     let remoteConfig = (UIApplication.shared.delegate as! AppDelegate).getRemoteConfig()
-                    let isSpecialUser = Preferences.getUserId() == remoteConfig[specialUserIdConfigKey].stringValue!
+                    let isSpecialUser = UserDefaultsManager.getUserId() == remoteConfig[specialUserIdConfigKey].stringValue!
                     if (isAfterLogin && self.isMusicMode() && packageId == 1 && !isSpecialUser) {
                         mainInstance.subscribeStatus = true
                         let title = NSLocalizedString("SubscribeToListen".localized(using: "Localizable"), comment: "")
@@ -302,8 +302,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func gotoHomeView(isAfterLogin: Bool = true) {
         UserDefaults.standard.set(false, forKey: "isMusicOn")
-        Crashlytics.sharedInstance().setUserIdentifier(Preferences.getAccessToken() ?? "")
-        Crashlytics.sharedInstance().setUserName(Preferences.getUsername() ?? "")
+        Crashlytics.sharedInstance().setUserIdentifier(UserDefaultsManager.getAccessToken() ?? "")
+        Crashlytics.sharedInstance().setUserName(UserDefaultsManager.getUsername() ?? "")
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let homeNavController = storyboard.instantiateViewController(withIdentifier: "HomeNavController") as! UINavigationController
@@ -325,8 +325,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func gotoMusicView(isAfterLogin: Bool = true) {
         UserDefaults.standard.set(true, forKey: "isMusicOn")
-        Crashlytics.sharedInstance().setUserIdentifier(Preferences.getAccessToken() ?? "")
-        Crashlytics.sharedInstance().setUserName(Preferences.getUsername() ?? "")
+        Crashlytics.sharedInstance().setUserIdentifier(UserDefaultsManager.getAccessToken() ?? "")
+        Crashlytics.sharedInstance().setUserName(UserDefaultsManager.getUsername() ?? "")
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         

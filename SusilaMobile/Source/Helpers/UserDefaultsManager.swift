@@ -8,45 +8,26 @@
 
 import UIKit
 
-/**
- *  Wrapper around NSUserDefaults
- */
-class Preferences {
+class UserDefaultsManager {
     
-    /**
-     Save a value
-     
-     - parameter value: Value to save
-     - parameter key:   Key for the value
-     */
     fileprivate class func setValue(_ value: AnyObject?, key: String) {
         UserDefaults.standard.set(value, forKey: key)
         UserDefaults.standard.synchronize()
     }
     
-    /**
-     Retrieve a value
-     
-     - parameter key: Key for the value
-     
-     - returns: Value for the given key
-     */
+
     fileprivate class func getValue(_ key: String) -> AnyObject? {
         return UserDefaults.standard.object(forKey: key) as AnyObject?
     }
     
-    /**
-     Deletes a value
-     
-     - parameter key: Key for the value to delete
-     */
+
     fileprivate class func removeValue(_ key: String) {
         UserDefaults.standard.removeObject(forKey: key)
         UserDefaults.standard.synchronize()
     }
 }
 
-extension Preferences {
+extension UserDefaultsManager {
     
     fileprivate struct PreferencesConstants {
         static let Username = "Username"
@@ -70,97 +51,88 @@ extension Preferences {
         static let videoResolution = "videoResolution"
     }
     
-    /**
-     Save Username.
-     
-     - parameter Username:
-     */
+
     class func setUsername(_ username: String?) {
-        Preferences.setValue(username as AnyObject?, key: PreferencesConstants.Username)
+        UserDefaultsManager.setValue(username as AnyObject?, key: PreferencesConstants.Username)
     }
     class func setGender(_ gender: String?) {
-        Preferences.setValue(gender as AnyObject?, key: PreferencesConstants.Gender)
+        UserDefaultsManager.setValue(gender as AnyObject?, key: PreferencesConstants.Gender)
     }
     class func setMobileNo(_ mobileno: String?) {
-        Preferences.setValue(mobileno as AnyObject?, key: PreferencesConstants.MobileNo)
+        UserDefaultsManager.setValue(mobileno as AnyObject?, key: PreferencesConstants.MobileNo)
     }
     class func setCountryCode(_ countryCode: String?) {
-        Preferences.setValue(countryCode as AnyObject?, key: PreferencesConstants.Country)
+        UserDefaultsManager.setValue(countryCode as AnyObject?, key: PreferencesConstants.Country)
     }
     class func setLangauge(_ language: String?) {
-        Preferences.setValue(language as AnyObject?, key: PreferencesConstants.Language)
+        UserDefaultsManager.setValue(language as AnyObject?, key: PreferencesConstants.Language)
     }
     class func setBirthDate(_ birthdate: String?) {
-        Preferences.setValue(birthdate as AnyObject?, key: PreferencesConstants.BirthDate)
+        UserDefaultsManager.setValue(birthdate as AnyObject?, key: PreferencesConstants.BirthDate)
     }
     class func setMobeCode(_ setMobeCode: String?) {
-        Preferences.setValue(setMobeCode as AnyObject?, key: PreferencesConstants.mobCode)
+        UserDefaultsManager.setValue(setMobeCode as AnyObject?, key: PreferencesConstants.mobCode)
     }
     class func setWhitList(_ setWhitList: Bool) {
-        Preferences.setValue(setWhitList as AnyObject?, key: PreferencesConstants.IswhiteList)
+        UserDefaultsManager.setValue(setWhitList as AnyObject?, key: PreferencesConstants.IswhiteList)
     }
     
     class func setSettingKidsMode(_ isEnabled: Bool) {
-        var statuses = Preferences.getValue(PreferencesConstants.KidsMode)
+        var statuses = UserDefaultsManager.getValue(PreferencesConstants.KidsMode)
         if (statuses == nil || !(statuses is Dictionary<String, Any>)) {
             statuses = [:] as AnyObject
         }
         var statusDict = statuses as! Dictionary<String, Bool>
-        statusDict[Preferences.getUserId()!] = isEnabled
-        Preferences.setValue(statusDict as AnyObject?, key: PreferencesConstants.KidsMode)
+        statusDict[UserDefaultsManager.getUserId()!] = isEnabled
+        UserDefaultsManager.setValue(statusDict as AnyObject?, key: PreferencesConstants.KidsMode)
     }
     
     class func setSettingKidsModePassword(_ passwordStr: String?) {
-        var passwords = Preferences.getValue(PreferencesConstants.KidsModePassword)
+        var passwords = UserDefaultsManager.getValue(PreferencesConstants.KidsModePassword)
         if (passwords == nil || !(passwords is Dictionary<String, Any>)) {
             passwords = [:] as AnyObject
         }
         var passwordDict = passwords as! Dictionary<String, String>
-        passwordDict[Preferences.getUserId()!] = passwordStr
-        Preferences.setValue(passwordDict as AnyObject?, key: PreferencesConstants.KidsModePassword)
+        passwordDict[UserDefaultsManager.getUserId()!] = passwordStr
+        UserDefaultsManager.setValue(passwordDict as AnyObject?, key: PreferencesConstants.KidsModePassword)
     }
     
-    /**
-     Retrieve Username.
-     
-     - returns: Username String if already saved. nil if not.
-     */
     class func getUsername() -> String? {
-        return Preferences.getValue(PreferencesConstants.Username) as? String
+        return UserDefaultsManager.getValue(PreferencesConstants.Username) as? String
     }
     class func getCountry() -> String? {
-        return Preferences.getValue(PreferencesConstants.Country) as? String
+        return UserDefaultsManager.getValue(PreferencesConstants.Country) as? String
     }
     class func getMobileNo() -> String? {
-        return Preferences.getValue(PreferencesConstants.MobileNo) as? String
+        return UserDefaultsManager.getValue(PreferencesConstants.MobileNo) as? String
     }
     class func getLanguage() -> String? {
-        return Preferences.getValue(PreferencesConstants.Language) as? String
+        return UserDefaultsManager.getValue(PreferencesConstants.Language) as? String
     }
     class func getGender() -> String? {
-        return Preferences.getValue(PreferencesConstants.Gender) as? String
+        return UserDefaultsManager.getValue(PreferencesConstants.Gender) as? String
     }
     class func getBirthDate() -> String? {
-        return Preferences.getValue(PreferencesConstants.BirthDate) as? String
+        return UserDefaultsManager.getValue(PreferencesConstants.BirthDate) as? String
     }
     class func getMobeCode() -> String? {
-        return Preferences.getValue(PreferencesConstants.mobCode) as? String ?? ""
+        return UserDefaultsManager.getValue(PreferencesConstants.mobCode) as? String ?? ""
     }
     
     class func setUserId(_ userId: String?) {
-        Preferences.setValue(userId as AnyObject?, key: PreferencesConstants.UserId)
+        UserDefaultsManager.setValue(userId as AnyObject?, key: PreferencesConstants.UserId)
     }
     class func getUserId() -> String? {
-        return Preferences.getValue(PreferencesConstants.UserId) as? String ?? ""
+        return UserDefaultsManager.getValue(PreferencesConstants.UserId) as? String ?? ""
         
     }
     
     
     class func setKeepMeLogin(_ keepMeLogin: Bool) {
-        Preferences.setValue(keepMeLogin as AnyObject?, key: PreferencesConstants.KeepMeLogin)
+        UserDefaultsManager.setValue(keepMeLogin as AnyObject?, key: PreferencesConstants.KeepMeLogin)
     }
     class func getKeepMeLogin() -> Bool {
-        let boolVal = Preferences.getValue(PreferencesConstants.KeepMeLogin) as? Bool
+        let boolVal = UserDefaultsManager.getValue(PreferencesConstants.KeepMeLogin) as? Bool
         
         if let boolVal = boolVal{
             return boolVal
@@ -170,37 +142,37 @@ extension Preferences {
     }
     
     class func setAccessToken(_ accessToken: String?) {
-        Preferences.setValue(accessToken as AnyObject?, key: PreferencesConstants.OauthAccessToken)
+        UserDefaultsManager.setValue(accessToken as AnyObject?, key: PreferencesConstants.OauthAccessToken)
     }
     class func getAccessToken() -> String? {
-        return Preferences.getValue(PreferencesConstants.OauthAccessToken) as? String
+        return UserDefaultsManager.getValue(PreferencesConstants.OauthAccessToken) as? String
         
     }
     
     class func setUser(_ user: AuthUser?) {
-        Preferences.setValue(user as AnyObject?, key: PreferencesConstants.LoginUser)
+        UserDefaultsManager.setValue(user as AnyObject?, key: PreferencesConstants.LoginUser)
     }
     class func getUser() -> AuthUser? {
-        return Preferences.getValue(PreferencesConstants.LoginUser) as? AuthUser
+        return UserDefaultsManager.getValue(PreferencesConstants.LoginUser) as? AuthUser
         
     }
     
     class func setChannelID(_ channelId: Int?) {
-        Preferences.setValue(channelId as AnyObject?, key: PreferencesConstants.ChannelID)
+        UserDefaultsManager.setValue(channelId as AnyObject?, key: PreferencesConstants.ChannelID)
     }
     class func setChannelName(_ channelName: String?) {
-        Preferences.setValue(channelName as AnyObject?, key: PreferencesConstants.ChannelName)
+        UserDefaultsManager.setValue(channelName as AnyObject?, key: PreferencesConstants.ChannelName)
     }
     class func getChannelName() -> String? {
-        return Preferences.getValue(PreferencesConstants.ChannelName) as? String
+        return UserDefaultsManager.getValue(PreferencesConstants.ChannelName) as? String
         
     }
     class func getChannelID() -> Int? {
-        return Preferences.getValue(PreferencesConstants.ChannelID) as? Int
+        return UserDefaultsManager.getValue(PreferencesConstants.ChannelID) as? Int
         
     }
     class func getWhitList() -> Bool {
-        let boolVal = Preferences.getValue(PreferencesConstants.IswhiteList) as? Bool
+        let boolVal = UserDefaultsManager.getValue(PreferencesConstants.IswhiteList) as? Bool
         
         if let boolVal = boolVal{
             return boolVal
@@ -219,10 +191,10 @@ extension Preferences {
     
     
     class func setIsActiveUser(_ isActiveUser: Bool) {
-        Preferences.setValue(isActiveUser as AnyObject?, key: PreferencesConstants.IsActiveUser)
+        UserDefaultsManager.setValue(isActiveUser as AnyObject?, key: PreferencesConstants.IsActiveUser)
     }
     class func getIsActiveUser() -> Bool {
-        let boolVal = Preferences.getValue(PreferencesConstants.IsActiveUser) as? Bool
+        let boolVal = UserDefaultsManager.getValue(PreferencesConstants.IsActiveUser) as? Bool
         
         if let boolVal = boolVal{
             return boolVal
@@ -232,12 +204,12 @@ extension Preferences {
     }
     
     class func getSettingKidsMode() -> Bool {
-        var statuses = Preferences.getValue(PreferencesConstants.KidsMode)
+        var statuses = UserDefaultsManager.getValue(PreferencesConstants.KidsMode)
         if (statuses == nil || !(statuses is Dictionary<String, Any>)) {
             statuses = [:] as AnyObject
         }
         let statuesDict = statuses as! Dictionary<String, Bool>
-        let boolVal = statuesDict[Preferences.getUserId()!]
+        let boolVal = statuesDict[UserDefaultsManager.getUserId()!]
         
         if let boolVal = boolVal{
             return boolVal
@@ -247,19 +219,19 @@ extension Preferences {
     }
     
     class func getKidsModePassword() -> String? {
-        var passwords = Preferences.getValue(PreferencesConstants.KidsModePassword)
+        var passwords = UserDefaultsManager.getValue(PreferencesConstants.KidsModePassword)
         if (passwords == nil || !(passwords is Dictionary<String, Any>)) {
             passwords = [:] as AnyObject
         }
         let passwordsDict = passwords as! Dictionary<String, String>
-        return passwordsDict[Preferences.getUserId()!] ?? ""
+        return passwordsDict[UserDefaultsManager.getUserId()!] ?? ""
     }
     
     class func setVideoResolution(_ resoltuion: Int?) {
-        Preferences.setValue(resoltuion as AnyObject?, key: PreferencesConstants.videoResolution)
+        UserDefaultsManager.setValue(resoltuion as AnyObject?, key: PreferencesConstants.videoResolution)
     }
     class func getVideoResolution() -> Int? {
-        return Preferences.getValue(PreferencesConstants.videoResolution) as? Int ?? 480
+        return UserDefaultsManager.getValue(PreferencesConstants.videoResolution) as? Int ?? 480
         
     }
 }

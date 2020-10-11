@@ -191,7 +191,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? "",
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? "",
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE
         ]
         
@@ -212,7 +212,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? "",
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? "",
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE
         ]
         
@@ -314,7 +314,7 @@ class ApiClient {
         let headers: HTTPHeaders = [
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -422,7 +422,7 @@ class ApiClient {
         //        StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters = [
@@ -430,7 +430,7 @@ class ApiClient {
             StringKeys.DATE_OF_BIRTH:birthdate,
             StringKeys.GENDER:gender,
             StringKeys.LANGUAGE:language,
-            StringKeys.White_Listed:Preferences.getWhitList(),
+            StringKeys.White_Listed:UserDefaultsManager.getWhitList(),
             StringKeys.COUNTRYCODE:""
             ] as [String : Any]
         
@@ -444,7 +444,7 @@ class ApiClient {
         let url = URL(string: mobileCodeRequestUrl)
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         //        let parameters = [
@@ -467,7 +467,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -485,7 +485,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
 //        let parameters: [String: Any]? = nil
@@ -506,7 +506,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -523,7 +523,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -541,7 +541,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -560,7 +560,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -579,7 +579,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -598,7 +598,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -617,7 +617,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -636,7 +636,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -656,7 +656,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -674,7 +674,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -693,7 +693,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -712,7 +712,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -731,7 +731,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -750,7 +750,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -768,7 +768,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -787,7 +787,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -806,7 +806,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -828,7 +828,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -850,7 +850,7 @@ class ApiClient {
         let headers: HTTPHeaders = [
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -874,7 +874,7 @@ class ApiClient {
         let headers: HTTPHeaders = [
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -893,7 +893,7 @@ class ApiClient {
         let headers: HTTPHeaders = [
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -911,7 +911,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -936,7 +936,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -954,7 +954,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -975,7 +975,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -994,7 +994,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1013,7 +1013,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1031,7 +1031,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters = [
@@ -1052,7 +1052,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters = [
@@ -1073,7 +1073,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         print("Key S song id's ", [songs])
         let parameters = [
@@ -1094,7 +1094,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         let parameters = [
             StringKeys.TYPE: key,
@@ -1113,7 +1113,7 @@ class ApiClient {
         let url = URL(string: kAPIBaseUrl+SubUrl.removePlaylistFromLibary)
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         let parameters = [
             StringKeys.ID: String(id)
@@ -1143,7 +1143,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters = [
@@ -1165,7 +1165,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters = [
@@ -1190,7 +1190,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters = [
@@ -1213,7 +1213,7 @@ class ApiClient {
            
            let headers: HTTPHeaders = [
                StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-               StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+               StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
            ]
            
             let parameters: [String: Any]? = nil
@@ -1232,7 +1232,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1251,7 +1251,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1269,7 +1269,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1287,7 +1287,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1305,7 +1305,7 @@ class ApiClient {
         let headers: HTTPHeaders = [
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1324,7 +1324,7 @@ class ApiClient {
         let headers: HTTPHeaders = [
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1343,7 +1343,7 @@ class ApiClient {
         let headers: HTTPHeaders = [
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1360,7 +1360,7 @@ class ApiClient {
         let url = URL(string: kAPIBaseUrl + SubUrl.GetPrograms + "/\(programID)" + "/allepisodes" + "?limit=20" + "&offset=" + "\(offset)")
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1396,7 +1396,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1414,7 +1414,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters = [
@@ -1437,7 +1437,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1456,7 +1456,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1475,7 +1475,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1491,7 +1491,7 @@ class ApiClient {
         let url = URL(string: kAPIBaseUrl + SubUrl.Trailer + "\(programId)")
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1508,7 +1508,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1525,7 +1525,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1541,7 +1541,7 @@ class ApiClient {
         let url = URL(string: kAPIBaseUrl + SubUrl.sendAnalytics + "\(sanitizeString(actionType))/\(contendId)?action_time=\(currentTime)")
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         let parameters: [String: Any]? = nil
         
@@ -1559,7 +1559,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1578,7 +1578,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1598,7 +1598,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1620,7 +1620,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1636,11 +1636,11 @@ class ApiClient {
     // MARK: - BaseHomeVwSideShow
     internal func getCarouselList(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         //https://susilamobiletv.info/mobile-tv-webservice/api/v1/content/programs/PROGRAM_ID/episodes
-        let url = URL(string: kAPIBaseUrl + SubUrl.GetImageList + "?k=\(Preferences.getSettingKidsMode())&offset=0&limit=8")
+        let url = URL(string: kAPIBaseUrl + SubUrl.GetImageList + "?k=\(UserDefaultsManager.getSettingKidsMode())&offset=0&limit=8")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1655,11 +1655,11 @@ class ApiClient {
     // MARK: - BaseHomeVwProgramsId
     internal func getChannelList(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         //https://cdn.kiki.lk/mobile-tv-webservice/api/v1/content/channels
-        let url = URL(string: kAPIBaseUrl + SubUrl.GetChannelList + "?k=\(Preferences.getSettingKidsMode())")
+        let url = URL(string: kAPIBaseUrl + SubUrl.GetChannelList + "?k=\(UserDefaultsManager.getSettingKidsMode())")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1683,7 +1683,7 @@ class ApiClient {
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters: [String: Any]? = nil
@@ -1702,7 +1702,7 @@ class ApiClient {
             request.httpMethod = "POST"
             request.addValue(StringKeys.CONTENT_TYPE, forHTTPHeaderField: StringKeys.HEADER_CONTENT_TYPE)
             request.addValue(kBasicServerAuthToken, forHTTPHeaderField: StringKeys.HEADER_AUTHORIZATION)
-            request.addValue(Preferences.getAccessToken() ?? "", forHTTPHeaderField: StringKeys.HEADER_TOKEN_AUTHENTICATION)
+            request.addValue(UserDefaultsManager.getAccessToken() ?? "", forHTTPHeaderField: StringKeys.HEADER_TOKEN_AUTHENTICATION)
         
             
             Alamofire.request(request).responseJSON { (dataResponse:DataResponse<Any>) in
@@ -1831,7 +1831,7 @@ class ApiClient {
                         request.httpMethod = HTTPMethod.post.rawValue
                         request.setValue(StringKeys.CONTENT_TYPE, forHTTPHeaderField: StringKeys.HEADER_CONTENT_TYPE)
                         request.setValue(kBasicServerAuthToken, forHTTPHeaderField: StringKeys.HEADER_AUTHORIZATION)
-                        request.setValue(Preferences.getAccessToken() ?? "", forHTTPHeaderField: StringKeys.HEADER_TOKEN_AUTHENTICATION)
+                        request.setValue(UserDefaultsManager.getAccessToken() ?? "", forHTTPHeaderField: StringKeys.HEADER_TOKEN_AUTHENTICATION)
 
                         request.httpBody = paramsString?.data(using: .utf8)
             Alamofire.request(request).responseJSON { (dataResponse:DataResponse<Any>) in

@@ -32,9 +32,9 @@ class SMMainMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        memberName.text = "Welcome \(Preferences.getUsername() ?? "")"
+        memberName.text = "Welcome \(UserDefaultsManager.getUsername() ?? "")"
         
-        if let name = Preferences.getUsername() {
+        if let name = UserDefaultsManager.getUsername() {
             
             if name == "Rashminda@1234" {
 //                self.heightPackageConstrain.constant = 0.0;

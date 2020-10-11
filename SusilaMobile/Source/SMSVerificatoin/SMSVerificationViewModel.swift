@@ -44,7 +44,7 @@ class SMSVerificationViewModel: NSObject {
         
         let headers: HTTPHeaders = [
             ApiClient.StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            ApiClient.StringKeys.HEADER_TOKEN_AUTHENTICATION: Preferences.getAccessToken() ?? ""
+            ApiClient.StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
         let parameters = [

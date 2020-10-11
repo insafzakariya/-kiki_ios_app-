@@ -14,7 +14,7 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let name = Preferences.getUsername()
+        if let name = UserDefaultsManager.getUsername()
         {
             if name == "Rashminda@1234"
             {

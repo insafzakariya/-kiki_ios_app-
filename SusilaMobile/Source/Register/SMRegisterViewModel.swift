@@ -72,14 +72,14 @@ class SMRegisterViewModel: NSObject {
                     "isNewUser":false,
                     "mobile_number" : jsonData[AuthUser.JsonKeys.mobile_number].string ?? ""
                 ] as [String : Any]
-                Preferences.setAccessToken(jsonData[AuthUser.JsonKeys.access_token].string ?? nil)
-                Preferences.setUsername(jsonData[AuthUser.JsonKeys.name].string ?? "")
-                Preferences.setGender(jsonData[AuthUser.JsonKeys.gender].string ?? "")
-                Preferences.setLangauge(jsonData[AuthUser.JsonKeys.language].string ?? "")
-                Preferences.setMobileNo(jsonData[AuthUser.JsonKeys.mobile_number].string ?? "")
-                Preferences.setBirthDate(jsonData[AuthUser.JsonKeys.date_of_birth].string ?? "")
-                Preferences.setCountryCode(jsonData[AuthUser.JsonKeys.country].string ?? "")
-                Preferences.setUserId(jsonData[AuthUser.JsonKeys.username].string ?? "")
+                UserDefaultsManager.setAccessToken(jsonData[AuthUser.JsonKeys.access_token].string ?? nil)
+                UserDefaultsManager.setUsername(jsonData[AuthUser.JsonKeys.name].string ?? "")
+                UserDefaultsManager.setGender(jsonData[AuthUser.JsonKeys.gender].string ?? "")
+                UserDefaultsManager.setLangauge(jsonData[AuthUser.JsonKeys.language].string ?? "")
+                UserDefaultsManager.setMobileNo(jsonData[AuthUser.JsonKeys.mobile_number].string ?? "")
+                UserDefaultsManager.setBirthDate(jsonData[AuthUser.JsonKeys.date_of_birth].string ?? "")
+                UserDefaultsManager.setCountryCode(jsonData[AuthUser.JsonKeys.country].string ?? "")
+                UserDefaultsManager.setUserId(jsonData[AuthUser.JsonKeys.username].string ?? "")
                 callFinished(true, nil, parameters as [String : Any]?)
             case 201:
                 
@@ -87,13 +87,13 @@ class SMRegisterViewModel: NSObject {
                     "isNewUser":true,
                     ]
                 
-                Preferences.setAccessToken(jsonData[AuthUser.JsonKeys.access_token].string ?? nil)
-                Preferences.setUsername(jsonData[AuthUser.JsonKeys.name].string ?? "")
-                Preferences.setGender(jsonData[AuthUser.JsonKeys.gender].string ?? "")
-                Preferences.setLangauge(jsonData[AuthUser.JsonKeys.language].string ?? "")
-                Preferences.setMobileNo(jsonData[AuthUser.JsonKeys.mobile_number].string ?? "")
-                Preferences.setBirthDate(jsonData[AuthUser.JsonKeys.date_of_birth].string ?? "")
-                Preferences.setCountryCode(jsonData[AuthUser.JsonKeys.country].string ?? "")
+                UserDefaultsManager.setAccessToken(jsonData[AuthUser.JsonKeys.access_token].string ?? nil)
+                UserDefaultsManager.setUsername(jsonData[AuthUser.JsonKeys.name].string ?? "")
+                UserDefaultsManager.setGender(jsonData[AuthUser.JsonKeys.gender].string ?? "")
+                UserDefaultsManager.setLangauge(jsonData[AuthUser.JsonKeys.language].string ?? "")
+                UserDefaultsManager.setMobileNo(jsonData[AuthUser.JsonKeys.mobile_number].string ?? "")
+                UserDefaultsManager.setBirthDate(jsonData[AuthUser.JsonKeys.date_of_birth].string ?? "")
+                UserDefaultsManager.setCountryCode(jsonData[AuthUser.JsonKeys.country].string ?? "")
                 callFinished(true, nil, parameters as [String : Any]?)
             default:
                 let error = Common.getErrorFromJson(description: jsonData[ErrorJsonKeys.errorMessage].string ?? "", errorType: "\(jsonData[ErrorJsonKeys.errorCode].int ?? -1)", errorCode: jsonData[ErrorJsonKeys.errorCode].int ?? -1)

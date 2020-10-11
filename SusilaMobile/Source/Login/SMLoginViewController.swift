@@ -231,8 +231,8 @@ extension SMLoginViewController: LoginDelegate {
     func loginCallFinished(_ status: Bool, error: NSError?, userInfo: [String: AnyObject]?) {
         ProgressView.shared.hide()
         if status {
-            if Preferences.getIsActiveUser(){
-                if Preferences.getMobileNo() == nil || Preferences.getMobileNo() == ""{
+            if UserDefaultsManager.getIsActiveUser(){
+                if UserDefaultsManager.getMobileNo() == nil || UserDefaultsManager.getMobileNo() == ""{
 //                    self.goToRegisterInfoView()
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     

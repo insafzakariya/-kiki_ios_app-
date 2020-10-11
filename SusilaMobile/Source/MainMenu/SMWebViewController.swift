@@ -97,7 +97,7 @@ class SMWebViewController: MenuChiledViewController {
                 if let package = userInfo?["currentPackage"] as? JSON{
                     let packageId = package[Package.JsonKeys.id].numberValue
                     let remoteConfig = (UIApplication.shared.delegate as! AppDelegate).getRemoteConfig()
-                    let isSpecialUser = Preferences.getUserId() == remoteConfig[specialUserIdConfigKey].stringValue!
+                    let isSpecialUser = UserDefaultsManager.getUserId() == remoteConfig[specialUserIdConfigKey].stringValue!
                     if (packageId == 1 && !isSpecialUser) {
                         mainInstance.subscribeStatus = true
                         self.navigationController?.popViewController(animated: true)

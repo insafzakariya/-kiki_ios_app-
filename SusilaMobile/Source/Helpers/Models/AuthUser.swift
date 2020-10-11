@@ -117,18 +117,12 @@ extension AuthUser {
     }
     
     static func getLanguage(text : String) -> Language{
-        switch text {
-        case "SI":
+        switch text.lowercased() {
+        case "si":
             return Language.SINHALA
-        case "Si":
-            return Language.SINHALA
-        case "TA":
+        case "ta":
             return Language.TAMIL
-        case "Ta":
-            return Language.TAMIL
-        case "EN":
-            return Language.ENGLISH
-        case "En":
+        case "en":
             return Language.ENGLISH
         default:
             return Language.None
