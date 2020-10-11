@@ -8,9 +8,9 @@ target 'SusilaMobile' do
   # Pods for SusilaMobile
 
 pod 'Alamofire'
-pod 'SwiftyJSON', '3.1.0'
+pod 'SwiftyJSON'
 pod 'MBProgressHUD', '0.9'
-pod 'Reachability', '3.2'
+pod 'Reachability'
 pod 'GBVersionTracking'
 pod 'XLPagerTabStrip'
 pod 'GoogleSignIn'
@@ -26,9 +26,8 @@ pod 'SWXMLHash'
 pod 'PhoneNumberKit'
 pod 'Fabric'
 pod 'Crashlytics'
-
 pod 'ImageSlideshow'
 pod 'ImageSlideshow/Alamofire'
-pod 'SDWebImage', '~> 5.0'
+pod 'SDWebImage'
 pod 'ijkplayer'
 end
