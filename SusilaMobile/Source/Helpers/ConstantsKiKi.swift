@@ -29,7 +29,7 @@ let AVPlayerVCSetFullScreenVideoNotification = "avplayervcsetfullScreenvideourl"
 let kFBlink = "https://www.facebook.com/mv.kiki.lk/"
 //let kShareUrl = "https://cdn.kiki.lk/social/share/episode/"
 
-let kAPPThemeOrangeColor = colorWithHexString(hex: "#2ecc71")
+let kAPPThemeOrangeColor = UIHelper.colorWithHexString(hex: "#2ecc71")
 
 //UIColor(red: 255/255, green: 110/255, blue: 64/255, alpha: 1)
 let kAPPThemeWhiteColor = UIColor.white.cgColor

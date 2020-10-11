@@ -195,8 +195,3 @@ extension SMSocialMediaLoginViewController: GIDSignInUIDelegate, GIDSignInDelega
         ProgressView.shared.hide()
     }
 }
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
-	return input.rawValue
-}

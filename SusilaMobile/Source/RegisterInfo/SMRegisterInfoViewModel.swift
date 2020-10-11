@@ -33,7 +33,7 @@ class SMRegisterInfoViewModel: NSObject {
         else if country == nil {
             return .failedValidation(NSLocalizedString("ENTER_VALID_COUNTRY".localized(using: "Localizable"), comment: ""))
         } else if mobile == nil || !Common.mobileNovalidate(phoneNumber: mobile!, regionCode: regionCode!) {
-            if (Utils.isSriLankanPhoneNumber(mobile)) {
+            if (ValidationManager.isSriLankanPhoneNumber(mobile)) {
                 return .failedValidation(NSLocalizedString("ENTER_VALID_MOBILENO".localized(using: "Localizable"), comment: ""))
             } else {
                 return .failedValidation(NSLocalizedString("ENTER_VALID_MOBILENO".localized(using: "Localizable"), comment: ""))

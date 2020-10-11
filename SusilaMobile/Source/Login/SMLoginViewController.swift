@@ -71,7 +71,7 @@ class SMLoginViewController: BaseViewController {
         loginBtn.setTitle("LoginBtn".localized(using: "Localizable"), for: UIControl.State.normal)
         createAccountBtn.setTitle("CreateAccount".localized(using: "Localizable"), for: UIControl.State.normal)
         
-        let color = colorWithHexString(hex: "#999999")
+        let color = UIHelper.colorWithHexString(hex: "#999999")
         usernameTextField.attributedPlaceholder = NSAttributedString(string: usernameTextField.placeholder ?? "", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : color]))
         passwordTextField.attributedPlaceholder = NSAttributedString(string: passwordTextField.placeholder ?? "", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : color]))
     }
@@ -317,15 +317,3 @@ extension UIButton {
     }
 }
 
-
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
-	return input.rawValue
-}

@@ -11,7 +11,6 @@
 		2C07B5E520F111F000EB7E16 /* SubtitleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C07B5E420F111F000EB7E16 /* SubtitleModel.swift */; };
 		2C1B587221023CC30091D4BA /* AdvertisementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B587121023CC30091D4BA /* AdvertisementModel.swift */; };
 		2C1B58762102ED040091D4BA /* AdvertisementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B58752102ED040091D4BA /* AdvertisementViewController.swift */; };
-		2C4C54F0229132370097FA01 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C54EF229132370097FA01 /* Utils.swift */; };
 		2C5BB7822079C40A00B64E7F /* SMPackagePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BB7812079C40A00B64E7F /* SMPackagePageViewController.swift */; };
 		2C75620F2132D9BB00725BDB /* SMSettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C75620E2132D9BB00725BDB /* SMSettingsPageViewController.swift */; };
 		2C8CDB2320DF6CD200AA4F3A /* SubtitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8CDB2220DF6CD200AA4F3A /* SubtitleViewController.m */; };
@@ -27,6 +26,16 @@
 		583A71B41F8E51DE00BA58AA /* SMChannelListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583A71B31F8E51DE00BA58AA /* SMChannelListModel.swift */; };
 		583A71B61F8E531600BA58AA /* SMChannelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583A71B51F8E531600BA58AA /* SMChannelCollectionViewCell.swift */; };
 		58502D641E965B5C0085BD37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58502D631E965B5C0085BD37 /* Assets.xcassets */; };
+		586C1B212532ECF900101D54 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1B202532ECF900101D54 /* UITextField.swift */; };
+		586C1B232532ED2400101D54 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1B222532ED2400101D54 /* UIViewController.swift */; };
+		586C1B252532EDFE00101D54 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1B242532EDFE00101D54 /* Double.swift */; };
+		586C1B272532EE3900101D54 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1B262532EE3900101D54 /* UIImage.swift */; };
+		586C1B292532EE8800101D54 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1B282532EE8800101D54 /* UIView.swift */; };
+		586C1B2C2532EEEE00101D54 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1B2B2532EEEE00101D54 /* UIHelper.swift */; };
+		586C1B2E2532EFD700101D54 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1B2D2532EFD700101D54 /* NSDate.swift */; };
+		586C1B302532F03D00101D54 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1B2F2532F03D00101D54 /* String.swift */; };
+		586C1B332532F0B600101D54 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1B322532F0B600101D54 /* DeviceManager.swift */; };
+		586C1B352532F0F900101D54 /* ValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1B342532F0F900101D54 /* ValidationManager.swift */; };
 		588C420E1E548A8600C0E974 /* SMWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588C420D1E548A8600C0E974 /* SMWebViewController.swift */; };
 		588D7F821F9F1D32008F19BA /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D7F801F9F1D32008F19BA /* CachedImageView.swift */; };
 		588D7F831F9F1D32008F19BA /* DiscardableImageCacheItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D7F811F9F1D32008F19BA /* DiscardableImageCacheItem.swift */; };
@@ -237,7 +246,6 @@
 		2C07B5E420F111F000EB7E16 /* SubtitleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleModel.swift; sourceTree = "<group>"; };
 		2C1B587121023CC30091D4BA /* AdvertisementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementModel.swift; sourceTree = "<group>"; };
 		2C1B58752102ED040091D4BA /* AdvertisementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementViewController.swift; sourceTree = "<group>"; };
-		2C4C54EF229132370097FA01 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Source/Utils.swift; sourceTree = "<group>"; };
 		2C5BB7812079C40A00B64E7F /* SMPackagePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SMPackagePageViewController.swift; path = Source/Package/SMPackagePageViewController.swift; sourceTree = "<group>"; };
 		2C75620E2132D9BB00725BDB /* SMSettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SMSettingsPageViewController.swift; path = Source/Settings/SMSettingsPageViewController.swift; sourceTree = "<group>"; };
 		2C8CDB2220DF6CD200AA4F3A /* SubtitleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubtitleViewController.m; sourceTree = "<group>"; };
@@ -254,6 +262,16 @@
 		583A71B31F8E51DE00BA58AA /* SMChannelListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SMChannelListModel.swift; path = Source/ChannelList/SMChannelListModel.swift; sourceTree = "<group>"; };
 		583A71B51F8E531600BA58AA /* SMChannelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SMChannelCollectionViewCell.swift; path = Source/ChannelList/SMChannelCollectionViewCell.swift; sourceTree = "<group>"; };
 		58502D631E965B5C0085BD37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		586C1B202532ECF900101D54 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		586C1B222532ED2400101D54 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		586C1B242532EDFE00101D54 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		586C1B262532EE3900101D54 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		586C1B282532EE8800101D54 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		586C1B2B2532EEEE00101D54 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		586C1B2D2532EFD700101D54 /* NSDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
+		586C1B2F2532F03D00101D54 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		586C1B322532F0B600101D54 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
+		586C1B342532F0F900101D54 /* ValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationManager.swift; sourceTree = "<group>"; };
 		588C420D1E548A8600C0E974 /* SMWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SMWebViewController.swift; path = Source/MainMenu/SMWebViewController.swift; sourceTree = "<group>"; };
 		588D7F801F9F1D32008F19BA /* CachedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CachedImageView.swift; path = Source/Helpers/ImageCache/CachedImageView.swift; sourceTree = "<group>"; };
 		588D7F811F9F1D32008F19BA /* DiscardableImageCacheItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscardableImageCacheItem.swift; path = Source/Helpers/ImageCache/DiscardableImageCacheItem.swift; sourceTree = "<group>"; };
@@ -584,6 +602,38 @@
 				583A71B51F8E531600BA58AA /* SMChannelCollectionViewCell.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		586C1B1F2532ECE400101D54 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CCC87AC41EED333F00732312 /* YDelegate.swift */,
+				586C1B202532ECF900101D54 /* UITextField.swift */,
+				586C1B222532ED2400101D54 /* UIViewController.swift */,
+				586C1B242532EDFE00101D54 /* Double.swift */,
+				586C1B262532EE3900101D54 /* UIImage.swift */,
+				586C1B282532EE8800101D54 /* UIView.swift */,
+				586C1B2D2532EFD700101D54 /* NSDate.swift */,
+				586C1B2F2532F03D00101D54 /* String.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		586C1B2A2532EEB900101D54 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				586C1B2B2532EEEE00101D54 /* UIHelper.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		586C1B312532F0A500101D54 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				586C1B322532F0B600101D54 /* DeviceManager.swift */,
+				586C1B342532F0F900101D54 /* ValidationManager.swift */,
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 		588D7F7F1F9F1D16008F19BA /* ImageCache */ = {
@@ -1083,14 +1133,15 @@
 		7E9F4F8F1E28927A00EC9B69 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				586C1B312532F0A500101D54 /* Managers */,
+				586C1B2A2532EEB900101D54 /* Helpers */,
+				586C1B1F2532ECE400101D54 /* Extensions */,
 				832646CA222407CC006A226B /* Badge */,
 				83A8FA6921F5D70D008B84CD /* LanguageSelect */,
 				6D3179DD21B84EAE00CF855C /* Tabs */,
 				6D3179D621B83CED00CF855C /* Dashboard */,
 				CCC87AC21EED333F00732312 /* Constant.swift */,
-				2C4C54EF229132370097FA01 /* Utils.swift */,
 				CCC87AC31EED333F00732312 /* Util.swift */,
-				CCC87AC41EED333F00732312 /* YDelegate.swift */,
 				519FBB242028D6D90063F86E /* Message.swift */,
 				7E9F4FA11E2895A100EC9B69 /* AppDelegate.swift */,
 				5801EAA41E530AC70059872F /* BaseViewController.swift */,
@@ -1760,6 +1811,7 @@
 				69C94F6623F51DBC00563A75 /* SongTileSelectSong.swift in Sources */,
 				84BE61D1232F7D1900DADDF2 /* SMResetViewModel.swift in Sources */,
 				69EA24BA24054DFE00E94400 /* SongTileBrowseSquare.swift in Sources */,
+				586C1B212532ECF900101D54 /* UITextField.swift in Sources */,
 				7E76C4EC1E4B883500DC5E87 /* SMHomeBaseViewController.swift in Sources */,
 				7EE626071E31288900935352 /* PopoverTableViewCell.swift in Sources */,
 				7EE626061E31288900935352 /* PopoverTableCellModel.swift in Sources */,
@@ -1769,8 +1821,10 @@
 				58BC6D5D1E49A3BD00868FA0 /* AVPlayerVC.m in Sources */,
 				7E9F4F9C1E2894FC00EC9B69 /* ConstantsKiKi.swift in Sources */,
 				2CF40D9520C30F2100DDC432 /* SMSocialMediaLoginViewController.swift in Sources */,
+				586C1B332532F0B600101D54 /* DeviceManager.swift in Sources */,
 				69EA24B824054A8F00E94400 /* SongTileBrowse.swift in Sources */,
 				69AB9461247BB9EE0067BCAD /* ArtistById.swift in Sources */,
+				586C1B2C2532EEEE00101D54 /* UIHelper.swift in Sources */,
 				CCC446941F9BBD390088868C /* NotificationListModel.swift in Sources */,
 				7E0586991E572B25000AE68E /* SMPackageViewModel.swift in Sources */,
 				2C07B5E520F111F000EB7E16 /* SubtitleModel.swift in Sources */,
@@ -1799,6 +1853,7 @@
 				7E81D5621E3FAB2E00C0A95E /* Episode.swift in Sources */,
 				7EE625FF1E311C9800935352 /* SMRegisterInfoViewModel.swift in Sources */,
 				7EFB84251E2E917800A1576C /* ProgressView.swift in Sources */,
+				586C1B2E2532EFD700101D54 /* NSDate.swift in Sources */,
 				690BA45E2403F8C700B706B5 /* SongTileLibrarySquareSongs.swift in Sources */,
 				7E05869B1E572E9B000AE68E /* MenuChiledViewController.swift in Sources */,
 				69507D2223F655D400CB2BE6 /* SongTileLibraryArtists.swift in Sources */,
@@ -1856,6 +1911,7 @@
 				6DAB21FE21C7B96400239C86 /* PlayerView.swift in Sources */,
 				69507D2023F6559E00CB2BE6 /* SongTileLibraryPlaylist.swift in Sources */,
 				83E61A0F21F61BA90070ABA2 /* String+LocalizeTableName.swift in Sources */,
+				586C1B352532F0F900101D54 /* ValidationManager.swift in Sources */,
 				7EE626081E31288900935352 /* PopoverViewController.swift in Sources */,
 				7EEA5F521E2D5AD500CF9C85 /* User.swift in Sources */,
 				6D3179F521B84F9B00CF855C /* AllSongsViewController.swift in Sources */,
@@ -1863,7 +1919,6 @@
 				CCC87AC51EED333F00732312 /* Constant.swift in Sources */,
 				7EE625F91E31199600935352 /* SMRegisterViewController.swift in Sources */,
 				83E61A1221F61BA90070ABA2 /* String+LocalizedBundleTableName.swift in Sources */,
-				2C4C54F0229132370097FA01 /* Utils.swift in Sources */,
 				84AB9222232A67D900615576 /* SMNewPasswordController.swift in Sources */,
 				84AB921E232A5F3300615576 /* SMVerificationViewController.swift in Sources */,
 				695710FD241119B100AE5F51 /* LibraryController.swift in Sources */,
@@ -1879,7 +1934,9 @@
 				69507D2423F65E1400CB2BE6 /* SongsTileSelectArtistDetails.swift in Sources */,
 				7E9F4F9A1E2894FC00EC9B69 /* ApiClient.swift in Sources */,
 				7EB5077E1E6DC8A000ED25F9 /* SMEpisodesTableViewCell.swift in Sources */,
+				586C1B302532F03D00101D54 /* String.swift in Sources */,
 				CCC87AC71EED333F00732312 /* YDelegate.swift in Sources */,
+				586C1B272532EE3900101D54 /* UIImage.swift in Sources */,
 				69C94F6823F52E3B00563A75 /* PlaylistItem.swift in Sources */,
 				84BFA4F22330F9AE004A1C43 /* SMVerificationViewModel.swift in Sources */,
 				83E8E62F220486EE006348D8 /* MainHomeViewController.swift in Sources */,
@@ -1889,6 +1946,7 @@
 				6DFF526B21B94C1400F47794 /* GlobalPlaylistItem.swift in Sources */,
 				7EE625FC1E311C7100935352 /* SMRegisterViewModel.swift in Sources */,
 				6D317A0021B9257900CF855C /* AllSongsModel.swift in Sources */,
+				586C1B232532ED2400101D54 /* UIViewController.swift in Sources */,
 				CC7B607A201DDE21005EE387 /* SMPaymentViewController.swift in Sources */,
 				83855CD92215819B00C21330 /* CollapsibleTableViewController.swift in Sources */,
 				583A71B61F8E531600BA58AA /* SMChannelCollectionViewCell.swift in Sources */,
@@ -1907,12 +1965,14 @@
 				7EE625F71E31197300935352 /* SMRegisterInfoViewController.swift in Sources */,
 				2CDA36C5227D6F77006F1B89 /* SearchViewModel.swift in Sources */,
 				692B2696240D37D800168C65 /* SongTilePlayer.swift in Sources */,
+				586C1B252532EDFE00101D54 /* Double.swift in Sources */,
 				6D31792821B67EA100CF855C /* SMCustomSwitchAV.swift in Sources */,
 				83855CDA2215819B00C21330 /* CollapsiblePlaylistItem.swift in Sources */,
 				58EF26E31EBD9AA600B17EEE /* SMContactUsViewController.swift in Sources */,
 				690BA4582403F0B200B706B5 /* SongTile.swift in Sources */,
 				583A71B41F8E51DE00BA58AA /* SMChannelListModel.swift in Sources */,
 				CCC571AE1F83E16E005EFB34 /* CountryView.swift in Sources */,
+				586C1B292532EE8800101D54 /* UIView.swift in Sources */,
 				690BA4642403FBC000B706B5 /* SongTileHomeArtists.swift in Sources */,
 				69C817AD239E6A9500559BC0 /* BrowseDataModel.swift in Sources */,
 				7E81D5661E3FB1F000C0A95E /* SMHomeViewModel.swift in Sources */,

@@ -382,7 +382,7 @@ class BrowseViewController: UIView {
          
          for (index, genreData) in songGenresAll.enumerated(){
              //let color = colorArray[index]
-             let color:UIColor = colorWithHexString(hex: genreData.genreColor)
+            let color:UIColor = UIHelper.colorWithHexString(hex: genreData.genreColor)
              
              let button = UIButton()
              button.backgroundColor = color
@@ -453,7 +453,7 @@ class BrowseViewController: UIView {
             
             for (index, genreData) in songGenres.enumerated(){
                 //let color = colorArray[index]
-                let color:UIColor = colorWithHexString(hex: genreData.genreColor)
+                let color:UIColor = UIHelper.colorWithHexString(hex: genreData.genreColor)
                 
                 let button = UIButton()
                 button.backgroundColor = color

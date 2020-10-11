@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 let defaults = UserDefaults.standard
-let firstColor = colorWithHexString(hex: "#00897B")
-let secondColor:UIColor = colorWithHexString(hex: "#008a7c")
-let thirdColor:UIColor = colorWithHexString(hex: "#008a7c")
+let firstColor = UIHelper.colorWithHexString(hex: "#00897B")
+let secondColor:UIColor = UIHelper.colorWithHexString(hex: "#008a7c")
+let thirdColor:UIColor = UIHelper.colorWithHexString(hex: "#008a7c")
 
 // MUSIC APP
 struct Constants {

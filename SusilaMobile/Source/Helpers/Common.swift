@@ -48,7 +48,7 @@ class Common: NSObject {
     
     class func mobileNovalidate(phoneNumber: String, regionCode: String) -> Bool {
         var results = true
-        if (Utils.isSriLankanPhoneNumber(phoneNumber)) {
+        if (ValidationManager.isSriLankanPhoneNumber(phoneNumber)) {
             let PHONE_REGEX = "^(\\+\\d{2})[7][0-9]{8}"
             //"^\\d{3}\\d{3}\\d{4}$"
             let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
