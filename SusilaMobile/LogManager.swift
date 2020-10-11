@@ -7,7 +7,21 @@
 
 import Foundation
 
-func Log(message:String, file:String = #file , calledBy:String = #function){
+enum LogType{
+    case CRITICAL
+    case DEBUG
+    case WARNING
+}
+
+func Log(message:String, file:String = #file , calledBy:String = #function, type:LogType = .DEBUG){
     let className = file.components(separatedBy: "/").last ?? ""
-    print("LOG ==> \(className) ::: \(calledBy) ::: \(message)")
+    switch type {
+    case .DEBUG:
+        print("LOG ==> \(className) ::: \(calledBy) ::: \(message)")
+    case .WARNING:
+        print("LOG ==> WARNING! ::: \(className) ::: \(calledBy) ::: \(message)")
+    case .CRITICAL:
+        print("LOG ==> CRITICAL!!! ::: \(className) ::: \(calledBy) ::: \(message)")
+    }
+    
 }

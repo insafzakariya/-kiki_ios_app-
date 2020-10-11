@@ -198,11 +198,10 @@ class SMResetViewController: BaseViewController,CountryPickerDelegate,UIGestureR
         
         if let smsCodeString = phoneNoText.text, !smsCodeString.isEmpty {
             phoneNoText.resignFirstResponder()
-            
-            self.resetViewModel.passwordResetCodeRequest(genre:number,callFinished: { (status, error) in
+            self.resetViewModel.passwordResetCodeRequest(genre:number,onComplete: { (status, error) in
                 if status {
                     self.goToVerificationView()
-                    
+                    UserDefaultsManager.setMobileNo(number)
                 } else {
                     self.alert(message: "It seems the mobile number you entered is incorrect or not registered with any existing username. Please type in the correct number.")
                     ProgressView.shared.hide()

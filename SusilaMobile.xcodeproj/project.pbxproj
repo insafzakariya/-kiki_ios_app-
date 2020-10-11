@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -37,6 +37,7 @@
 		586C1B332532F0B600101D54 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1B322532F0B600101D54 /* DeviceManager.swift */; };
 		586C1B352532F0F900101D54 /* ValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1B342532F0F900101D54 /* ValidationManager.swift */; };
 		586C1E02253301F600101D54 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1E01253301F600101D54 /* LogManager.swift */; };
+		586C1E05253329A300101D54 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1E04253329A300101D54 /* UIConstants.swift */; };
 		588C420E1E548A8600C0E974 /* SMWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588C420D1E548A8600C0E974 /* SMWebViewController.swift */; };
 		588D7F821F9F1D32008F19BA /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D7F801F9F1D32008F19BA /* CachedImageView.swift */; };
 		588D7F831F9F1D32008F19BA /* DiscardableImageCacheItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D7F811F9F1D32008F19BA /* DiscardableImageCacheItem.swift */; };
@@ -274,6 +275,7 @@
 		586C1B322532F0B600101D54 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		586C1B342532F0F900101D54 /* ValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationManager.swift; sourceTree = "<group>"; };
 		586C1E01253301F600101D54 /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
+		586C1E04253329A300101D54 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		588C420D1E548A8600C0E974 /* SMWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SMWebViewController.swift; path = Source/MainMenu/SMWebViewController.swift; sourceTree = "<group>"; };
 		588D7F801F9F1D32008F19BA /* CachedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CachedImageView.swift; path = Source/Helpers/ImageCache/CachedImageView.swift; sourceTree = "<group>"; };
 		588D7F811F9F1D32008F19BA /* DiscardableImageCacheItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscardableImageCacheItem.swift; path = Source/Helpers/ImageCache/DiscardableImageCacheItem.swift; sourceTree = "<group>"; };
@@ -645,6 +647,14 @@
 			children = (
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		586C1E032533299600101D54 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				586C1E04253329A300101D54 /* UIConstants.swift */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 		588D7F7F1F9F1D16008F19BA /* ImageCache */ = {
@@ -1144,6 +1154,7 @@
 		7E9F4F8F1E28927A00EC9B69 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				586C1E032533299600101D54 /* Constants */,
 				586C1D632532F9D500101D54 /* Model */,
 				586C1B312532F0A500101D54 /* Managers */,
 				586C1B2A2532EEB900101D54 /* Helpers */,
@@ -1688,7 +1699,7 @@
 				};
 			};
 			buildConfigurationList = 7E9F4F741E288E9B00EC9B69 /* Build configuration list for PBXProject "SusilaMobile" */;
-			compatibilityVersion = "Xcode 12.0";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1938,6 +1949,7 @@
 				589F5F9E1F8E627C004875A2 /* Channel.swift in Sources */,
 				69BD55B823F2A0540032497D /* SongsTileSelectPlaylistDetails.swift in Sources */,
 				69F4B01B2435B5DE000B2F82 /* SongTileLibraryAllArtists.swift in Sources */,
+				586C1E05253329A300101D54 /* UIConstants.swift in Sources */,
 				69BD55B523F28DCC0032497D /* PlaylistTileSelectPlaylistSeeAll.swift in Sources */,
 				8440E6662373E21100A0C6FF /* ScrollCollectionBrowse.swift in Sources */,
 				6DFF545D21BE83F900F47794 /* Song.swift in Sources */,
@@ -2169,7 +2181,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = K4TVD2RMC6;
@@ -2184,7 +2196,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 16.20;
+				MARKETING_VERSION = 16.3;
 				PODS_PODFILE_DIR_PATH = "${SRCROOT}/";
 				PRODUCT_BUNDLE_IDENTIFIER = kiki.lk.mv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2208,7 +2220,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = K4TVD2RMC6;
 				ENABLE_BITCODE = NO;
@@ -2222,7 +2234,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 16.20;
+				MARKETING_VERSION = 16.3;
 				PODS_PODFILE_DIR_PATH = "${SRCROOT}/";
 				PRODUCT_BUNDLE_IDENTIFIER = kiki.lk.mv;
 				PRODUCT_NAME = "$(TARGET_NAME)";

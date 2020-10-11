@@ -10,6 +10,25 @@ import Foundation
 
 class UIHelper{
     
+    static private func makeViewController(storyBoardName:String, viewControllerName:String) -> UIViewController {
+        return UIStoryboard(name: storyBoardName, bundle: nil).instantiateViewController(withIdentifier: viewControllerName)
+    }
+    
+    static func makeViewController<T:UIViewController>(in storyboard:UIConstant.StoryBoard = .Main,viewControllerName:UIConstant.StoryBoardID) -> T{
+        return makeViewController(storyBoardName: storyboard.rawValue, viewControllerName: viewControllerName.rawValue) as! T
+    }
+    
+    public static func makeOKAlert(title:String,message:String,viewController:UIViewController){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: nil)
+        alert.addAction(OKAction)
+        viewController.present(alert, animated: true, completion: nil)
+    }
+    
+    public static func getAlert(title:String,message:String) -> UIAlertController{
+        return UIAlertController(title: title, message: message, preferredStyle: .alert)
+    }
+    
     //    static func heightForView(_ text:String, font:UIFont, width:CGFloat) -> CGFloat{
     //        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
     //        label.numberOfLines = 0
