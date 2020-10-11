@@ -45,6 +45,7 @@
 		58BC6D5C1E49A3BC00868FA0 /* AVPlayerOverlayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC6D591E49A3BC00868FA0 /* AVPlayerOverlayVC.m */; };
 		58BC6D5D1E49A3BD00868FA0 /* AVPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC6D5B1E49A3BC00868FA0 /* AVPlayerVC.m */; };
 		58C85E5B1ED3472C0098325E /* SMPackageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C85E5A1ED3472C0098325E /* SMPackageTableViewCell.swift */; };
+		58D744282533548E00630E3E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D743B12533520800630E3E /* SystemConfiguration.framework */; };
 		58E8B5A21FC31E7F0068B8E1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5A11FC31E7F0068B8E1 /* AudioToolbox.framework */; };
 		58E8B5A41FC31E880068B8E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5A31FC31E880068B8E1 /* AVFoundation.framework */; };
 		58E8B5A61FC31E970068B8E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5A51FC31E970068B8E1 /* CoreGraphics.framework */; };
@@ -285,6 +286,7 @@
 		58BC6D5A1E49A3BC00868FA0 /* AVPlayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AVPlayerVC.h; path = Source/Helpers/AVPlayer/AVPlayerVC.h; sourceTree = "<group>"; };
 		58BC6D5B1E49A3BC00868FA0 /* AVPlayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AVPlayerVC.m; path = Source/Helpers/AVPlayer/AVPlayerVC.m; sourceTree = "<group>"; };
 		58C85E5A1ED3472C0098325E /* SMPackageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SMPackageTableViewCell.swift; path = Source/Package/SMPackageTableViewCell.swift; sourceTree = "<group>"; };
+		58D743B12533520800630E3E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		58E8B5A11FC31E7F0068B8E1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		58E8B5A31FC31E880068B8E1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		58E8B5A51FC31E970068B8E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -504,6 +506,7 @@
 				58E8B5B41FC31F240068B8E1 /* OpenGLES.framework in Frameworks */,
 				58E8B5B21FC31F160068B8E1 /* MobileCoreServices.framework in Frameworks */,
 				58E8B5B01FC31F070068B8E1 /* MediaPlayer.framework in Frameworks */,
+				58D744282533548E00630E3E /* SystemConfiguration.framework in Frameworks */,
 				58E8B5AA1FC31EB00068B8E1 /* CoreVideo.framework in Frameworks */,
 				58E8B5A81FC31EA80068B8E1 /* CoreMedia.framework in Frameworks */,
 				58E8B5A61FC31E970068B8E1 /* CoreGraphics.framework in Frameworks */,
@@ -556,6 +559,7 @@
 		39A1C5D5C0BAB6153029DE7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58D743B12533520800630E3E /* SystemConfiguration.framework */,
 				58E8B5B51FC31F640068B8E1 /* VideoToolbox.framework */,
 				58E8B5B31FC31F240068B8E1 /* OpenGLES.framework */,
 				58E8B5B11FC31F160068B8E1 /* MobileCoreServices.framework */,
@@ -1687,9 +1691,7 @@
 				TargetAttributes = {
 					7E9F4F781E288E9B00EC9B69 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = K4TVD2RMC6;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -2105,7 +2107,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2146,7 +2148,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
@@ -2160,7 +2163,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -2178,20 +2181,21 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SusilaMobile/SusilaMobile.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = K4TVD2RMC6;
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SusilaMobile/Framework",
 				);
 				INFOPLIST_FILE = SusilaMobile/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2201,7 +2205,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = kiki.lk.mv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "KiKi Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "SusilaMobile/SusilaMobile-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -2217,19 +2221,20 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SusilaMobile/SusilaMobile.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = K4TVD2RMC6;
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SusilaMobile/Framework",
 				);
 				INFOPLIST_FILE = SusilaMobile/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2238,7 +2243,7 @@
 				PODS_PODFILE_DIR_PATH = "${SRCROOT}/";
 				PRODUCT_BUNDLE_IDENTIFIER = kiki.lk.mv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "KiKi Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "SusilaMobile/SusilaMobile-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
