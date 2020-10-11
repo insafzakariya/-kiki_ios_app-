@@ -2200,7 +2200,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 16.3;
+				MARKETING_VERSION = 16.19.1;
 				PODS_PODFILE_DIR_PATH = "${SRCROOT}/";
 				PRODUCT_BUNDLE_IDENTIFIER = kiki.lk.mv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2239,7 +2239,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 16.3;
+				MARKETING_VERSION = 16.19.1;
 				PODS_PODFILE_DIR_PATH = "${SRCROOT}/";
 				PRODUCT_BUNDLE_IDENTIFIER = kiki.lk.mv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
