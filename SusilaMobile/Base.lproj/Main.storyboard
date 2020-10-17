@@ -1355,6 +1355,7 @@ to exclusive content from Kiki.</string>
                     <connections>
                         <outlet property="advertiesemetnView" destination="ath-qu-mqe" id="Ytr-r9-NYI"/>
                         <outlet property="advetisementViewContoller" destination="ath-qu-mqe" id="5sm-Ll-egD"/>
+                        <outlet property="alertMessageLabel" destination="Liu-25-WiG" id="PxP-h0-pHT"/>
                         <outlet property="blockingLabel" destination="8RB-vN-YCf" id="Dy5-GT-Vhz"/>
                         <outlet property="fullscreenButton" destination="hUj-Ld-3jC" id="DlI-po-lGm"/>
                         <outlet property="labelSubscribeToWatech" destination="LWc-wV-oHL" id="Ssv-zd-hRn"/>
@@ -1366,6 +1367,7 @@ to exclusive content from Kiki.</string>
                         <outlet property="resolutionMenuView" destination="rFZ-zh-ozW" id="Ayk-YE-zW8"/>
                         <outlet property="subcriptionImage" destination="r7p-h9-o2L" id="EYs-wD-HOa"/>
                         <outlet property="subcriptionView" destination="gJb-aG-0N1" id="lLz-Ut-LLY"/>
+                        <outlet property="subscribeNowButton" destination="PSr-Tv-wh2" id="7o7-NT-u1W"/>
                         <outlet property="subtitleButton" destination="jwN-OK-aCy" id="Mnm-D0-TM0"/>
                         <outlet property="subtitleLabel" destination="b5g-BN-Cr8" id="Mhv-ji-q2M"/>
                         <outlet property="subtitleMenuView" destination="xYB-uy-Kn2" id="QcT-cn-uhl"/>
@@ -2867,7 +2869,7 @@ to exclusive content from Kiki.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please login with your new password." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8a-bB-vY4">
-                                <rect key="frame" x="82" y="326" width="250" height="18"/>
+                                <rect key="frame" x="82.333333333333329" y="326" width="249.66666666666669" height="18"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -5326,7 +5328,7 @@ to exclusive content from Kiki.</string>
     <inferredMetricsTieBreakers>
         <segue reference="ojL-bA-RMP"/>
         <segue reference="pTO-01-Sqb"/>
-        <segue reference="ZEh-Qh-c4z"/>
+        <segue reference="hac-DG-uXz"/>
         <segue reference="4kt-9H-yFb"/>
     </inferredMetricsTieBreakers>
     <resources>

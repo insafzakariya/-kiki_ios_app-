@@ -22,11 +22,11 @@ import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
     var remoteConfig: RemoteConfig!
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         fetchRemoteConfig()
@@ -36,10 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         /*if UIDevice.current.userInterfaceIdiom == .phone {
-           print("running on iPhone")
-        } else if UIDevice.current.userInterfaceIdiom == .pad {
-           print("running on iPhone")
-        }*/
+         print("running on iPhone")
+         } else if UIDevice.current.userInterfaceIdiom == .pad {
+         print("running on iPhone")
+         }*/
         
         let translateSet = defaults.object(forKey: "LanguageSelect") as? String
         if let accessToken = UserDefaultsManager.getAccessToken(), !accessToken.isEmpty {
@@ -54,15 +54,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 gotoMusicView()
             } else {
                 if UserDefaultsManager.getMobileNo() == nil || UserDefaultsManager.getMobileNo() == ""{
-                 
+                    
                     let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
                     let rootViewController:UIViewController = storyboard.instantiateViewController(withIdentifier: "SMRegisterInfoViewController") as! SMRegisterInfoViewController
-//                    rootViewController.fromRegisterVwe = "true"
+                    //                    rootViewController.fromRegisterVwe = "true"
                     navigationController.viewControllers = [rootViewController]
                     self.window?.rootViewController = navigationController
-
-                
+                    
+                    
                 }
                 else{
                     gotoHomeView()
@@ -96,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //google sing in
         GIDSignIn.sharedInstance().clientID = kGoogleClientID
-//        GIDSignIn.sharedInstance().serverClientID = kGoogleClientID
+        //        GIDSignIn.sharedInstance().serverClientID = kGoogleClientID
         
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
@@ -140,7 +140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         remoteConfig.setDefaults(remoteConfigDefaults)
         fetchConfig()
     }
-
+    
     func fetchConfig() {
         var expirationDuration = 3600
         if remoteConfig.configSettings.isDeveloperModeEnabled {
@@ -158,17 +158,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         // [END fetch_config_with_callback]
         kAPIBaseUrl = remoteConfig[baseURL_LIVE].stringValue!
+        let appStoreManager = AppStoreManager(remoteConfig: remoteConfig)
+        AppStoreManager.IS_ON_REVIEW = appStoreManager.isCurrentlyOnReview()
+        
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-       // let playerViewModel = SMPlayerViewModel()
+        // let playerViewModel = SMPlayerViewModel()
         //let currentDate = Date()
         //let dateFormatter = DateFormatter()
         //dateFormatter.dateFormat = "HH:mm:ss"
@@ -176,24 +179,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         /*if mainInstance.epPlayingStatus {
-            playerViewModel.sendAnalytics(actionType: "stop", contendId: mainInstance.epPlayingId, currentTime: timeStr)
-        }
-        if mainInstance.exitStatus {
-            exit(0)
-        }*/
+         playerViewModel.sendAnalytics(actionType: "stop", contendId: mainInstance.epPlayingId, currentTime: timeStr)
+         }
+         if mainInstance.exitStatus {
+         exit(0)
+         }*/
         
     }
-
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         if (UserDefaultsManager.getAccessToken() != nil) {
             checkPackage(false)
         }
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         //let playerViewModel = SMPlayerViewModel()
@@ -203,28 +206,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //let timeStr =  dateFormatter.string(from: currentDate)
         
         /*if mainInstance.epPlayingStatus {
-              playerViewModel.sendAnalytics(actionType: "stop", contendId: mainInstance.epPlayingId, currentTime: timeStr)
-        }
-        
-        if mainInstance.exitStatus {
-            exit(0)
-        }*/
+         playerViewModel.sendAnalytics(actionType: "stop", contendId: mainInstance.epPlayingId, currentTime: timeStr)
+         }
+         
+         if mainInstance.exitStatus {
+         exit(0)
+         }*/
     }
     
     func getFCMToken() {
         
     }
-
-//    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-//        return .portrait
-//    }
     
-//    func application(application: UIApplication,
-//                     openURL url: NSURL, options: [String: AnyObject]) -> Bool {
-//        return GIDSignIn.sharedInstance().handleURL(url as URL!,
-//                                                    sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String,
-//                                                    annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
-//    }
+    //    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+    //        return .portrait
+    //    }
+    
+    //    func application(application: UIApplication,
+    //                     openURL url: NSURL, options: [String: AnyObject]) -> Bool {
+    //        return GIDSignIn.sharedInstance().handleURL(url as URL!,
+    //                                                    sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String,
+    //                                                    annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+    //    }
     
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -232,8 +235,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let fbDidHandle = ApplicationDelegate.shared.application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation])
         
         let googleDidHandle = GIDSignIn.sharedInstance().handle(url as URL?,
-                                                    sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                    annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+                                                                sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                                                                annotation: options[UIApplication.OpenURLOptionsKey.annotation])
         return googleDidHandle || fbDidHandle
     }
     
@@ -241,9 +244,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func gotoLoginView(){
         
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let loginViewController = storyboard.instantiateViewController(withIdentifier: "SMSocialMediaLoginViewController")
-//        self.window!.rootViewController = loginViewController
+        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //        let loginViewController = storyboard.instantiateViewController(withIdentifier: "SMSocialMediaLoginViewController")
+        //        self.window!.rootViewController = loginViewController
         
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
@@ -273,17 +276,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let isSpecialUser = UserDefaultsManager.getUserId() == remoteConfig[specialUserIdConfigKey].stringValue!
                     if (isAfterLogin && self.isMusicMode() && packageId == 1 && !isSpecialUser) {
                         mainInstance.subscribeStatus = true
-                        let title = NSLocalizedString("SubscribeToListen".localized(using: "Localizable"), comment: "")
-                        let alert = UIAlertController(title: title, message: NSLocalizedString("PleaseActivateaPackageToUnlockAccess".localized(using: "Localizable"), comment: "")+NSLocalizedString("toExclusiveContentFromKiki".localized(using: "Localizable"), comment: ""), preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: NSLocalizedString("SubscribeNow".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: { action in
-                            let mainMenu = self.getRootViewController().drawerViewController as! SMMainMenuViewController
-                            mainMenu.navigateToPackagePage()
-                        }))
-                        alert.addAction(UIAlertAction(title: NSLocalizedString("CLOSE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.cancel, handler: nil))
-                        self.window!.rootViewController!.present(alert, animated: true, completion: nil)
-                    } else {
-                        mainInstance.subscribeStatus = false
-                    }
+                        if AppStoreManager.IS_ON_REVIEW{
+                            UIHelper.makeNoContentAlert(on: self.window!)
+                        }else{
+                            UIHelper.makeSubscribeToListenAlert(on: self.window!)
+                        }} else {
+                            mainInstance.subscribeStatus = false
+                        }
                 }
             } else {
                 if let error = error {
@@ -341,7 +340,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let drawerController: KYDrawerController = KYDrawerController(drawerDirection: KYDrawerController.DrawerDirection.left, drawerWidth: 280)
         drawerController.mainViewController = musicDashboardNavController
         drawerController.drawerViewController = drawerViewController
-    
+        
         
         self.window!.rootViewController = drawerController
         self.window!.makeKeyAndVisible()
@@ -432,13 +431,13 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     func alert(message: String) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
         self.window?.rootViewController?.present(alert, animated: true, completion: nil)
-    
-
-    // change to desired number of seconds (in this case 5 seconds)
+        
+        
+        // change to desired number of seconds (in this case 5 seconds)
         let when = DispatchTime.now() + 1
         DispatchQueue.main.asyncAfter(deadline: when){
-          // your code with delay
-          alert.dismiss(animated: true, completion: nil)
+            // your code with delay
+            alert.dismiss(animated: true, completion: nil)
         }
     }
 }

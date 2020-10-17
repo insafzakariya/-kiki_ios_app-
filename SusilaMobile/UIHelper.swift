@@ -8,7 +8,7 @@
 import Foundation
 
 
-class UIHelper{
+class UIHelper:NSObject{
     
     static private func makeViewController(storyBoardName:String, viewControllerName:String) -> UIViewController {
         return UIStoryboard(name: storyBoardName, bundle: nil).instantiateViewController(withIdentifier: viewControllerName)
@@ -27,6 +27,30 @@ class UIHelper{
     
     public static func getAlert(title:String,message:String) -> UIAlertController{
         return UIAlertController(title: title, message: message, preferredStyle: .alert)
+    }
+    
+    public static func makeSubscribeToListenAlert(on window:UIWindow){
+        let title = NSLocalizedString("SubscribeToListen".localized(using: "Localizable"), comment: "")
+        let alert = UIAlertController(title: title, message: NSLocalizedString("PleaseActivateaPackageToUnlockAccess".localized(using: "Localizable"), comment: "")+NSLocalizedString("toExclusiveContentFromKiki".localized(using: "Localizable"), comment: ""), preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("SubscribeNow".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: { action in
+            let mainMenu = getRootViewController().drawerViewController as! SMMainMenuViewController
+            mainMenu.navigateToPackagePage()
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("CLOSE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.cancel, handler: nil))
+        window.rootViewController!.present(alert, animated: true, completion: nil)
+    }
+    
+    public static func makeNoContentAlert(on winow:UIWindow){
+        let title = "No Content Available"
+        let message = "Looks like there;s no content available at the moment. Please try again later."
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        winow.rootViewController!.present(alertController, animated: true, completion: nil)
+    }
+    
+    private static func getRootViewController() -> KYDrawerController{
+        return UIApplication.shared.keyWindow!.rootViewController as! KYDrawerController
     }
     
     //    static func heightForView(_ text:String, font:UIFont, width:CGFloat) -> CGFloat{

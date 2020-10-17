@@ -76,22 +76,22 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         addAlertDialog.isHidden = true
         addAlertDialog.layer.zPosition = 1002
         addAlertDialog.btnCancel.addTarget(self, action: #selector(cancelClickAddAlertDialog), for: .touchUpInside)
-            
+        
         let tapAddToLibrary = PlaylistPlayGesture(target: self, action: #selector(buttonClick_AddToLibrary))
         addAlertDialog.lblAddToLibrary.isUserInteractionEnabled = true
         addAlertDialog.lblAddToLibrary.addGestureRecognizer(tapAddToLibrary)
-            
+        
         let tapAddToPlaylist = PlaylistPlayGesture(target: self, action: #selector(buttonClick_AddToPlaylist))
         //tapAddToPlaylist.id =
         addAlertDialog.lblAddToPlaylist.isUserInteractionEnabled = true
         addAlertDialog.lblAddToPlaylist.addGestureRecognizer(tapAddToPlaylist)
-            
+        
         addToPlaylistAlertDialog = AddToPlaylistAlertDialog(frame: getCenteredFrameForOverlay(300))
         addToPlaylistAlertDialog.isHidden = true
         addToPlaylistAlertDialog.layer.zPosition = 2002
         //addToPlaylistAlertDialog.scrollCollection = self
         addToPlaylistAlertDialog.btnCancel.addTarget(self, action: #selector(cancelClickAddToPlaylistAlertDialog), for: .touchUpInside)
-            
+        
         view.addSubview(addAlertDialog)
         view.addSubview(addToPlaylistAlertDialog)
         
@@ -174,7 +174,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         var xLength: CGFloat = 0
         for (_, tileData) in libraryAllPlaylists.enumerated(){
-           
+            
             
             let songTile = PlaylistTileAlertAllPlaylist(frame: CGRect(x: 10, y: xLength, width: UIScreen.main.bounds.width-10, height: UIScreen.main.bounds.width/6))
             songTile.lblTitle.text = tileData.name
@@ -231,8 +231,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // change to desired number of seconds (in this case 5 seconds)
         let when = DispatchTime.now() + 1
         DispatchQueue.main.asyncAfter(deadline: when){
-          // your code with delay
-          alert.dismiss(animated: true, completion: nil)
+            // your code with delay
+            alert.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -387,7 +387,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
             cell.addSubview(songTile)
-             return cell
+            return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell")!
             cell.backgroundColor = Constants.color_background
@@ -416,7 +416,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     for (index, tileData) in self.searchViewModel.songsList.enumerated() {
                         if index<3 {
-                        
+                            
                             let songTile = PlayListSongsCard(frame: CGRect(x: 0, y: index*h+30, width: Int(UIScreen.main.bounds.width), height: h))
                             songTile.id = tileData.id
                             songTile.lblDescription.text = tileData.description
@@ -443,7 +443,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                             
                             songView.addSubview(songTile)
                             cell.addSubview(songView)
-                    
+                            
                         }
                     }
                     
@@ -472,28 +472,28 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     
                     /*cell.backgroundColor = Constants.color_background
-                    let songTile = PlayListSongsCard(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100))
-                    songTile.songData = self.searchViewModel.songsList[indexPath.row]
-                    let tap2 = SearchSongTapGesture(target: self, action: #selector(actPlaySingleSong))
-                    tap2.objSong = self.searchViewModel.songsList[indexPath.row]
-                    songTile.isUserInteractionEnabled = true
-                    songTile.addGestureRecognizer(tap2)
+                     let songTile = PlayListSongsCard(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100))
+                     songTile.songData = self.searchViewModel.songsList[indexPath.row]
+                     let tap2 = SearchSongTapGesture(target: self, action: #selector(actPlaySingleSong))
+                     tap2.objSong = self.searchViewModel.songsList[indexPath.row]
+                     songTile.isUserInteractionEnabled = true
+                     songTile.addGestureRecognizer(tap2)
+                     
+                     var decodedImage = self.searchViewModel.songsList[indexPath.row].image!.replacingOccurrences(of: "%3A", with: ":")
+                     decodedImage = decodedImage.replacingOccurrences(of: "%2F", with: "/")
+                     songTile.imgVw.sd_setImage(with: URL(string: decodedImage), placeholderImage: UIImage(named: "logo_grayscale"))
+                     let tap = PlaylistTapGesture(target: self, action: #selector(buttonClick_Add))
+                     tap.id = String(self.searchViewModel.songsList[indexPath.row].id)
+                     tap.title = self.searchViewModel.songsList[indexPath.row].name
+                     songTile.add.isUserInteractionEnabled = true
+                     songTile.add.addGestureRecognizer(tap)
+                     for view in cell.subviews {
+                     if (view is PlayListSongsCard) {
+                     view.removeFromSuperview()
+                     }
+                     }
+                     cell.addSubview(songTile)*/
                     
-                    var decodedImage = self.searchViewModel.songsList[indexPath.row].image!.replacingOccurrences(of: "%3A", with: ":")
-                    decodedImage = decodedImage.replacingOccurrences(of: "%2F", with: "/")
-                    songTile.imgVw.sd_setImage(with: URL(string: decodedImage), placeholderImage: UIImage(named: "logo_grayscale"))
-                    let tap = PlaylistTapGesture(target: self, action: #selector(buttonClick_Add))
-                    tap.id = String(self.searchViewModel.songsList[indexPath.row].id)
-                    tap.title = self.searchViewModel.songsList[indexPath.row].name
-                    songTile.add.isUserInteractionEnabled = true
-                    songTile.add.addGestureRecognizer(tap)
-                    for view in cell.subviews {
-                        if (view is PlayListSongsCard) {
-                            view.removeFromSuperview()
-                        }
-                    }
-                    cell.addSubview(songTile)*/
-                   
                 } else {
                     tableView.rowHeight = 0
                 }
@@ -601,7 +601,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
                 
                 if !searchViewModel.playlistList.isEmpty {
-                   
+                    
                     playlistView.removeFromSuperview()
                     playlistView = UIView(frame: CGRect(x: 0, y: 0, width: Int(UIScreen.main.bounds.width), height: self.searchViewModel.playlistList.count*h+50))
                     
@@ -714,7 +714,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     @objc func buttonClickedPlaylistDetails(recognizer: PlaylistTapGesture) {
-           print("Printer ", recognizer.id," ", recognizer.title," ", recognizer.image)
+        print("Printer ", recognizer.id," ", recognizer.title," ", recognizer.image)
         let controller = PlaylistDetailViewController()
         controller.id = recognizer.id
         controller.image = recognizer.image
@@ -755,14 +755,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func timeString(time: TimeInterval) -> String {
         /*let hour = Int(time) / 3600
-        let minute = Int(time) / 60 % 60
-        let second = Int(time) % 60*/
+         let minute = Int(time) / 60 % 60
+         let second = Int(time) % 60*/
         
         let t = time*60
         
         let minute = Int(t) / 60
         let second = Int(t) % 60
-
+        
         // return formated string
         return String(format: "%02i:%02i", minute, second)
     }
@@ -783,14 +783,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func getRootViewController() -> KYDrawerController{
         return windows.rootViewController as! KYDrawerController
     }
+    
     func subscribeAlert() {
-        let title = NSLocalizedString("SubscribeToListen".localized(using: "Localizable"), comment: "")
-        let alert = UIAlertController(title: title, message: NSLocalizedString("PleaseActivateaPackageToUnlockAccess".localized(using: "Localizable"), comment: "")+NSLocalizedString("toExclusiveContentFromKiki".localized(using: "Localizable"), comment: ""), preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("SubscribeNow".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: { action in
-            let mainMenu = self.getRootViewController().drawerViewController as! SMMainMenuViewController
-            mainMenu.navigateToPackagePage()
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("CLOSE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+        if AppStoreManager.IS_ON_REVIEW{
+            UIHelper.makeNoContentAlert(on: self.view.window!)
+        }else{
+            UIHelper.makeSubscribeToListenAlert(on: self.view.window!)
+        }
     }
 }

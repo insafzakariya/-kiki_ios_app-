@@ -22,6 +22,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "SusilaMobile-Swift.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+
 //#import "FirebaseRemoteConfig"
 //@import FirebaseRemoteConfig;
 
@@ -69,6 +70,8 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
 @property (weak, nonatomic) IBOutlet UIButton *BtnSubscribe;
 @property (weak, nonatomic) IBOutlet UIButton *BtnBack;
 @property (weak, nonatomic) IBOutlet UILabel *labelSubscribeToWatech;
+@property (weak, nonatomic) IBOutlet UILabel *alertMessageLabel;
+@property (weak, nonatomic) IBOutlet UIButton *subscribeNowButton;
 
 //@property (weak, nonatomic) FIRRemoteConfig *remoteConfig;
 
@@ -117,92 +120,92 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
 - (void)viewDidLoad
 {
     
-//    [super viewDidLoad];
-//    // Do any additional setup after loading the view from its nib.
-//
-////    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-////    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:NO];
-//
-//#ifdef DEBUG
-//    [IJKFFMoviePlayerController setLogReport:YES];
-//    [IJKFFMoviePlayerController setLogLevel:k_IJK_LOG_DEBUG];
-//#else
-//    [IJKFFMoviePlayerController setLogReport:NO];
-//    [IJKFFMoviePlayerController setLogLevel:k_IJK_LOG_INFO];
-//#endif
-//
-//    [IJKFFMoviePlayerController checkIfFFmpegVersionMatch:YES];
-//    // [IJKFFMoviePlayerController checkIfPlayerVersionMatch:YES major:1 minor:0 micro:0];
-//
-//    IJKFFOptions *options = [IJKFFOptions optionsByDefault];
-//    self.player = [[IJKFFMoviePlayerController alloc] initWithContentURL:self.url withOptions:options];
-//
-////    self.player = [[IJKFFMoviePlayerController alloc] init];
-//    self.player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-//    self.player.view.frame = self.view.bounds;
-//    self.player.scalingMode = IJKMPMovieScalingModeAspectFit;
-//    self.player.shouldAutoplay = YES;
-//
-//    self.view.autoresizesSubviews = YES;
-//    [self.view addSubview:self.player.view];
-//    [self.view addSubview:self.mediaControl];
-//
-//    self.mediaControl.delegatePlayer = self.player;
+    //    [super viewDidLoad];
+    //    // Do any additional setup after loading the view from its nib.
+    //
+    ////    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    ////    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:NO];
+    //
+    //#ifdef DEBUG
+    //    [IJKFFMoviePlayerController setLogReport:YES];
+    //    [IJKFFMoviePlayerController setLogLevel:k_IJK_LOG_DEBUG];
+    //#else
+    //    [IJKFFMoviePlayerController setLogReport:NO];
+    //    [IJKFFMoviePlayerController setLogLevel:k_IJK_LOG_INFO];
+    //#endif
+    //
+    //    [IJKFFMoviePlayerController checkIfFFmpegVersionMatch:YES];
+    //    // [IJKFFMoviePlayerController checkIfPlayerVersionMatch:YES major:1 minor:0 micro:0];
+    //
+    //    IJKFFOptions *options = [IJKFFOptions optionsByDefault];
+    //    self.player = [[IJKFFMoviePlayerController alloc] initWithContentURL:self.url withOptions:options];
+    //
+    ////    self.player = [[IJKFFMoviePlayerController alloc] init];
+    //    self.player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    //    self.player.view.frame = self.view.bounds;
+    //    self.player.scalingMode = IJKMPMovieScalingModeAspectFit;
+    //    self.player.shouldAutoplay = YES;
+    //
+    //    self.view.autoresizesSubviews = YES;
+    //    [self.view addSubview:self.player.view];
+    //    [self.view addSubview:self.mediaControl];
+    //
+    //    self.mediaControl.delegatePlayer = self.player;
     
     //-----------------------------------------------------
     
     [super viewDidLoad];
-    _labelSubscribeToWatech.text = NSLocalizedString(@"SubscribeToWatch", nil);
+    //    _labelSubscribeToWatech.text = NSLocalizedString(@"SubscribeToWatch", nil);
     // Do any additional setup after loading the view from its nib.
-
+    
     //    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     //    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:NO];
-
-//#ifdef DEBUG
-//    [IJKFFMoviePlayerController setLogReport:YES];
-//    [IJKFFMoviePlayerController setLogLevel:k_IJK_LOG_DEBUG];
-//#else
+    
+    //#ifdef DEBUG
+    //    [IJKFFMoviePlayerController setLogReport:YES];
+    //    [IJKFFMoviePlayerController setLogLevel:k_IJK_LOG_DEBUG];
+    //#else
     [IJKFFMoviePlayerController setLogReport:NO];
     [IJKFFMoviePlayerController setLogLevel:k_IJK_LOG_INFO];
-//#endif
-
+    //#endif
+    
     [IJKFFMoviePlayerController checkIfFFmpegVersionMatch:YES];
     // [IJKFFMoviePlayerController checkIfPlayerVersionMatch:YES major:1 minor:0 micro:0];
-
-
+    
+    
     //-----------------------------------------------------
     
-//    [super viewDidLoad];
-//    // Do any additional setup after loading the view from its nib.
-//
-//    //    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-//    //    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:NO];
-//
-//#ifdef DEBUG
-//    [IJKFFMoviePlayerController setLogReport:YES];
-//    [IJKFFMoviePlayerController setLogLevel:k_IJK_LOG_DEBUG];
-//#else
-//    [IJKFFMoviePlayerController setLogReport:NO];
-//    [IJKFFMoviePlayerController setLogLevel:k_IJK_LOG_INFO];
-//#endif
-//
-//    [IJKFFMoviePlayerController checkIfFFmpegVersionMatch:YES];
-//    // [IJKFFMoviePlayerController checkIfPlayerVersionMatch:YES major:1 minor:0 micro:0];
-//
-////    IJKFFOptions *options = [IJKFFOptions optionsByDefault];
-////    self.player = [[IJKFFMoviePlayerController alloc] initWithContentURL:self.url withOptions:options];
-//
-//        self.player = [[IJKFFMoviePlayerController alloc] init];
-//    self.player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-//    self.player.view.frame = self.view.bounds;
-//    self.player.scalingMode = IJKMPMovieScalingModeAspectFit;
-//    self.player.shouldAutoplay = YES;
-//
-//    self.view.autoresizesSubviews = YES;
-//    [self.view insertSubview:self.player.view belowSubview:self.mediaControl];
-//
-//    self.mediaControl.delegatePlayer = self.player;
-
+    //    [super viewDidLoad];
+    //    // Do any additional setup after loading the view from its nib.
+    //
+    //    //    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    //    //    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:NO];
+    //
+    //#ifdef DEBUG
+    //    [IJKFFMoviePlayerController setLogReport:YES];
+    //    [IJKFFMoviePlayerController setLogLevel:k_IJK_LOG_DEBUG];
+    //#else
+    //    [IJKFFMoviePlayerController setLogReport:NO];
+    //    [IJKFFMoviePlayerController setLogLevel:k_IJK_LOG_INFO];
+    //#endif
+    //
+    //    [IJKFFMoviePlayerController checkIfFFmpegVersionMatch:YES];
+    //    // [IJKFFMoviePlayerController checkIfPlayerVersionMatch:YES major:1 minor:0 micro:0];
+    //
+    ////    IJKFFOptions *options = [IJKFFOptions optionsByDefault];
+    ////    self.player = [[IJKFFMoviePlayerController alloc] initWithContentURL:self.url withOptions:options];
+    //
+    //        self.player = [[IJKFFMoviePlayerController alloc] init];
+    //    self.player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    //    self.player.view.frame = self.view.bounds;
+    //    self.player.scalingMode = IJKMPMovieScalingModeAspectFit;
+    //    self.player.shouldAutoplay = YES;
+    //
+    //    self.view.autoresizesSubviews = YES;
+    //    [self.view insertSubview:self.player.view belowSubview:self.mediaControl];
+    //
+    //    self.mediaControl.delegatePlayer = self.player;
+    
     
     _autorotationMode = AVPlayerFullscreenAutorotationLandscapeMode;//AVPlayerFullscreenAutorotationDefaultMode;//
     _isFullscreen = NO;
@@ -212,7 +215,7 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
     self.subtitleMenuView.layer.cornerRadius = 5;
     self.resolutionMenuView.layer.cornerRadius = 5;
     
-   
+    
 }
 
 
@@ -240,13 +243,13 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
     }
     [_resolutionButton setTitle:[NSString stringWithFormat:@"%@ P", resolution] forState:UIControlStateNormal];
     //_lblTitle.text = NSLocalizedString(@"SubscribeToWatch", @"SubscribeToWatch");
-    _lblTitle.text = NSLocalizedString(@"SubscribeToWatch", nil);
-     //NSLocalizedString(@"SubscribeToWatch", @"SubscribeToWatch");
+    //    _lblTitle.text = NSLocalizedString(@"SubscribeToWatch", nil);
+    //NSLocalizedString(@"SubscribeToWatch", @"SubscribeToWatch");
     //_lblDesc.text = NSLocalizedString(@"PleaseActivatePackage", @"PleaseActivatePackage");
     //[_BtnSubscribe setTitle:NSLocalizedString(@"SubscribeNow", @"") forState:UIControlStateNormal];
     //[_BtnBack setTitle:NSLocalizedString(@"GoBack", @"") forState:UIControlStateNormal];
-
-//    [self.player prepareToPlay];
+    
+    //    [self.player prepareToPlay];
     NSInteger ti = (NSInteger) self.player.currentPlaybackTime;
     NSInteger seconds = ti % 60;
     NSInteger minutes = (ti / 60) % 60;
@@ -261,7 +264,7 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
     [self stopAction];
     self.subtitleButton.hidden = false;
     self.subtitleButton.enabled = false;
-
+    
     [self hideSubMenus];
     [self.subtitleViewController notifyNoSubtitleAvailable];
     [self.subtitleViewController stopDisplayingSubtitle];
@@ -269,10 +272,10 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
     [super viewDidDisappear:animated];
     [self.player shutdown];
     [self removeMovieNotificationObservers];
-   
     
-//    [self.player pause];
-//    [self.mediaControl refreshMediaControl];
+    
+    //    [self.player pause];
+    //    [self.mediaControl refreshMediaControl];
 }
 
 - (void)exitPalyer {
@@ -288,7 +291,7 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
         NSLog(@"Attempting to put the video into fullscreen mode");
         [self showHideVideoTitle];
         if (_mainWindow == nil)
-        self.mainWindow = [UIApplication sharedApplication].keyWindow;
+            self.mainWindow = [UIApplication sharedApplication].keyWindow;
         
         self.mainParent = parent.parentViewController;
         self.currentFrame = [parent.view convertRect:parent.view.frame toView:_mainWindow];
@@ -311,37 +314,37 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
                                      options:UIViewKeyframeAnimationOptionLayoutSubviews
                                   animations:^{
             self->_window.frame = CGRectMake(0, 0, self->_mainWindow.bounds.size.height, self->_mainWindow.bounds.size.width);
-                                  } completion:^(BOOL finished) {
-//                                      _fullscreenButton.transform = CGAffineTransformMakeScale(-1.0, -1.0);
-//                                      [_fullscreenButton setImage:[UIImage imageNamed:@"smallScreen"] forState:UIControlStateNormal];
-                                  }];
+        } completion:^(BOOL finished) {
+            //                                      _fullscreenButton.transform = CGAffineTransformMakeScale(-1.0, -1.0);
+            //                                      [_fullscreenButton setImage:[UIImage imageNamed:@"smallScreen"] forState:UIControlStateNormal];
+        }];
     } else if (UIDeviceOrientationIsPortrait(orientation) && _isFullscreen){
-//        _isFullscreen = NO;
-//        NSLog(@"Attempting to put exit the fullscreen mode");
-//        [self showHideVideoTitle];
-//        _window.frame = _mainWindow.bounds;
-//        [UIView animateKeyframesWithDuration:0.5
-//                                       delay:0
-//                                     options:UIViewKeyframeAnimationOptionLayoutSubviews
-//                                  animations:^{
-//                                      _window.frame = _currentFrame;
-//                                  } completion:^(BOOL finished) {
-//                                      [parent.view removeFromSuperview];
-//                                      _window.rootViewController = nil;
-//                                      
-//                                      [_mainParent addChildViewController:parent];
-//                                      [_containerView addSubview:parent.view];
-//                                      parent.view.frame = _containerView.bounds;
-//                                      [parent didMoveToParentViewController:_mainParent];
-//                                      
-//                                      [_mainWindow makeKeyAndVisible];
-//                                      
-////                                      _fullscreenButton.transform = CGAffineTransformIdentity;
-////                                      [_fullscreenButton setImage:[UIImage imageNamed:@"fullScreen"] forState:UIControlStateNormal];
-//                                      _window = nil;
-//                                      
-//                                      [self didNormalScreenModeToParentViewController:parent];
-//                                  }];
+        //        _isFullscreen = NO;
+        //        NSLog(@"Attempting to put exit the fullscreen mode");
+        //        [self showHideVideoTitle];
+        //        _window.frame = _mainWindow.bounds;
+        //        [UIView animateKeyframesWithDuration:0.5
+        //                                       delay:0
+        //                                     options:UIViewKeyframeAnimationOptionLayoutSubviews
+        //                                  animations:^{
+        //                                      _window.frame = _currentFrame;
+        //                                  } completion:^(BOOL finished) {
+        //                                      [parent.view removeFromSuperview];
+        //                                      _window.rootViewController = nil;
+        //                                      
+        //                                      [_mainParent addChildViewController:parent];
+        //                                      [_containerView addSubview:parent.view];
+        //                                      parent.view.frame = _containerView.bounds;
+        //                                      [parent didMoveToParentViewController:_mainParent];
+        //                                      
+        //                                      [_mainWindow makeKeyAndVisible];
+        //                                      
+        ////                                      _fullscreenButton.transform = CGAffineTransformIdentity;
+        ////                                      [_fullscreenButton setImage:[UIImage imageNamed:@"fullScreen"] forState:UIControlStateNormal];
+        //                                      _window = nil;
+        //                                      
+        //                                      [self didNormalScreenModeToParentViewController:parent];
+        //                                  }];
     }
 }
 
@@ -382,17 +385,17 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
 -(void)hideSubMenus {
     self.subtitleMenuView.hidden = true;
     self.resolutionMenuView.hidden = true;
-//    _programTitleLabel.hidden  = true;
-//    _fullscreenButton.hidden = true;
+    //    _programTitleLabel.hidden  = true;
+    //    _fullscreenButton.hidden = true;
     
 }
 
 - (IBAction)onClickOverlay:(id)sender
 {
     if ([_playerControllerVw isUserInteractionEnabled]){
-    [self.mediaControl hide];
-    [self hideSubMenus];
-    [self.advetisementViewContoller advertisementTappedWithUiViewContoroller:self];
+        [self.mediaControl hide];
+        [self hideSubMenus];
+        [self.advetisementViewContoller advertisementTappedWithUiViewContoroller:self];
     }
 }
 
@@ -407,7 +410,7 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
     
-   
+    
 }
 
 - (IBAction)onClickShare:(id)sender {
@@ -450,39 +453,50 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
     [self hideSubMenus];
     IJKFFOptions *options = [IJKFFOptions optionsByDefault];
     self.player = [[IJKFFMoviePlayerController alloc] initWithContentURL:self.url withOptions:options];
-
+    
     self.player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.player.view.frame = self.view.bounds;
     self.player.scalingMode = IJKMPMovieScalingModeAspectFill;
     
     NSString *trailer_only = [[NSUserDefaults standardUserDefaults] stringForKey:@"trailer_only"];
-
+    
     if ([trailer_only isEqualToString:@"true"]){
-//        _program.im
-//        _subcriptionImage.af_setImage(withURL: URL(string: ad.imageURL.removingPercentEncoding!)!)
-//        let imageURL = dict.value(forKey: "image") as? String
-//        let imageLink = imageURL?.removingPercentEncoding ?? imageURL?.removingPercentEncoding ?? ""
+        //        _program.im
+        //        _subcriptionImage.af_setImage(withURL: URL(string: ad.imageURL.removingPercentEncoding!)!)
+        //        let imageURL = dict.value(forKey: "image") as? String
+        //        let imageLink = imageURL?.removingPercentEncoding ?? imageURL?.removingPercentEncoding ?? ""
         NSString *imageURL = _program.image.stringByRemovingPercentEncoding;
         
         _subcriptionImage.contentMode = UIViewContentModeScaleAspectFill;
         [_subcriptionImage sd_setImageWithURL:[NSURL URLWithString:imageURL]
-                     placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-
-//        _subcriptionImage.image = [UIImage imageNamed:@"smallScreen"];
+                             placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+        
+        //        _subcriptionImage.image = [UIImage imageNamed:@"smallScreen"];
         _playerControllerVw.userInteractionEnabled = NO;
         _subtitleView.hidden = YES;
         self.player.shouldAutoplay = NO;
         _subcriptionView.hidden = NO;
+        
+        if ([OBJCAppStoreManager isOnReview]){
+            _labelSubscribeToWatech.text = @"Content Not Available";
+            _alertMessageLabel.text = @"Looks like this content is not avaialble.Please try again later.";
+            _subscribeNowButton.hidden = YES;
+        }else{
+            _labelSubscribeToWatech.text = NSLocalizedString(@"SubscribeToWatch", nil);
+            _alertMessageLabel.text = @"Please activate a package to unlock access \n to exclusive content from Kiki.";
+            _subscribeNowButton.hidden = NO;
+        }
+        
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"IsSubcriptionView"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-
+        
     }
     else{
-    self.player.shouldAutoplay = YES;
+        self.player.shouldAutoplay = YES;
         _subcriptionView.hidden = YES;
     }
     self.view.autoresizesSubviews = YES;
-//    [self.view addSubview:self.player.view];
+    //    [self.view addSubview:self.player.view];
     [self.view insertSubview:self.player.view belowSubview:self.mediaControl];
     
     self.mediaControl.delegatePlayer = self.player;
@@ -500,20 +514,20 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
                                                  name:IJKMPMoviePlayerPlaybackStateDidChangeNotification
                                                object:_player];
     
-//////    [self.player shutdown];
-////    bool hasUrl = NO;
-////    if(self.player.urlString){
-////        hasUrl = YES;
-////    }
-//    [self.player stop];
-//    [self.player contentURL:self.url];
-//
-////    if (hasUrl){
-////        [self.player play];
-////    }else{
-////      [self.player prepareToPlay];
-////    }
-//    [self.player prepareToPlay];
+    //////    [self.player shutdown];
+    ////    bool hasUrl = NO;
+    ////    if(self.player.urlString){
+    ////        hasUrl = YES;
+    ////    }
+    //    [self.player stop];
+    //    [self.player contentURL:self.url];
+    //
+    ////    if (hasUrl){
+    ////        [self.player play];
+    ////    }else{
+    ////      [self.player prepareToPlay];
+    ////    }
+    //    [self.player prepareToPlay];
     
 }
 
@@ -577,10 +591,10 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
 
 - (IBAction)onClickFastForward:(id)sender
 {
-//    [self.player pause];
+    //    [self.player pause];
     
-//    [self.mediaControl beginDragMediaSlider];
-//    self.player.currentPlaybackTime = self.mediaControl.mediaProgressSlider.value + 10;
+    //    [self.mediaControl beginDragMediaSlider];
+    //    self.player.currentPlaybackTime = self.mediaControl.mediaProgressSlider.value + 10;
     
     NSTimeInterval changeTime = self.mediaControl.mediaProgressSlider.value + 10;
     if(self.player.duration < changeTime){
@@ -588,17 +602,17 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
     }
     [self.player setCurrentPlaybackTime:changeTime];
     
-//    self.mediaControl.mediaProgressSlider.value = self.player.currentPlaybackTime;
-//    [self.mediaControl endDragMediaSlider];
-//    [self.mediaControl continueDragMediaSlider];
+    //    self.mediaControl.mediaProgressSlider.value = self.player.currentPlaybackTime;
+    //    [self.mediaControl endDragMediaSlider];
+    //    [self.mediaControl continueDragMediaSlider];
     
-//    [self.player play];
+    //    [self.player play];
 }
 
 - (IBAction)onClickRewind:(id)sender
 {
-//    [self.player pause];
-//    [self.mediaControl beginDragMediaSlider];
+    //    [self.player pause];
+    //    [self.mediaControl beginDragMediaSlider];
     
     NSTimeInterval changeTime = self.mediaControl.mediaProgressSlider.value - 10;
     if(0 > changeTime){
@@ -606,10 +620,10 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
     }
     [self.player setCurrentPlaybackTime:changeTime];
     
-//    [self.mediaControl endDragMediaSlider];
-//    [self.mediaControl continueDragMediaSlider];
+    //    [self.mediaControl endDragMediaSlider];
+    //    [self.mediaControl continueDragMediaSlider];
     
-//    [self.player play];
+    //    [self.player play];
 }
 - (NSString *)getCurrentTimes {
     
@@ -628,7 +642,7 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
         [self.player play];
         [self.mediaControl refreshMediaControl];
     }
-   
+    
     NSInteger ti = (NSInteger) self.player.currentPlaybackTime;
     NSInteger seconds = ti % 60;
     NSInteger minutes = (ti / 60) % 60;
@@ -650,17 +664,17 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
 }
 
 /*- (void) stopAction {
-    
-    NSDate * now = [NSDate date];
-    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    [outputFormatter setDateFormat:@"HH:mm:ss"];
-    NSString *newDateString = [outputFormatter stringFromDate:now];
-    
-    [self.player pause];
-    [self.mediaControl refreshMediaControl];
-    [_playerViewModel sendAnalyticsWithActionType:@"stop" contendId:_program.episode.id currentTime:newDateString];
-     //NSLog(@"Donedgdg");
-}*/
+ 
+ NSDate * now = [NSDate date];
+ NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+ [outputFormatter setDateFormat:@"HH:mm:ss"];
+ NSString *newDateString = [outputFormatter stringFromDate:now];
+ 
+ [self.player pause];
+ [self.mediaControl refreshMediaControl];
+ [_playerViewModel sendAnalyticsWithActionType:@"stop" contendId:_program.episode.id currentTime:newDateString];
+ //NSLog(@"Donedgdg");
+ }*/
 
 - (void) stopAction {
     
@@ -680,89 +694,89 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
     NSInteger hours = (ti / 3600);
     
     [_playerViewModel sendAnalyticsWithActionType:@"stop" contendId:_program.episode.id currentTime:[NSString stringWithFormat:@"%02ld:%02ld:%02ld", (long)hours, (long)minutes, (long)seconds]];
-     //NSLog(@"Donedgdg");
+    //NSLog(@"Donedgdg");
 }
 
 
 - (IBAction)onClickFullScreen:(id)sender{
     
     UIViewController *parent = self; //_playerViewController.parentViewController;//// AVPlayerViewController
-
-
+    
+    
     if (_mainWindow == nil)
         self.mainWindow = [UIApplication sharedApplication].keyWindow;
-
+    
     if (_window == nil)
     {
-//        _resolutionButton.hidden = false;
-//        self.vedioTitleLabel.hidden = false;
-//        self.vedioTitleView.hidden = false;
-
+        //        _resolutionButton.hidden = false;
+        //        self.vedioTitleLabel.hidden = false;
+        //        self.vedioTitleView.hidden = false;
+        
         _isFullscreen = YES;
         [self showHideVideoTitle];
         self.mainParent = parent.parentViewController;
         self.currentFrame = [parent.view convertRect:parent.view.frame toView:_mainWindow];
         self.containerView = parent.view.superview;
-
+        
         [parent removeFromParentViewController];
         [parent.view removeFromSuperview];
         [parent willMoveToParentViewController:nil];
-
+        
         self.window = [[UIWindow alloc] initWithFrame:_currentFrame];
         _window.backgroundColor = [UIColor blackColor];
         _window.windowLevel = UIWindowLevelNormal;
         [_window makeKeyAndVisible];
-
+        
         _window.rootViewController = parent;
         parent.view.frame = _window.bounds;
-
-//        [self willFullScreenModeFromParentViewController:parent];
+        
+        //        [self willFullScreenModeFromParentViewController:parent];
         [self didFullScreenModeFromParentViewController:parent];
         [UIView animateKeyframesWithDuration:0.5
                                        delay:0
                                      options:UIViewKeyframeAnimationOptionLayoutSubviews
                                   animations:^{
-//                                      UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-//                                      if((orientation) == UIDeviceOrientationPortrait || (orientation) == UIDeviceOrientationPortraitUpsideDown || (orientation) == UIDeviceOrientationUnknown){
+            //                                      UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+            //                                      if((orientation) == UIDeviceOrientationPortrait || (orientation) == UIDeviceOrientationPortraitUpsideDown || (orientation) == UIDeviceOrientationUnknown){
             self->_window.frame = CGRectMake(0, 0, self->_mainWindow.bounds.size.height, self->_mainWindow.bounds.size.width);//_mainWindow.bounds;
-//                                      }else{
-//                                          _window.frame = _mainWindow.bounds;
-//                                      }
-                                      
-                                  } completion:^(BOOL finished) {
-//                                      _fullscreenButton.transform = CGAffineTransformMakeScale(-1.0, -1.0);
-//                                      [_fullscreenButton setImage:[UIImage imageNamed:@"smallScreen"] forState:UIControlStateNormal];
-
-//                                      [self didFullScreenModeFromParentViewController:parent];
-                                  }];
-
+            //                                      }else{
+            //                                          _window.frame = _mainWindow.bounds;
+            //                                      }
+            
+        } completion:^(BOOL finished) {
+            //                                      _fullscreenButton.transform = CGAffineTransformMakeScale(-1.0, -1.0);
+            //                                      [_fullscreenButton setImage:[UIImage imageNamed:@"smallScreen"] forState:UIControlStateNormal];
+            
+            //                                      [self didFullScreenModeFromParentViewController:parent];
+        }];
+        
     } else {
         _isFullscreen = NO;
         [self showHideVideoTitle];
-//        _resolutionButton.hidden = false;
-//
-//        self.vedioTitleLabel.hidden = true;
-//        self.vedioTitleView.hidden = true;
-//        switch (_playerViewScreenMode) {
-//            case HomeScreen:
-//                NSLog(@"-------HomeScreen");
-//                break;
-//
-//            case EpisodeScreen:
-//                NSLog(@"-------EpisodeScreen");
-//                [self playerPause];
-//
-//                break;
-//
-//            case None:
-//                NSLog(@"-------None");
-//        }
-
-//        [self dismissViewControllerAnimated:NO completion:^{
-//
-//        }];
-
-//        [self willNormalScreenModeToParentViewController:parent];
+        //        _resolutionButton.hidden = false;
+        //
+        //        self.vedioTitleLabel.hidden = true;
+        //        self.vedioTitleView.hidden = true;
+        //        switch (_playerViewScreenMode) {
+        //            case HomeScreen:
+        //                NSLog(@"-------HomeScreen");
+        //                break;
+        //
+        //            case EpisodeScreen:
+        //                NSLog(@"-------EpisodeScreen");
+        //                [self playerPause];
+        //
+        //                break;
+        //
+        //            case None:
+        //                NSLog(@"-------None");
+        //        }
+        
+        //        [self dismissViewControllerAnimated:NO completion:^{
+        //
+        //        }];
+        
+        //        [self willNormalScreenModeToParentViewController:parent];
         _window.frame = _mainWindow.bounds;
         
         
@@ -771,39 +785,39 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
                                        delay:0
                                      options:UIViewKeyframeAnimationOptionLayoutSubviews
                                   animations:^{
-//                                      self.player.view.hidden = YES;
-                                      
+            //                                      self.player.view.hidden = YES;
+            
             self->_window.frame = self->_currentFrame;
-                                      
-                                  } completion:^(BOOL finished) {
-//                                      self.player.view.hidden = NO;
-                                      
-                                      
-                                      
-                                      [parent.view removeFromSuperview];
-                                      self->_window.rootViewController = nil;
-
-                                      [self->_mainParent addChildViewController:parent];
-                                      [self->_containerView addSubview:parent.view];
-                                      parent.view.frame = self->_containerView.bounds;
-                                      [parent didMoveToParentViewController:self->_mainParent];
-
-                                      [self->_mainWindow makeKeyAndVisible];
-                                      
-//                                      _fullscreenButton.transform = CGAffineTransformIdentity;
-//                                      [_fullscreenButton setImage:[UIImage imageNamed:@"fullScreen"] forState:UIControlStateNormal];
-                                      self->_window = nil;
-
-                                      //                                              _autorotationMode = AVPlayerFullscreenAutorotationDefaultMode;
-                                      [self didNormalScreenModeToParentViewController:parent];
-                                  }];
-
-
-
+            
+        } completion:^(BOOL finished) {
+            //                                      self.player.view.hidden = NO;
+            
+            
+            
+            [parent.view removeFromSuperview];
+            self->_window.rootViewController = nil;
+            
+            [self->_mainParent addChildViewController:parent];
+            [self->_containerView addSubview:parent.view];
+            parent.view.frame = self->_containerView.bounds;
+            [parent didMoveToParentViewController:self->_mainParent];
+            
+            [self->_mainWindow makeKeyAndVisible];
+            
+            //                                      _fullscreenButton.transform = CGAffineTransformIdentity;
+            //                                      [_fullscreenButton setImage:[UIImage imageNamed:@"fullScreen"] forState:UIControlStateNormal];
+            self->_window = nil;
+            
+            //                                              _autorotationMode = AVPlayerFullscreenAutorotationDefaultMode;
+            [self didNormalScreenModeToParentViewController:parent];
+        }];
+        
+        
+        
         //                break;
         //
         //        }
-
+        
     }
     
 }
@@ -838,27 +852,27 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
     [self.mediaControl continueDragMediaSlider];
 }
 - (IBAction)gotoSubcription:(id)sender {
-//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    [appDelegate getRemoteConfig];
+    //    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //    [appDelegate getRemoteConfig];
     
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main"
                                                          bundle:nil];
     SMWebViewController *webController =
     [storyboard instantiateViewControllerWithIdentifier:@"SMWebViewController"];
     [webController setFromEpisode:@"true"];
-//    [webController setWebViewLink: packagePageUrl + "?token=\(packageSubscribe["tokenHash"].string ?? "")"];
+    //    [webController setWebViewLink: packagePageUrl + "?token=\(packageSubscribe["tokenHash"].string ?? "")"];
     [self presentViewController:webController
                        animated:YES
                      completion:nil];
-
-//    SMWebViewController *controller = [[SMWebViewController alloc]initWithNibName:@"SMWebViewController" bundle:nil];
-//    [self presentViewController:controller animated:YES completion:nil];
-
-//    self.remoteConfig = [FIRRemoteConfig remoteConfig];
-//
-//    controller.webViewLink = [FIRRemoteConfig licenseAgreementConfigKey];
-
-//    [self.navigationController pushViewController:controller animated:YES];
+    
+    //    SMWebViewController *controller = [[SMWebViewController alloc]initWithNibName:@"SMWebViewController" bundle:nil];
+    //    [self presentViewController:controller animated:YES completion:nil];
+    
+    //    self.remoteConfig = [FIRRemoteConfig remoteConfig];
+    //
+    //    controller.webViewLink = [FIRRemoteConfig licenseAgreementConfigKey];
+    
+    //    [self.navigationController pushViewController:controller animated:YES];
     
 }
 
@@ -868,9 +882,9 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
     //    MPMovieLoadStatePlayable       = 1 << 0,
     //    MPMovieLoadStatePlaythroughOK  = 1 << 1, // Playback will be automatically started in this state when shouldAutoplay is YES
     //    MPMovieLoadStateStalled        = 1 << 2, // Playback will be automatically paused in this state, if started
-
+    
     IJKMPMovieLoadState loadState = _player.loadState;
-
+    
     if ((loadState & IJKMPMovieLoadStatePlaythroughOK) != 0) {
         NSLog(@"loadStateDidChange: IJKMPMovieLoadStatePlaythroughOK: %d\n", (int)loadState);
     } else if ((loadState & IJKMPMovieLoadStateStalled) != 0) {
@@ -886,7 +900,7 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
     //    MPMovieFinishReasonPlaybackError,
     //    MPMovieFinishReasonUserExited
     int reason = [[[notification userInfo] valueForKey:IJKMPMoviePlayerPlaybackDidFinishReasonUserInfoKey] intValue];
-
+    
     switch (reason)
     {
         case IJKMPMovieFinishReasonPlaybackEnded:
@@ -894,15 +908,15 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
             [[NSNotificationCenter defaultCenter]removeObserver:self name:IJKMPMoviePlayerPlaybackDidFinishNotification object:_player];
             [[NSNotificationCenter defaultCenter] postNotificationName:VideoPlaybackReachedEndNotification object:notification];
             break;
-
+            
         case IJKMPMovieFinishReasonUserExited:
             NSLog(@"playbackStateDidChange: IJKMPMovieFinishReasonUserExited: %d\n", reason);
             break;
-
+            
         case IJKMPMovieFinishReasonPlaybackError:
             NSLog(@"playbackStateDidChange: IJKMPMovieFinishReasonPlaybackError: %d\n", reason);
             break;
-
+            
         default:
             NSLog(@"playbackPlayBackDidFinish: ???: %d\n", reason);
             break;
@@ -930,7 +944,7 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
             break;
         }
         case IJKMPMoviePlaybackStatePlaying: {
-//            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: playing", (int)_player.playbackState);
+            //            NSLog(@"IJKMPMoviePlayBackStateDidChange %d: playing", (int)_player.playbackState);
             break;
         }
         case IJKMPMoviePlaybackStatePaused: {
@@ -958,16 +972,16 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
 /* Register observers for the various movie object notifications. */
 -(void)installMovieNotificationObservers
 {
-	[[NSNotificationCenter defaultCenter] addObserver:self
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loadStateDidChange:)
                                                  name:IJKMPMoviePlayerLoadStateDidChangeNotification
                                                object:_player];
-	[[NSNotificationCenter defaultCenter] addObserver:self
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(mediaIsPreparedToPlayDidChange:)
                                                  name:IJKMPMediaPlaybackIsPreparedToPlayDidChangeNotification
                                                object:_player];
-
-	[[NSNotificationCenter defaultCenter] addObserver:self
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePlayBackStateDidChange:)
                                                  name:IJKMPMoviePlayerPlaybackStateDidChangeNotification
                                                object:_player];

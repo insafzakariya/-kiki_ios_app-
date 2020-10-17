@@ -293,43 +293,43 @@ class ScrollCollection: UIView, UIScrollViewDelegate {
                 scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-40))
                 scrollView.showsHorizontalScrollIndicator = false
                 scrollView.showsVerticalScrollIndicator = false
-                               
+                
                 self.addSubview(scrollView)
-                               
+                
                 contentView = UIView(frame: CGRect(x: 0, y: 0, width: scrollView.frame.width, height: CGFloat(currentPlayingList.count)*(UIScreen.main.bounds.width/6)+(CGFloat(currentPlayingList.count)*20)+290))
                 scrollView.addSubview(contentView)
                 scrollView.contentSize = CGSize(width: scrollView.frame.width, height: CGFloat(currentPlayingList.count)*(UIScreen.main.bounds.width/6)+(CGFloat(currentPlayingList.count)*20)+290)
-                               
+                
                 var xLength: CGFloat = 10
-                               
+                
                 for (index, tileData) in currentPlayingList.enumerated() {
                     let songTile = SongTileHomeListSquareSongs(frame: CGRect(x: 0, y: xLength, width: UIScreen.main.bounds.width-10, height: UIScreen.main.bounds.width/6))
                     songTile.id = tileData.id
                     songTile.lblDescription.text = tileData.artist
                     songTile.lblTitle.text = tileData.name
                     songTile.index = index
-                                   
+                    
                     var decodedImage = tileData.image!.replacingOccurrences(of: "%3A", with: ":")
                     decodedImage = decodedImage.replacingOccurrences(of: "%2F", with: "/")
                     songTile.image.sd_setImage(with: URL(string: decodedImage), placeholderImage: UIImage(named: "logo_grayscale"))
-                                   
+                    
                     let tapAdd = PlaylistTapGesture(target: self, action: #selector(buttonClick_Add))
                     tapAdd.title = tileData.name
                     tapAdd.id = String(tileData.id)
                     songTile.add.isUserInteractionEnabled = true
                     songTile.add.addGestureRecognizer(tapAdd)
-                                   
+                    
                     songTile.duration.text = timeString(time: TimeInterval(tileData.duration!))
                     songTile.year.text = String(tileData.date!)
                     let tapGestureRecognizer = playSongTapGesture(target: self, action: #selector(imageTappedYouMightLike(tapGestureRecognizer:)))
-                                    tapGestureRecognizer.id = index
+                    tapGestureRecognizer.id = index
                     songTile.isUserInteractionEnabled = true
                     songTile.addGestureRecognizer(tapGestureRecognizer)
                     songTile.styleType = self.styleType
                     songTile.line.isHidden = false
                     xLength += UIScreen.main.bounds.width/6+20
                     contentView.addSubview(songTile)
-                                   //print("WellDone")
+                    //print("WellDone")
                     if index == 0 {
                         selectedTileListSquareSongs = songTile
                         songTile.isSelected = true
@@ -342,15 +342,15 @@ class ScrollCollection: UIView, UIScrollViewDelegate {
                 scrollView = UIScrollView(frame: CGRect(x: 10, y: 0, width: UIScreen.main.bounds.width-20, height: UIScreen.main.bounds.height-40))
                 scrollView.showsHorizontalScrollIndicator = false
                 scrollView.showsVerticalScrollIndicator = false
-                    
+                
                 self.addSubview(scrollView)
-                    
+                
                 contentView = UIView(frame: CGRect(x: 0, y: 0, width: scrollView.frame.width, height: CGFloat(currentPlayingList.count)*(UIScreen.main.bounds.width/6)+(CGFloat(currentPlayingList.count)*20)+290))
                 scrollView.addSubview(contentView)
                 scrollView.contentSize = CGSize(width: scrollView.frame.width, height: CGFloat(currentPlayingList.count)*(UIScreen.main.bounds.width/6)+(CGFloat(currentPlayingList.count)*20)+290)
-                    
+                
                 var xLength: CGFloat = 10
-                    
+                
                 for (index, tileData) in currentPlayingList.enumerated() {
                     let songTile = SongTileLibraryListSquareSongs(frame: CGRect(x: 0, y: xLength, width: UIScreen.main.bounds.width-10, height: UIScreen.main.bounds.width/6))
                     songTile.id = tileData.id
@@ -360,13 +360,13 @@ class ScrollCollection: UIView, UIScrollViewDelegate {
                     decodedImage = decodedImage.replacingOccurrences(of: "%2F", with: "/")
                     songTile.image.sd_setImage(with: URL(string: decodedImage), placeholderImage: UIImage(named: "logo_grayscale"))
                     songTile.index = index
-                        
+                    
                     let tapAdd = PlaylistTapGesture(target: self, action: #selector(buttonClick_Add))
                     tapAdd.title = tileData.name
                     tapAdd.id = String(tileData.id)
                     songTile.add.isUserInteractionEnabled = true
                     songTile.add.addGestureRecognizer(tapAdd)
-                        
+                    
                     songTile.duration.text = timeString(time: TimeInterval(tileData.duration!))
                     songTile.year.text = String(tileData.date!)
                     let tapGestureRecognizer = playSongTapGesture(target: self, action: #selector(imageTappedYouMightLike(tapGestureRecognizer:)))
@@ -383,15 +383,15 @@ class ScrollCollection: UIView, UIScrollViewDelegate {
                 scrollView = UIScrollView(frame: CGRect(x: 10, y: 0, width: UIScreen.main.bounds.width-20, height: UIScreen.main.bounds.height-40))
                 scrollView.showsHorizontalScrollIndicator = false
                 scrollView.showsVerticalScrollIndicator = false
-                        
+                
                 self.addSubview(scrollView)
-                        
+                
                 contentView = UIView(frame: CGRect(x: 0, y: 0, width: scrollView.frame.width, height: CGFloat(currentPlayingList.count)*(UIScreen.main.bounds.width/6)+(CGFloat(currentPlayingList.count)*20)+290))
                 scrollView.addSubview(contentView)
                 scrollView.contentSize = CGSize(width: scrollView.frame.width, height: CGFloat(currentPlayingList.count)*(UIScreen.main.bounds.width/6)+(CGFloat(currentPlayingList.count)*20)+290)
-                        
+                
                 var xLength: CGFloat = 10
-                        
+                
                 for (index, tileData) in currentPlayingList.enumerated() {
                     let songTile = SongTileLibraryListSquareSongsAdd(frame: CGRect(x: 0, y: xLength, width: UIScreen.main.bounds.width-10, height: UIScreen.main.bounds.width/6))
                     songTile.id = tileData.id
@@ -401,14 +401,14 @@ class ScrollCollection: UIView, UIScrollViewDelegate {
                     decodedImage = decodedImage.replacingOccurrences(of: "%2F", with: "/")
                     songTile.image.sd_setImage(with: URL(string: decodedImage), placeholderImage: UIImage(named: "logo_grayscale"))
                     songTile.index = index
-                            
+                    
                     let tapAdd = PlaylistTapGesture(target: self, action: #selector(buttonClick_AddSongToPlaylist))
                     tapAdd.title = tileData.name
                     addAlertDialog.id = tileData.id
                     tapAdd.id = String(tileData.id)
                     songTile.add.isUserInteractionEnabled = true
                     songTile.add.addGestureRecognizer(tapAdd)
-                            
+                    
                     songTile.duration.text = timeString(time: TimeInterval(tileData.duration!))
                     songTile.year.text = String(tileData.date!)
                     let tapGestureRecognizer = playSongTapGesture(target: self, action: #selector(imageTappedYouMightLike(tapGestureRecognizer:)))
@@ -549,7 +549,7 @@ class ScrollCollection: UIView, UIScrollViewDelegate {
         
         var xLength: CGFloat = 0
         for (_, tileData) in libraryAllPlaylists.enumerated(){
-           
+            
             
             let songTile = PlaylistTileAlertAllPlaylist(frame: CGRect(x: 10, y: xLength, width: UIScreen.main.bounds.width-10, height: UIScreen.main.bounds.width/6))
             songTile.lblTitle.text = tileData.name
@@ -603,12 +603,12 @@ class ScrollCollection: UIView, UIScrollViewDelegate {
     func alert(message: String) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
         self.window?.rootViewController?.present(alert, animated: true, completion: nil)
-
+        
         // change to desired number of seconds (in this case 5 seconds)
         let when = DispatchTime.now() + 1
         DispatchQueue.main.asyncAfter(deadline: when){
-          // your code with delay
-          alert.dismiss(animated: true, completion: nil)
+            // your code with delay
+            alert.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -616,27 +616,25 @@ class ScrollCollection: UIView, UIScrollViewDelegate {
     func getRootViewController() -> KYDrawerController{
         return windows.rootViewController as! KYDrawerController
     }
+    
     func subscribeAlert() {
-        let title = NSLocalizedString("SubscribeToListen".localized(using: "Localizable"), comment: "")
-        let alert = UIAlertController(title: title, message: NSLocalizedString("PleaseActivateaPackageToUnlockAccess".localized(using: "Localizable"), comment: "")+NSLocalizedString("toExclusiveContentFromKiki".localized(using: "Localizable"), comment: ""), preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("SubscribeNow".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: { action in
-            let mainMenu = self.getRootViewController().drawerViewController as! SMMainMenuViewController
-            mainMenu.navigateToPackagePage()
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("CLOSE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.cancel, handler: nil))
-        self.window!.rootViewController!.present(alert, animated: true, completion: nil)
+        if AppStoreManager.IS_ON_REVIEW{
+            UIHelper.makeNoContentAlert(on: self.window!)
+        }else{
+            UIHelper.makeSubscribeToListenAlert(on: self.window!)
+        }
     }
     
     func timeString(time: TimeInterval) -> String {
         /*let hour = Int(time) / 3600
-        let minute = Int(time) / 60 % 60
-        let second = Int(time) % 60*/
+         let minute = Int(time) / 60 % 60
+         let second = Int(time) % 60*/
         
         let t = time*60
         
         let minute = Int(t) / 60
         let second = Int(t) % 60
-
+        
         // return formated string
         return String(format: "%02i:%02i", minute, second)
     }
@@ -649,7 +647,7 @@ class ScrollCollection: UIView, UIScrollViewDelegate {
         
         let fullString: String = tapGestureRecognizer.accessibilityHint!
         let fullStringArr = fullString.components(separatedBy: "|")
-
+        
         let firstString: String = fullStringArr[0]
         let lastString: String = fullStringArr[1]
         

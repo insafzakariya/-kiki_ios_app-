@@ -288,15 +288,13 @@ class PlayerView: UIView, AVAudioPlayerDelegate {
     func getRootViewController() -> KYDrawerController{
         return windows.rootViewController as! KYDrawerController
     }
+    
     func subscribeAlert() {
-        let title = NSLocalizedString("SubscribeToListen".localized(using: "Localizable"), comment: "")
-        let alert = UIAlertController(title: title, message: NSLocalizedString("PleaseActivateaPackageToUnlockAccess".localized(using: "Localizable"), comment: "")+NSLocalizedString("toExclusiveContentFromKiki".localized(using: "Localizable"), comment: ""), preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("SubscribeNow".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: { action in
-            let mainMenu = self.getRootViewController().drawerViewController as! SMMainMenuViewController
-            mainMenu.navigateToPackagePage()
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("CLOSE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.cancel, handler: nil))
-        self.window!.rootViewController!.present(alert, animated: true, completion: nil)
+        if AppStoreManager.IS_ON_REVIEW{
+            UIHelper.makeNoContentAlert(on: self.window!)
+        }else{
+            UIHelper.makeSubscribeToListenAlert(on: self.window!)
+        }
     }
     
     private func updateNowPlayingInfoCenter() {
