@@ -41,13 +41,13 @@ class SMResetViewModel: NSObject {
             default:
                 let jsonData = JSON(data as Any)
                 let error = Common.getErrorFromJson(description: jsonData[ErrorJsonKeys.errorMessage].string ?? "", errorType: "\(jsonData[ErrorJsonKeys.errorCode].int ?? -1)", errorCode: jsonData[ErrorJsonKeys.errorCode].int ?? -1)
-                Log(message: error.localizedDescription)
+                Log(error.localizedDescription)
 //                onComplete(false, error)
                 
             }
         }) { (error) -> Void in
             //            Common.logout()
-            Log(message: error.localizedDescription)
+            Log(error.localizedDescription)
 //            onComplete(false, error)
         }
     }

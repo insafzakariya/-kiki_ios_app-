@@ -47,10 +47,9 @@ class SMLoginViewModel: NSObject {
     
     func login(username: String, password: String) {
         api.loginWithUsername(username: username, password: password, authMethod: AuthMethod.CUSTOM, success: { (data, code) -> Void in
-            
             let jsonData = JSON(data as Any)
-            NSLog("userLogin : \(jsonData)")
-            
+            Log("userLogin : \(jsonData)")
+            Log("HTTP Status Code: \(code)")
             switch code {
             case 200:
                 
@@ -92,6 +91,7 @@ class SMLoginViewModel: NSObject {
                 //            }
             default:
                 let error = Common.getErrorFromJson(description: jsonData[ErrorJsonKeys.errorMessage].string ?? "", errorType: "\(jsonData[ErrorJsonKeys.errorCode].int ?? -1)", errorCode: jsonData[ErrorJsonKeys.errorCode].int ?? -1)
+                Log(error.localizedDescription)
                 self.delegate?.loginCallFinished!(false, error: error, userInfo: nil)
             
             }
@@ -99,7 +99,7 @@ class SMLoginViewModel: NSObject {
             
         }) { (error) -> Void in
             Common.logout()
-            NSLog("Error (Login): \(error.localizedDescription)")
+            Log("Error (Login): \(error.localizedDescription)")
             self.delegate?.loginCallFinished!(false, error: error, userInfo: nil)
         }
     }
@@ -109,7 +109,7 @@ class SMLoginViewModel: NSObject {
         api.requestPhoneCode(success: { (data, code) -> Void in
             
             let jsonData = JSON(data as Any)
-            NSLog("requestMobileCode : \(jsonData)")
+            Log("requestMobileCode : \(jsonData)")
             
             switch code {
             case 200, 201:

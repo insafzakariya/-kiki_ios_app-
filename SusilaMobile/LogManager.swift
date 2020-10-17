@@ -13,7 +13,7 @@ enum LogType{
     case WARNING
 }
 
-func Log(message:String, file:String = #file , calledBy:String = #function, type:LogType = .DEBUG){
+func Log(_ message:String, file:String = #file , calledBy:String = #function, type:LogType = .DEBUG){
     let className = file.components(separatedBy: "/").last ?? ""
     switch type {
     case .DEBUG:

@@ -92,10 +92,10 @@ class SMVerificationViewController: UIViewController {
     
     private func resendCode(){
         if let num = UserDefaultsManager.getMobileNo(){
-            Log(message: "Mobile number retrieved from UserDef: \(num)")
+            Log("Mobile number retrieved from UserDef: \(num)")
             resendSmsCodeVerify(number: num)
         }else{
-            Log(message: "Couldn't get the user Mobile No", type: .CRITICAL)
+            Log("Couldn't get the user Mobile No", type: .CRITICAL)
         }
     }
     

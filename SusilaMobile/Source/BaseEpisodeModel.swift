@@ -104,7 +104,8 @@ class BaseEpisodeModel: NSObject {
             
             let finalUrl = "\(urlPrefix)\(smil).ttml\(urlSuffix)"
             return finalUrl
-        } catch _ {
+        } catch (let e) {
+            Log(e.localizedDescription)
             return ""
         }
     }
