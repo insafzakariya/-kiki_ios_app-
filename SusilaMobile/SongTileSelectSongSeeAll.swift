@@ -49,7 +49,7 @@ class SongTileSelectSongSeeAll: UIView {
         add = UIButton(frame: CGRect(x:  UIScreen.main.bounds.width-110, y: image.frame.height/2-10, width: 90, height: 20))
         add.layer.cornerRadius = 10
         add.layer.borderWidth = 1
-        add.setTitle(NSLocalizedString("Add".localized(using: "Localizable"), comment: ""), for: .normal)
+        add.setTitle("Add".localizedString, for: .normal)
         add.layer.borderColor = Constants.color_brand.cgColor
         add.setTitleColor(Constants.color_brand, for: .normal)
         add.clipsToBounds = true
@@ -91,7 +91,7 @@ class SongTileSelectSongSeeAll: UIView {
         self.libraryDataModel.addToTempPlaylistSongs(session_id: session_id, ref_id: ref_id, type: type, addToTempPlaylistSongsCallFinished: { (status_r, error, userInfo) in
             if status_r {
                 DispatchQueue.main.async(execute: {
-                    if self.add.titleLabel?.text == NSLocalizedString("Add".localized(using: "Localizable"), comment: "") {
+                    if self.add.titleLabel?.text == "Add".localizedString {
                         mainInstance.songArray.append(ref_id)
                         self.add.setTitle("Added", for: .normal)
                         self.add.backgroundColor = Constants.color_brand
@@ -101,7 +101,7 @@ class SongTileSelectSongSeeAll: UIView {
                         if let idx = mainInstance.songArray.firstIndex(of:ref_id) {
                             mainInstance.songArray.remove(at: idx)
                         }
-                        self.add.setTitle(NSLocalizedString("Add".localized(using: "Localizable"), comment: ""), for: .normal)
+                        self.add.setTitle("Add".localizedString, for: .normal)
                         self.add.backgroundColor = .clear
                         self.add.layer.borderColor = Constants.color_brand.cgColor
                         self.add.setTitleColor(Constants.color_brand, for: .normal)

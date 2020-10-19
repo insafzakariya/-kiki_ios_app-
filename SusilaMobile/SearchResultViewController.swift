@@ -90,7 +90,7 @@ class SearchResultViewController: UIViewController {
         self.homeDataModel.addToLibrary(key: key, songs: songs, addToLibraryCallFinished: { (status, error, userInfo) in
             if status{
                 DispatchQueue.main.async(execute: {
-                    self.alert(message: NSLocalizedString("AddedToLibrary".localized(using: "Localizable"), comment: ""))
+                    self.alert(message: "AddedToLibrary".localizedString)
                     self.addAlertDialog.isHidden = true
                     self.addAlertDialog.removeFromSuperview()
                     self.overLayView.removeFromSuperview()
@@ -164,7 +164,7 @@ class SearchResultViewController: UIViewController {
         var songsid = [String]()
         songsid.append(String(self.addAlertDialog.id))
         addSongToPlaylist(playlistId: recognizer.id, songs: songsid)
-        self.alert(message: NSLocalizedString("AddedToPlayList".localized(using: "Localizable"), comment: ""))
+        self.alert(message: "AddedToPlayList".localizedString)
         self.addToPlaylistAlertDialog.isHidden = true
         self.addToPlaylistAlertDialog.removeFromSuperview()
         
@@ -219,7 +219,7 @@ class SearchResultViewController: UIViewController {
         searchViewModel.searchByWordAll(key: key, type: type, offset: offset) { (status, error, isEmpty) in
             if (status && isEmpty) {
                 let alert = UIAlertController(title: "Kiki", message: "No results available", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 self.tableView.reloadData()
                 ProgressView.shared.hide()

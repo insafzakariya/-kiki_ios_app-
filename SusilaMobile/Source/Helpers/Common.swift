@@ -25,7 +25,7 @@ class Common: NSObject {
 //        var perent = perent
         
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: .default, handler: { (action) -> Void in
             alert.dismiss(animated: true, completion: nil)
         }))
         
@@ -39,7 +39,7 @@ class Common: NSObject {
     }
     
     class func getUnknowError(){
-        Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: NSLocalizedString("ERROR_UNKNOW".localized(using: "Localizable"), comment: ""))
+        Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: "ERROR_UNKNOW".localizedString)
     }
     
 //    class func createAccessToken(accessToken:String) -> String{

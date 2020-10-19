@@ -12,8 +12,8 @@ import SwiftyJSON
 
 class HomeDataModel:NSObject{
     fileprivate let api = ApiClient()
-    var playerView: PlayerView?
-    var popularSongsList: [Song] = [Song]()
+     var playerView: PlayerView?
+     var popularSongsList: [Song] = [Song]()
     var latestSongsList: [Song] = [Song]()
     var radioChannelsList: [Song] = [Song]()
     var popularArtistsList: [Artist] = [Artist]()
@@ -46,39 +46,24 @@ class HomeDataModel:NSObject{
     
     func getPopularSongs(getPopularSongsListCallFinished: @escaping (_ status: Bool, _ error: NSError?, _ userInfo: [String: AnyObject]?) -> Void) {
         api.getYouMightLike(success: { (data, code) -> Void in
-            
             switch code {
             case 200:
-                
                 let jsonArray = JSON(data as Any).array
-                
                 if let jsonList = jsonArray{
-                    
                     self.popularSongsList.removeAll()
                     for jsonObject in jsonList{
-                        
                         let song = Song(id: jsonObject[Song.JsonKeys.id].int ?? -1, name: jsonObject[Song.JsonKeys.name].string ?? "", duration: jsonObject[Song.JsonKeys.duration].int ?? 0, date: jsonObject[Song.JsonKeys.date].string ?? "", description: jsonObject[Song.JsonKeys.description].string ?? "", image: jsonObject[Song.JsonKeys.image].string ?? "", blocked: jsonObject[Song.JsonKeys.blocked].bool ?? false, url: jsonObject[Song.JsonKeys.url].string ?? "", artist: jsonObject[Song.JsonKeys.artist].string ?? "")
-                        
                         self.popularSongsList.append(song)
-                        
                     }
-                    
                     getPopularSongsListCallFinished(true, nil, nil)
-                    
                 }else{
                     getPopularSongsListCallFinished(false, nil, nil)
                 }
-                
-                
             default:
                 let jsonData = JSON(data as Any)
-                
                 let error = Common.getErrorFromJson(description: jsonData[ErrorJsonKeys.errorMessage].string ?? "", errorType: "\(jsonData[ErrorJsonKeys.errorCode].int ?? -1)", errorCode: jsonData[ErrorJsonKeys.errorCode].int ?? -1)
                 getPopularSongsListCallFinished(false, error, nil)
-                
             }
-            
-            
         }) { (error) -> Void in
             //            Common.logout()
             NSLog("Error (getPopularSongsListCallFinished): \(error.localizedDescription)")
@@ -112,9 +97,7 @@ class HomeDataModel:NSObject{
             case 200:
                 self.artistByIdList.removeAll()
                 let jsonObject = JSON(data as Any)
-                
                 let artist = ArtistById(id: jsonObject[ArtistById.JsonKeys.id].int ?? -1, name: jsonObject[ArtistById.JsonKeys.name].string ?? "", image: jsonObject[ArtistById.JsonKeys.image].string ?? "", songsCount: jsonObject[ArtistById.JsonKeys.songsCount].string ?? "", numberOfAlbums: jsonObject[ArtistById.JsonKeys.numberOfAlbums].string ?? "")
-                
                 self.artistByIdList.append(artist)
                 getArtistByIdCallFinished(true, nil, nil)
             default:
@@ -134,9 +117,7 @@ class HomeDataModel:NSObject{
             case 200:
                 self.playlistByIdList.removeAll()
                 let jsonObject = JSON(data as Any)
-                
                let playlist = GlobalPlaylistItem(id: jsonObject[GlobalPlaylistItem.JsonKeys.id].int ?? -1, order: jsonObject[GlobalPlaylistItem.JsonKeys.order].int ?? -1, name: jsonObject[GlobalPlaylistItem.JsonKeys.name].string ?? "", date: jsonObject[GlobalPlaylistItem.JsonKeys.date].string ?? "", image: jsonObject[GlobalPlaylistItem.JsonKeys.image].string ?? "", number_of_songs: jsonObject[GlobalPlaylistItem.JsonKeys.number_of_songs].int ?? -1)
-                
                 self.playlistByIdList.append(playlist)
                 getPlaylistByIdCallFinished(true, nil, nil)
             default:
@@ -152,39 +133,30 @@ class HomeDataModel:NSObject{
     
     func getHomePopularSongs(getHomePopularSongsListCallFinished: @escaping (_ status: Bool, _ error: NSError?, _ userInfo: [String: AnyObject]?) -> Void) {
         api.getHomePopularSongs(success: { (data, code) -> Void in
-            
+            Log(code.description)
             switch code {
             case 200:
-                
                 let jsonArray = JSON(data as Any).array
-                
                 if let jsonList = jsonArray{
-                    
                     self.popularSongsList.removeAll()
                     for jsonObject in jsonList{
-                        
                         let song = Song(id: jsonObject[Song.JsonKeys.id].int ?? -1, name: jsonObject[Song.JsonKeys.name].string ?? "", duration: jsonObject[Song.JsonKeys.duration].int ?? 0, date: jsonObject[Song.JsonKeys.date].string ?? "", description: jsonObject[Song.JsonKeys.description].string ?? "", image: jsonObject[Song.JsonKeys.image].string ?? "", blocked: jsonObject[Song.JsonKeys.blocked].bool ?? false, url: jsonObject[Song.JsonKeys.url].string ?? "", artist: jsonObject[Song.JsonKeys.artist].string ?? "")
-                        
                         self.popularSongsList.append(song)
-                        
                     }
                     getHomePopularSongsListCallFinished(true, nil, nil)
-                    
                 } else {
                     getHomePopularSongsListCallFinished(false, nil, nil)
                 }
-                
-                
             default:
                 let jsonData = JSON(data as Any)
-                
                 let error = Common.getErrorFromJson(description: jsonData[ErrorJsonKeys.errorMessage].string ?? "", errorType: "\(jsonData[ErrorJsonKeys.errorCode].int ?? -1)", errorCode: jsonData[ErrorJsonKeys.errorCode].int ?? -1)
+                Log(error.localizedDescription)
                 getHomePopularSongsListCallFinished(false, error, nil)
             }
-            
         }) { (error) -> Void in
             //Common.logout()
-            NSLog("Error (getPopularSongsListCallFinished): \(error.localizedDescription)")
+//            NSLog("Error (getPopularSongsListCallFinished): \(error.localizedDescription)")
+            Log(error.localizedDescription)
             getHomePopularSongsListCallFinished(false, error, nil)
         }
     }
@@ -198,10 +170,8 @@ class HomeDataModel:NSObject{
                 let jsonArray = JSON(data as Any).array
                 
                 if let jsonList = jsonArray{
-                    
                     self.latestSongsList.removeAll()
                     for jsonObject in jsonList{
-                        
                         let song = Song(id: jsonObject[Song.JsonKeys.id].int ?? -1, name: jsonObject[Song.JsonKeys.name].string ?? "", duration: jsonObject[Song.JsonKeys.duration].int ?? 0, date: jsonObject[Song.JsonKeys.date].string ?? "", description: jsonObject[Song.JsonKeys.description].string ?? "", image: jsonObject[Song.JsonKeys.image].string ?? "", blocked: jsonObject[Song.JsonKeys.blocked].bool ?? false, url: jsonObject[Song.JsonKeys.url].string ?? "", artist: jsonObject[Song.JsonKeys.artist].string ?? "")
                         
                         self.latestSongsList.append(song)
@@ -230,32 +200,23 @@ class HomeDataModel:NSObject{
     
     func getRadioChannels(getRadioChannelsListCallFinished: @escaping (_ status: Bool, _ error: NSError?, _ userInfo: [String: AnyObject]?) -> Void) {
         api.getRadioChannels(success: { (data, code) -> Void in
-            
             switch code {
             case 200:
-                
                 let jsonArray = JSON(data as Any).array
-                
                 if let jsonList = jsonArray{
-                    
                     self.radioChannelsList.removeAll()
                     for jsonObject in jsonList{
-                        
                         let song = Song(id: jsonObject[Song.JsonKeys.id].int ?? -1, name: jsonObject[Song.JsonKeys.name].string ?? "", duration: jsonObject[1].int ?? 0, date: jsonObject[""].string ?? "", description: jsonObject[""].string ?? "", image: jsonObject[Song.JsonKeys.image].string ?? "", blocked: jsonObject["false"].bool ?? false, url: jsonObject[Song.JsonKeys.url].string ?? "", artist: jsonObject[Song.JsonKeys.artist].string ?? "")
                         //print("radio ", Song.JsonKeys.url)
                         self.radioChannelsList.append(song)
-                        print("radio ", self.radioChannelsList)
+//                        print("radio ", self.radioChannelsList)
                     }
                     getRadioChannelsListCallFinished(true, nil, nil)
-                    
                 } else {
                     getRadioChannelsListCallFinished(false, nil, nil)
                 }
-                
-                
             default:
                 let jsonData = JSON(data as Any)
-                
                 let error = Common.getErrorFromJson(description: jsonData[ErrorJsonKeys.errorMessage].string ?? "", errorType: "\(jsonData[ErrorJsonKeys.errorCode].int ?? -1)", errorCode: jsonData[ErrorJsonKeys.errorCode].int ?? -1)
                 getRadioChannelsListCallFinished(false, error, nil)
             }

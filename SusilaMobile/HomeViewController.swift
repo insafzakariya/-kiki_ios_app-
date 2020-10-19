@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class HomeViewController: UIView {
     
     var scrollView = UIScrollView(frame: CGRect.zero)
@@ -22,6 +23,7 @@ class HomeViewController: UIView {
     
     let homeDataModel = HomeDataModel()
     var parentVC: DashboardViewController!
+    
     
     var currentPlayingList:[Song] = [Song]()
     var latestPlayList:[Song] = [Song]()
@@ -94,10 +96,11 @@ class HomeViewController: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.commonInit()
     }
+    
+    
     private func commonInit() {
-        
+        AppDelegate.Home_Request_Count += 1
         self.backgroundColor = Constants.color_background
         scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: UIScreen.main.bounds.height-200))
         scrollView.showsHorizontalScrollIndicator = false
@@ -112,25 +115,29 @@ class HomeViewController: UIView {
         
         createPopularSongsHeaderView(view: scrollView)
         loadPopularSongsView(view: scrollView)
-        createPopularSongsSeeAllView(view: viewAllPopularSongs, title: NSLocalizedString("PopularSongs".localized(using: "Localizable"), comment: ""))
+        createPopularSongsSeeAllView(view: viewAllPopularSongs, title: "PopularSongs".localizedString)
         loadPopularSongsList()
+        
         
         createLatestSongsHeaderView(view: scrollView)
         loadLatestSongsView(view: scrollView)
-        createLatestSongsSeeAllView(view: viewAllLatestSongs, title: NSLocalizedString("LatestSongs".localized(using: "Localizable"), comment: ""))
+        createLatestSongsSeeAllView(view: viewAllLatestSongs, title: "LatestSongs".localizedString)
         loadLatestSongsList()
+        
         
         createRadioHeaderView(view: scrollView)
         loadRadioView(view: scrollView)
         loadRadioList()
+        
         
         viewAllPopularArtists = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.frame.height))
         loadHomePopularArtistsList(view: scrollView)
         createArtistHeaderView(view: scrollView)
         
         createPlaylistHeaderView(view: scrollView)
-        createLatestPlaylistSeeAllView(view: viewAllLatestPlaylists, title: NSLocalizedString("LastestPlaylist".localized(using: "Localizable"), comment: ""))
+        createLatestPlaylistSeeAllView(view: viewAllLatestPlaylists, title:"LastestPlaylist".localizedString)
         loadPlaylists()
+        
         
         self.addSubview(scrollView)
         
@@ -205,7 +212,7 @@ class HomeViewController: UIView {
                 DispatchQueue.main.async {
                     self.libraryAllPlaylists = self.libraryDataModel.playlists
                     if self.libraryAllPlaylists.count < 1 {
-                        self.alert(message: NSLocalizedString("NoPlayListFound".localized(using: "Localizable"), comment: ""))
+                        self.alert(message: "NoPlayListFound".localizedString)
                     }
                     self.loadList(view: self.addToPlaylistAlertDialog.scrollList)
                 }
@@ -222,8 +229,6 @@ class HomeViewController: UIView {
         
         var xLength: CGFloat = 0
         for (_, tileData) in libraryAllPlaylists.enumerated(){
-            
-            
             let songTile = PlaylistTileAlertAllPlaylist(frame: CGRect(x: 10, y: xLength, width: UIScreen.main.bounds.width-10, height: UIScreen.main.bounds.width/6))
             songTile.lblTitle.text = tileData.name
             var decodedImage = tileData.image!.replacingOccurrences(of: "%3A", with: ":")
@@ -243,12 +248,17 @@ class HomeViewController: UIView {
         self.addToPlaylistAlertDialog.scrollList.contentSize = CGSize(width: self.addToPlaylistAlertDialog.scrollList.frame.width, height: CGFloat(libraryAllPlaylists.count)*(UIScreen.main.bounds.width/6)+CGFloat(libraryAllPlaylists.count)*20)
     }
     
+    deinit {
+        Log("Deinit Home VC")
+        AppDelegate.Home_Request_Count = 0
+    }
+    
     @objc func buttonClickAddSongToPlaylists(recognizer: PlaylistTapGesture) {
         print("PlaylistId ", recognizer.id," SongId ", self.addAlertDialog.id)
         var songsid = [String]()
         songsid.append(String(self.addAlertDialog.id))
         addSongToPlaylist(playlistId: recognizer.id, songs: songsid)
-        self.alert(message: NSLocalizedString("AddedToPlayList".localized(using: "Localizable"), comment: ""))
+        self.alert(message: "AddedToPlayList".localizedString)
         self.addToPlaylistAlertDialog.isHidden = true
         self.addToPlaylistAlertDialog.removeFromSuperview()
         
@@ -307,7 +317,7 @@ class HomeViewController: UIView {
         self.homeDataModel.addToLibrary(key: key, songs: songs, addToLibraryCallFinished: { (status, error, userInfo) in
             if status{
                 DispatchQueue.main.async(execute: {
-                    self.alert(message: NSLocalizedString("AddedToLibrary".localized(using: "Localizable"), comment: ""))
+                    self.alert(message: "AddedToLibrary".localizedString)
                     self.addAlertDialog.isHidden = true
                     self.addAlertDialog.removeFromSuperview()
                     self.overLayView.removeFromSuperview()
@@ -329,12 +339,12 @@ class HomeViewController: UIView {
         
         let labelSongs = UILabel()
         labelSongs.frame = CGRect(x: 10, y: 0, width: topBar.frame.width, height:topBar.frame.height)
-        labelSongs.text = NSLocalizedString("PopularSongs".localized(using: "Localizable"), comment: "")
+        labelSongs.text = "PopularSongs".localizedString
         labelSongs.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelSongs.textColor = UIColor.white
         let labelSongsSeeAll = UILabel()
         labelSongsSeeAll.frame = CGRect(x: topBar.frame.width-80, y: 15, width: 70, height:20)
-        labelSongsSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongsSeeAll.text = "ViewAll".localizedString
         labelSongsSeeAll.textAlignment = .center
         labelSongsSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongsSeeAll.layer.cornerRadius = 10
@@ -370,20 +380,19 @@ class HomeViewController: UIView {
     func loadPopularSongsList() {
         self.homeDataModel.getHomePopularSongs(getHomePopularSongsListCallFinished: { (status, error, userInfo) in
             if status{
-                DispatchQueue.main.async(execute: {
-                    let minimizedArray = self.homeDataModel.popularSongsList.chunked(into: 10)
-                    self.scrollCollectionMinimizedPopularSongs?.currentPlayingList = self.homeDataModel.popularSongsList.count > 10 ? minimizedArray[0] : self.homeDataModel.popularSongsList
-                    //self.scrollCollectionMinimizedPopularSongs?.currentPlayingList = self.homeDataModel.popularSongsList
-                    self.scrollCollectionExapndedPopularSongs?.currentPlayingList = self.homeDataModel.popularSongsList
-                    
-                    if notifyInstance.status && notifyInstance.content_type == "songid" {
-                        self.getSongById(sid: notifyInstance.content_id)
-                    } else {
-                        self.playerView.currentPlayingList = self.homeDataModel.popularSongsList
-                    }
-                })
+                //                                DispatchQueue.main.async(execute: {
+                let minimizedArray = self.homeDataModel.popularSongsList.chunked(into: 10)
+                                self.scrollCollectionMinimizedPopularSongs?.currentPlayingList = (self.homeDataModel.popularSongsList.count) > 10 ? minimizedArray[0] : self.homeDataModel.popularSongsList
+                self.scrollCollectionExapndedPopularSongs?.currentPlayingList = (self.homeDataModel.popularSongsList)
+                
+                if notifyInstance.status && notifyInstance.content_type == "songid" {
+                    self.getSongById(sid: notifyInstance.content_id)
+                } else {
+                    self.playerView.currentPlayingList = (self.homeDataModel.popularSongsList)
+                }
+                //                                })
             } else {
-                DispatchQueue.main.async(execute: {})
+                //                DispatchQueue.main.async(execute: {})
             }
         })
     }
@@ -441,12 +450,12 @@ class HomeViewController: UIView {
         
         let labelSongs = UILabel()
         labelSongs.frame = CGRect(x: 10, y: 0, width: topBar.frame.width, height:topBar.frame.height)
-        labelSongs.text = NSLocalizedString("LatestSongs".localized(using: "Localizable"), comment: "")
+        labelSongs.text = "LatestSongs".localizedString
         labelSongs.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelSongs.textColor = UIColor.white
         let labelSongsSeeAll = UILabel()
         labelSongsSeeAll.frame = CGRect(x: topBar.frame.width-80, y: 15, width: 70, height:20)
-        labelSongsSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongsSeeAll.text = "ViewAll".localizedString
         labelSongsSeeAll.textAlignment = .center
         labelSongsSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongsSeeAll.layer.cornerRadius = 10
@@ -481,15 +490,15 @@ class HomeViewController: UIView {
     func loadLatestSongsList() {
         self.homeDataModel.getHomeLatestSongs(getHomeLatestSongsListCallFinished: { (status, error, userInfo) in
             if status{
-                DispatchQueue.main.async(execute: {
-                    let minimizedArray = self.homeDataModel.latestSongsList.chunked(into: 10)
-                    self.scrollCollectionMinimizedLatestSinhalaSongs?.currentPlayingList = self.homeDataModel.latestSongsList.count > 10 ? minimizedArray[0] : self.homeDataModel.latestSongsList
-                    self.scrollCollectionExapndedLatestSinhalaSongs?.currentPlayingList = self.homeDataModel.latestSongsList
-                    
-                    print("homeDataModel.latestSongsList: ",self.homeDataModel.latestSongsList.count)
-                })
+                //                DispatchQueue.main.async(execute: {
+                let minimizedArray = self.homeDataModel.latestSongsList.chunked(into: 10)
+                self.scrollCollectionMinimizedLatestSinhalaSongs?.currentPlayingList = self.homeDataModel.latestSongsList.count > 10 ? minimizedArray[0] : self.homeDataModel.latestSongsList
+                self.scrollCollectionExapndedLatestSinhalaSongs?.currentPlayingList = self.homeDataModel.latestSongsList
+                
+                Log("homeDataModel.latestSongsList: \(self.homeDataModel.latestSongsList.count)")
+                //                })
             } else {
-                DispatchQueue.main.async(execute: {})
+                //                DispatchQueue.main.async(execute: {})
             }
         })
     }
@@ -502,12 +511,12 @@ class HomeViewController: UIView {
         
         let labelSongs = UILabel()
         labelSongs.frame = CGRect(x: 10, y: 0, width: topBar.frame.width, height:topBar.frame.height)
-        labelSongs.text = NSLocalizedString("RadioChannels".localized(using: "Localizable"), comment: "")
+        labelSongs.text = "RadioChannels".localizedString
         labelSongs.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelSongs.textColor = UIColor.white
         let labelSongsSeeAll = UILabel()
         labelSongsSeeAll.frame = CGRect(x: topBar.frame.width-80, y: 15, width: 70, height:20)
-        labelSongsSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongsSeeAll.text = "ViewAll".localizedString
         labelSongsSeeAll.textAlignment = .center
         labelSongsSeeAll.layer.cornerRadius = 10
         labelSongsSeeAll.textColor = UIColor.white
@@ -525,28 +534,24 @@ class HomeViewController: UIView {
     
     func loadRadioView(view: UIView) {
         let viewGenreSongs = UIView(frame: CGRect(x: 0, y: ((UIScreen.main.bounds.width-40)*1/3+30)*2+150, width: UIScreen.main.bounds.width, height: (UIScreen.main.bounds.width-40)*1/3+10))
-        
         let songsViewContent = UIView(frame: CGRect(x: 0, y: 0, width: viewGenreSongs.frame.width, height: viewGenreSongs.frame.height))
-        
         scrollCollectionExapndedRadioChannels = ScrollCollection(frame: CGRect(x: 0, y: 0, width: songsViewContent.frame.width, height: songsViewContent.frame.height))
         scrollCollectionExapndedRadioChannels?.styleType = 22
         songsViewContent.addSubview(scrollCollectionExapndedRadioChannels!)
-        
         viewGenreSongs.addSubview(songsViewContent)
-        
         view.addSubview(viewGenreSongs)
     }
     
     func loadRadioList() {
         self.homeDataModel.getRadioChannels(getRadioChannelsListCallFinished: { (status, error, userInfo) in
             if status{
-                DispatchQueue.main.async(execute: {
-                    let minimizedArray = self.homeDataModel.radioChannelsList.chunked(into: 10)
-                    self.scrollCollectionExapndedRadioChannels?.currentPlayingList = self.homeDataModel.radioChannelsList.count > 10 ? minimizedArray[0] : self.homeDataModel.radioChannelsList
-                    //self.scrollCollectionExapndedPopularSongs?.currentPlayingList = self.homeDataModel.popularSongsList
-                })
+                //                DispatchQueue.main.async(execute: {
+                let minimizedArray = self.homeDataModel.radioChannelsList.chunked(into: 10)
+                self.scrollCollectionExapndedRadioChannels?.currentPlayingList = self.homeDataModel.radioChannelsList.count > 10 ? minimizedArray[0] : self.homeDataModel.radioChannelsList
+                //self.scrollCollectionExapndedPopularSongs?.currentPlayingList = self.homeDataModel.popularSongsList
+                //                })
             } else {
-                DispatchQueue.main.async(execute: {})
+                //                DispatchQueue.main.async(execute: {})
             }
         })
     }
@@ -559,14 +564,14 @@ class HomeViewController: UIView {
         
         let labelSongs = UILabel()
         labelSongs.frame = CGRect(x: 10, y: 0, width: topBar.frame.width, height:topBar.frame.height)
-        labelSongs.text = NSLocalizedString("PopularArtist".localized(using: "Localizable"), comment: "")
+        labelSongs.text = "PopularArtist".localizedString
         labelSongs.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelSongs.textColor = UIColor.white
         //labelAlbum.backgroundColor = UIColor.green
         
         let labelSongsSeeAll = UILabel()
         labelSongsSeeAll.frame = CGRect(x: topBar.frame.width-80, y: 15, width: 70, height:20)
-        labelSongsSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongsSeeAll.text = "ViewAll".localizedString
         labelSongsSeeAll.textAlignment = .center
         labelSongsSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongsSeeAll.lineBreakMode = .byWordWrapping
@@ -598,7 +603,7 @@ class HomeViewController: UIView {
         arrow.addTarget(self, action: #selector(goPopularArtistBackButtonClicked), for: .touchUpInside)
         
         let text = UILabel(frame: CGRect(x: 40, y: 10, width: UIScreen.main.bounds.width-50, height: 20))
-        text.text = NSLocalizedString("PopularArtist".localized(using: "Localizable"), comment: "")
+        text.text = "PopularArtist".localizedString
         text.textColor = UIColor.white
         
         topBar.addSubview(arrow)
@@ -758,7 +763,7 @@ class HomeViewController: UIView {
         let labelAddArtist = UILabel()
         labelAddArtist.frame = CGRect(x: 0, y: lblTitle.frame.height+image.frame.height+albums.frame.height+5, width: 70, height:20)
         labelAddArtist.center.x = titleContainer.center.x
-        labelAddArtist.text = NSLocalizedString("Add".localized(using: "Localizable"), comment: "")
+        labelAddArtist.text = "Add".localizedString
         labelAddArtist.textAlignment = .center
         labelAddArtist.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelAddArtist.layer.cornerRadius = 10
@@ -785,7 +790,7 @@ class HomeViewController: UIView {
         
         let labelAlbumByArtistSeeAll = UILabel()
         labelAlbumByArtistSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: titleContainer.frame.height+10, width: 70, height:20)
-        labelAlbumByArtistSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelAlbumByArtistSeeAll.text = "ViewAll".localizedString
         labelAlbumByArtistSeeAll.textAlignment = .center
         labelAlbumByArtistSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelAlbumByArtistSeeAll.layer.cornerRadius = 10
@@ -805,7 +810,7 @@ class HomeViewController: UIView {
         
         labelSong.frame = CGRect(x: 10, y: titleContainer.frame.height, width: UIScreen.main.bounds.width-10, height:40)
         
-        labelSong.text = NSLocalizedString("Song".localized(using: "Localizable"), comment: "")
+        labelSong.text = "Song".localizedString
         labelSong.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelSong.textColor = UIColor.white
         //labelSong.backgroundColor = UIColor.green
@@ -813,7 +818,7 @@ class HomeViewController: UIView {
         let labelSongByArtistSeeAll = UILabel()
         //labelSongByArtistSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: titleContainer.frame.height+10+UIScreen.main.bounds.width/2+50, width: 70, height:20)
         labelSongByArtistSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: titleContainer.frame.height+10, width: 70, height:20)
-        labelSongByArtistSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongByArtistSeeAll.text = "ViewAll".localizedString
         labelSongByArtistSeeAll.textAlignment = .center
         labelSongByArtistSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongByArtistSeeAll.layer.cornerRadius = 10
@@ -845,7 +850,7 @@ class HomeViewController: UIView {
     }
     
     @objc func buttonClickedSeeAllArtistBySongs(recognizer: PlaylistPlayGesture) {
-        createPopularArtistSongsView(view: viewAllPopularArtistSongs, title: NSLocalizedString("Song".localized(using: "Localizable"), comment: ""))
+        createPopularArtistSongsView(view: viewAllPopularArtistSongs, title: "Song".localizedString)
         loadAllPopularArtistSongsList(id: recognizer.id)
     }
     
@@ -898,13 +903,13 @@ class HomeViewController: UIView {
         
         let labelSongs = UILabel()
         labelSongs.frame = CGRect(x: 10, y: 0, width: topBar.frame.width, height:topBar.frame.height)
-        labelSongs.text = NSLocalizedString("LastestPlaylist".localized(using: "Localizable"), comment: "")
+        labelSongs.text = "LastestPlaylist".localizedString
         labelSongs.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelSongs.textColor = UIColor.white
         
         let labelSongsSeeAll = UILabel()
         labelSongsSeeAll.frame = CGRect(x: topBar.frame.width-80, y: 15, width: 70, height:20)
-        labelSongsSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongsSeeAll.text = "ViewAll".localizedString
         labelSongsSeeAll.textAlignment = .center
         labelSongsSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongsSeeAll.lineBreakMode = .byWordWrapping
@@ -1404,7 +1409,7 @@ class HomeViewController: UIView {
         let attachmentString = NSAttributedString(attachment: imageAttachment)
         let completeText = NSMutableAttributedString(string: "")
         completeText.append(attachmentString)
-        let  textAfterIcon = NSMutableAttributedString(string: NSLocalizedString("Play".localized(using: "Localizable"), comment: ""))
+        let  textAfterIcon = NSMutableAttributedString(string: "Play".localizedString)
         completeText.append(textAfterIcon)
         labelPlaySong.textAlignment = .center
         labelPlaySong.attributedText = completeText
@@ -1422,7 +1427,7 @@ class HomeViewController: UIView {
         
         let labelAddSong = UILabel()
         labelAddSong.frame = CGRect(x: UIScreen.main.bounds.width/2+5, y: lblTitle.frame.height+image.frame.height+songs.frame.height+10, width: 70, height:20)
-        labelAddSong.text = NSLocalizedString("Add".localized(using: "Localizable"), comment: "")
+        labelAddSong.text = "Add".localizedString
         labelAddSong.textAlignment = .center
         labelAddSong.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelAddSong.layer.cornerRadius = 10
@@ -1742,13 +1747,13 @@ class HomeViewController: UIView {
      
      let lblPopularSongs = UILabel(frame: CGRect(x: 15, y: 10, width: viewPopularSongs.frame.width, height: 40))
      lblPopularSongs.font = Constants.getFont(size: 17)
-     lblPopularSongs.text = NSLocalizedString("PopularSongs".localized(using: "Localizable"), comment: "")
+     lblPopularSongs.text = "PopularSongs".localizedString
      lblPopularSongs.textColor = UIColor.white
      
      viewPopularSongs.addSubview(lblPopularSongs)
      
      let lblSeeAll = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 90, y: 20, width: 75, height: 20))
-     lblSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+     lblSeeAll.text = "ViewAll".localizedString
      lblSeeAll.textAlignment = .center
      lblSeeAll.font = lblSeeAll.font.withSize(13)
      lblSeeAll.layer.cornerRadius = 10
@@ -1773,7 +1778,7 @@ class HomeViewController: UIView {
      scrollHome.addSubview(viewSeeAllPopularSongs)
      
      let lblYouMightLikeExpanded = UILabel(frame: CGRect(x: 10, y: 10, width: 200, height: 40))
-     lblYouMightLikeExpanded.text = NSLocalizedString("PopularSongs".localized(using: "Localizable"), comment: "")
+     lblYouMightLikeExpanded.text = "PopularSongs".localizedString
      lblYouMightLikeExpanded.font = Constants.getFont(size: 16)
      lblYouMightLikeExpanded.textColor = UIColor.white
      viewSeeAllPopularSongs.addSubview(lblYouMightLikeExpanded)
@@ -1808,13 +1813,13 @@ class HomeViewController: UIView {
      
      let lblYouMightLike = UILabel(frame: CGRect(x: 15, y: 10, width: 200, height: 40))
      lblYouMightLike.font = Constants.getFont(size: 17)
-     lblYouMightLike.text = NSLocalizedString("LatestSongs".localized(using: "Localizable"), comment: "")
+     lblYouMightLike.text = "LatestSongs".localizedString
      lblYouMightLike.textColor = UIColor.white
      
      viewLatestSinhalaSongs.addSubview(lblYouMightLike)
      
      let lblSeeAll = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 90, y: 20, width: 75, height: 20))
-     lblSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+     lblSeeAll.text = "ViewAll".localizedString
      lblSeeAll.textAlignment = .center
      lblSeeAll.font = lblSeeAll.font.withSize(13)
      lblSeeAll.layer.cornerRadius = 10
@@ -1840,7 +1845,7 @@ class HomeViewController: UIView {
      scrollHome.addSubview(viewSeeAllLatestSinhalaSongs)
      
      let lblYouMightLikeExpanded = UILabel(frame: CGRect(x: 10, y: 10, width: 200, height: 40))
-     lblYouMightLikeExpanded.text = NSLocalizedString("LatestSongs".localized(using: "Localizable"), comment: "")
+     lblYouMightLikeExpanded.text = "LatestSongs".localizedString
      lblYouMightLikeExpanded.font = Constants.getFont(size: 16)
      lblYouMightLikeExpanded.textColor = UIColor.white
      viewSeeAllLatestSinhalaSongs.addSubview(lblYouMightLikeExpanded)
@@ -1871,13 +1876,13 @@ class HomeViewController: UIView {
      
      let lblPopularSongs = UILabel(frame: CGRect(x: 15, y: 10, width: 200, height: 40))
      lblPopularSongs.font = Constants.getFont(size: 17)
-     lblPopularSongs.text = NSLocalizedString("RadioChannels".localized(using: "Localizable"), comment: "")
+     lblPopularSongs.text = "RadioChannels".localizedString
      lblPopularSongs.textColor = UIColor.white
      
      viewRadioChannels.addSubview(lblPopularSongs)
      
      let lblSeeAll = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 90, y: 20, width: 75, height: 20))
-     lblSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+     lblSeeAll.text = "ViewAll".localizedString
      lblSeeAll.textAlignment = .center
      lblSeeAll.font = lblSeeAll.font.withSize(13)
      lblSeeAll.layer.cornerRadius = 10
@@ -1902,7 +1907,7 @@ class HomeViewController: UIView {
      scrollHome.addSubview(viewSeeAllRadioChannels)
      
      let lblYouMightLikeExpanded = UILabel(frame: CGRect(x: 10, y: 10, width: 200, height: 40))
-     lblYouMightLikeExpanded.text = NSLocalizedString("RadioChannels".localized(using: "Localizable"), comment: "")
+     lblYouMightLikeExpanded.text = "RadioChannels".localizedString
      lblYouMightLikeExpanded.font = Constants.getFont(size: 16)
      lblYouMightLikeExpanded.textColor = UIColor.white
      viewSeeAllRadioChannels.addSubview(lblYouMightLikeExpanded)
@@ -1933,13 +1938,13 @@ class HomeViewController: UIView {
      
      let lblPopularSongs = UILabel(frame: CGRect(x: 15, y: 10, width: 200, height: 40))
      lblPopularSongs.font = Constants.getFont(size: 17)
-     lblPopularSongs.text = NSLocalizedString("PopularArtist".localized(using: "Localizable"), comment: "")
+     lblPopularSongs.text = "PopularArtist".localizedString
      lblPopularSongs.textColor = UIColor.white
      
      viewPopularArtists.addSubview(lblPopularSongs)
      
      let lblSeeAll = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 90, y: 20, width: 75, height: 20))
-     lblSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+     lblSeeAll.text = "ViewAll".localizedString
      lblSeeAll.textAlignment = .center
      lblSeeAll.font = lblSeeAll.font.withSize(13)
      lblSeeAll.layer.cornerRadius = 10
@@ -1964,7 +1969,7 @@ class HomeViewController: UIView {
      scrollHome.addSubview(viewSeeAllPopularArtists)
      
      let lblYouMightLikeExpanded = UILabel(frame: CGRect(x: 10, y: 10, width: 200, height: 40))
-     lblYouMightLikeExpanded.text = NSLocalizedString("PopularArtist".localized(using: "Localizable"), comment: "")
+     lblYouMightLikeExpanded.text = "PopularArtist".localizedString
      lblYouMightLikeExpanded.font = Constants.getFont(size: 16)
      lblYouMightLikeExpanded.textColor = UIColor.white
      viewSeeAllPopularArtists.addSubview(lblYouMightLikeExpanded)
@@ -2002,13 +2007,13 @@ class HomeViewController: UIView {
      
      let lblPopularSongs = UILabel(frame: CGRect(x: 15, y: 0, width: 200, height: 40))
      lblPopularSongs.font = Constants.getFont(size: 17)
-     lblPopularSongs.text = NSLocalizedString("LastestPlaylist".localized(using: "Localizable"), comment: "")
+     lblPopularSongs.text = "LastestPlaylist".localizedString
      lblPopularSongs.textColor = UIColor.white
      
      viewPlayLists.addSubview(lblPopularSongs)
      
      let lblSeeAll = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 90, y: 10, width: 70, height: 20))
-     lblSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+     lblSeeAll.text = "ViewAll".localizedString
      lblSeeAll.textAlignment = .center
      lblSeeAll.font = lblSeeAll.font.withSize(13)
      lblSeeAll.layer.cornerRadius = 10
@@ -2033,7 +2038,7 @@ class HomeViewController: UIView {
      viewPlayLists.addSubview(viewSeeAllPopularArtists)
      
      let lblYouMightLikeExpanded = UILabel(frame: CGRect(x: 10, y: 10, width: 200, height: 40))
-     lblYouMightLikeExpanded.text = NSLocalizedString("LastestPlaylist".localized(using: "Localizable"), comment: "")
+     lblYouMightLikeExpanded.text = "LastestPlaylist".localizedString
      lblYouMightLikeExpanded.font = Constants.getFont(size: 16)
      lblYouMightLikeExpanded.textColor = UIColor.white
      viewSeeAllPopularArtists.addSubview(lblYouMightLikeExpanded)

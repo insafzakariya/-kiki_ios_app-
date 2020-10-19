@@ -10,5 +10,4 @@
 //#import "BaseButtonBarPagerTabStripViewController.h"
 //#import "iCarousel.h"
 #import <GoogleSignIn/GoogleSignIn.h>
-#import <Google/Core.h>
 #import "IJKVideoViewController.h"

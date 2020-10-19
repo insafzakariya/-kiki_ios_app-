@@ -188,6 +188,7 @@ class ApiClient {
     internal func updateFCMToken(deviceId:String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl+SubUrl.updateFCMToken)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -209,6 +210,7 @@ class ApiClient {
     internal func updateAction(content_Id:Int, screen_Id:Int, screen_Action_Id:Int, screen_Time:String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl+SubUrl.updateAction+"/"+String(content_Id)+"/"+String(screen_Id)+"/"+String(screen_Action_Id)+"/"+screen_Time)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -228,6 +230,7 @@ class ApiClient {
     internal func passwordResetCodeRequest(number: String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.SendMobileNumber + "?mobile_no=" + number)
+        Log(url?.description ?? "")
         //let url = URL(string:"http://34.93.78.242/mobile-tv-webservice/api/v1/password/request?mobile_no="+number)
         
         let headers: HTTPHeaders = [
@@ -247,6 +250,7 @@ class ApiClient {
     internal func passwordResetCodeSend(viwerId: String, otp: String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.passwordRequestVerify + "?viwer_id="+viwerId+"&otp="+otp)
+        Log(url?.description ?? "")
         //let url = URL(string:"http://34.93.78.242/mobile-tv-webservice/api/v1/password/request/verify?viwer_id="+viwerId+"&otp="+otp)
         
         let headers: HTTPHeaders = [
@@ -265,7 +269,8 @@ class ApiClient {
     
     internal func resetPasswordSend(viwerId: String, password: String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
-         let url = URL(string: kAPIBaseUrl + SubUrl.passwordRequest + "?viwer_id="+viwerId+"&password="+password)
+        let url = URL(string: kAPIBaseUrl + SubUrl.passwordRequest + "?viwer_id="+viwerId+"&password="+password)
+        Log(url?.description ?? "")
         //let url = URL(string:"http://34.93.78.242/mobile-tv-webservice/api/v1/password/reset?viwer_id="+viwerId+"&password="+password)
         
         let headers: HTTPHeaders = [
@@ -285,6 +290,7 @@ class ApiClient {
     internal func loginWithUsername(username: String, password: String, authMethod: AuthMethod, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.Login)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
@@ -298,7 +304,7 @@ class ApiClient {
             StringKeys.SOCIAL_TYPE:authMethod.rawValue.lowercased(),
             StringKeys.SOCIAL_TOKEN:""
             
-            ] as [String : Any]
+        ] as [String : Any]
         
         request(url!, apiCallType: .Login, method: .post, parameters: parameters, headers: headers, success: { (data, code) -> Void in
             success(data, code)
@@ -310,6 +316,7 @@ class ApiClient {
     internal func authLoginWithAccessToken(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.LoginWithToken)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
@@ -329,6 +336,7 @@ class ApiClient {
     internal func registerWithUsername(username: String, password: String, name: String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.Regiter)
+        Log(url?.description ?? "")
         
         //StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
         
@@ -344,7 +352,7 @@ class ApiClient {
             StringKeys.SOCIAL_TYPE:AuthMethod.CUSTOM.rawValue.lowercased()
             
             
-            ] as [String : Any]
+        ] as [String : Any]
         
         request(url!, apiCallType: .Regiter, method: .post, parameters: parameters, headers: headers, success: { (data, code) -> Void in
             success(data, code)
@@ -356,6 +364,7 @@ class ApiClient {
     internal func register(user: User, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.Regiter)
+        Log(url?.description ?? "")
         
         //StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
         
@@ -375,7 +384,7 @@ class ApiClient {
                 StringKeys.NAME:user.name,
                 StringKeys.SOCIAL_TYPE:user.provider.rawValue.lowercased(),
                 StringKeys.DEVICE_ID:user.device_id
-                ] as [String : Any]
+            ] as [String : Any]
             
         case .FACEBOOK:
             parameters = [
@@ -383,7 +392,7 @@ class ApiClient {
                 StringKeys.SOCIAL_TOKEN:user.socialAccessToken ?? "",
                 StringKeys.SOCIAL_TYPE:user.provider.rawValue.lowercased(),
                 StringKeys.DEVICE_ID:user.device_id
-                ] as [String : Any]
+            ] as [String : Any]
         case .GOOGLE:
             parameters = [
                 StringKeys.USERNAME:user.username,
@@ -391,7 +400,7 @@ class ApiClient {
                 StringKeys.SOCIAL_TOKEN:user.socialAccessToken ?? "",
                 StringKeys.SOCIAL_TYPE:user.provider.rawValue.lowercased(),
                 StringKeys.DEVICE_ID:user.device_id
-                ] as [String : Any]
+            ] as [String : Any]
             
         case .TWITTER:
             
@@ -401,7 +410,7 @@ class ApiClient {
                 StringKeys.SOCIAL_TOKEN_SECRET:user.socialAccessTokenSecret ?? "",
                 StringKeys.SOCIAL_TYPE:user.provider.rawValue.lowercased(),
                 StringKeys.DEVICE_ID:user.device_id
-                ] as [String : Any]
+            ] as [String : Any]
             
         default:()
         }
@@ -418,6 +427,7 @@ class ApiClient {
     internal func updateUserDetails(mobileNo: String, country: String, birthdate: String, gender: String, language: String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.UpdateCurrentUser)
+        Log(url?.description ?? "")
         
         //        StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
         let headers: HTTPHeaders = [
@@ -432,7 +442,7 @@ class ApiClient {
             StringKeys.LANGUAGE:language,
             StringKeys.White_Listed:UserDefaultsManager.getWhitList(),
             StringKeys.COUNTRYCODE:""
-            ] as [String : Any]
+        ] as [String : Any]
         
         request(url!, apiCallType: .UpdateCurrentUser, method: .post, parameters: parameters, headers: headers, success: { (data, code) -> Void in
             success(data, code)
@@ -441,7 +451,9 @@ class ApiClient {
         }
     }
     internal func requestPhoneCode( success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
+        
         let url = URL(string: mobileCodeRequestUrl)
+        Log(url?.description ?? "")
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
             StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
@@ -464,6 +476,7 @@ class ApiClient {
         //https://susilamobiletv.info/mobile-tv-webservice/api/v1/notification/received
         //let url = URL(string: kAPIBaseUrl + SubUrl.GetNotification + "?limit=50" + "&start_date=" + startDate + "&end_date=" + endDate + "&offset=0" )
         let url = URL(string: kAPIBaseUrl + SubUrl.GetNotification + "?limit=50" )
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -482,18 +495,19 @@ class ApiClient {
         //https://susilamobiletv.info/mobile-tv-webservice/api/v1/notification/received
         //let url = URL(string: kAPIBaseUrl + SubUrl.GetNotification + "?limit=50" + "&start_date=" + startDate + "&end_date=" + endDate + "&offset=0" )
         let url = URL(string: kAPIBaseUrl + SubUrl.readNotifications)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
             StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         
-//        let parameters: [String: Any]? = nil
-//        let parameters = [
-//
-//            StringKeys.SMSCode:idArray
-//
-//            ] as [String : Any]
+        //        let parameters: [String: Any]? = nil
+        //        let parameters = [
+        //
+        //            StringKeys.SMSCode:idArray
+        //
+        //            ] as [String : Any]
         
         requestNoti(url!, apiCallType: .GetPrograms, method: .post, parameters: idArray, headers: headers, success: { (data, code) -> Void in
             success(data, code)
@@ -503,6 +517,7 @@ class ApiClient {
     }
     internal func clearNotification(notificationID: Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         let url = URL(string: kAPIBaseUrl + SubUrl.ClearNotifications + "/" + String(notificationID) )
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -520,6 +535,7 @@ class ApiClient {
     
     internal func clearAllNotification(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         let url = URL(string: kAPIBaseUrl + SubUrl.ClearNotifications)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -538,6 +554,7 @@ class ApiClient {
     internal func getYouMightLike(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.YouMightAlsoLike )
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -557,6 +574,7 @@ class ApiClient {
     internal func getPopularSongs(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.YouMightAlsoLike )
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -576,6 +594,7 @@ class ApiClient {
     internal func getHomePopularSongs(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.HomePopularSongs)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -595,6 +614,7 @@ class ApiClient {
     internal func getHomeLatestSongs(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.HomeLatestSongs)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -614,6 +634,7 @@ class ApiClient {
     internal func getHomePopularArtist(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.HomePopularArtists)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -633,6 +654,7 @@ class ApiClient {
     internal func getGenreArtists(id: Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.BrowseGenreArtists + String(id) + "/artists")
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -652,7 +674,8 @@ class ApiClient {
     internal func getGenrePlaylists(id: Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.BrowseGenrePlaylists + String(id) + "/playlists")
-         //let url = URL(string: kAPIBaseUrl + SubUrl.GlobalPlaylist)
+        Log(url?.description ?? "")
+        //let url = URL(string: kAPIBaseUrl + SubUrl.GlobalPlaylist)
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -671,6 +694,7 @@ class ApiClient {
     internal func getHomePopularArtistSongs(id: Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.HomePopularArtistSongs + String(id) + "/songs")
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -690,6 +714,7 @@ class ApiClient {
     internal func getBrowseAllArtist(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.BrowseAllArtistSongs)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -709,6 +734,7 @@ class ApiClient {
     internal func getRadioChannels(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.RadioChannels)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -728,6 +754,7 @@ class ApiClient {
     internal func getLatestPlaylistSongs(id: String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.LatestPlaylistSongs + id + "?g=true")
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -745,8 +772,9 @@ class ApiClient {
     }
     
     internal func getAllSongsList(offset:Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
-
+        
         let url = URL(string: kAPIBaseUrl + SubUrl.AllSongs + "?limit=10&offset=\(offset)" )
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -765,6 +793,7 @@ class ApiClient {
     internal func getAllSongsGenreList(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.AllSongsGenre )
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -784,6 +813,7 @@ class ApiClient {
     internal func getLibrarySongs(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.LibrarySongs)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -803,6 +833,7 @@ class ApiClient {
     internal func getLibraryArtists(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.LibraryArtists)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -826,6 +857,8 @@ class ApiClient {
             return
         }
         
+        Log(url.description)
+        
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
             StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
@@ -846,6 +879,7 @@ class ApiClient {
             failure(NSError(domain: "", code: 0, userInfo: [:]))
             return
         }
+        Log(url.description)
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
@@ -870,6 +904,7 @@ class ApiClient {
         } else {
             url = URL(string: kAPIBaseUrl + SubUrl.SearchByWordAll + "query_text="+key+"&type="+type+"&offset=0&limit=100")
         }
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
@@ -889,6 +924,7 @@ class ApiClient {
     internal func getSearchHistory(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.GetSearchHistory)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
@@ -908,6 +944,7 @@ class ApiClient {
     internal func getRecentSongs(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.RecentSongs)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -934,6 +971,8 @@ class ApiClient {
             return
         }
         
+        Log(url.description)
+        
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
             StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
@@ -951,6 +990,7 @@ class ApiClient {
     internal func getGlobalPlayLists(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.GlobalPlaylist + "?g=true&offset=0&limit=200")
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -971,7 +1011,8 @@ class ApiClient {
     internal func getPlaylists(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.GlobalPlaylist )
-         //let url = URL(string: kAPIBaseUrl + SubUrl.GlobalPlaylist)
+        Log(url?.description ?? "")
+        //let url = URL(string: kAPIBaseUrl + SubUrl.GlobalPlaylist)
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -990,7 +1031,8 @@ class ApiClient {
     internal func getKiKiPlaylists(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.LibraryPlaylist)
-         //let url = URL(string: kAPIBaseUrl + SubUrl.GlobalPlaylist)
+        Log(url?.description ?? "")
+        //let url = URL(string: kAPIBaseUrl + SubUrl.GlobalPlaylist)
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1009,7 +1051,8 @@ class ApiClient {
     internal func getAllPlaylist(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.GlobalPlaylist + "?g=true&offset=0&limit=200")
-         //let url = URL(string: kAPIBaseUrl + SubUrl.GlobalPlaylist)
+        Log(url?.description ?? "")
+        //let url = URL(string: kAPIBaseUrl + SubUrl.GlobalPlaylist)
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1028,6 +1071,7 @@ class ApiClient {
     internal func createPlaylist(playlistName:String, imageUrl:String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl+SubUrl.createPlaylist)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1049,6 +1093,7 @@ class ApiClient {
     internal func addToPlaylist(playlistId:String, songs:[String], success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl+SubUrl.AddSongsToPlaylist)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1070,6 +1115,7 @@ class ApiClient {
     internal func addToLibrary(key:String, songs:Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl+SubUrl.addToLibary)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1091,6 +1137,7 @@ class ApiClient {
     internal func removeFromLibrary(key:String, id:Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl+SubUrl.removeFromLibary)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1111,6 +1158,7 @@ class ApiClient {
     internal func removePlaylistFromLibrary(id:Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl+SubUrl.removePlaylistFromLibary)
+        Log(url?.description ?? "")
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
             StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
@@ -1127,19 +1175,20 @@ class ApiClient {
     }
     
     /*internal func addToPlaylist( playlistId:Int, songId:Int, success: @escaping (_ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
-        
-        let url = URL(string: kAPIBaseUrl + SubUrl.AddSongsToPlaylist + "/\(playlistId)" )
-        
-        requestPost(url!, body: "[\(songId)]", success: { (data, code) -> Void in
-            success(code)
-        }) { (error) -> Void in
-            failure(error)
-        }
-    }*/
+     
+     let url = URL(string: kAPIBaseUrl + SubUrl.AddSongsToPlaylist + "/\(playlistId)" )
+     
+     requestPost(url!, body: "[\(songId)]", success: { (data, code) -> Void in
+     success(code)
+     }) { (error) -> Void in
+     failure(error)
+     }
+     }*/
     
     internal func playlistLoadTempTable(session_id: String, pid: Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.playlistLoadTempTable)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1162,6 +1211,7 @@ class ApiClient {
     internal func updatePlaylist(name: String, pid: Int, songs: [Int], image:String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.updatePlaylist)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1186,6 +1236,7 @@ class ApiClient {
     internal func addToTempPlaylist(session_id: String, ref_id: Int, type: String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.addToTempPlaylist)
+        Log(url?.description ?? "")
         // + "?song_id=" + String(songId) + "&session_id=" + session_id
         
         let headers: HTTPHeaders = [
@@ -1208,27 +1259,29 @@ class ApiClient {
     }
     
     internal func getPlaylistData(pid: Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
-           
-           let url = URL(string: kAPIBaseUrl + "playlist/playlistdata/" + String(pid) + "?g=false")
-           
-           let headers: HTTPHeaders = [
-               StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-               StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
-           ]
-           
-            let parameters: [String: Any]? = nil
-           
-           request(url!, apiCallType: .AddToTempPlaylist, method: .get, parameters: parameters, headers: headers, success: { (data, code) -> Void in
-               success(data, code)
-           }) { (error) -> Void in
-               failure(error)
-               print(error)
-           }
-       }
+        
+        let url = URL(string: kAPIBaseUrl + "playlist/playlistdata/" + String(pid) + "?g=false")
+        Log(url?.description ?? "")
+        
+        let headers: HTTPHeaders = [
+            StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
+        ]
+        
+        let parameters: [String: Any]? = nil
+        
+        request(url!, apiCallType: .AddToTempPlaylist, method: .get, parameters: parameters, headers: headers, success: { (data, code) -> Void in
+            success(data, code)
+        }) { (error) -> Void in
+            failure(error)
+            print(error)
+        }
+    }
     
     internal func getTempPlaylist(session_id: String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.getTempPlaylist + session_id)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1248,6 +1301,7 @@ class ApiClient {
     internal func getSongsOfPlaylist(listID:Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.SongsOfPlaylist + "/\(listID)")
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1266,6 +1320,8 @@ class ApiClient {
     internal func getSuggessionSongs(songID:Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.GetSuggessionSongs + "limit=10&offset=0&song_id=\(songID)")
+        Log(url?.description ?? "")
+        
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1284,6 +1340,7 @@ class ApiClient {
     internal func getSongsOfPlaylistGlobal(listID:Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.SongsOfPlaylist + "/\(listID)?g=true")
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1302,6 +1359,7 @@ class ApiClient {
     internal func getSongById(sid: String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.GetSongById + sid)
+        Log(url?.description ?? "")
         let headers: HTTPHeaders = [
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1320,6 +1378,7 @@ class ApiClient {
     internal func getArtistById(aid: String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.GetArtistById + aid)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
@@ -1339,6 +1398,7 @@ class ApiClient {
     internal func getPlaylistById(pid: String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.GetPlaylistById + pid + "?g=true")
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
@@ -1356,8 +1416,9 @@ class ApiClient {
     }
     
     internal func getEpisodeList(programID: Int, offset: Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
-//        let url = URL(string: kAPIBaseUrl + SubUrl.GetPrograms + "/\(programID)" + "/episodes" + "?limit=100000" + "&start_date=" + "&end_date=" + "&offset=" + "\(offset)")
+        //        let url = URL(string: kAPIBaseUrl + SubUrl.GetPrograms + "/\(programID)" + "/episodes" + "?limit=100000" + "&start_date=" + "&end_date=" + "&offset=" + "\(offset)")
         let url = URL(string: kAPIBaseUrl + SubUrl.GetPrograms + "/\(programID)" + "/allepisodes" + "?limit=20" + "&offset=" + "\(offset)")
+        Log(url?.description ?? "")
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
             StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
@@ -1373,26 +1434,28 @@ class ApiClient {
     }
     
     internal func getSubtitle(urlStr: String, success: @escaping (_ data: String?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
+        Log(urlStr)
         Alamofire.request(urlStr,
                           parameters: nil,
                           headers: [:]
-            )
-            .responseString(encoding: String.Encoding.utf8 ,completionHandler: { response in
-                switch response.result {
-                case .success( let data):
-                    if let responseReceived = response.response {
-                        success(data, responseReceived.statusCode)
-                    } else {
-                        failure(ErrorHandler.NoResponseForRequest)
-                    }
-                case .failure(let error):
-                    failure(error as NSError)
+        )
+        .responseString(encoding: String.Encoding.utf8 ,completionHandler: { response in
+            switch response.result {
+            case .success( let data):
+                if let responseReceived = response.response {
+                    success(data, responseReceived.statusCode)
+                } else {
+                    failure(ErrorHandler.NoResponseForRequest)
                 }
+            case .failure(let error):
+                failure(error as NSError)
+            }
         })
     }
     
     internal func getAdvertisement(programId: Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         let url = URL(string: kAPIBaseUrl + "ads/content?content_id=\(programId)")
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1411,6 +1474,7 @@ class ApiClient {
     internal func smsCodeVerify(smsCode: String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.SMSVerify)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1421,7 +1485,7 @@ class ApiClient {
             
             StringKeys.SMSCode:smsCode
             
-            ] as [String : Any]
+        ] as [String : Any]
         
         request(url!, apiCallType: .SMSVerify, method: .post, parameters: parameters, headers: headers, success: { (data, code) -> Void in
             success(data, code)
@@ -1433,7 +1497,7 @@ class ApiClient {
     internal func validatePromoCode(promoCode: String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.PromoCode + sanitizeString(promoCode))
-        print(url ?? "")
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1453,6 +1517,7 @@ class ApiClient {
         //https://susilamobiletv.info/mobile-tv-webservice/api/v1/content/action/subscribe/PROGRAM_ID
         
         let url = URL(string: kAPIBaseUrl + "content/action/2" + "/\(programID)/2")
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1471,7 +1536,7 @@ class ApiClient {
         //https://susilamobiletv.info/mobile-tv-webservice/api/v1/content/action/subscribe/PROGRAM_ID
         
         let url = URL(string: kAPIBaseUrl + "content/action/2" + "/\(programID)/2")
-        print(url as Any)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1489,6 +1554,7 @@ class ApiClient {
     
     internal func trailer(programId: Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         let url = URL(string: kAPIBaseUrl + SubUrl.Trailer + "\(programId)")
+        Log(url?.description ?? "")
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
             StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
@@ -1505,6 +1571,7 @@ class ApiClient {
     
     internal func likeProgram(programId: Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         let url = URL(string: kAPIBaseUrl + SubUrl.LikeProgram + "\(programId)")
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1522,6 +1589,7 @@ class ApiClient {
     
     internal func likeProgram_v2(contentType: Int, contentId: Int, actionType: Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         let url = URL(string: kAPIBaseUrl + SubUrl.LikeProgram_v2 + "\(contentType)/" + "\(contentId)/" + "\(actionType)")
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1539,6 +1607,7 @@ class ApiClient {
     
     internal func sendAnalytics(actionType: String, contendId:Int, currentTime:String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         let url = URL(string: kAPIBaseUrl + SubUrl.sendAnalytics + "\(sanitizeString(actionType))/\(contendId)?action_time=\(currentTime)")
+        Log(url?.description ?? "")
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
             StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
@@ -1556,6 +1625,7 @@ class ApiClient {
         ///mobile-tv-webservice/api/v1/subscription/packages
         
         let url = URL(string: kAPIBaseUrl + SubUrl.GetCurrentPackage)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1575,6 +1645,7 @@ class ApiClient {
         ///mobile-tv-webservice/api/v1/subscription/packages
         
         let url = URL(string: kAPIBaseUrl + SubUrl.GetPackageList )
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1595,6 +1666,7 @@ class ApiClient {
         ///mobile-tv-webservice/api/v1/subscription/packages
         
         let url = URL(string: kAPIBaseUrl + SubUrl.SubscribePackage + "\(packageId)")
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1616,6 +1688,7 @@ class ApiClient {
         //let url = URL(string: kAPIBaseUrl + SubUrl.GetSubscribedList + "?k=\(Preferences.getSettingKidsMode())")
         
         let url = URL(string: kAPIBaseUrl + SubUrl.GetSubscribedList)
+        Log(url?.description ?? "")
         
         
         let headers: HTTPHeaders = [
@@ -1637,6 +1710,7 @@ class ApiClient {
     internal func getCarouselList(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         //https://susilamobiletv.info/mobile-tv-webservice/api/v1/content/programs/PROGRAM_ID/episodes
         let url = URL(string: kAPIBaseUrl + SubUrl.GetImageList + "?k=\(UserDefaultsManager.getSettingKidsMode())&offset=0&limit=8")
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1656,6 +1730,7 @@ class ApiClient {
     internal func getChannelList(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         //https://cdn.kiki.lk/mobile-tv-webservice/api/v1/content/channels
         let url = URL(string: kAPIBaseUrl + SubUrl.GetChannelList + "?k=\(UserDefaultsManager.getSettingKidsMode())")
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1680,6 +1755,7 @@ class ApiClient {
             parameter = parameter + "&sort=latest"
         }
         let url = URL(string: kAPIBaseUrl + SubUrl.GetPrograms + parameter)
+        Log(url?.description ?? "")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
@@ -1697,13 +1773,14 @@ class ApiClient {
     
     fileprivate func requestPost(_ url: URL, body: String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         func callAPIrequest(){
+            Log(url.description)
             var request = URLRequest(url: url)
             request.httpBody = body.data(using: String.Encoding.utf8, allowLossyConversion: true)
             request.httpMethod = "POST"
             request.addValue(StringKeys.CONTENT_TYPE, forHTTPHeaderField: StringKeys.HEADER_CONTENT_TYPE)
             request.addValue(kBasicServerAuthToken, forHTTPHeaderField: StringKeys.HEADER_AUTHORIZATION)
             request.addValue(UserDefaultsManager.getAccessToken() ?? "", forHTTPHeaderField: StringKeys.HEADER_TOKEN_AUTHENTICATION)
-        
+            
             
             Alamofire.request(request).responseJSON { (dataResponse:DataResponse<Any>) in
                 if let response = dataResponse.response {
@@ -1730,8 +1807,8 @@ class ApiClient {
             callAPIrequest()
         }
     }
-        
-        
+    
+    
     /**
      Send a POST request.
      
@@ -1743,29 +1820,29 @@ class ApiClient {
      */
     
     fileprivate func request(_ url: URL, apiCallType:APICalls, method: HTTPMethod, parameters: [String: Any]?, headers: HTTPHeaders, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
-        
-        NSLog("url ---- : \(url)")
-        NSLog("parameters ---- : \(String(describing: parameters))")
-        NSLog("headers ---- : \(headers)")
-        NSLog("method ---- : \(method.rawValue)")
+//        Log(url.description)
+        //        NSLog("url ---- : \(url)")
+        //        NSLog("parameters ---- : \(String(describing: parameters))")
+        //        NSLog("headers ---- : \(headers)")
+        //        NSLog("method ---- : \(method.rawValue)")
         
         func callAPIrequest(){
             //            if let accessToken = Preferences.getAccessToken(){
-//            let json = "[692921]"
-//
-////            let url = URL(string: url)!
-//            let jsonData = json.data(using: .utf8, allowLossyConversion: false)!
-//
-//            var request = URLRequest(url: url)
-//            request.httpMethod = HTTPMethod.post.rawValue
-//            request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-//            request.httpBody = jsonData
+            //            let json = "[692921]"
+            //
+            ////            let url = URL(string: url)!
+            //            let jsonData = json.data(using: .utf8, allowLossyConversion: false)!
+            //
+            //            var request = URLRequest(url: url)
+            //            request.httpMethod = HTTPMethod.post.rawValue
+            //            request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+            //            request.httpBody = jsonData
             
             Alamofire.request(url.absoluteString, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse:DataResponse<Any>) in
                 
                 if let response = dataResponse.response {
                     let validateResult = HttpValidator.validate(response.statusCode)
-                    print("validateResult ---- : \(validateResult)")
+//                    print("validateResult ---- : \(validateResult)")
                     
                 }
                 switch dataResponse.result {
@@ -1773,8 +1850,8 @@ class ApiClient {
                     if let response = dataResponse.response {
                         let validateResult = HttpValidator.validate(response.statusCode)
                         
-                        let currentData = JSON(data)
-                        print("Data ---- : \(currentData)")
+//                        let currentData = JSON(data)
+//                        print("Data ---- : \(currentData)")
                         
                         switch apiCallType{
                         case .Login:
@@ -1795,7 +1872,7 @@ class ApiClient {
                         }
                     } else {
                         failure(ErrorHandler.NoResponseForRequest)
-                        NSLog("No response for POST request: \(String(describing: dataResponse.result.error))")
+                        NSLog("No response for POST request: \(String(describing: dataResponse.error))")
                     }
                 case .failure(let error):
                     failure(ErrorHandler.ConnectionTimeout)
@@ -1819,21 +1896,21 @@ class ApiClient {
     }
     fileprivate func requestNoti(_ url: URL, apiCallType:APICalls, method: HTTPMethod, parameters: Array<Any>, headers: HTTPHeaders, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
-        NSLog("url ---- : \(url)")
-        NSLog("parameters ---- : \(parameters)")
-        NSLog("headers ---- : \(headers)")
-        NSLog("method ---- : \(method.rawValue)")
-        
+        //        NSLog("url ---- : \(url)")
+        //        NSLog("parameters ---- : \(parameters)")
+        //        NSLog("headers ---- : \(headers)")
+        //        NSLog("method ---- : \(method.rawValue)")
+        Log(url.description)
         func callAPIrequest(){
             let paramsJSON = JSON(parameters)
             let paramsString = paramsJSON.rawString(String.Encoding.utf8, options: .prettyPrinted)
-                        var request = URLRequest(url: url)
-                        request.httpMethod = HTTPMethod.post.rawValue
-                        request.setValue(StringKeys.CONTENT_TYPE, forHTTPHeaderField: StringKeys.HEADER_CONTENT_TYPE)
-                        request.setValue(kBasicServerAuthToken, forHTTPHeaderField: StringKeys.HEADER_AUTHORIZATION)
-                        request.setValue(UserDefaultsManager.getAccessToken() ?? "", forHTTPHeaderField: StringKeys.HEADER_TOKEN_AUTHENTICATION)
-
-                        request.httpBody = paramsString?.data(using: .utf8)
+            var request = URLRequest(url: url)
+            request.httpMethod = HTTPMethod.post.rawValue
+            request.setValue(StringKeys.CONTENT_TYPE, forHTTPHeaderField: StringKeys.HEADER_CONTENT_TYPE)
+            request.setValue(kBasicServerAuthToken, forHTTPHeaderField: StringKeys.HEADER_AUTHORIZATION)
+            request.setValue(UserDefaultsManager.getAccessToken() ?? "", forHTTPHeaderField: StringKeys.HEADER_TOKEN_AUTHENTICATION)
+            
+            request.httpBody = paramsString?.data(using: .utf8)
             Alamofire.request(request).responseJSON { (dataResponse:DataResponse<Any>) in
                 
                 if let response = dataResponse.response {
@@ -1868,7 +1945,7 @@ class ApiClient {
                         }
                     } else {
                         failure(ErrorHandler.NoResponseForRequest)
-                        NSLog("No response for POST request: \(String(describing: dataResponse.result.error))")
+                        NSLog("No response for POST request: \(String(describing: dataResponse.error))")
                     }
                 case .failure(let error):
                     failure(ErrorHandler.ConnectionTimeout)
@@ -1881,10 +1958,7 @@ class ApiClient {
             //                getError()
             //            }
         }
-        
-        
         if !Common.isNetworkAvailable() {
-            
             return failure(ErrorHandler.NoNetwork)
         }else{
             callAPIrequest()

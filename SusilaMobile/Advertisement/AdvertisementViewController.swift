@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class AdvertisementViewController: UIView {
     @IBOutlet weak var topLeft: UIView!
     @IBOutlet weak var topRight: UIView!

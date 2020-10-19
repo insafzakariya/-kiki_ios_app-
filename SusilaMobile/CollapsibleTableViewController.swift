@@ -100,8 +100,8 @@ extension CollapsiblePlaylistTableViewController: CollapsibleTableViewHeaderDele
         
         if (sections[section].songs.isEmpty) {
             let alert = UIAlertController(title: "Kiki", message: "No Songs Available", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: nil))
-            self.parentView?.viewController!.present(alert, animated: true, completion: nil)
+            alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: UIAlertAction.Style.default, handler: nil))
+            self.parentView?.parentViewController!.present(alert, animated: true, completion: nil)
             return
         }
         // Toggle collapse

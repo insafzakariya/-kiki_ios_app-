@@ -197,7 +197,7 @@ class SMProfileViewController:BaseViewController,CountryPickerDelegate,UIGesture
         mobileNoTextField.resignFirstResponder()
         if memberName.text!.isEmpty
         {
-            Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: NSLocalizedString("ENTER_VALID_NAME".localized(using: "Localizable"), comment: ""))
+            Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: "ENTER_VALID_NAME".localizedString)
         }
 //        if lblCode.text!.isEmpty
 //        {
@@ -238,14 +238,14 @@ class SMProfileViewController:BaseViewController,CountryPickerDelegate,UIGesture
     }
     
     func connectionTimeoutMessage(){
-        let alertTitle = NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: "")
-        let alertMessage = NSLocalizedString("CONNECTION_TIME_OUT".localized(using: "Localizable"), comment: "")
+        let alertTitle = "ALERT_TITLE".localizedString
+        let alertMessage = "CONNECTION_TIME_OUT".localizedString
         
         let alert = UIAlertController(title: alertTitle, message:alertMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("CANCEL_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "CANCEL_BUTTON_TITLE".localizedString, style: .default, handler: { (action) -> Void in
             alert.dismiss(animated: true, completion: nil)
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: .default, handler: { (action) -> Void in
             self.updateUserInfo()
         }))
         showDetailViewController(alert, sender: nil)
@@ -312,15 +312,15 @@ extension SMProfileViewController: RegisterInfoDelegate {
             } else {
                 goToVerificationView()
             }
-            Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: NSLocalizedString("UPDATE_SUCCESS".localized(using: "Localizable"), comment: ""), perent: self)
+            Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: "UPDATE_SUCCESS".localizedString, perent: self)
             
         } else {
             if let error = error {
                 switch error.code {
                 case ResponseCode.noNetwork.rawValue:
-                    Common.showAlert(alertTitle: NSLocalizedString("NO_INTERNET_ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: NSLocalizedString("NO_INTERNET_ALERT_MESSAGE".localized(using: "Localizable"), comment: ""), perent: self)
+                    Common.showAlert(alertTitle: "NO_INTERNET_ALERT_TITLE".localizedString, alertMessage: "NO_INTERNET_ALERT_MESSAGE".localizedString, perent: self)
                 default:// 1017:
-                    Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: error.localizedDescription, perent: self)
+                    Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: error.localizedDescription, perent: self)
                     
                     //                default: Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE", comment: ""), alertMessage: NSLocalizedString("ERROR_UNKNOW", comment: ""), perent: self)
                     

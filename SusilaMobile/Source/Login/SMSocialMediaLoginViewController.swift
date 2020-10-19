@@ -29,8 +29,8 @@ class SMSocialMediaLoginViewController: BaseViewController {
     override func viewDidLoad() {
         self.setText()
 
-        GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance()?.presentingViewController = self
         let translateSet = defaults.object(forKey: "loadToMainLogin") as? String
         if translateSet == "true" {
             backButton.isHidden = true
@@ -94,7 +94,6 @@ class SMSocialMediaLoginViewController: BaseViewController {
                 }
             }
         }
-        
     }
     
     @IBAction func tappedGoogleButton(_ sender: Any) {
@@ -154,11 +153,11 @@ class SMSocialMediaLoginViewController: BaseViewController {
         if let error = error {
             switch error.code {
             case ResponseCode.noNetwork.rawValue:
-                Common.showAlert(alertTitle: NSLocalizedString("NO_INTERNET_ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: NSLocalizedString("NO_INTERNET_ALERT_MESSAGE".localized(using: "Localizable"), comment: ""), perent: self)
+                Common.showAlert(alertTitle: "NO_INTERNET_ALERT_TITLE".localizedString, alertMessage: "NO_INTERNET_ALERT_MESSAGE".localizedString, perent: self)
                 //                case 1001, 1003, 1031:
                 //                    Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE", comment: ""), alertMessage: error.localizedDescription, perent: self)
                 
-            default: Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: error.localizedDescription, perent: self)
+            default: Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: error.localizedDescription, perent: self)
             }
         }
     }
@@ -175,7 +174,8 @@ class SMSocialMediaLoginViewController: BaseViewController {
 }
 
 //Google
-extension SMSocialMediaLoginViewController: GIDSignInUIDelegate, GIDSignInDelegate {
+extension SMSocialMediaLoginViewController: GIDSignInDelegate {
+    
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil) {
             ProgressView.shared.hide()

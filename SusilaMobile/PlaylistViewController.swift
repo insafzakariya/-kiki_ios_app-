@@ -13,7 +13,6 @@ class PlaylistViewController: UIView {
     var collapsibleTableViewController:CollapsiblePlaylistTableViewController!
     let playlistModel = PlaylistModel()
     var parentVC: DashboardViewController!
-    var homeVC = HomeViewController()
     // MARK: - INIT
     override init(frame: CGRect) {
         super.init(frame:frame)
@@ -85,7 +84,7 @@ class PlaylistViewController: UIView {
             if (status) {
                 if (songs == nil || (songs?.isEmpty)!) {
                     let alert = UIAlertController(title: "Kiki", message: "No Songs Availabale", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: UIAlertAction.Style.default, handler: nil))
                     self.parentVC!.present(alert, animated: true, completion: nil)
                 } else {
                     self.parentVC.playerView.pause()
@@ -95,7 +94,7 @@ class PlaylistViewController: UIView {
                 }
             } else {
                 let alert = UIAlertController(title: "Kiki", message: "Unexpected error occured", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: UIAlertAction.Style.default, handler: nil))
                 self.parentVC!.present(alert, animated: true, completion: nil)
             }
         })
@@ -106,7 +105,7 @@ class PlaylistViewController: UIView {
             if (status) {
                 if (songs == nil || (songs?.isEmpty)!) {
                     let alert = UIAlertController(title: "Kiki", message: "No Songs Availabale", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: UIAlertAction.Style.default, handler: nil))
                     self.parentVC!.present(alert, animated: true, completion: nil)
                 } else {
                     self.parentVC.playerView.pause()
@@ -116,7 +115,7 @@ class PlaylistViewController: UIView {
                 }
             } else {
                 let alert = UIAlertController(title: "Kiki", message: "Unexpected error occured", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: UIAlertAction.Style.default, handler: nil))
                 self.parentVC!.present(alert, animated: true, completion: nil)
             }
         })
@@ -214,7 +213,7 @@ class PlayListSongsCard: UIView {
            add = UIButton(frame: CGRect(x:  UIScreen.main.bounds.width-70, y: image.frame.height/2-10, width: 60, height: 20))
            add.layer.cornerRadius = 10
            add.layer.borderWidth = 1
-           add.setTitle(NSLocalizedString("Add".localized(using: "Localizable"), comment: ""), for: .normal)
+           add.setTitle("Add".localizedString, for: .normal)
            add.backgroundColor = Constants.color_brand
            add.layer.borderColor = Constants.color_brand.cgColor
            add.setTitleColor(.white, for: .normal)
@@ -251,10 +250,10 @@ class PlayListSongsCard: UIView {
        
        @objc func buttonClick_AddPlaylist(sender:PlaylistTapGesture) {
            
-           if self.add.titleLabel?.text == NSLocalizedString("Add".localized(using: "Localizable"), comment: "") {
+           if self.add.titleLabel?.text == "Add".localizedString {
                self.add.setTitle("Added", for: .normal)
            } else {
-               self.add.setTitle(NSLocalizedString("Add".localized(using: "Localizable"), comment: ""), for: .normal)
+               self.add.setTitle("Add".localizedString, for: .normal)
            }
        }
 

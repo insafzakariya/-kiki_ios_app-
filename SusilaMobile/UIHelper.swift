@@ -20,7 +20,7 @@ class UIHelper:NSObject{
     
     public static func makeOKAlert(title:String,message:String,viewController:UIViewController){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: nil)
+        let OKAction = UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: .default, handler: nil)
         alert.addAction(OKAction)
         viewController.present(alert, animated: true, completion: nil)
     }
@@ -30,19 +30,19 @@ class UIHelper:NSObject{
     }
     
     public static func makeSubscribeToListenAlert(on window:UIWindow){
-        let title = NSLocalizedString("SubscribeToListen".localized(using: "Localizable"), comment: "")
-        let alert = UIAlertController(title: title, message: NSLocalizedString("PleaseActivateaPackageToUnlockAccess".localized(using: "Localizable"), comment: "")+NSLocalizedString("toExclusiveContentFromKiki".localized(using: "Localizable"), comment: ""), preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("SubscribeNow".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: { action in
+        let title = "SubscribeToListen".localizedString
+        let alert = UIAlertController(title: title, message: "PleaseActivateaPackageToUnlockAccess".localizedString + "toExclusiveContentFromKiki".localizedString, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "SubscribeNow".localizedString, style: UIAlertAction.Style.default, handler: { action in
             let mainMenu = getRootViewController().drawerViewController as! SMMainMenuViewController
             mainMenu.navigateToPackagePage()
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("CLOSE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "CLOSE".localizedString, style: UIAlertAction.Style.cancel, handler: nil))
         window.rootViewController!.present(alert, animated: true, completion: nil)
     }
     
     public static func makeNoContentAlert(on winow:UIWindow){
         let title = "No Content Available"
-        let message = "Looks like there;s no content available at the moment. Please try again later."
+        let message = "Looks like there's no content available at the moment. Please try again later."
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
@@ -70,7 +70,7 @@ class UIHelper:NSObject{
     //
     //        alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
     //
-    //        let OKAction = UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default) { (action) in
+    //        let OKAction = UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: .default) { (action) in
     //            // ...
     //            print("In ok button")
     //            completion(true)

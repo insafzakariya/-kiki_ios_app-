@@ -109,7 +109,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         createLibrarySongHeaderView(view: scrollView) // Library songs header view
         createLibrarySongFrontView(view: scrollView) // Library songs front view
-        createLibrarySongSeeAllView(view: view, title: NSLocalizedString("Song".localized(using: "Localizable"), comment: "")) // Library songs see all view
+        createLibrarySongSeeAllView(view: view, title: "Song".localizedString) // Library songs see all view
         loadLibrarySongList() //Load songs for Library
         
         createLibraryArtistHeaderView(view: scrollView) // Library artist header view
@@ -163,7 +163,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
                 DispatchQueue.main.async {
                     self.libraryAllPlaylist = self.libraryDataModel.playlists
                     if self.libraryAllPlaylist.count < 1 {
-                        self.alert(message: NSLocalizedString("NoPlayListFound".localized(using: "Localizable"), comment: ""))
+                        self.alert(message: "NoPlayListFound".localizedString)
                     }
                     self.loadList(view: self.addToPlaylistAlertDialog.scrollList)
                 }
@@ -207,7 +207,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         var songsid = [String]()
         songsid.append(String(addToPlaylistAlertDialog.id))
         addSongToPlaylist(playlistId: recognizer.id, songs: songsid)
-        self.alert(message: NSLocalizedString("AddedToPlayList".localized(using: "Localizable"), comment: ""))
+        self.alert(message: "AddedToPlayList".localizedString)
         self.addToPlaylistAlertDialog.isHidden = true
         self.addToPlaylistAlertDialog.removeFromSuperview()
         self.overLayView.removeFromSuperview()
@@ -275,12 +275,12 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         let labelSongs = UILabel()
         labelSongs.frame = CGRect(x: 10, y: 0, width: topBar.frame.width, height:topBar.frame.height)
-        labelSongs.text = NSLocalizedString("Song".localized(using: "Localizable"), comment: "")
+        labelSongs.text = "Song".localizedString
         labelSongs.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelSongs.textColor = UIColor.white
         
         labelSongsSeeAllSong.frame = CGRect(x: topBar.frame.width-80, y: 10, width: 70, height:20)
-        labelSongsSeeAllSong.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongsSeeAllSong.text = "ViewAll".localizedString
         labelSongsSeeAllSong.textAlignment = .center
         labelSongsSeeAllSong.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongsSeeAllSong.layer.cornerRadius = 10
@@ -307,7 +307,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         noSongLabel = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: (UIScreen.main.bounds.width-40)*1/3+30))
         noSongLabel.textAlignment = .center
         noSongLabel.textColor = .white
-        noSongLabel.text = NSLocalizedString("NoSongsAddedToLibrary".localized(using: "Localizable"), comment: "")
+        noSongLabel.text = "NoSongsAddedToLibrary".localizedString
         viewLibrarySongs.addSubview(noSongLabel)
         noSongLabel.isHidden = true
         
@@ -364,12 +364,12 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         let labelSongs = UILabel()
         labelSongs.frame = CGRect(x: 10, y: 0, width: topBar.frame.width, height:topBar.frame.height)
-        labelSongs.text = NSLocalizedString("Artist".localized(using: "Localizable"), comment: "")
+        labelSongs.text = "Artist".localizedString
         labelSongs.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelSongs.textColor = UIColor.white
         
         labelSongsSeeAllArtist.frame = CGRect(x: topBar.frame.width-80, y: 10, width: 70, height:20)
-        labelSongsSeeAllArtist.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongsSeeAllArtist.text = "ViewAll".localizedString
         labelSongsSeeAllArtist.textAlignment = .center
         labelSongsSeeAllArtist.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongsSeeAllArtist.layer.cornerRadius = 10
@@ -397,7 +397,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         noArtistLabel = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: artistContent.frame.height))
         noArtistLabel.textAlignment = .center
-        noArtistLabel.text = NSLocalizedString("NoArtistAddedToLibrary".localized(using: "Localizable"), comment: "")
+        noArtistLabel.text = "NoArtistAddedToLibrary".localizedString
         noArtistLabel.textColor = .white
         artistContent.addSubview(noArtistLabel)
         if libraryArtistsList.count>0 {
@@ -559,7 +559,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         let labelAlbumByArtistSeeAll = UILabel()
         labelAlbumByArtistSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: titleContainer.frame.height+10, width: 70, height:20)
-        labelAlbumByArtistSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelAlbumByArtistSeeAll.text = "ViewAll".localizedString
         labelAlbumByArtistSeeAll.textAlignment = .center
         labelAlbumByArtistSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelAlbumByArtistSeeAll.layer.cornerRadius = 10
@@ -571,13 +571,13 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         let labelSong = UILabel()
         labelSong.frame = CGRect(x: 10, y: titleContainer.frame.height, width: UIScreen.main.bounds.width-10, height:40)
         
-        labelSong.text = NSLocalizedString("Song".localized(using: "Localizable"), comment: "")
+        labelSong.text = "Song".localizedString
         labelSong.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelSong.textColor = UIColor.white
         
         let labelSongByArtistSeeAll = UILabel()
         labelSongByArtistSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: titleContainer.frame.height+10, width: 70, height:20)
-        labelSongByArtistSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongByArtistSeeAll.text = "ViewAll".localizedString
         labelSongByArtistSeeAll.textAlignment = .center
         labelSongByArtistSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongByArtistSeeAll.layer.cornerRadius = 10
@@ -654,12 +654,12 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         let labelSongs = UILabel()
         labelSongs.frame = CGRect(x: 10, y: 0, width: topBar.frame.width, height:topBar.frame.height)
-        labelSongs.text = NSLocalizedString("KikiPlaylist".localized(using: "Localizable"), comment: "")
+        labelSongs.text = "KikiPlaylist".localizedString
         labelSongs.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelSongs.textColor = UIColor.white
         
         labelSongsSeeAllKikiPlaylist.frame = CGRect(x: topBar.frame.width-80, y: 10, width: 70, height:20)
-        labelSongsSeeAllKikiPlaylist.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongsSeeAllKikiPlaylist.text = "ViewAll".localizedString
         labelSongsSeeAllKikiPlaylist.textAlignment = .center
         labelSongsSeeAllKikiPlaylist.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongsSeeAllKikiPlaylist.layer.cornerRadius = 10
@@ -687,7 +687,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         noPlaylistLabel = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: playlistContent.frame.height))
         noPlaylistLabel.textAlignment = .center
-        noPlaylistLabel.text = NSLocalizedString("NoPlayListAddedToLibrary".localized(using: "Localizable"), comment: "")
+        noPlaylistLabel.text = "NoPlayListAddedToLibrary".localizedString
         playlistContent.addSubview(noPlaylistLabel)
         noPlaylistLabel.textColor = .white
         if libraryKiKiPlaylists.count>0 {
@@ -860,7 +860,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         let attachmentString = NSAttributedString(attachment: imageAttachment)
         let completeText = NSMutableAttributedString(string: "")
         completeText.append(attachmentString)
-        let  textAfterIcon = NSMutableAttributedString(string: NSLocalizedString("Play".localized(using: "Localizable"), comment: ""))
+        let  textAfterIcon = NSMutableAttributedString(string: "Play".localizedString)
         completeText.append(textAfterIcon)
         labelPlaySong.textAlignment = .center
         labelPlaySong.attributedText = completeText
@@ -879,7 +879,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         let labelAddSong = UILabel()
         labelAddSong.frame = CGRect(x: UIScreen.main.bounds.width/2+5, y: lblTitle.frame.height+image.frame.height+songs.frame.height+10, width: 70, height:20)
-        labelAddSong.text = NSLocalizedString("Add".localized(using: "Localizable"), comment: "")
+        labelAddSong.text = "Add".localizedString
         labelAddSong.textAlignment = .center
         labelAddSong.font = UIFont(name: "Roboto-Bold", size: 9.0)
         labelAddSong.layer.cornerRadius = 10
@@ -941,12 +941,12 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         let labelSongs = UILabel()
         labelSongs.frame = CGRect(x: 10, y: 0, width: topBar.frame.width, height:topBar.frame.height)
-        labelSongs.text = NSLocalizedString("YourPlaylist".localized(using: "Localizable"), comment: "")
+        labelSongs.text = "YourPlaylist".localizedString
         labelSongs.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelSongs.textColor = UIColor.white
         
         labelSongsSeeAllUserPlaylist.frame = CGRect(x: topBar.frame.width-80, y: 10, width: 70, height:20)
-        labelSongsSeeAllUserPlaylist.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongsSeeAllUserPlaylist.text = "ViewAll".localizedString
         labelSongsSeeAllUserPlaylist.textAlignment = .center
         labelSongsSeeAllUserPlaylist.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongsSeeAllUserPlaylist.layer.cornerRadius = 10
@@ -1057,7 +1057,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         let addMorePlaylist = UILabel()
         addMorePlaylist.frame = CGRect(x: UIScreen.main.bounds.width/6+10, y: 10, width: UIScreen.main.bounds.width-UIScreen.main.bounds.width/6+10, height: UIScreen.main.bounds.width/6)
-        addMorePlaylist.text = NSLocalizedString("CREATE_NEW_PLAYLIST".localized(using: "Localizable"), comment: "")
+        addMorePlaylist.text = "CREATE_NEW_PLAYLIST".localizedString
         addMorePlaylist.font = UIFont.boldSystemFont(ofSize: 14)
         addMorePlaylist.textColor = Constants.color_brand
         two.addSubview(addMorePlaylist)
@@ -1173,7 +1173,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         let attachmentString = NSAttributedString(attachment: imageAttachment)
         let completeText = NSMutableAttributedString(string: "")
         completeText.append(attachmentString)
-        let  textAfterIcon = NSMutableAttributedString(string: NSLocalizedString("Play".localized(using: "Localizable"), comment: ""))
+        let  textAfterIcon = NSMutableAttributedString(string: "Play".localizedString)
         completeText.append(textAfterIcon)
         labelPlaySong.textAlignment = .center
         labelPlaySong.attributedText = completeText
@@ -1199,7 +1199,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         let attachmentString2 = NSAttributedString(attachment: imageAttachment2)
         let completeText2 = NSMutableAttributedString(string: "")
         completeText2.append(attachmentString2)
-        let  textAfterIcon2 = NSMutableAttributedString(string: NSLocalizedString("Edit".localized(using: "Localizable"), comment: ""))
+        let  textAfterIcon2 = NSMutableAttributedString(string: "Edit".localizedString)
         completeText2.append(textAfterIcon2)
         labelEditList.textAlignment = .center
         labelEditList.attributedText = completeText2
@@ -1219,7 +1219,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         let labelAddSong = UILabel()
         labelAddSong.frame = CGRect(x: UIScreen.main.bounds.width/2+5, y: lblTitle.frame.height+image.frame.height+songs.frame.height+10, width: 70, height:20)
-        labelAddSong.text = NSLocalizedString("Add".localized(using: "Localizable"), comment: "")
+        labelAddSong.text = "Add".localizedString
         labelAddSong.textAlignment = .center
         labelAddSong.font = UIFont(name: "Roboto-Bold", size: 9.0)
         labelAddSong.layer.cornerRadius = 10
@@ -1273,14 +1273,14 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         let topBar = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100+UIScreen.main.bounds.width/4))
         
         let cancel = UIButton(frame: CGRect(x: 0, y: 10, width: 90, height: 20))
-        cancel.setTitle(NSLocalizedString("CANCEL_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), for: .normal)
+        cancel.setTitle("CANCEL_BUTTON_TITLE".localizedString, for: .normal)
         cancel.setTitleColor(Constants.color_red, for: .normal)
         cancel.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
         cancel.addTarget(self, action: #selector(buttonClick_HideCreatedPlaylistView), for: .touchUpInside)
         topBar.addSubview(cancel)
         
         let confirm = UIButton(frame: CGRect(x: UIScreen.main.bounds.width-90, y: 10, width: 75, height: 20))
-        confirm.setTitle(NSLocalizedString("Confirm".localized(using: "Localizable"), comment: ""), for: .normal)
+        confirm.setTitle("Confirm".localizedString, for: .normal)
         confirm.backgroundColor = Constants.color_brand
         confirm.layer.cornerRadius = 10
         confirm.clipsToBounds = true
@@ -1316,7 +1316,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         newPlaylist.frame = CGRect(x: UIScreen.main.bounds.width/2-60, y: 50+UIScreen.main.bounds.width/4, width: 120, height: 30)
         newPlaylist.textAlignment = .center
         if mainInstance.playlistName == "" {
-            newPlaylist.text = NSLocalizedString("NEW_PLAYLIST".localized(using: "Localizable"), comment: "")
+            newPlaylist.text = "NEW_PLAYLIST".localizedString
         } else {
             newPlaylist.text = mainInstance.playlistName
         }
@@ -1332,7 +1332,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         topBar.addSubview(newPlaylist)
         
         edit = UIButton(frame: CGRect(x: UIScreen.main.bounds.width/2+60, y: 50+UIScreen.main.bounds.width/4, width: 110, height: 30))
-        edit.setTitle("("+NSLocalizedString("Edit".localized(using: "Localizable"), comment: "")+")", for: .normal)
+        edit.setTitle("(" + "Edit".localizedString + ")", for: .normal)
         edit.setTitleColor(Constants.color_brand, for: .normal)
         edit.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
         edit.addTarget(self, action: #selector(buttonClick_EditPlaylistName), for: .touchUpInside)
@@ -1402,14 +1402,14 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         let topBar = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100+UIScreen.main.bounds.width/4))
         
         let cancel = UIButton(frame: CGRect(x: 0, y: 10, width: 90, height: 20))
-        cancel.setTitle(NSLocalizedString("CANCEL_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), for: .normal)
+        cancel.setTitle("CANCEL_BUTTON_TITLE".localizedString, for: .normal)
         cancel.setTitleColor(Constants.color_red, for: .normal)
         cancel.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
         cancel.addTarget(self, action: #selector(buttonClick_HideCreatedPlaylistView), for: .touchUpInside)
         topBar.addSubview(cancel)
         
         let confirm = UIButton(frame: CGRect(x: UIScreen.main.bounds.width-90, y: 10, width: 75, height: 20))
-        confirm.setTitle(NSLocalizedString("Confirm".localized(using: "Localizable"), comment: ""), for: .normal)
+        confirm.setTitle("Confirm".localizedString, for: .normal)
         confirm.backgroundColor = Constants.color_brand
         confirm.layer.cornerRadius = 10
         confirm.clipsToBounds = true
@@ -1447,7 +1447,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         newPlaylist.frame = CGRect(x: UIScreen.main.bounds.width/2-60, y: 50+UIScreen.main.bounds.width/4, width: 120, height: 30)
         newPlaylist.textAlignment = .center
         if mainInstance.playlistName == "" {
-            newPlaylist.text = NSLocalizedString("NEW_PLAYLIST".localized(using: "Localizable"), comment: "")
+            newPlaylist.text = "NEW_PLAYLIST".localizedString
         } else {
             newPlaylist.text = mainInstance.playlistName
         }
@@ -1463,7 +1463,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         topBar.addSubview(newPlaylist)
         
         edit = UIButton(frame: CGRect(x: UIScreen.main.bounds.width/2+60, y: 50+UIScreen.main.bounds.width/4, width: 110, height: 30))
-        edit.setTitle("("+NSLocalizedString("Edit".localized(using: "Localizable"), comment: "")+")", for: .normal)
+        edit.setTitle("(" + "Edit".localizedString + ")", for: .normal)
         edit.setTitleColor(Constants.color_brand, for: .normal)
         edit.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
         edit.addTarget(self, action: #selector(buttonClick_EditPlaylistName), for: .touchUpInside)
@@ -1536,7 +1536,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         topBar.addSubview(arrow)
         
         let confirm = UIButton(frame: CGRect(x: UIScreen.main.bounds.width-90, y: 10, width: 75, height: 20))
-        confirm.setTitle(NSLocalizedString("Confirm".localized(using: "Localizable"), comment: ""), for: .normal)
+        confirm.setTitle("Confirm".localizedString, for: .normal)
         confirm.backgroundColor = Constants.color_brand
         confirm.layer.cornerRadius = 10
         confirm.clipsToBounds = true
@@ -1569,7 +1569,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         let labelPlayListSeeAll = UILabel()
         labelPlayListSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: 70, width: 70, height:20)
-        labelPlayListSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelPlayListSeeAll.text = "ViewAll".localizedString
         labelPlayListSeeAll.textAlignment = .center
         labelPlayListSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelPlayListSeeAll.layer.cornerRadius = 10
@@ -1593,7 +1593,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         let labelSongsSeeAll = UILabel()
         labelSongsSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: UIScreen.main.bounds.width/2+110, width: 70, height:20)
-        labelSongsSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongsSeeAll.text = "ViewAll".localizedString
         labelSongsSeeAll.textAlignment = .center
         labelSongsSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongsSeeAll.layer.cornerRadius = 10
@@ -1617,7 +1617,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         let labelByArtistsSeeAll = UILabel()
         labelByArtistsSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: UIScreen.main.bounds.width/2+150+((UIScreen.main.bounds.width-40)*1/3-10)+40, width: 70, height:20)
-        labelByArtistsSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelByArtistsSeeAll.text = "ViewAll".localizedString
         labelByArtistsSeeAll.textAlignment = .center
         labelByArtistsSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelByArtistsSeeAll.layer.cornerRadius = 10
@@ -1852,7 +1852,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
             decodedImage = decodedImage.replacingOccurrences(of: "+", with: "%20")
             songTile.image.sd_setImage(with: URL(string: decodedImage), placeholderImage: UIImage(named: "logo_grayscale"))
             songTile.id = tileData.id
-            songTile.add.setTitle(NSLocalizedString("Add".localized(using: "Localizable"), comment: ""), for: .normal)
+            songTile.add.setTitle("Add".localizedString, for: .normal)
             songTile.add.layer.borderColor = Constants.color_brand.cgColor
             songTile.add.setTitleColor(Constants.color_brand, for: .normal)
             xLength += UIScreen.main.bounds.width/6+20
@@ -1976,7 +1976,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         let labelAddSong = UILabel()
         labelAddSong.frame = CGRect(x: 0, y: lblTitle.frame.height+image.frame.height+songs.frame.height+10, width: 70, height:20)
         labelAddSong.center.x = topBar.center.x
-        labelAddSong.text = NSLocalizedString("ADD_ALL".localized(using: "Localizable"), comment: "")
+        labelAddSong.text = "ADD_ALL".localizedString
         labelAddSong.textAlignment = .center
         labelAddSong.font = UIFont(name: "Roboto-Bold", size: 9.0)
         labelAddSong.layer.cornerRadius = 10
@@ -2011,7 +2011,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
             songTile.image.sd_setImage(with: URL(string: decodedImage), placeholderImage: UIImage(named: "logo_grayscale"))
             
             if status || mainInstance.songArray.contains(tileData.id) {
-                songTile.add.setTitle(NSLocalizedString("AddedToPlayList".localized(using: "Localizable"), comment: ""), for: .normal)
+                songTile.add.setTitle("AddedToPlayList".localizedString, for: .normal)
                 songTile.add.backgroundColor = Constants.color_brand
                 songTile.add.layer.borderColor = Constants.color_brand.cgColor
                 songTile.add.setTitleColor(.white, for: .normal)
@@ -2102,7 +2102,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         let labelAlbumByArtistSeeAll = UILabel()
         labelAlbumByArtistSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: titleContainer.frame.height+10, width: 70, height:20)
-        labelAlbumByArtistSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelAlbumByArtistSeeAll.text = "ViewAll".localizedString
         labelAlbumByArtistSeeAll.textAlignment = .center
         labelAlbumByArtistSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelAlbumByArtistSeeAll.layer.cornerRadius = 10
@@ -2120,7 +2120,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         
         let labelSongByArtistSeeAll = UILabel()
         labelSongByArtistSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: titleContainer.frame.height+10, width: 70, height:20)
-        labelSongByArtistSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongByArtistSeeAll.text = "ViewAll".localizedString
         labelSongByArtistSeeAll.textAlignment = .center
         labelSongByArtistSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongByArtistSeeAll.layer.cornerRadius = 10
@@ -2808,17 +2808,16 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         ProgressView.shared.show(view, mainText: nil, detailText: nil)
         self.libraryDataModel.getAllSongs(offset: self.allSongSeeAll.count, getAllSongsListCallFinished: { (status, error, userInfo) in
             if status {
-                DispatchQueue.main.async(execute: {
+                self.allSongSeeAll = self.libraryDataModel.allSongs
+                self.contOffset = Int(CGFloat(self.allSongSeeAll.count)*(UIScreen.main.bounds.width/6))
+                DispatchQueue.main.async{
                     ProgressView.shared.hide()
-                    self.allSongSeeAll = self.libraryDataModel.allSongs
-                    
-                    self.contOffset = Int(CGFloat(self.allSongSeeAll.count)*(UIScreen.main.bounds.width/6))
                     self.loadSelectSongsSeeAllViews(view: self.view, title: "Add Songs")
-                })
+                }
             } else {
-                DispatchQueue.main.async(execute: {
+                DispatchQueue.main.async{
                     ProgressView.shared.hide()
-                })
+                }
             }
         })
     }
@@ -2857,7 +2856,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         self.libraryDataModel.removeFromLibrary(key: key, id: id, removeFromLibraryCallFinished: { (status, error, userInfo) in
             if status{
                 DispatchQueue.main.async(execute: {
-                    self.alert(message: NSLocalizedString("REMOVED_FROM_LIBRARY".localized(using: "Localizable"), comment: ""))
+                    self.alert(message: "REMOVED_FROM_LIBRARY".localizedString)
                     //self.addAlertDialog.isHidden = true
                     //self.addAlertDialog.removeFromSuperview()
                     //self.overLayView.removeFromSuperview()
@@ -2983,15 +2982,15 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     @objc func buttonClickedRemoveArtistFromLibrary(recognizer: GenreTapGesture) {
-        showConfirmAlertDialog(title: NSLocalizedString("DO_YOU_WANT_TO_REMOVE".localized(using: "Localizable"), comment: "")+recognizer.title, id: Int(recognizer.id)!, key: "A")
+        showConfirmAlertDialog(title: "DO_YOU_WANT_TO_REMOVE".localizedString + recognizer.title, id: Int(recognizer.id)!, key: "A")
     }
     
     @objc func buttonClickedRemovePlaylistFromLibrary(recognizer: GenreTapGesture) {
-        showConfirmAlertDialog(title: NSLocalizedString("DO_YOU_WANT_TO_REMOVE".localized(using: "Localizable"), comment: "")+recognizer.title, id: Int(recognizer.id)!, key: "P")
+        showConfirmAlertDialog(title: "DO_YOU_WANT_TO_REMOVE".localizedString + recognizer.title, id: Int(recognizer.id)!, key: "P")
     }
     
     @objc func buttonClickedRemoveUserPlaylistFromLibrary(recognizer: GenreTapGesture) {
-        showConfirmAlertDialog(title: NSLocalizedString("DO_YOU_WANT_TO_REMOVE".localized(using: "Localizable"), comment: "")+recognizer.title, id: Int(recognizer.id)!, key: "UP")
+        showConfirmAlertDialog(title: "DO_YOU_WANT_TO_REMOVE".localizedString + recognizer.title, id: Int(recognizer.id)!, key: "UP")
     }
     
     @objc func buttonClickSeeAllLibrarySongs(sender: LibraryTapGesture) {
@@ -3011,7 +3010,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     @objc func buttonClickSeeAllLibraryArtists(sender: UIButton) {
-        self.createLibraryArtistSeeAllView(view: view, title: NSLocalizedString("Artist".localized(using: "Localizable"), comment: ""))
+        self.createLibraryArtistSeeAllView(view: view, title: "Artist".localizedString)
     }
     
     @objc func buttonClickedOnArtist(recognizer: MyTapGesture) {
@@ -3032,7 +3031,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     @objc func buttonClickedSeeAllArtistBySongs(recognizer: PlaylistPlayGesture) {
-        createLibrarySongByArtistSeeAllView(view: view, title: NSLocalizedString("Song".localized(using: "Localizable"), comment: ""))
+        createLibrarySongByArtistSeeAllView(view: view, title: "Song".localizedString)
         loadLibraryArtistAllSongsList(id: recognizer.id)
     }
     
@@ -3042,7 +3041,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     @objc func buttonClickSeeAllLibraryKiKiPlaylists(sender:UIButton) {
-        createKiKiPlaylistSeeAllViews(view: view, title: NSLocalizedString("KikiPlaylist".localized(using: "Localizable"), comment: ""))
+        createKiKiPlaylistSeeAllViews(view: view, title: "KikiPlaylist".localizedString)
     }
     
     @objc func buttonClickBackLibraryKiKiPlaylistSeeAllView(sender:UIButton) {
@@ -3067,7 +3066,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     @objc func buttonClickSeeAllLibraryUserPlaylists(sender:UIButton) {
-        createUserPlaylistSeeAllViews(view: view, title: NSLocalizedString("YourPlaylist".localized(using: "Localizable"), comment: ""))
+        createUserPlaylistSeeAllViews(view: view, title: "YourPlaylist".localizedString)
     }
     
     @objc func buttonClickBackLibraryUserPlaylistSeeAllView(sender:UIButton) {
@@ -3120,7 +3119,7 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         //mainInstance.playlistImage=""
         mainInstance.songArray.removeAll()
         mainInstance.playlistName=newPlaylist.text!
-        if mainInstance.playlistName == "" || mainInstance.playlistName == NSLocalizedString("NEW_PLAYLIST".localized(using: "Localizable"), comment: "") {
+        if mainInstance.playlistName == "" || mainInstance.playlistName == "NEW_PLAYLIST".localizedString {
             if imgGlobal != "" {
                 createPlaylist(playlistName: "New Playlist", imageUrl: "data:image/png;base64,"+imgGlobal)
             } else {

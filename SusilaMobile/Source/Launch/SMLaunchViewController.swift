@@ -116,7 +116,7 @@ class SMLaunchViewController: UIViewController {
                 
             default:
                 let error = Common.getErrorFromJson(description: jsonData[ErrorJsonKeys.errorMessage].string ?? "", errorType: "\(jsonData[ErrorJsonKeys.errorCode].int ?? -1)", errorCode: jsonData[ErrorJsonKeys.errorCode].int ?? -1)
-                Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: error.localizedDescription)
+                Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: error.localizedDescription)
                 Common.logout()
             }
             

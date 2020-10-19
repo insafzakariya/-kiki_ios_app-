@@ -34,7 +34,6 @@ class AllSongsModel:NSObject{
                     
                     self.songsListBySelectedGenre.removeAll()
                     for jsonObject in jsonList{
-                        
                         let song = Song(id: jsonObject[Song.JsonKeys.id].int ?? -1, name: jsonObject[Song.JsonKeys.name].string ?? "", duration: jsonObject[Song.JsonKeys.duration].int ?? 0, date: jsonObject[Song.JsonKeys.date].string ?? "", description: jsonObject[Song.JsonKeys.description].string ?? "", image: jsonObject[Song.JsonKeys.image].string ?? "", blocked: jsonObject[Song.JsonKeys.blocked].bool ?? false, url: jsonObject[Song.JsonKeys.url].string ?? "", artist: jsonObject[Song.JsonKeys.artist].string ?? "")
                         
                         self.songsListBySelectedGenre.append(song)
@@ -153,7 +152,6 @@ class AllSongsModel:NSObject{
     
     func getAllSongsList(offset:Int, getAllSongsListCallFinished: @escaping (_ status: Bool, _ error: NSError?, _ userInfo: [String: AnyObject]?) -> Void) {
         api.getAllSongsList(offset:offset, success: { (data, code) -> Void in
-            
             switch code {
             case 200:
                 

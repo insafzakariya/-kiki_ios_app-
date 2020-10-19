@@ -81,4 +81,18 @@ extension UIView {
         border.frame = CGRect(x: 0.0, y: 0.0, width: width, height: self.frame.size.height)
         self.layer.addSublayer(border)
     }
+    
+    
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder?.next
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
+        }
+        return nil
+    }
+    
+    
 }

@@ -99,8 +99,8 @@ class SMRegisterViewController: BaseViewController {
         if validateResult != StatusCode.passedValidation {
             let message = validateResult.getFailedMessage()
             
-            let alert = UIAlertController(title: NSLocalizedString("LOGIN_ERROR_ALERT_TITLE".localized(using: "Localizable"), comment: ""), message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: { (action) -> Void in
+            let alert = UIAlertController(title: "LOGIN_ERROR_ALERT_TITLE".localizedString, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: .default, handler: { (action) -> Void in
                 ProgressView.shared.hide()
             }))
             showDetailViewController(alert, sender: nil)
@@ -135,11 +135,11 @@ class SMRegisterViewController: BaseViewController {
                     if let error = error {
                         switch error.code {
                         case ResponseCode.noNetwork.rawValue:
-                            Common.showAlert(alertTitle: NSLocalizedString("NO_INTERNET_ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: NSLocalizedString("NO_INTERNET_ALERT_MESSAGE".localized(using: "Localizable"), comment: ""), perent: self)
+                            Common.showAlert(alertTitle: "NO_INTERNET_ALERT_TITLE".localizedString, alertMessage: "NO_INTERNET_ALERT_MESSAGE".localizedString, perent: self)
                             //                case 1001, 1003, 1031:
                             //                    Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE", comment: ""), alertMessage: error.localizedDescription, perent: self)
                             
-                        default: Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: error.localizedDescription, perent: self)
+                        default: Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: error.localizedDescription, perent: self)
                             
                         }
                     }
@@ -161,14 +161,14 @@ class SMRegisterViewController: BaseViewController {
     }
     
     func connectionTimeoutMessage(){
-        let alertTitle = NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: "")
-        let alertMessage = NSLocalizedString("CONNECTION_TIME_OUT".localized(using: "Localizable"), comment: "")
+        let alertTitle = "ALERT_TITLE".localizedString
+        let alertMessage = "CONNECTION_TIME_OUT".localizedString
         
         let alert = UIAlertController(title: alertTitle, message:alertMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("CANCEL_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "CANCEL_BUTTON_TITLE".localizedString, style: .default, handler: { (action) -> Void in
             alert.dismiss(animated: true, completion: nil)
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: .default, handler: { (action) -> Void in
             self.register()
         }))
         showDetailViewController(alert, sender: nil)
@@ -187,17 +187,17 @@ extension SMRegisterViewController: RegisterDelegate {
 
                 switch error.code {
                 case ResponseCode.noNetwork.rawValue:
-                    Common.showAlert(alertTitle: NSLocalizedString("NO_INTERNET_ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: NSLocalizedString("NO_INTERNET_ALERT_MESSAGE".localized(using: "Localizable"), comment: ""), perent: self)
+                    Common.showAlert(alertTitle: "NO_INTERNET_ALERT_TITLE".localizedString, alertMessage: "NO_INTERNET_ALERT_MESSAGE".localizedString, perent: self)
                     
                 case ResponseCode.userAlreadyRegistered.rawValue:
-                    Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: error.localizedDescription, perent: self)
+                    Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: error.localizedDescription, perent: self)
                     
                 case ResponseCode.inValidCredentials.rawValue:
-                    Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: error.localizedDescription, perent: self)
+                    Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: error.localizedDescription, perent: self)
                 case 1001, 1003, 1031:
-                    Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: error.localizedDescription, perent: self)
+                    Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: error.localizedDescription, perent: self)
                     
-                default: Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: error.localizedDescription, perent: self)
+                default: Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: error.localizedDescription, perent: self)
                     
                 }
             }

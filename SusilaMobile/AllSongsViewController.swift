@@ -117,6 +117,7 @@ class AllSongsViewController: UIView {
         super.init(coder: aDecoder)
         self.commonInit()
     }
+    
     private func commonInit(){
         loadAllSongsGenres()
         loadGenreInitial(count: 1)
@@ -270,16 +271,15 @@ class AllSongsViewController: UIView {
         ProgressView.shared.show(self, mainText: nil, detailText: nil)
         self.allSongsModel.getAllSongsList(offset: self.allSongs.count, getAllSongsListCallFinished: { (status, error, userInfo) in
             if status{
-                
-                DispatchQueue.main.async(execute: {
+                DispatchQueue.main.async{
                     ProgressView.shared.hide()
-                    self.allSongs = self.allSongsModel.allSongsList
-                    self.currentShowingSongs = self.allSongsModel.allSongsList
-                })
+                }
+                self.allSongs = self.allSongsModel.allSongsList
+                self.currentShowingSongs = self.allSongsModel.allSongsList
             }else{
-                DispatchQueue.main.async(execute: {
+                DispatchQueue.main.async{
                     ProgressView.shared.hide()
-                })
+                }
             }
         })
     }
@@ -343,8 +343,8 @@ class AllSongsViewController: UIView {
                 self.parentVC.playlist?.playlistModel.loadAllPlaylistData()
             } else {
                 let alert = UIAlertController(title: "Kiki", message: "Unexpected error occured when creating the playlist", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: nil))
-                self.viewController!.present(alert, animated: true, completion: nil)
+                alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: UIAlertAction.Style.default, handler: nil))
+                self.parentViewController!.present(alert, animated: true, completion: nil)
                 self.scrollSongs.isUserInteractionEnabled = true
                 self.overLayView.removeFromSuperview()
             }
@@ -377,8 +377,8 @@ class AllSongsViewController: UIView {
         let plalistName = addPlayListPop.tfName.text!
         if (plalistName.isEmpty) {
             let alert = UIAlertController(title: "Kiki", message: "Please enter the playlist name", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: nil))
-            self.viewController!.present(alert, animated: true, completion: nil)
+            alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: UIAlertAction.Style.default, handler: nil))
+            self.parentViewController!.present(alert, animated: true, completion: nil)
             return
         }
         addPlayListPop.isHidden = true
@@ -390,8 +390,8 @@ class AllSongsViewController: UIView {
                 self.playlistItems.append(playlist!)
             } else {
                 let alert = UIAlertController(title: "Kiki", message: "Unexpected error occured when creating the playlist", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: nil))
-                self.viewController!.present(alert, animated: true, completion: nil)
+                alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: UIAlertAction.Style.default, handler: nil))
+                self.parentViewController!.present(alert, animated: true, completion: nil)
                 return
             }
         })
@@ -470,17 +470,17 @@ class AllSongsViewController: UIView {
             parentVC.playerView.play()
         }
         /*parentVC.playerView.pause()
-        if (!playAllCard.didSetOnce && currentShowingSongs.count > 0){
-            parentVC.playerView.currentPlayingList = currentShowingSongs
-            if (currentShowingSongs.count > 0){
-                parentVC.playerView.currentPlayingIndex = 0
-                parentVC.playerView.currentPlayingTime = 0
-            }
-            playAllCard.didSetOnce = true
-        }
-        if (currentShowingSongs.count > 0){
-            parentVC.playerView.play()
-        }*/
+         if (!playAllCard.didSetOnce && currentShowingSongs.count > 0){
+         parentVC.playerView.currentPlayingList = currentShowingSongs
+         if (currentShowingSongs.count > 0){
+         parentVC.playerView.currentPlayingIndex = 0
+         parentVC.playerView.currentPlayingTime = 0
+         }
+         playAllCard.didSetOnce = true
+         }
+         if (currentShowingSongs.count > 0){
+         parentVC.playerView.play()
+         }*/
         
     }
     
@@ -547,7 +547,7 @@ class PlayAllCard: UIView {
     
     var lblPlayAll:UILabel!
     var btnPlayAll:UIButton!
-
+    
     // MARK: - INIT
     override init(frame: CGRect) {
         super.init(frame:frame)
@@ -584,10 +584,10 @@ class SongCard: UIView {
         didSet{
             
             if (imageURL != ""){
-                 imgVw.downloadImage(from: URL(string: imageURL)!)
+                imgVw.downloadImage(from: URL(string: imageURL)!)
             } 
         }
-       
+        
     }
     
     var songData = Song(id: 0, name: "", duration: 0, date: "", description: "", image: "", blocked: false, url: "", artist: ""){
@@ -634,7 +634,7 @@ class SongCard: UIView {
         
         btnMore = UIButton(frame: CGRect(x: x, y: self.frame.height/2 - 35/2, width: 35, height: 35))
         btnMore.setBackgroundImage(UIImage(named: "dots"), for: UIControl.State.normal)
-
+        
         self.addSubview(imgVw)
         self.addSubview(lblTitle)
         self.addSubview(lblArtist)
@@ -696,7 +696,7 @@ class AddToPlayListPop: UIView {
         lblArtist = UILabel(frame: CGRect(x: x, y: self.frame.height/2 - 50, width: self.frame.width - x - 100, height: 25))
         lblArtist.textColor = UIColor.white
         lblArtist.font = UIFont.systemFont(ofSize: 14)
-
+        
         btnClose = UIButton(frame: CGRect(x: self.frame.width - 40, y: 10, width: 30, height: 30))
         btnClose.setBackgroundImage(UIImage(named: "close_white"), for: UIControl.State.normal)
         btnClose.layer.cornerRadius = 15
@@ -710,7 +710,7 @@ class AddToPlayListPop: UIView {
         btnAddPlayList.setBackgroundImage(UIImage(named: "add_playlist_white"), for: UIControl.State.normal)
         
         btnAddSongToPlaylist = UIButton(frame: CGRect(x: 80, y: self.frame.height/2 + 10, width: 150, height: 40))
-        btnAddSongToPlaylist.setTitle(NSLocalizedString("AddtoPlaylist".localized(using: "Localizable"), comment: ""), for: UIControl.State.normal)
+        btnAddSongToPlaylist.setTitle("AddtoPlaylist".localizedString, for: UIControl.State.normal)
         btnAddSongToPlaylist.setTitleColor(UIColor.white, for: UIControl.State.normal)
         
         self.addSubview(imgVw)
@@ -723,7 +723,7 @@ class AddToPlayListPop: UIView {
 }
 
 class AddPlayListPop: UIView {
-
+    
     var lblTitle:UILabel!
     var lblSubtitle:UILabel!
     var btnCreate:UIButton!
@@ -765,7 +765,7 @@ class AddPlayListPop: UIView {
         btnCancel.clipsToBounds = true
         btnCancel.layer.borderWidth = 1
         btnCancel.layer.borderColor = UIColor.red.cgColor
-        btnCancel.setTitle(NSLocalizedString("CANCEL_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), for: UIControl.State.normal)
+        btnCancel.setTitle("CANCEL_BUTTON_TITLE".localizedString, for: UIControl.State.normal)
         
         btnCreate = UIButton(frame: CGRect(x: self.frame.width - 90, y: 140, width: 80, height: 40))
         btnCreate.setTitleColor(UIColor(red: 68/255, green: 137/255, blue: 136/255, alpha: 1.0), for: UIControl.State.normal)
@@ -837,7 +837,7 @@ class PlaylistCreationSuccessPop: UIView {
         lblSubtitle.lineBreakMode = NSLineBreakMode.byWordWrapping
         lblSubtitle.numberOfLines = 2
         
-        btnCancel = constructOverlayButton(x: 10, overlayHeight: self.frame.height, title: NSLocalizedString("CANCEL_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), color: UIColor.red)
+        btnCancel = constructOverlayButton(x: 10, overlayHeight: self.frame.height, title: "CANCEL_BUTTON_TITLE".localizedString, color: UIColor.red)
         btnAdd = constructOverlayButton(x: self.frame.width - 90, overlayHeight: self.frame.height, title: "Add", color: Constants.kikiBlueColor)
         btnList = constructOverlayButton(x: self.frame.width - 180, overlayHeight: self.frame.height, title: "List", color: Constants.kikiBlueColor)
         
@@ -861,7 +861,7 @@ class AddToExistingPlayListPop: UIView {
     
     var scrollList:UIScrollView!
     var containerButtons:UIView!
-
+    
     // MARK: - INIT
     override init(frame: CGRect) {
         super.init(frame:frame)
@@ -899,8 +899,8 @@ class AddToExistingPlayListPop: UIView {
         btnCancel.clipsToBounds = true
         btnCancel.layer.borderWidth = 1
         btnCancel.layer.borderColor = UIColor(red: 68/255, green: 137/255, blue: 136/255, alpha: 1.0).cgColor
-        btnCancel.setTitle(NSLocalizedString("CANCEL_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), for: UIControl.State.normal)
-
+        btnCancel.setTitle("CANCEL_BUTTON_TITLE".localizedString, for: UIControl.State.normal)
+        
         self.addSubview(lblTitle)
         self.addSubview(lblSubtitle)
         self.addSubview(btnCancel)
@@ -917,7 +917,7 @@ class SuccessAlert: UIView {
     var lblTitle:UILabel!
     var lblSubtitle:UILabel!
     var btnOk:UIButton!
-
+    
     // MARK: - INIT
     override init(frame: CGRect) {
         super.init(frame:frame)
@@ -943,14 +943,14 @@ class SuccessAlert: UIView {
         lblSubtitle.textColor = UIColor.gray
         lblSubtitle.lineBreakMode = NSLineBreakMode.byWordWrapping
         lblSubtitle.numberOfLines = 2
-
+        
         btnOk = UIButton(frame: CGRect(x: self.frame.width - 90, y: self.frame.height - 60, width: 80, height: 40))
         btnOk.setTitleColor(UIColor(red: 68/255, green: 137/255, blue: 136/255, alpha: 1.0), for: UIControl.State.normal)
         btnOk.layer.cornerRadius = 5
         btnOk.clipsToBounds = true
         btnOk.layer.borderWidth = 1
         btnOk.layer.borderColor = UIColor(red: 68/255, green: 137/255, blue: 136/255, alpha: 1.0).cgColor
-        btnOk.setTitle(NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), for: UIControl.State.normal)
+        btnOk.setTitle("OK_BUTTON_TITLE".localizedString, for: UIControl.State.normal)
         
         self.addSubview(lblTitle)
         self.addSubview(lblSubtitle)

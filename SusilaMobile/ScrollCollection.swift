@@ -493,7 +493,7 @@ class ScrollCollection: UIView, UIScrollViewDelegate {
         self.homeDataModel.addToLibrary(key: key, songs: songs, addToLibraryCallFinished: { (status, error, userInfo) in
             if status{
                 DispatchQueue.main.async(execute: {
-                    self.alert(message: NSLocalizedString("AddedToLibrary".localized(using: "Localizable"), comment: ""))
+                    self.alert(message: "AddedToLibrary".localizedString)
                     self.addAlertDialog.isHidden = true
                     self.addAlertDialog.removeFromSuperview()
                     self.overLayView.removeFromSuperview()
@@ -532,7 +532,7 @@ class ScrollCollection: UIView, UIScrollViewDelegate {
                 DispatchQueue.main.async {
                     self.libraryAllPlaylists = self.libraryDataModel.playlists
                     if self.libraryAllPlaylists.count < 1 {
-                        self.alert(message: NSLocalizedString("NoPlayListFound".localized(using: "Localizable"), comment: ""))
+                        self.alert(message: "NoPlayListFound".localizedString)
                     }
                     self.loadList(view: self.addToPlaylistAlertDialog.scrollList)
                 }
@@ -575,7 +575,7 @@ class ScrollCollection: UIView, UIScrollViewDelegate {
         var songsid = [String]()
         songsid.append(String(self.addAlertDialog.id))
         addSongToPlaylist(playlistId: recognizer.id, songs: songsid)
-        self.alert(message: NSLocalizedString("AddedToPlayList".localized(using: "Localizable"), comment: ""))
+        self.alert(message: "AddedToPlayList".localizedString)
         self.addToPlaylistAlertDialog.isHidden = true
         self.addToPlaylistAlertDialog.removeFromSuperview()
         

@@ -35,8 +35,8 @@ class SMNotificationViewController: UIViewController {
         if tableView.responds(to: #selector(setter: UIView.layoutMargins))  {
             tableView.layoutMargins =  UIEdgeInsets.zero
         }
-        btnDeleteAll.setTitle(NSLocalizedString("CLEAR_ALL".localized(using: "Localizable"), comment: ""), for: .normal)
-        self.title = NSLocalizedString("NOTIFICATIONS".localized(using: "Localizable"), comment: "")
+        btnDeleteAll.setTitle("CLEAR_ALL".localizedString, for: .normal)
+        self.title = "NOTIFICATIONS".localizedString
         
         loadNotificationList();
         
@@ -141,7 +141,6 @@ class SMNotificationViewController: UIViewController {
                         self.readNotifications()
                     }else{
                         self.tableView.isHidden = true
-                        //Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE", comment: ""), alertMessage: NSLocalizedString("EMPTY_LIST", comment: ""), perent: self)
                         self.lblEmtyList.isHidden = false
                         ProgressView.shared.hide()
 

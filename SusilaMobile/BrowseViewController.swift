@@ -58,7 +58,7 @@ class BrowseViewController: UIView {
     // var genreViewArray:[GenreTiles] = [GenreTiles]()
     let homeDataModel = HomeDataModel()
     let browseDataModel = BrowseDataModel()
-    var homeViewController = HomeViewController()
+    
     
     var viewPopularArtists: UIView!
     var viewScrollPopularArtists: UIView!
@@ -143,14 +143,14 @@ class BrowseViewController: UIView {
         
         let labelByGenre = UILabel()
         labelByGenre.frame = CGRect(x: 10, y: 0, width: self.frame.width, height:40)
-        labelByGenre.text = NSLocalizedString("ByGenre".localized(using: "Localizable"), comment: "")
+        labelByGenre.text = "ByGenre".localizedString
         labelByGenre.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelByGenre.textColor = UIColor.white
         scrollMain.addSubview(labelByGenre);
         
         let labelByGenreSeeAll = UILabel()
         labelByGenreSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: 10, width: 70, height:20)
-        labelByGenreSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelByGenreSeeAll.text = "ViewAll".localizedString
         labelByGenreSeeAll.textAlignment = .center
         labelByGenreSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelByGenreSeeAll.layer.cornerRadius = 10
@@ -174,14 +174,14 @@ class BrowseViewController: UIView {
         
         let labelByArtist = UILabel()
         labelByArtist.frame = CGRect(x: 10, y: labelByGenre.frame.height+scrollGenres.frame.height+10, width: self.frame.width, height:40)
-        labelByArtist.text = NSLocalizedString("Byartist".localized(using: "Localizable"), comment: "")
+        labelByArtist.text = "Byartist".localizedString
         labelByArtist.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelByArtist.textColor = UIColor.white
         scrollMain.addSubview(labelByArtist);
         
         let labelByArtistSeeAll = UILabel()
         labelByArtistSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: labelByGenre.frame.height+genreButtonContainer.frame.height+20, width: 70, height:20)
-        labelByArtistSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelByArtistSeeAll.text = "ViewAll".localizedString
         labelByArtistSeeAll.textAlignment = .center
         labelByArtistSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelByArtistSeeAll.layer.cornerRadius = 10
@@ -268,7 +268,7 @@ class BrowseViewController: UIView {
                 DispatchQueue.main.async {
                     self.libraryAllPlaylists = self.libraryDataModel.playlists
                     if self.libraryAllPlaylists.count < 1 {
-                        self.alert(message: NSLocalizedString("NoPlayListFound".localized(using: "Localizable"), comment: ""))
+                        self.alert(message: "NoPlayListFound".localizedString)
                     }
                     self.loadList(view: self.addToPlaylistAlertDialog.scrollList)
                 }
@@ -311,7 +311,7 @@ class BrowseViewController: UIView {
         var songsid = [String]()
         songsid.append(String(self.addAlertDialog.id))
         addSongToPlaylist(playlistId: recognizer.id, songs: songsid)
-        self.alert(message: NSLocalizedString("AddedToPlayList".localized(using: "Localizable"), comment: ""))
+        self.alert(message:"AddedToPlayList".localizedString)
         self.addToPlaylistAlertDialog.isHidden = true
         self.addToPlaylistAlertDialog.removeFromSuperview()
         
@@ -439,7 +439,7 @@ class BrowseViewController: UIView {
     
     @objc func buttonClickedSeeAllGenre(recognizer: HomeTapGesture) {
         
-        createGenreSeeAllView(view: self, title: NSLocalizedString("ByGenre".localized(using: "Localizable"), comment: ""))
+        createGenreSeeAllView(view: self, title: "ByGenre".localizedString)
         print(recognizer.lname)
     }
     
@@ -527,7 +527,7 @@ class BrowseViewController: UIView {
                     self.allArtistListSeeAll = self.browseDataModel.allArtistsList
                     
                     self.loadBrowseAllArtistsViews(view: self.scrollMain)
-                    self.createBrowseArtistSeeAllView(view: self.viewAllBrowseArtists, title: NSLocalizedString("Byartist".localized(using: "Localizable"), comment: ""))
+                    self.createBrowseArtistSeeAllView(view: self.viewAllBrowseArtists, title: "Byartist".localizedString)
                 })
             } else {
                 DispatchQueue.main.async(execute: {})
@@ -578,13 +578,13 @@ class BrowseViewController: UIView {
         
         let labelSongs = UILabel()
         labelSongs.frame = CGRect(x: 10, y: 0, width: self.frame.width, height:40)
-        labelSongs.text = NSLocalizedString("Song".localized(using: "Localizable"), comment: "")
+        labelSongs.text = "Song".localizedString
         labelSongs.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelSongs.textColor = UIColor.white
         
         let labelSongsSeeAll = UILabel()
         labelSongsSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: 10, width: 70, height:20)
-        labelSongsSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongsSeeAll.text = "ViewAll".localizedString
         labelSongsSeeAll.textAlignment = .center
         labelSongsSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongsSeeAll.layer.cornerRadius = 10
@@ -598,13 +598,13 @@ class BrowseViewController: UIView {
         
         let labelArtists = UILabel()
         labelArtists.frame = CGRect(x: 10, y: 0, width: self.frame.width, height:40)
-        labelArtists.text = NSLocalizedString("Artist".localized(using: "Localizable"), comment: "")
+        labelArtists.text = "Artist".localizedString
         labelArtists.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelArtists.textColor = UIColor.white
         
         let labelByArtistsSeeAll = UILabel()
         labelByArtistsSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: 10, width: 70, height:20)
-        labelByArtistsSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelByArtistsSeeAll.text = "ViewAll".localizedString
         labelByArtistsSeeAll.textAlignment = .center
         labelByArtistsSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelByArtistsSeeAll.layer.cornerRadius = 10
@@ -617,13 +617,13 @@ class BrowseViewController: UIView {
         
         let labelPlayList = UILabel()
         labelPlayList.frame = CGRect(x: 10, y: 0, width: self.frame.width, height:40)
-        labelPlayList.text = NSLocalizedString("Playlists".localized(using: "Localizable"), comment: "")
+        labelPlayList.text = "Playlists".localizedString
         labelPlayList.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelPlayList.textColor = UIColor.white
         
         let labelPlayListSeeAll = UILabel()
         labelPlayListSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: 10, width: 70, height:20)
-        labelPlayListSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelPlayListSeeAll.text = "ViewAll".localizedString
         labelPlayListSeeAll.textAlignment = .center
         labelPlayListSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelPlayListSeeAll.layer.cornerRadius = 10
@@ -683,7 +683,7 @@ class BrowseViewController: UIView {
         arrow.addTarget(self, action: #selector(goGenreButtonClickedArtist), for: .touchUpInside)
         
         let text = UILabel(frame: CGRect(x: 40, y: 10, width: 100, height: 20))
-        text.text = NSLocalizedString("Artist".localized(using: "Localizable"), comment: "")
+        text.text = "Artist".localizedString
         text.textColor = UIColor.white
         
         topBar.addSubview(arrow)
@@ -813,7 +813,7 @@ class BrowseViewController: UIView {
         let labelAddArtist = UILabel()
         labelAddArtist.frame = CGRect(x: 0, y: lblTitle.frame.height+image.frame.height+albums.frame.height+5, width: 70, height:20)
         labelAddArtist.center.x = titleContainer.center.x
-        labelAddArtist.text = NSLocalizedString("Add".localized(using: "Localizable"), comment: "")
+        labelAddArtist.text = "Add".localizedString
         labelAddArtist.textAlignment = .center
         labelAddArtist.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelAddArtist.layer.cornerRadius = 10
@@ -840,7 +840,7 @@ class BrowseViewController: UIView {
         
         let labelAlbumByArtistSeeAll = UILabel()
         labelAlbumByArtistSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: titleContainer.frame.height+10, width: 70, height:20)
-        labelAlbumByArtistSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelAlbumByArtistSeeAll.text = "ViewAll".localizedString
         labelAlbumByArtistSeeAll.textAlignment = .center
         labelAlbumByArtistSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelAlbumByArtistSeeAll.layer.cornerRadius = 10
@@ -860,7 +860,7 @@ class BrowseViewController: UIView {
         
         labelSong.frame = CGRect(x: 10, y: titleContainer.frame.height, width: UIScreen.main.bounds.width-10, height:40)
         
-        labelSong.text = NSLocalizedString("Song".localized(using: "Localizable"), comment: "")
+        labelSong.text = "Song".localizedString
         labelSong.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelSong.textColor = UIColor.white
         //labelSong.backgroundColor = UIColor.green
@@ -868,7 +868,7 @@ class BrowseViewController: UIView {
         let labelSongByArtistSeeAll = UILabel()
         //labelSongByArtistSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: titleContainer.frame.height+10+UIScreen.main.bounds.width/2+50, width: 70, height:20)
         labelSongByArtistSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: titleContainer.frame.height+10, width: 70, height:20)
-        labelSongByArtistSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongByArtistSeeAll.text = "ViewAll".localizedString
         labelSongByArtistSeeAll.textAlignment = .center
         labelSongByArtistSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongByArtistSeeAll.layer.cornerRadius = 10
@@ -901,7 +901,7 @@ class BrowseViewController: UIView {
         self.homeDataModel.addToLibrary(key: key, songs: songs, addToLibraryCallFinished: { (status, error, userInfo) in
             if status{
                 DispatchQueue.main.async(execute: {
-                    self.alert(message: NSLocalizedString("AddedToLibrary".localized(using: "Localizable"), comment: ""))
+                    self.alert(message: "AddedToLibrary".localizedString)
                     ProgressView.shared.hide()
                 })
             } else {
@@ -1386,7 +1386,7 @@ class BrowseViewController: UIView {
         arrow.addTarget(self, action: #selector(viewAllSongsButtonClicked), for: .touchUpInside)
         
         let label = UILabel(frame: CGRect(x: 40, y: 10, width: UIScreen.main.bounds.width-50, height: 20))
-        label.text = NSLocalizedString("Song".localized(using: "Localizable"), comment: "")
+        label.text = "Song".localizedString
         label.textColor = .white
         
         topBar.addSubview(arrow)
@@ -1679,7 +1679,7 @@ class BrowseViewController: UIView {
         let attachmentString = NSAttributedString(attachment: imageAttachment)
         let completeText = NSMutableAttributedString(string: "")
         completeText.append(attachmentString)
-        let  textAfterIcon = NSMutableAttributedString(string: NSLocalizedString("Play".localized(using: "Localizable"), comment: ""))
+        let  textAfterIcon = NSMutableAttributedString(string: "Play".localizedString)
         completeText.append(textAfterIcon)
         labelPlaySong.textAlignment = .center
         labelPlaySong.attributedText = completeText
@@ -1697,7 +1697,7 @@ class BrowseViewController: UIView {
         
         let labelAddSong = UILabel()
         labelAddSong.frame = CGRect(x: UIScreen.main.bounds.width/2+5, y: lblTitle.frame.height+image.frame.height+songs.frame.height+10, width: 70, height:20)
-        labelAddSong.text = NSLocalizedString("Add".localized(using: "Localizable"), comment: "")
+        labelAddSong.text = "Add".localizedString
         labelAddSong.textAlignment = .center
         labelAddSong.font = UIFont(name: "Roboto-Bold", size: 9.0)
         labelAddSong.layer.cornerRadius = 10

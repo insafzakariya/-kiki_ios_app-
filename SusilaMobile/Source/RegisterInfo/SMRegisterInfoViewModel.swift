@@ -24,19 +24,19 @@ class SMRegisterInfoViewModel: NSObject {
     func validateRegisterInfo(gender: String?, birthdate:String?, language:String?, country:String?, mobile: String?, regionCode: String?) -> StatusCode {
         
         if birthdate == nil {
-            return .failedValidation(NSLocalizedString("ENTER_VALID_BIRTHDATE".localized(using: "Localizable"), comment: ""))
+            return .failedValidation("ENTER_VALID_BIRTHDATE".localizedString)
         }else if gender == nil {
-            return .failedValidation(NSLocalizedString("ENTER_VALID_GENDER".localized(using: "Localizable"), comment: ""))
+            return .failedValidation("ENTER_VALID_GENDER".localizedString)
         }else if language == nil {
-            return .failedValidation(NSLocalizedString("ENTER_VALID_LANGUAGE".localized(using: "Localizable"), comment: ""))
+            return .failedValidation("ENTER_VALID_LANGUAGE".localizedString)
         }
         else if country == nil {
-            return .failedValidation(NSLocalizedString("ENTER_VALID_COUNTRY".localized(using: "Localizable"), comment: ""))
+            return .failedValidation("ENTER_VALID_COUNTRY".localizedString)
         } else if mobile == nil || !Common.mobileNovalidate(phoneNumber: mobile!, regionCode: regionCode!) {
             if (ValidationManager.isSriLankanPhoneNumber(mobile)) {
-                return .failedValidation(NSLocalizedString("ENTER_VALID_MOBILENO".localized(using: "Localizable"), comment: ""))
+                return .failedValidation("ENTER_VALID_MOBILENO".localizedString)
             } else {
-                return .failedValidation(NSLocalizedString("ENTER_VALID_MOBILENO".localized(using: "Localizable"), comment: ""))
+                return .failedValidation("ENTER_VALID_MOBILENO".localizedString)
             }
         }
         
@@ -45,7 +45,7 @@ class SMRegisterInfoViewModel: NSObject {
 
     func validate(mobileNO: String?, regionCode: String?) -> StatusCode {
         if let mobileNOString = mobileNO, mobileNOString.isEmpty || !Common.mobileNovalidate(phoneNumber: mobileNOString, regionCode: regionCode!){
-            return .failedValidation(NSLocalizedString("ENTER_VALID_MOBILENO".localized(using: "Localizable"), comment: ""))
+            return .failedValidation("ENTER_VALID_MOBILENO".localizedString)
         }
 
         return .passedValidation

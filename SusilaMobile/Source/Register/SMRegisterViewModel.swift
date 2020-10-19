@@ -23,13 +23,13 @@ class SMRegisterViewModel: NSObject {
         
     func validate(username: String?, password: String?, conPassword: String?, name: String?) -> StatusCode {
         if let usernameString = username, usernameString.isEmpty{
-            return .failedValidation(NSLocalizedString("ENTER_VALID_USERNAME".localized(using: "Localizable"), comment: ""))
+            return .failedValidation("ENTER_VALID_USERNAME".localizedString)
         }else if let passwordString = password, passwordString.isEmpty{
-            return .failedValidation(NSLocalizedString("ENTER_VALID_PASSWORD".localized(using: "Localizable"), comment: ""))
+            return .failedValidation("ENTER_VALID_PASSWORD".localizedString)
         }else if let conPasswordString = conPassword, conPasswordString.isEmpty || conPasswordString != password {
-            return .failedValidation(NSLocalizedString("PASSWORD_NOT_MATCH".localized(using: "Localizable"), comment: ""))
+            return .failedValidation("PASSWORD_NOT_MATCH".localizedString)
         }else if let nameString = name, nameString.isEmpty {
-            return .failedValidation(NSLocalizedString("ENTER_VALID_NAME".localized(using: "Localizable"), comment: ""))
+            return .failedValidation("ENTER_VALID_NAME".localizedString)
         }
         
         return .passedValidation

@@ -12,9 +12,9 @@ import SwiftyJSON
     @objc optional func smsVerificationCallFinished(_ status: Bool, error: NSError?, userInfo: [String: AnyObject]?)
 }
 class SMSVerificationViewModel: NSObject {
-//    fileprivate let api = ApiClient()
+    //    fileprivate let api = ApiClient()
     var delegate: SMSVerificationDelegate?
-        func smsCodeVerify(smsCode: String) {
+    func smsCodeVerify(smsCode: String) {
         self.smsCodeVerify(smsCode: smsCode, success: { (data, code) -> Void in
             
             let jsonData = JSON(data as Any)
@@ -26,7 +26,7 @@ class SMSVerificationViewModel: NSObject {
             default:
                 let error = Common.getErrorFromJson(description: jsonData[ErrorJsonKeys.errorMessage].string ?? "", errorType: "\(jsonData[ErrorJsonKeys.errorCode].int ?? -1)", errorCode: jsonData[ErrorJsonKeys.errorCode].int ?? -1)
                 self.delegate?.smsVerificationCallFinished!(false, error: error, userInfo: nil)
-
+                
             }
             
             
@@ -51,7 +51,7 @@ class SMSVerificationViewModel: NSObject {
             
             ApiClient.StringKeys.SMSCode:smsCode
             
-            ] as [String : Any]
+        ] as [String : Any]
         
         request(url!, method: .post, parameters: parameters, headers: headers, success: { (data, code) -> Void in
             success(data, code)
@@ -94,7 +94,7 @@ class SMSVerificationViewModel: NSObject {
                     
                 }
                 
-
+                
             }
         }
         

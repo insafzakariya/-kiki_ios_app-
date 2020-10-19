@@ -42,7 +42,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = NSLocalizedString("SEARCH".localized(using: "Localizable"), comment: "")
+        self.title = "SEARCH".localizedString
         for (_, s) in pSongs.enumerated() {
             print("Selected song: ", s.name)
             arry.append(s.id)
@@ -59,7 +59,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         historyView = UIView(frame: CGRect(x: 0, y: searchBar.frame.height, width: UIScreen.main.bounds.width, height:180))
         
         let header = UILabel(frame: CGRect(x: 10, y: 0, width: UIScreen.main.bounds.width-20, height:30))
-        header.text = NSLocalizedString("RECENT_SEARCH".localized(using: "Localizable"), comment: "")
+        header.text = "RECENT_SEARCH".localizedString
         header.textColor = .white
         header.font = UIFont(name: "Roboto-Bold", size: 18.0)
         historyView.addSubview(header)
@@ -126,7 +126,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.homeDataModel.addToLibrary(key: key, songs: songs, addToLibraryCallFinished: { (status, error, userInfo) in
             if status{
                 DispatchQueue.main.async(execute: {
-                    self.alert(message: NSLocalizedString("AddedToLibrary".localized(using: "Localizable"), comment: ""))
+                    self.alert(message: "AddedToLibrary".localizedString)
                     self.addAlertDialog.isHidden = true
                     self.addAlertDialog.removeFromSuperview()
                     self.overLayView.removeFromSuperview()
@@ -200,7 +200,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var songsid = [String]()
         songsid.append(String(self.addAlertDialog.id))
         addSongToPlaylist(playlistId: recognizer.id, songs: songsid)
-        self.alert(message: NSLocalizedString("AddedToPlayList".localized(using: "Localizable"), comment: ""))
+        self.alert(message: "AddedToPlayList".localizedString)
         self.addToPlaylistAlertDialog.isHidden = true
         self.addToPlaylistAlertDialog.removeFromSuperview()
         
@@ -252,8 +252,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             ProgressView.shared.show(self.view, mainText: nil, detailText: nil)
             searchViewModel.searchByWord(text: sender.title) { (status, error, isEmpty) in
                 if (status && self.searchViewModel.songsList.isEmpty && self.searchViewModel.artistLists.isEmpty && self.searchViewModel.playlistList.isEmpty) {
-                    let alert = UIAlertController(title: "Kiki", message: NSLocalizedString("NoSearchResultFound".localized(using: "Localizable"), comment: ""), preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: nil))
+                    let alert = UIAlertController(title: "Kiki", message: "NoSearchResultFound".localizedString, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                     self.tableView.reloadData()
                     ProgressView.shared.hide()
@@ -304,8 +304,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         ProgressView.shared.show(self.view, mainText: nil, detailText: nil)
         searchViewModel.searchByWordAll(key: searchBar.text!, type: "song", offset: offset, searchByWordAllCallFinished: { (status, error, isEmpty) in
             if (status && isEmpty) {
-                let alert = UIAlertController(title: "Kiki", message: NSLocalizedString("NoSearchResultFound".localized(using: "Localizable"), comment: ""), preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: nil))
+                let alert = UIAlertController(title: "Kiki", message: "NoSearchResultFound".localizedString, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 ProgressView.shared.hide()
             }
@@ -332,8 +332,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             ProgressView.shared.show(self.view, mainText: nil, detailText: nil)
             searchViewModel.searchByWord(text: searchBar.text!) { (status, error, isEmpty) in
                 if (status && self.searchViewModel.songsList.isEmpty && self.searchViewModel.artistLists.isEmpty && self.searchViewModel.playlistList.isEmpty) {
-                    let alert = UIAlertController(title: "Kiki", message: NSLocalizedString("NoSearchResultFound".localized(using: "Localizable"), comment: ""), preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: nil))
+                    let alert = UIAlertController(title: "Kiki", message: "NoSearchResultFound".localizedString, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                     self.tableView.reloadData()
                     ProgressView.shared.hide()
@@ -373,7 +373,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if arry.contains(self.songsList[indexPath.row].id) {
                 songTile.add.backgroundColor = Constants.color_brand
                 songTile.add.setTitleColor( .white, for: .normal)
-                songTile.add.setTitle(NSLocalizedString("AddedToPlayList".localized(using: "Localizable"), comment: ""), for: .normal)
+                songTile.add.setTitle("AddedToPlayList".localizedString, for: .normal)
             }
             
             var decodedImage =  self.songsList[indexPath.row].image!.replacingOccurrences(of: "%3A", with: ":")
@@ -407,7 +407,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     let labelSongs = UILabel()
                     labelSongs.frame = CGRect(x: 10, y: 0, width: cell.frame.width-20, height:20)
-                    labelSongs.text = NSLocalizedString("Song".localized(using: "Localizable"), comment: "")
+                    labelSongs.text = "Song".localizedString
                     labelSongs.font = UIFont(name: "Roboto-Bold", size: 18.0)
                     labelSongs.textColor = UIColor.white
                     songView.addSubview(labelSongs)
@@ -450,7 +450,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let labelSongsSeeAll = UILabel()
                     labelSongsSeeAll.frame = CGRect(x: 0, y:y*h+30, width: Int(UIScreen.main.bounds.width)-100, height:30)
                     labelSongsSeeAll.center.x = cell.center.x
-                    labelSongsSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+                    labelSongsSeeAll.text = "ViewAll".localizedString
                     labelSongsSeeAll.textAlignment = .center
                     labelSongsSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
                     labelSongsSeeAll.layer.cornerRadius = 15
@@ -517,7 +517,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     let labelSongs = UILabel()
                     labelSongs.frame = CGRect(x: 10, y: 0, width: cell.frame.width-20, height:20)
-                    labelSongs.text = NSLocalizedString("Artist".localized(using: "Localizable"), comment: "")
+                    labelSongs.text = "Artist".localizedString
                     labelSongs.font = UIFont(name: "Roboto-Bold", size: 18.0)
                     labelSongs.textColor = UIColor.white
                     artistView.addSubview(labelSongs)
@@ -565,7 +565,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let labelSongsSeeAll = UILabel()
                     labelSongsSeeAll.frame = CGRect(x: 0, y: y*h+30, width: Int(UIScreen.main.bounds.width)-100, height:30)
                     labelSongsSeeAll.center.x = cell.center.x
-                    labelSongsSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+                    labelSongsSeeAll.text = "ViewAll".localizedString
                     labelSongsSeeAll.textAlignment = .center
                     labelSongsSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
                     labelSongsSeeAll.layer.cornerRadius = 15
@@ -607,7 +607,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     let labelSongs = UILabel()
                     labelSongs.frame = CGRect(x: 10, y: 0, width: cell.frame.width-20, height:20)
-                    labelSongs.text = NSLocalizedString("Playlists".localized(using: "Localizable"), comment: "")
+                    labelSongs.text = "Playlists".localizedString
                     labelSongs.font = UIFont(name: "Roboto-Bold", size: 18.0)
                     labelSongs.textColor = UIColor.white
                     playlistView.addSubview(labelSongs)
@@ -657,7 +657,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let labelSongsSeeAll = UILabel()
                     labelSongsSeeAll.frame = CGRect(x: 0, y: y*h+30, width: Int(UIScreen.main.bounds.width)-100, height:30)
                     labelSongsSeeAll.center.x = cell.center.x
-                    labelSongsSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+                    labelSongsSeeAll.text = "ViewAll".localizedString
                     labelSongsSeeAll.textAlignment = .center
                     labelSongsSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
                     labelSongsSeeAll.layer.cornerRadius = 15

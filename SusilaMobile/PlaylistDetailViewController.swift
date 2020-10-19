@@ -81,7 +81,7 @@ class PlaylistDetailViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.libraryAllPlaylists = self.libraryDataModel.playlists
                     if self.libraryAllPlaylists.count < 1 {
-                        self.alert(message: NSLocalizedString("NoPlayListFound".localized(using: "Localizable"), comment: ""))
+                        self.alert(message: "NoPlayListFound".localizedString)
                     }
                     self.loadList(view: self.addToPlaylistAlertDialog.scrollList)
                 }
@@ -124,7 +124,7 @@ class PlaylistDetailViewController: UIViewController {
         var songsid = [String]()
         songsid.append(String(self.addAlertDialog.id))
         addSongToPlaylist(playlistId: recognizer.id, songs: songsid)
-        self.alert(message: NSLocalizedString("AddedToPlayList".localized(using: "Localizable"), comment: ""))
+        self.alert(message: "AddedToPlayList".localizedString)
         self.addToPlaylistAlertDialog.isHidden = true
         self.addToPlaylistAlertDialog.removeFromSuperview()
         
@@ -269,7 +269,7 @@ class PlaylistDetailViewController: UIViewController {
         let attachmentString = NSAttributedString(attachment: imageAttachment)
         let completeText = NSMutableAttributedString(string: "")
         completeText.append(attachmentString)
-        let  textAfterIcon = NSMutableAttributedString(string: NSLocalizedString("Play".localized(using: "Localizable"), comment: ""))
+        let  textAfterIcon = NSMutableAttributedString(string: "Play".localizedString)
         completeText.append(textAfterIcon)
         labelPlaySong.textAlignment = .center
         labelPlaySong.attributedText = completeText
@@ -287,7 +287,7 @@ class PlaylistDetailViewController: UIViewController {
         
         let labelAddSong = UILabel()
         labelAddSong.frame = CGRect(x: UIScreen.main.bounds.width/2+5, y: lblTitle.frame.height+image.frame.height+songs.frame.height+10, width: 70, height:20)
-        labelAddSong.text = NSLocalizedString("Add".localized(using: "Localizable"), comment: "")
+        labelAddSong.text = "Add".localizedString
         labelAddSong.textAlignment = .center
         labelAddSong.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelAddSong.layer.cornerRadius = 10
@@ -380,7 +380,7 @@ class PlaylistDetailViewController: UIViewController {
         self.homeDataModel.addToLibrary(key: key, songs: songs, addToLibraryCallFinished: { (status, error, userInfo) in
             if status{
                 DispatchQueue.main.async(execute: {
-                    self.alert(message: NSLocalizedString("AddedToLibrary".localized(using: "Localizable"), comment: ""))
+                    self.alert(message: "AddedToLibrary".localizedString)
                     self.addAlertDialog.isHidden = true
                     self.addAlertDialog.removeFromSuperview()
                     self.overLayView.removeFromSuperview()

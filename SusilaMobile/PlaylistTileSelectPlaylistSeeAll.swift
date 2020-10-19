@@ -80,7 +80,7 @@ class PlaylistTileSelectPlaylistSeeAll: UIView {
         year.textColor = UIColor.gray
         
         add = UIButton(frame: CGRect(x:  UIScreen.main.bounds.width-80, y: image.frame.height/2-10, width: 55, height: 20))
-        add.setTitle(NSLocalizedString("Add".localized(using: "Localizable"), comment: ""), for: .normal)
+        add.setTitle("Add".localizedString, for: .normal)
         add.backgroundColor = Constants.color_brand
         add.layer.cornerRadius = 10
         add.clipsToBounds = true
@@ -116,10 +116,10 @@ class PlaylistTileSelectPlaylistSeeAll: UIView {
     }
     
     @objc func buttonClick_AddPlaylist(sender:UIButton) {
-        if sender.titleLabel?.text == NSLocalizedString("Add".localized(using: "Localizable"), comment: "") {
+        if sender.titleLabel?.text == "Add".localizedString {
             add.setTitle("Added", for: .normal)
         } else {
-            add.setTitle(NSLocalizedString("Add".localized(using: "Localizable"), comment: ""), for: .normal)
+            add.setTitle("Add".localizedString, for: .normal)
         }
     }
 }

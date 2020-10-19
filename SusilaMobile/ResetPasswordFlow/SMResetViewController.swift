@@ -6,7 +6,6 @@
 //  Copyright © 2019 Kiroshan T. All rights reserved.
 //
 import UIKit
-import Crashlytics
 import Firebase
 import PhoneNumberKit
 

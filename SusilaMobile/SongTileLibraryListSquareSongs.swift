@@ -86,7 +86,7 @@ class SongTileLibraryListSquareSongs: UIView {
         add = UIButton(frame: CGRect(x:  UIScreen.main.bounds.width-80, y: image.frame.height/2-10, width: 60, height: 20))
         add.layer.cornerRadius = 10
         add.layer.borderWidth = 1
-        add.setTitle(NSLocalizedString("Add".localized(using: "Localizable"), comment: ""), for: .normal)
+        add.setTitle("Add".localizedString, for: .normal)
         add.backgroundColor = Constants.color_brand
         add.layer.borderColor = Constants.color_brand.cgColor
         add.setTitleColor(.white, for: .normal)
@@ -123,10 +123,10 @@ class SongTileLibraryListSquareSongs: UIView {
     
     @objc func buttonClick_AddPlaylist(sender:PlaylistTapGesture) {
         
-        if self.add.titleLabel?.text == NSLocalizedString("Add".localized(using: "Localizable"), comment: "") {
+        if self.add.titleLabel?.text == "Add".localizedString {
             self.add.setTitle("Added", for: .normal)
         } else {
-            self.add.setTitle(NSLocalizedString("Add".localized(using: "Localizable"), comment: ""), for: .normal)
+            self.add.setTitle("Add".localizedString, for: .normal)
         }
     }
 

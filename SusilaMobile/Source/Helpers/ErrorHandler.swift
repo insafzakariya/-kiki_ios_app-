@@ -101,8 +101,8 @@ class ErrorHandler {
     }
     class var inValidCredentials: NSError {
         let userInfo = [
-            NSLocalizedDescriptionKey: NSLocalizedString("LOGIN_SEVERRETURN_FIELD_ERROR_ALERT_MESSAGE".localized(using: "Localizable"), comment: ""),
-            NSLocalizedFailureReasonErrorKey: NSLocalizedString("LOGIN_SEVERRETURN_FIELD_ERROR_ALERT_MESSAGE".localized(using: "Localizable"), comment: "")
+            NSLocalizedDescriptionKey: "LOGIN_SEVERRETURN_FIELD_ERROR_ALERT_MESSAGE".localizedString,
+            NSLocalizedFailureReasonErrorKey: "LOGIN_SEVERRETURN_FIELD_ERROR_ALERT_MESSAGE".localizedString
         ]
         return NSError(domain: ErrorDomain, code: ResponseCode.dataEmpty.rawValue, userInfo: userInfo)
     }
