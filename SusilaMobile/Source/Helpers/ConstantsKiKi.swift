@@ -14,7 +14,7 @@ let kiOS_API_key = "AIzaSyDX2hS-C8riiI4tZzLHFOHP2zAC5NxX2bE" //"1iM721UXrVaiqDVs
 //let kAPIBaseUrl = "http://35.200.217.24/mobile-tv-webservice/api/v1/" // staging URL
 //let remoteConfig = (UIApplication.shared.delegate as! AppDelegate).getRemoteConfig()
 //let kAPIBaseUrl = remoteConfig[baseURL] as String
-var kAPIBaseUrl = "http://35.200.234.252/mobile-tv-webservice/api/v1/" // staging URL
+var kAPIBaseUrl = "http://35.200.234.252:7070/mobile-tv-webservice/api/v1/" // staging URL
 
 
 let mobileCodeRequestUrl = "http://220.247.201.206:90/"
