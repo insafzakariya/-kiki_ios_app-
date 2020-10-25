@@ -2205,7 +2205,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = K4TVD2RMC6;
@@ -2221,7 +2221,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 16.20.2;
+				MARKETING_VERSION = 16.21.0;
 				PODS_PODFILE_DIR_PATH = "${SRCROOT}/";
 				PRODUCT_BUNDLE_IDENTIFIER = kiki.lk.mv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2245,7 +2245,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = K4TVD2RMC6;
 				ENABLE_BITCODE = NO;
@@ -2260,7 +2260,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 16.20.2;
+				MARKETING_VERSION = 16.21.0;
 				PODS_PODFILE_DIR_PATH = "${SRCROOT}/";
 				PRODUCT_BUNDLE_IDENTIFIER = kiki.lk.mv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
