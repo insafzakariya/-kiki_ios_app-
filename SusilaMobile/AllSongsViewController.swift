@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class AllSongsViewController: UIView {
     let allSongsModel = AllSongsModel()
@@ -584,7 +585,8 @@ class SongCard: UIView {
         didSet{
             
             if (imageURL != ""){
-                imgVw.downloadImage(from: URL(string: imageURL)!)
+                imgVw.kf.setImage(with: URL(string: imageURL)!)
+//                imgVw.downloadImage(from: URL(string: imageURL)!)
             } 
         }
         
@@ -658,7 +660,8 @@ class AddToPlayListPop: UIView {
         }
         didSet{
             if (imageURL != ""){
-                imgVw.downloadImage(from: URL(string: imageURL)!)
+                imgVw.kf.setImage(with: URL(string: imageURL)!)
+//                imgVw.downloadImage(from: URL(string: imageURL)!)
             }
         }
     }

@@ -452,7 +452,8 @@ class LibraryViewController: UIView, UIImagePickerControllerDelegate, UINavigati
         titleContainer.backgroundColor = Constants.color_background
         
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width/3, height: UIScreen.main.bounds.width/3))
-        image.downloadImageBrowse(from: URL(string: url)!)
+        image.kf.setImage(with: URL(string: url)!)
+//        image.downloadImageBrowse(from: URL(string: url)!)
         image.center.x = titleContainer.center.x
         image.layer.cornerRadius = 5
         image.layer.cornerRadius = (UIScreen.main.bounds.width/3)/2
@@ -1053,7 +1054,8 @@ class LibraryViewController: UIView, UIImagePickerControllerDelegate, UINavigati
         image.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.width/4)
         
         if url != "" {
-            image.downloadImageBrowse(from: URL(string: url)!)
+//            image.downloadImageBrowse(from: URL(string: url)!)
+            image.kf.setImage(with: URL(string: url)!)
         }
         
         image.center.x = titleContainer.center.x
@@ -1166,7 +1168,8 @@ class LibraryViewController: UIView, UIImagePickerControllerDelegate, UINavigati
         image.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.width/4)
         
         if url != "" {
-            image.downloadImageBrowse(from: URL(string: url)!)
+            image.kf.setImage(with: URL(string: url)!)
+//            image.downloadImageBrowse(from: URL(string: url)!)
         }
         
         image.center.x = titleContainer.center.x
@@ -2240,7 +2243,8 @@ class LibraryViewController: UIView, UIImagePickerControllerDelegate, UINavigati
         two.isUserInteractionEnabled = true
         
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.width/4))
-        image.downloadImageBrowse(from: URL(string: url)!)
+        image.kf.setImage(with: URL(string: url)!)
+//        image.downloadImageBrowse(from: URL(string: url)!)
         image.center.x = titleContainer.center.x
         image.layer.cornerRadius = 5
         image.clipsToBounds = true
@@ -2396,7 +2400,8 @@ class LibraryViewController: UIView, UIImagePickerControllerDelegate, UINavigati
         titleContainer.backgroundColor = Constants.color_background
         
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width/3, height: UIScreen.main.bounds.width/3))
-        image.downloadImageBrowse(from: URL(string: url)!)
+        image.kf.setImage(with: URL(string: url)!)
+//        image.downloadImageBrowse(from: URL(string: url)!)
         image.center.x = titleContainer.center.x
         image.layer.cornerRadius = 5
         image.layer.cornerRadius = (UIScreen.main.bounds.width/3)/2

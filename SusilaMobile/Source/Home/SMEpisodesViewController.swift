@@ -569,8 +569,10 @@ extension SMEpisodesViewController: UITableViewDataSource {
             cell.descriptionLable.text = episode.description_e
             cell.videoImageView.image = nil
             cell.playingIndicationImg.isHidden = indexPath.row != currentEpisodeIndex
+            cell.videoImageView.contentMode = .scaleAspectFit
+            cell.videoImageView.kf.setImage(with: URL(string: (episode.image?.removingPercentEncoding!)!)!)
             
-            downloadImageFrom(link: episode.image?.removingPercentEncoding ?? "", contentMode: UIView.ContentMode.scaleAspectFit)
+//            downloadImageFrom(link: episode.image?.removingPercentEncoding ?? "", contentMode: UIView.ContentMode.scaleAspectFit)
         }
     }
 }

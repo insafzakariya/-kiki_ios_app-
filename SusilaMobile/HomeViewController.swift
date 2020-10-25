@@ -380,11 +380,9 @@ class HomeViewController: UIView {
     func loadPopularSongsList() {
         self.homeDataModel.getHomePopularSongs(getHomePopularSongsListCallFinished: { (status, error, userInfo) in
             if status{
-                //                                DispatchQueue.main.async(execute: {
                 let minimizedArray = self.homeDataModel.popularSongsList.chunked(into: 10)
-                                self.scrollCollectionMinimizedPopularSongs?.currentPlayingList = (self.homeDataModel.popularSongsList.count) > 10 ? minimizedArray[0] : self.homeDataModel.popularSongsList
+                self.scrollCollectionMinimizedPopularSongs?.currentPlayingList = (self.homeDataModel.popularSongsList.count) > 10 ? minimizedArray[0] : self.homeDataModel.popularSongsList
                 self.scrollCollectionExapndedPopularSongs?.currentPlayingList = (self.homeDataModel.popularSongsList)
-                
                 if notifyInstance.status && notifyInstance.content_type == "songid" {
                     self.getSongById(sid: notifyInstance.content_id)
                 } else {

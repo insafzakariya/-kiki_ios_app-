@@ -497,7 +497,9 @@ extension HomeTableViewController: UICollectionViewDataSource, UICollectionViewD
                     }
                 let program = subscribedListViewModel.programList[indexPath.row]
                 cell.videoImageView.image = UIImage(named: "logo_grayscale_video")
-                downloadImageFrom(link: program.image?.removingPercentEncoding ?? "", contentMode: UIView.ContentMode.scaleAspectFill)
+                    cell.videoImageView.contentMode = .scaleAspectFit
+                    cell.videoImageView.kf.setImage(with: URL(string: program.image!.removingPercentEncoding!)!)
+//                downloadImageFrom(link: program.image?.removingPercentEncoding ?? "", contentMode: UIView.ContentMode.scaleAspectFill)
             }
         }
     }

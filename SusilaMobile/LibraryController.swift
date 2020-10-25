@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import AVFoundation
+import Kingfisher
 
 class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UISearchBarDelegate {
     
@@ -1432,7 +1433,8 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         } else {
             //image = UIImageView(image: playlistImage)
             print("editImage: "+editImage)
-            image.downloadImageBrowse(from: URL(string: editImage)!)
+            image.kf.setImage(with: URL(string: editImage)!)
+//            image.downloadImageBrowse(from: URL(string: editImage)!)
             image.frame = CGRect(x: 0, y: 40, width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.width/4)
         }
         
@@ -1951,7 +1953,8 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         two.isUserInteractionEnabled = true
         
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.width/4))
-        image.downloadImageBrowse(from: URL(string: url)!)
+        image.kf.setImage(with:  URL(string: url)!)
+//        image.downloadImageBrowse(from: URL(string: url)!)
         image.center.x = titleContainer.center.x
         image.layer.cornerRadius = 5
         image.clipsToBounds = true
@@ -2064,7 +2067,9 @@ class LibraryController: UIViewController, UIImagePickerControllerDelegate, UINa
         titleContainer.backgroundColor = Constants.color_background
         
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width/3, height: UIScreen.main.bounds.width/3))
-        image.downloadImageBrowse(from: URL(string: url)!)
+        image.kf.setImage(with: URL(string: url)!)
+        
+//        image.downloadImageBrowse(from: URL(string: url)!)
         image.center.x = titleContainer.center.x
         image.layer.cornerRadius = 5
         image.layer.cornerRadius = (UIScreen.main.bounds.width/3)/2

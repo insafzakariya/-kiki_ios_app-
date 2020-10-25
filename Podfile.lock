@@ -138,6 +138,7 @@ PODS:
     - ImageSlideshow/Core
   - ImageSlideshow/Core (1.8.3)
   - IQKeyboardManager (6.5.6)
+  - Kingfisher (4.10.1)
   - MBProgressHUD (0.9)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
@@ -176,6 +177,7 @@ DEPENDENCIES:
   - ImageSlideshow
   - ImageSlideshow/Alamofire
   - IQKeyboardManager
+  - Kingfisher
   - MBProgressHUD (= 0.9)
   - PhoneNumberKit
   - Reachability
@@ -213,6 +215,7 @@ SPEC REPOS:
     - ijkplayer
     - ImageSlideshow
     - IQKeyboardManager
+    - Kingfisher
     - MBProgressHUD
     - nanopb
     - PhoneNumberKit
@@ -252,6 +255,7 @@ SPEC CHECKSUMS:
   ijkplayer: 1a1a33f5b0387bd7ea297337853130b9ddb20093
   ImageSlideshow: 4694d7d699a1549582e7cc631fb392d8f91630f3
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   MBProgressHUD: d8e7ea388dc1549a42e0d219067cf5f2c898fb66
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
@@ -263,6 +267,6 @@ SPEC CHECKSUMS:
   SWXMLHash: 9cc0c2e4807926c74377724aa8722ee5707a0485
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: d1cc8d3496393032ebf3cb1cbb31c1e754b9314f
+PODFILE CHECKSUM: bb6127a00071f2f027c7f41cee38f3bc4a953b91
 
 COCOAPODS: 1.9.3

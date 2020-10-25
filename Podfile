@@ -28,5 +28,6 @@ target 'SusilaMobile' do
   pod 'ImageSlideshow'
   pod 'ImageSlideshow/Alamofire'
   pod 'SDWebImage'
+  pod 'Kingfisher'
   pod 'ijkplayer'
 end
