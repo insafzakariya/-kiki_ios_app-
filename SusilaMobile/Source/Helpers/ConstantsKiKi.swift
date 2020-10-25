@@ -43,6 +43,7 @@ enum AuthMethod: String {
     case GOOGLE
     case TWITTER
     case DIALOG
+    case APPLE
 }
 
 enum Gender: String {

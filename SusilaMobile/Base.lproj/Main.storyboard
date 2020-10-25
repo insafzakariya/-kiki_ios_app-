@@ -3103,7 +3103,7 @@ to exclusive content from Kiki.</string>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="TPK-11-GEQ">
                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="Qsk-ag-UPr">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="1Cx-4T-9Bv" userLabel="Account">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="1Cx-4T-9Bv" userLabel="Account">
                                 <rect key="frame" x="20" y="6" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3548,7 +3548,7 @@ to exclusive content from Kiki.</string>
                         <viewControllerLayoutGuide type="bottom" id="Khc-5p-VIq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vxT-GH-kVg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="yki-bb-c0A">
@@ -3610,7 +3610,7 @@ to exclusive content from Kiki.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nkq-Kb-7Gi">
-                                <rect key="frame" x="155" y="512" width="104" height="35"/>
+                                <rect key="frame" x="156" y="573" width="102" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="ycB-vI-4fP"/>
                                 </constraints>
@@ -3631,7 +3631,7 @@ to exclusive content from Kiki.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xE-nu-z2x">
-                                <rect key="frame" x="149.66666666666666" y="568" width="114.99999999999997" height="35"/>
+                                <rect key="frame" x="149" y="629" width="116" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="B1s-Qg-jc8"/>
                                 </constraints>
@@ -3652,7 +3652,7 @@ to exclusive content from Kiki.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don’t have Facebook or Gmail?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLV-mN-KcA">
-                                <rect key="frame" x="113.00000000000001" y="490" width="188.33333333333337" height="21"/>
+                                <rect key="frame" x="108.00000000000001" y="551" width="198.33333333333337" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="dSH-iq-K1A"/>
                                 </constraints>
@@ -3661,7 +3661,7 @@ to exclusive content from Kiki.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nt6-HW-5LA">
-                                <rect key="frame" x="200.66666666666666" y="546" width="13" height="21"/>
+                                <rect key="frame" x="200.66666666666666" y="607" width="13" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="FwX-uJ-ia1"/>
                                 </constraints>
@@ -3680,17 +3680,27 @@ to exclusive content from Kiki.</string>
                                     <segue destination="o1k-UV-rVP" kind="push" id="4kt-9H-yFb"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KC3-cn-oMS">
+                                <rect key="frame" x="40" y="456" width="334" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="334" id="Es3-2F-Kyt"/>
+                                    <constraint firstAttribute="height" constant="50" id="YIM-Ib-ptd"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="BLV-mN-KcA" firstAttribute="top" secondItem="cf0-ZV-mBt" secondAttribute="bottom" constant="45" id="0s0-GP-ca7"/>
                             <constraint firstItem="Nkq-Kb-7Gi" firstAttribute="centerX" secondItem="vxT-GH-kVg" secondAttribute="centerX" id="2V2-fF-vYo"/>
                             <constraint firstItem="cf0-ZV-mBt" firstAttribute="top" secondItem="8xg-TB-dZn" secondAttribute="bottom" constant="11" id="7Ry-s4-Oh0"/>
                             <constraint firstItem="9xE-nu-z2x" firstAttribute="top" secondItem="nt6-HW-5LA" secondAttribute="bottom" constant="1" id="8XV-nU-5il"/>
                             <constraint firstItem="Nkq-Kb-7Gi" firstAttribute="top" secondItem="BLV-mN-KcA" secondAttribute="bottom" constant="1" id="9be-qo-i8F"/>
+                            <constraint firstItem="BLV-mN-KcA" firstAttribute="top" secondItem="KC3-cn-oMS" secondAttribute="bottom" constant="45" id="Px6-ai-dZZ"/>
+                            <constraint firstItem="KC3-cn-oMS" firstAttribute="centerX" secondItem="vxT-GH-kVg" secondAttribute="centerX" id="Tns-5V-2x9"/>
                             <constraint firstItem="cf0-ZV-mBt" firstAttribute="centerX" secondItem="vxT-GH-kVg" secondAttribute="centerX" id="VWb-HD-hat"/>
                             <constraint firstItem="8xg-TB-dZn" firstAttribute="top" secondItem="yki-bb-c0A" secondAttribute="bottom" constant="70" id="W4a-5V-vOO"/>
                             <constraint firstItem="cf0-ZV-mBt" firstAttribute="centerY" secondItem="vxT-GH-kVg" secondAttribute="centerY" id="Xqg-kh-EX8"/>
+                            <constraint firstItem="KC3-cn-oMS" firstAttribute="top" secondItem="cf0-ZV-mBt" secondAttribute="bottom" constant="11" id="Z1G-Sr-t9Q"/>
                             <constraint firstItem="WHb-Zq-Zg7" firstAttribute="top" secondItem="lD2-Ow-tCR" secondAttribute="bottom" constant="8" id="aPt-CL-Yow"/>
                             <constraint firstItem="BLV-mN-KcA" firstAttribute="centerX" secondItem="vxT-GH-kVg" secondAttribute="centerX" id="cDY-w1-xNh"/>
                             <constraint firstItem="9xE-nu-z2x" firstAttribute="centerX" secondItem="vxT-GH-kVg" secondAttribute="centerX" id="dAf-Ag-n3n"/>
@@ -3711,6 +3721,8 @@ to exclusive content from Kiki.</string>
                         <outlet property="googleBtn" destination="cf0-ZV-mBt" id="1b6-hf-Dfb"/>
                         <outlet property="loginEmailBtn" destination="Nkq-Kb-7Gi" id="IVY-Cl-Ixz"/>
                         <outlet property="orLable" destination="nt6-HW-5LA" id="557-G5-8pX"/>
+                        <outlet property="signInWithAppleHolderView" destination="KC3-cn-oMS" id="7Gj-fm-0Bd"/>
+                        <outlet property="signInWithAppleHolderViewHeightConstraint" destination="YIM-Ib-ptd" id="OXO-Fo-SN5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60N-eV-QMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3922,7 +3934,7 @@ to exclusive content from Kiki.</string>
                         <viewControllerLayoutGuide type="bottom" id="suT-HK-DpB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WAp-D5-Xoi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="xmD-rp-oje">
@@ -4055,7 +4067,7 @@ to exclusive content from Kiki.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Naq-Ag-4IA">
-                                <rect key="frame" x="156" y="638.66666666666663" width="102" height="35"/>
+                                <rect key="frame" x="155" y="638.66666666666663" width="104" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="hkf-Ht-ccG"/>
                                 </constraints>
@@ -5326,8 +5338,8 @@ to exclusive content from Kiki.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ojL-bA-RMP"/>
-        <segue reference="pTO-01-Sqb"/>
+        <segue reference="VyR-FX-szS"/>
+        <segue reference="Mh9-A6-8Lq"/>
         <segue reference="hac-DG-uXz"/>
         <segue reference="4kt-9H-yFb"/>
     </inferredMetricsTieBreakers>

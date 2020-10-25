@@ -53,6 +53,23 @@ class UIHelper:NSObject{
         return UIApplication.shared.keyWindow!.rootViewController as! KYDrawerController
     }
     
+    static func hide(view:UIView){
+        view.isHidden = true
+    }
+    
+    static func show(view:UIView){
+        view.isHidden = false
+    }
+    
+    static func addCornerRadius(to view:UIView,withRadius radius:CGFloat = 4, withborder:Bool = false,using borderColor:CGColor = UIColor.black.cgColor){
+        view.layer.cornerRadius = radius
+        if (withborder){
+            view.layer.borderWidth = 0.5
+            view.layer.borderColor = borderColor
+        }
+        view.layer.masksToBounds = true
+    }
+    
     //    static func heightForView(_ text:String, font:UIFont, width:CGFloat) -> CGFloat{
     //        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
     //        label.numberOfLines = 0

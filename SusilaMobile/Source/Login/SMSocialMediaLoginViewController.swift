@@ -11,6 +11,7 @@ import GoogleSignIn
 import Firebase
 import FBSDKLoginKit
 import FBSDKCoreKit
+import AuthenticationServices
 
 class SMSocialMediaLoginViewController: BaseViewController {
     
@@ -23,17 +24,49 @@ class SMSocialMediaLoginViewController: BaseViewController {
     @IBOutlet weak var orLable: UILabel!
     @IBOutlet weak var createAccntBtn: UIButton!
     @IBOutlet weak var backButton: UIButton!
-
+    @IBOutlet weak var signInWithAppleHolderView: UIStackView!
+    @IBOutlet weak var signInWithAppleHolderViewHeightConstraint: NSLayoutConstraint!
+    
     fileprivate let registerViewModel = SMRegisterViewModel()
     
     override func viewDidLoad() {
         self.setText()
-
+        setupSignInWithApple()
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.presentingViewController = self
         let translateSet = defaults.object(forKey: "loadToMainLogin") as? String
         if translateSet == "true" {
             backButton.isHidden = true
+        }
+    }
+    
+    private func setupSignInWithApple(){
+        if #available(iOS 13.0, *) {
+            UIHelper.show(view: signInWithAppleHolderView)
+            signInWithAppleHolderViewHeightConstraint.constant = 50
+            UIHelper.addCornerRadius(to: signInWithAppleHolderView,withRadius: 6.0)
+            let authButton = ASAuthorizationAppleIDButton()
+            authButton.cornerRadius = 6.0
+            authButton.addTarget(self, action: #selector(appleSignInOnTapped), for: .touchUpInside)
+            self.signInWithAppleHolderView.addArrangedSubview(authButton)
+        } else {
+            signInWithAppleHolderViewHeightConstraint.constant = 0
+            UIHelper.hide(view: signInWithAppleHolderView)
+        }
+    }
+    
+    @objc func appleSignInOnTapped(){
+        Log("Tapped")
+        if #available(iOS 13.0, *) {
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            let request = appleIDProvider.createRequest()
+            request.requestedScopes = [.fullName,.email]
+            
+            let autherizationController = ASAuthorizationController(authorizationRequests: [request])
+            autherizationController.delegate = self
+            autherizationController.presentationContextProvider = self
+            autherizationController.performRequests()
+            
         }
     }
     
@@ -194,4 +227,36 @@ extension SMSocialMediaLoginViewController: GIDSignInDelegate {
         // ...
         ProgressView.shared.hide()
     }
+}
+
+typealias AppleSignIn = SMSocialMediaLoginViewController
+extension AppleSignIn:ASAuthorizationControllerDelegate,ASAuthorizationControllerPresentationContextProviding{
+    
+    @available(iOS 13.0, *)
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+    @available(iOS 13.0, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let appleIDCredentaials as ASAuthorizationAppleIDCredential:
+            
+            let userID = appleIDCredentaials.user
+            let fullName = appleIDCredentaials.fullName
+            let email = appleIDCredentaials.email
+            
+            Log("ID: \(userID) \n Full Name: \(fullName) \n Email: \(email)")
+            
+        default:()
+            
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        Log(error.localizedDescription)
+    }
+    
+    
 }

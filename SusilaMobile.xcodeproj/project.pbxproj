@@ -471,7 +471,6 @@
 		83E9D8812212D998000E4BE9 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		8440E6652373E21100A0C6FF /* ScrollCollectionBrowse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollCollectionBrowse.swift; sourceTree = "<group>"; };
 		845BD58023714F3A00AE226E /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
-		8479F08C1EB1197000574A8F /* SusilaMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SusilaMobile.entitlements; sourceTree = "<group>"; };
 		84AB921D232A5F3300615576 /* SMVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMVerificationViewController.swift; sourceTree = "<group>"; };
 		84AB9221232A67D900615576 /* SMNewPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMNewPasswordController.swift; sourceTree = "<group>"; };
 		84B6133123264FED00116F6E /* SMResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMResetViewController.swift; sourceTree = "<group>"; };
@@ -482,6 +481,7 @@
 		84CC5E46230BB4CA0097F736 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		84CCCF132360336200D880D1 /* PlayerViewRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewRadio.swift; sourceTree = "<group>"; };
 		94DDB9BE7D67036F48E17ADD /* Pods-SusilaMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SusilaMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-SusilaMobile/Pods-SusilaMobile.release.xcconfig"; sourceTree = "<group>"; };
+		B60F1A02254446CE00CD59C4 /* SusilaMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SusilaMobile.entitlements; sourceTree = "<group>"; };
 		B6E846762537226000D423C1 /* AppStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManager.swift; sourceTree = "<group>"; };
 		CC2DB41B1F0BC18400A06A14 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
 		CC7B6079201DDE21005EE387 /* SMPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SMPaymentViewController.swift; path = Source/Package/SMPaymentViewController.swift; sourceTree = "<group>"; };
@@ -1137,7 +1137,7 @@
 		7E9F4F7B1E288E9C00EC9B69 /* SusilaMobile */ = {
 			isa = PBXGroup;
 			children = (
-				8479F08C1EB1197000574A8F /* SusilaMobile.entitlements */,
+				B60F1A02254446CE00CD59C4 /* SusilaMobile.entitlements */,
 				7E9F4F8E1E28926F00EC9B69 /* Assets */,
 				7E9F4F8F1E28927A00EC9B69 /* Source */,
 			);
@@ -2199,7 +2199,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = K4TVD2RMC6;
@@ -2235,11 +2235,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = SusilaMobile/SusilaMobile.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SusilaMobile/SusilaMobileRelease.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = K4TVD2RMC6;
 				ENABLE_BITCODE = NO;
