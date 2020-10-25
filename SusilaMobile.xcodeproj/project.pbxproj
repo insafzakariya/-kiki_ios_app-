@@ -52,8 +52,6 @@
 		58E8B5A81FC31EA80068B8E1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5A71FC31EA80068B8E1 /* CoreMedia.framework */; };
 		58E8B5AA1FC31EB00068B8E1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5A91FC31EB00068B8E1 /* CoreVideo.framework */; };
 		58E8B5B01FC31F070068B8E1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5AF1FC31F060068B8E1 /* MediaPlayer.framework */; };
-		58E8B5B21FC31F160068B8E1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5B11FC31F160068B8E1 /* MobileCoreServices.framework */; };
-		58E8B5B41FC31F240068B8E1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5B31FC31F240068B8E1 /* OpenGLES.framework */; };
 		58E8B5B61FC31F640068B8E1 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E8B5B51FC31F640068B8E1 /* VideoToolbox.framework */; };
 		58E8B5C01FC324AD0068B8E1 /* IJKVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E8B5BD1FC324AC0068B8E1 /* IJKVideoViewController.m */; };
 		58E8B5C51FC32B090068B8E1 /* IJKMediaControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E8B5C41FC32B090068B8E1 /* IJKMediaControl.m */; };
@@ -218,6 +216,8 @@
 		B60DDAEC253ADEA600CD46F0 /* IJKMediaControl.h in Sources */ = {isa = PBXBuildFile; fileRef = 58E8B5C31FC32B090068B8E1 /* IJKMediaControl.h */; };
 		B60DDAED253ADEA600CD46F0 /* IJKVideoViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 58E8B5BF1FC324AC0068B8E1 /* IJKVideoViewController.h */; };
 		B6E846772537226000D423C1 /* AppStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E846762537226000D423C1 /* AppStoreManager.swift */; };
+		B6EF0ED925453B4600FCD18E /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EF0ED825453B4500FCD18E /* CoreServices.framework */; };
+		B6EF0F0325453BE000FCD18E /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EF0F0225453BE000FCD18E /* Metal.framework */; };
 		CC2DB41C1F0BC18400A06A14 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2DB41B1F0BC18400A06A14 /* iOSDevCenters+GIF.swift */; };
 		CC7B607A201DDE21005EE387 /* SMPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B6079201DDE21005EE387 /* SMPaymentViewController.swift */; };
 		CCC446941F9BBD390088868C /* NotificationListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC446911F9BBD390088868C /* NotificationListModel.swift */; };
@@ -483,6 +483,8 @@
 		94DDB9BE7D67036F48E17ADD /* Pods-SusilaMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SusilaMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-SusilaMobile/Pods-SusilaMobile.release.xcconfig"; sourceTree = "<group>"; };
 		B60F1A02254446CE00CD59C4 /* SusilaMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SusilaMobile.entitlements; sourceTree = "<group>"; };
 		B6E846762537226000D423C1 /* AppStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManager.swift; sourceTree = "<group>"; };
+		B6EF0ED825453B4500FCD18E /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		B6EF0F0225453BE000FCD18E /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		CC2DB41B1F0BC18400A06A14 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
 		CC7B6079201DDE21005EE387 /* SMPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SMPaymentViewController.swift; path = Source/Package/SMPaymentViewController.swift; sourceTree = "<group>"; };
 		CCC446911F9BBD390088868C /* NotificationListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationListModel.swift; sourceTree = "<group>"; };
@@ -509,9 +511,9 @@
 			files = (
 				58E8B5B61FC31F640068B8E1 /* VideoToolbox.framework in Frameworks */,
 				7EAEDFC31F9B57CB0060E4F3 /* QuartzCore.framework in Frameworks */,
-				58E8B5B41FC31F240068B8E1 /* OpenGLES.framework in Frameworks */,
-				58E8B5B21FC31F160068B8E1 /* MobileCoreServices.framework in Frameworks */,
+				B6EF0F0325453BE000FCD18E /* Metal.framework in Frameworks */,
 				58E8B5B01FC31F070068B8E1 /* MediaPlayer.framework in Frameworks */,
+				B6EF0ED925453B4600FCD18E /* CoreServices.framework in Frameworks */,
 				58D744282533548E00630E3E /* SystemConfiguration.framework in Frameworks */,
 				58E8B5AA1FC31EB00068B8E1 /* CoreVideo.framework in Frameworks */,
 				58E8B5A81FC31EA80068B8E1 /* CoreMedia.framework in Frameworks */,
@@ -565,6 +567,8 @@
 		39A1C5D5C0BAB6153029DE7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6EF0F0225453BE000FCD18E /* Metal.framework */,
+				B6EF0ED825453B4500FCD18E /* CoreServices.framework */,
 				58D743B12533520800630E3E /* SystemConfiguration.framework */,
 				58E8B5B51FC31F640068B8E1 /* VideoToolbox.framework */,
 				58E8B5B31FC31F240068B8E1 /* OpenGLES.framework */,
@@ -2235,7 +2239,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = SusilaMobile/SusilaMobileRelease.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SusilaMobile/SusilaMobile.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
