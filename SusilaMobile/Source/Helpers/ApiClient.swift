@@ -412,6 +412,15 @@ class ApiClient {
                 StringKeys.DEVICE_ID:user.device_id
             ] as [String : Any]
             
+            
+        case .APPLE:
+            parameters = [
+                StringKeys.NAME:user.name,
+                StringKeys.SOCIAL_TOKEN:user.socialAccessToken ?? "",
+                StringKeys.SOCIAL_TYPE:user.provider.rawValue.lowercased(),
+                StringKeys.DEVICE_ID:user.device_id
+            ] as [String : Any]
+            
         default:()
         }
         
