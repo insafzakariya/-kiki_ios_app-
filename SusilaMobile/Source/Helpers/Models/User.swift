@@ -17,6 +17,7 @@ class User{
     var gender: Gender?
     var language: Language?
     var accessToken: String?
+    var email:String?
     var socialAccessToken: String?
     var socialAccessTokenSecret: String?
     var mobileNumber: String?
@@ -25,7 +26,7 @@ class User{
     var device_id: String
 
     
-    init(username: String, password: String, name: String, provider: AuthMethod, gender: Gender?, language: Language?, accessToken: String?, socialAccessToken: String?, socialAccessTokenSecret: String?, mobileNumber: String?,whitelisted: String?,country: String?, device_id: String){
+    init(username: String, password: String, name: String, provider: AuthMethod, gender: Gender?, language: Language?, accessToken: String?, socialAccessToken: String?, socialAccessTokenSecret: String?, mobileNumber: String?,whitelisted: String?,country: String?, device_id: String,email:String? = nil){
         
         self.username = username
         self.password = password
@@ -40,5 +41,6 @@ class User{
         self.whitelisted = (whitelisted != nil)
         self.country = country
         self.device_id = device_id
+        self.email = email
     }
 }

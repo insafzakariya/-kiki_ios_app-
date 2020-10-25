@@ -241,15 +241,10 @@ extension AppleSignIn:ASAuthorizationControllerDelegate,ASAuthorizationControlle
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         switch authorization.credential {
         case let appleIDCredentaials as ASAuthorizationAppleIDCredential:
-//            let token = appleIDCredentaials.authorizationCode
             let userID = appleIDCredentaials.user
-            let fullName = appleIDCredentaials.fullName?.description
-//            let email = appleIDCredentaials.email
-            
-//            Log("ID: \(userID) \n Full Name: \(fullName) \n Email: \(email)")
-            
-            let user = User(username: "", password: "", name: fullName ?? "", provider: .APPLE, gender: nil, language: nil, accessToken: nil, socialAccessToken: userID, socialAccessTokenSecret: nil, mobileNumber: nil, whitelisted: nil, country: nil, device_id: Messaging.messaging().fcmToken!)
-            
+            let fullName = "\(appleIDCredentaials.fullName?.givenName ?? "") \(appleIDCredentaials.fullName?.familyName ?? "")"
+            let email = appleIDCredentaials.email ?? ""
+            let user = User(username: "", password: "", name: fullName, provider: .APPLE, gender: nil, language: nil, accessToken: "", socialAccessToken: userID, socialAccessTokenSecret: nil, mobileNumber: nil, whitelisted: nil, country: nil, device_id: Messaging.messaging().fcmToken!,email: email)
             self.callSocialRegistrationAPI(user: user)
             
         default:()

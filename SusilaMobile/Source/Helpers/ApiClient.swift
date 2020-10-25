@@ -170,6 +170,8 @@ class ApiClient {
         static let SERVER_VALUE_ENGLISH = "En";
         static let SMSCode = "smsCode";
         static let DEVICE_ID = "device_id";
+        static let EMAIL = "email"
+        static let SOCIAL_USER_ID = "social_userid"
         
         static let IMAGE_URL = "imageUrl";
         static let PLAYLIST_ID = "playlist_id";
@@ -372,6 +374,7 @@ class ApiClient {
             StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken
         ]
+        Log(headers.description)
         
         var parameters : [String : Any]? = nil
         
@@ -415,16 +418,20 @@ class ApiClient {
             
         case .APPLE:
             parameters = [
+                StringKeys.USERNAME:user.username,
+                StringKeys.PASSWORD:user.password,
                 StringKeys.NAME:user.name,
+                StringKeys.SOCIAL_USER_ID:user.socialAccessToken ?? "",
                 StringKeys.SOCIAL_TOKEN:user.socialAccessToken ?? "",
                 StringKeys.SOCIAL_TYPE:user.provider.rawValue.lowercased(),
+                StringKeys.EMAIL:user.email ?? "",
                 StringKeys.DEVICE_ID:user.device_id
             ] as [String : Any]
             
         default:()
         }
         
-        
+        Log(parameters?.description ?? "")
         request(url!, apiCallType: .Regiter, method: .post, parameters: parameters, headers: headers, success: { (data, code) -> Void in
             success(data, code)
         }) { (error) -> Void in

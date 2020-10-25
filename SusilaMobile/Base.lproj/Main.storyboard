@@ -3,7 +3,7 @@
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -5340,7 +5340,7 @@ to exclusive content from Kiki.</string>
     <inferredMetricsTieBreakers>
         <segue reference="VyR-FX-szS"/>
         <segue reference="Mh9-A6-8Lq"/>
-        <segue reference="hac-DG-uXz"/>
+        <segue reference="W6m-Vb-MjW"/>
         <segue reference="4kt-9H-yFb"/>
     </inferredMetricsTieBreakers>
     <resources>

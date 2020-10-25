@@ -146,6 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         kAPIBaseUrl = self.remoteConfig[baseURL_LIVE].stringValue!
+        Log("Base URL: \(kAPIBaseUrl)")
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
