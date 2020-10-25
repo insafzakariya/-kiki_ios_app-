@@ -113,7 +113,7 @@ class SMRegisterInfoViewController: BaseViewController,CountryPickerDelegate,UIG
         if (countryCode != nil) {
             countryPicker.setCountryByPhoneCode(countryCode!)
         } else {
-            countryPicker.setCountry(code!)
+            countryPicker.setCountry(code ?? "+94")
         }
     }
     

@@ -12,7 +12,6 @@ import AVKit
 import AVFoundation
 
 class ScrollCollection: UIView, UIScrollViewDelegate {
-    var dashboardViewController = DashboardViewController()
     var libraryDataModel = LibraryDataModel()
     var homeDataModel = HomeDataModel()
     var addAlertDialog = AddAlertDialog()
@@ -778,6 +777,11 @@ class ScrollCollection: UIView, UIScrollViewDelegate {
     
     func getCenteredFrameForOverlay(_ height: CGFloat) -> CGRect {
         return CGRect(x: 15, y: (UIScreen.main.bounds.height - 250 - height)/2, width: UIScreen.main.bounds.width - 30 , height: height)
+    }
+    
+    deinit {
+        Log("Deinit ScrollCollection")
+
     }
     
 }

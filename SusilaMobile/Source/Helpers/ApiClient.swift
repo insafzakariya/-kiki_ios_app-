@@ -108,20 +108,20 @@ class ApiClient {
         static let passwordRequest = "password/reset"
         
         //
-        static let HomePopularSongs = "audio/playlist/songs?ps=true&offset=0&limit=200"
-        static let HomeLatestSongs = "audio/playlist/songs?ls=true&offset=0&limit=200"
+        static let HomePopularSongs = "audio/playlist/songs?ps=true&offset=0&limit=15"
+        static let HomeLatestSongs = "audio/playlist/songs?ls=true&offset=0&limit=15"
         static let RadioChannels = "radio/channel"
         static let HomePopularArtists = "audio/artist/popular?pa=true"
         static let LatestPlaylistSongs = "audio/playlist/songs/"
         static let HomePopularArtistSongs = "artist/"
-        static let BrowseAllArtistSongs = "artist/list?offset=1&limit=200"
+        static let BrowseAllArtistSongs = "artist/list?offset=1&limit=15"
         static let BrowseGenreArtists = "genre/"
         static let BrowseGenrePlaylists = "genre/"
         
         //Library
-        static let LibrarySongs = "library/songs?limit=200&offset=1"
-        static let LibraryArtists = "library/artists?limit=200&offset=1"
-        static let LibraryPlaylist = "library/playlist?limit=200&offset=1"
+        static let LibrarySongs = "library/songs?limit=15&offset=1"
+        static let LibraryArtists = "library/artists?limit=15&offset=1"
+        static let LibraryPlaylist = "library/playlist?limit=15&offset=1"
         static let addToTempPlaylist = "audio/playlist/addtotemp"
         static let getTempPlaylist = "audio/playlist/temp/all?session_id="
         static let addToLibary = "library/add"

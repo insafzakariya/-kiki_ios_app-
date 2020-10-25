@@ -11,7 +11,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class ScrollCollectionBrowse: UIView, UIScrollViewDelegate {
+class ScrollCollectionBrowse: UIView {
     
     var scrollView = UIScrollView(frame: CGRect.zero)
     var contentView = UIView(frame: CGRect.zero)
