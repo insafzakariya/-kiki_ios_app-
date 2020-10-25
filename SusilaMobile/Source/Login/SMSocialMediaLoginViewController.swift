@@ -241,7 +241,7 @@ extension AppleSignIn:ASAuthorizationControllerDelegate,ASAuthorizationControlle
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         switch authorization.credential {
         case let appleIDCredentaials as ASAuthorizationAppleIDCredential:
-            
+            let token = appleIDCredentaials.authorizationCode
             let userID = appleIDCredentaials.user
             let fullName = appleIDCredentaials.fullName
             let email = appleIDCredentaials.email
