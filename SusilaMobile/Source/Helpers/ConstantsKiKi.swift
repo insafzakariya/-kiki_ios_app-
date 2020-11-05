@@ -15,6 +15,7 @@ let kiOS_API_key = "AIzaSyDX2hS-C8riiI4tZzLHFOHP2zAC5NxX2bE" //"1iM721UXrVaiqDVs
 //let remoteConfig = (UIApplication.shared.delegate as! AppDelegate).getRemoteConfig()
 //let kAPIBaseUrl = remoteConfig[baseURL] as String
 var kAPIBaseUrl = "http://35.200.234.252:7070/mobile-tv-webservice/api/v1/" // staging URL
+var IAPBaseURL = "https://payv2.kiki.lk/susilawebpay" // staging URL
 
 
 let mobileCodeRequestUrl = "http://220.247.201.206:90/"
@@ -79,6 +80,7 @@ let enableSMSVerificationConfigKey = "ENABLE_SMS_VERIFICATION"
 let mobilePaymentGatewayUrlConfigKey = "MOBILE_PAYMENT_GATEWAY_URL_V2"
 let baseURL_STAGING = "STAGING_SERVER_API_V_1"
 let baseURL_LIVE = "MAIN_SERVER_API_V_2"
+let IAP_LIVE = "APPLE_MOBILE_PAYMENT_GATEWAY_URL_V1"
 //let mobilePaymentGatewayUrlConfigKey = "STAGING_MOBILE_PAYMENT_GATEWAY_URL" // staging
 
 

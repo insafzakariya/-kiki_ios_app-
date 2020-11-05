@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         fetchRemoteConfig()
-        
         if let token = Messaging.messaging().fcmToken {
             Log("FCM Token \(token)")
             updateFCMToken(deviceId: token)
@@ -120,6 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    
     func fetchRemoteConfig() {
         remoteConfig = RemoteConfig.remoteConfig()
         let remoteConfigSettings = RemoteConfigSettings()
@@ -139,6 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         remoteConfig.fetchAndActivate { (status, error) in
             if status == .successFetchedFromRemote || status == .successUsingPreFetchedData{
                 kAPIBaseUrl = self.remoteConfig[baseURL_LIVE].stringValue!
+                IAPBaseURL = self.remoteConfig[IAP_LIVE].stringValue!
                 let appStoreManager = AppStoreManager(remoteConfig: self.remoteConfig)
                 AppStoreManager.IS_ON_REVIEW = appStoreManager.isCurrentlyOnReview()
             }else{
@@ -146,7 +147,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         kAPIBaseUrl = self.remoteConfig[baseURL_LIVE].stringValue!
+        IAPBaseURL = remoteConfig[IAP_LIVE].stringValue!
         Log("Base URL: \(kAPIBaseUrl)")
+        
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {

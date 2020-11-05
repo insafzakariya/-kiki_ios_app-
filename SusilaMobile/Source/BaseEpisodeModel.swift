@@ -92,20 +92,27 @@ class BaseEpisodeModel: NSObject {
     }
     
     func constructSubtitleUrl(videoUrl: String) -> String {
-        let vidoeStrUrl = videoUrl.removingPercentEncoding ?? ""
-        do {
-            let regex = try NSRegularExpression(pattern: "(.*)(smil:)([\\d]+)(.smil)(.*)(\\?token=.*)")
-            let results = regex.matches(in: vidoeStrUrl,
-                                        range: NSRange(location: 0, length: vidoeStrUrl.count))
-            let match = results.first
-            let urlPrefix  = String(vidoeStrUrl[Range((match?.range(at: 1))!, in:vidoeStrUrl)!])
-            let smil = String(vidoeStrUrl[Range((match?.range(at: 3))!, in:vidoeStrUrl)!])
-            let urlSuffix = String(vidoeStrUrl[Range((match?.range(at: 6))!, in:vidoeStrUrl)!])
-            
-            let finalUrl = "\(urlPrefix)\(smil).ttml\(urlSuffix)"
-            return finalUrl
-        } catch (let e) {
-            Log(e.localizedDescription)
+        if let vidoeStrUrl = videoUrl.removingPercentEncoding{
+            do {
+                if !vidoeStrUrl.contains("null"){
+                    let regex = try NSRegularExpression(pattern: "(.*)(smil:)([\\d]+)(.smil)(.*)(\\?token=.*)")
+                    let results = regex.matches(in: vidoeStrUrl,
+                                                range: NSRange(location: 0, length: vidoeStrUrl.count))
+                    let match = results.first
+                    let urlPrefix  = String(vidoeStrUrl[Range((match?.range(at: 1))!, in:vidoeStrUrl)!])
+                    let smil = String(vidoeStrUrl[Range((match?.range(at: 3))!, in:vidoeStrUrl)!])
+                    let urlSuffix = String(vidoeStrUrl[Range((match?.range(at: 6))!, in:vidoeStrUrl)!])
+                    
+                    let finalUrl = "\(urlPrefix)\(smil).ttml\(urlSuffix)"
+                    return finalUrl
+                }else{
+                    return ""
+                }
+            } catch (let e) {
+                Log(e.localizedDescription)
+                return ""
+            }
+        }else{
             return ""
         }
     }

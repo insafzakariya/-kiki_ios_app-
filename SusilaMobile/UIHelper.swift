@@ -6,7 +6,13 @@
 //
 
 import Foundation
+import NotificationBannerSwift
 
+enum SnackType:String{
+    case ERROR = "ERROR"
+    case WARNING = "WARNING"
+    case NORMAL = "NORMAL"
+}
 
 class UIHelper:NSObject{
     
@@ -49,8 +55,29 @@ class UIHelper:NSObject{
         winow.rootViewController!.present(alertController, animated: true, completion: nil)
     }
     
-    private static func getRootViewController() -> KYDrawerController{
+    @objc static func getRootViewController() -> KYDrawerController{
         return UIApplication.shared.keyWindow!.rootViewController as! KYDrawerController
+    }
+    
+    static func makeSnackBar(title:String? = nil, message:String,type:SnackType = SnackType.ERROR){
+        DispatchQueue.main.async {
+            var bannerType:BannerStyle = .danger
+            var bannerTitle:String?
+            
+            if type == SnackType.ERROR {
+                bannerType = .danger
+                bannerTitle = "Error!"
+            }else if type == SnackType.WARNING{
+                bannerType = .warning
+                bannerTitle = "Warning!"
+            }else{
+                bannerTitle = "Success!"
+                bannerType = .success
+            }
+            
+            let banner = GrowingNotificationBanner(title: title == nil ? bannerTitle : title, subtitle: message, style: bannerType)
+            banner.show()
+        }
     }
     
     static func hide(view:UIView){

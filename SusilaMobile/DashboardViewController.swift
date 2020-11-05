@@ -44,6 +44,8 @@ class DashboardViewController: UIViewController, UITabBarDelegate {
             print(error.localizedDescription)
         }
         
+        
+        
         self.tabBar.delegate = self
         self.tabBar.selectedItem = self.tabBar.items?.first
         if home == nil {

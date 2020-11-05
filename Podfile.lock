@@ -139,12 +139,16 @@ PODS:
   - ImageSlideshow/Core (1.8.3)
   - IQKeyboardManager (6.5.6)
   - Kingfisher (4.10.1)
+  - MarqueeLabel/Swift (3.2.1)
   - MBProgressHUD (0.9)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
+  - NotificationBannerSwift (2.1.0):
+    - MarqueeLabel/Swift (~> 3.2.1)
+    - SnapKit (~> 4.2.0)
   - PhoneNumberKit (3.3.1):
     - PhoneNumberKit/PhoneNumberKitCore (= 3.3.1)
     - PhoneNumberKit/UIKit (= 3.3.1)
@@ -157,6 +161,7 @@ PODS:
   - SDWebImage (5.9.3):
     - SDWebImage/Core (= 5.9.3)
   - SDWebImage/Core (5.9.3)
+  - SnapKit (4.2.0)
   - SwiftyJSON (5.0.0)
   - SWXMLHash (5.0.1)
   - XLPagerTabStrip (9.0.0)
@@ -179,6 +184,7 @@ DEPENDENCIES:
   - IQKeyboardManager
   - Kingfisher
   - MBProgressHUD (= 0.9)
+  - NotificationBannerSwift
   - PhoneNumberKit
   - Reachability
   - SDWebImage
@@ -216,13 +222,16 @@ SPEC REPOS:
     - ImageSlideshow
     - IQKeyboardManager
     - Kingfisher
+    - MarqueeLabel
     - MBProgressHUD
     - nanopb
+    - NotificationBannerSwift
     - PhoneNumberKit
     - PromisesObjC
     - Protobuf
     - Reachability
     - SDWebImage
+    - SnapKit
     - SwiftyJSON
     - SWXMLHash
     - XLPagerTabStrip
@@ -256,17 +265,20 @@ SPEC CHECKSUMS:
   ImageSlideshow: 4694d7d699a1549582e7cc631fb392d8f91630f3
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  MarqueeLabel: 2daf039bf916937c8a4c9adfc13577cc5e51b4ce
   MBProgressHUD: d8e7ea388dc1549a42e0d219067cf5f2c898fb66
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
+  NotificationBannerSwift: 4483919639202bec56d6bfe8f106ebc352d38bc7
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: a31ee8e90a97303529e03fb0c333eae0eacb88e9
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SWXMLHash: 9cc0c2e4807926c74377724aa8722ee5707a0485
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: bb6127a00071f2f027c7f41cee38f3bc4a953b91
+PODFILE CHECKSUM: cd14bd7fdf8557a4faad84f578d75b8ef44de252
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

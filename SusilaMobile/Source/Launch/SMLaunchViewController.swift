@@ -80,8 +80,6 @@ class SMLaunchViewController: UIViewController {
     func checkKeepMeLogin(){
         let api = ApiClient()
         api.authLoginWithAccessToken(success: { (data, code) -> Void in
-            
-            
             let jsonData = JSON(data as Any)
             NSLog("authLoginWithAccessToken : \(jsonData)")
             

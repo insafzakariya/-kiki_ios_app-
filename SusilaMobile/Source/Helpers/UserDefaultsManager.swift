@@ -146,23 +146,24 @@ extension UserDefaultsManager {
     }
     class func getAccessToken() -> String? {
         return UserDefaultsManager.getValue(PreferencesConstants.OauthAccessToken) as? String
-        
     }
     
     class func setUser(_ user: AuthUser?) {
         UserDefaultsManager.setValue(user as AnyObject?, key: PreferencesConstants.LoginUser)
     }
+    
     class func getUser() -> AuthUser? {
         return UserDefaultsManager.getValue(PreferencesConstants.LoginUser) as? AuthUser
-        
     }
     
     class func setChannelID(_ channelId: Int?) {
         UserDefaultsManager.setValue(channelId as AnyObject?, key: PreferencesConstants.ChannelID)
     }
+    
     class func setChannelName(_ channelName: String?) {
         UserDefaultsManager.setValue(channelName as AnyObject?, key: PreferencesConstants.ChannelName)
     }
+    
     class func getChannelName() -> String? {
         return UserDefaultsManager.getValue(PreferencesConstants.ChannelName) as? String
         

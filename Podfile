@@ -30,4 +30,5 @@ target 'SusilaMobile' do
   pod 'SDWebImage'
   pod 'Kingfisher'
   pod 'ijkplayer'
+  pod 'NotificationBannerSwift'
 end

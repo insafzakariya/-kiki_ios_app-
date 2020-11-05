@@ -855,16 +855,13 @@ typedef NS_ENUM(NSInteger, AVPlayerFullscreenAutorotaionMode)
     //    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     //    [appDelegate getRemoteConfig];
     
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main"
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"New"
                                                          bundle:nil];
-    SMWebViewController *webController =
-    [storyboard instantiateViewControllerWithIdentifier:@"SMWebViewController"];
-    [webController setFromEpisode:@"true"];
-    //    [webController setWebViewLink: packagePageUrl + "?token=\(packageSubscribe["tokenHash"].string ?? "")"];
-    [self presentViewController:webController
+    SubscriptionViewController *subController = [storyboard instantiateViewControllerWithIdentifier:@"subscriptionVC"];
+    [self presentViewController:subController
                        animated:YES
                      completion:nil];
-    
+
     //    SMWebViewController *controller = [[SMWebViewController alloc]initWithNibName:@"SMWebViewController" bundle:nil];
     //    [self presentViewController:controller animated:YES completion:nil];
     

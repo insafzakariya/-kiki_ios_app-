@@ -215,6 +215,16 @@
 		B60DDAEB253ADEA600CD46F0 /* IJKDemoHistory.h in Sources */ = {isa = PBXBuildFile; fileRef = 58E8B5C81FC32BEF0068B8E1 /* IJKDemoHistory.h */; };
 		B60DDAEC253ADEA600CD46F0 /* IJKMediaControl.h in Sources */ = {isa = PBXBuildFile; fileRef = 58E8B5C31FC32B090068B8E1 /* IJKMediaControl.h */; };
 		B60DDAED253ADEA600CD46F0 /* IJKVideoViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 58E8B5BF1FC324AC0068B8E1 /* IJKVideoViewController.h */; };
+		B6525EDD254E981700EFDD39 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6525EDC254E981700EFDD39 /* IAPManager.swift */; };
+		B6525EDF254EA15600EFDD39 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6525EDE254EA15600EFDD39 /* SubscriptionViewController.swift */; };
+		B6525EE1254EA45900EFDD39 /* New.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6525EE0254EA45900EFDD39 /* New.storyboard */; };
+		B6525EE3254EC2C200EFDD39 /* SubscriberProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6525EE2254EC2C200EFDD39 /* SubscriberProduct.swift */; };
+		B6525EE5254EC7A100EFDD39 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6525EE4254EC7A100EFDD39 /* Notification.swift */; };
+		B6525EE8254ECCC200EFDD39 /* SubscribeItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6525EE6254ECCC200EFDD39 /* SubscribeItemTableViewCell.swift */; };
+		B6525EE9254ECCC200EFDD39 /* SubscribeItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6525EE7254ECCC200EFDD39 /* SubscribeItemTableViewCell.xib */; };
+		B6525EEB254ED90800EFDD39 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6525EEA254ED90800EFDD39 /* StoreKit.framework */; };
+		B6541F692552587B000046BA /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6541F682552587B000046BA /* ServiceManager.swift */; };
+		B6541FC72552C0B7000046BA /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6541FC62552C0B7000046BA /* ReachabilityManager.swift */; };
 		B6E846772537226000D423C1 /* AppStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E846762537226000D423C1 /* AppStoreManager.swift */; };
 		B6EF0ED925453B4600FCD18E /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EF0ED825453B4500FCD18E /* CoreServices.framework */; };
 		B6EF0F0325453BE000FCD18E /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EF0F0225453BE000FCD18E /* Metal.framework */; };
@@ -482,6 +492,16 @@
 		84CCCF132360336200D880D1 /* PlayerViewRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewRadio.swift; sourceTree = "<group>"; };
 		94DDB9BE7D67036F48E17ADD /* Pods-SusilaMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SusilaMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-SusilaMobile/Pods-SusilaMobile.release.xcconfig"; sourceTree = "<group>"; };
 		B60F1A02254446CE00CD59C4 /* SusilaMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SusilaMobile.entitlements; sourceTree = "<group>"; };
+		B6525EDC254E981700EFDD39 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
+		B6525EDE254EA15600EFDD39 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
+		B6525EE0254EA45900EFDD39 /* New.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = New.storyboard; sourceTree = "<group>"; };
+		B6525EE2254EC2C200EFDD39 /* SubscriberProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriberProduct.swift; sourceTree = "<group>"; };
+		B6525EE4254EC7A100EFDD39 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		B6525EE6254ECCC200EFDD39 /* SubscribeItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeItemTableViewCell.swift; sourceTree = "<group>"; };
+		B6525EE7254ECCC200EFDD39 /* SubscribeItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscribeItemTableViewCell.xib; sourceTree = "<group>"; };
+		B6525EEA254ED90800EFDD39 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		B6541F682552587B000046BA /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		B6541FC62552C0B7000046BA /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		B6E846762537226000D423C1 /* AppStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManager.swift; sourceTree = "<group>"; };
 		B6EF0ED825453B4500FCD18E /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		B6EF0F0225453BE000FCD18E /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -510,6 +530,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58E8B5B61FC31F640068B8E1 /* VideoToolbox.framework in Frameworks */,
+				B6525EEB254ED90800EFDD39 /* StoreKit.framework in Frameworks */,
 				7EAEDFC31F9B57CB0060E4F3 /* QuartzCore.framework in Frameworks */,
 				B6EF0F0325453BE000FCD18E /* Metal.framework in Frameworks */,
 				58E8B5B01FC31F070068B8E1 /* MediaPlayer.framework in Frameworks */,
@@ -567,6 +588,7 @@
 		39A1C5D5C0BAB6153029DE7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6525EEA254ED90800EFDD39 /* StoreKit.framework */,
 				B6EF0F0225453BE000FCD18E /* Metal.framework */,
 				B6EF0ED825453B4500FCD18E /* CoreServices.framework */,
 				58D743B12533520800630E3E /* SystemConfiguration.framework */,
@@ -633,6 +655,7 @@
 				586C1B282532EE8800101D54 /* UIView.swift */,
 				586C1B2D2532EFD700101D54 /* NSDate.swift */,
 				586C1B2F2532F03D00101D54 /* String.swift */,
+				B6525EE4254EC7A100EFDD39 /* Notification.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -653,6 +676,9 @@
 				586C1B342532F0F900101D54 /* ValidationManager.swift */,
 				586C1E01253301F600101D54 /* LogManager.swift */,
 				B6E846762537226000D423C1 /* AppStoreManager.swift */,
+				B6525EDC254E981700EFDD39 /* IAPManager.swift */,
+				B6541F682552587B000046BA /* ServiceManager.swift */,
+				B6541FC62552C0B7000046BA /* ReachabilityManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -660,6 +686,7 @@
 		586C1D632532F9D500101D54 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B6525EE2254EC2C200EFDD39 /* SubscriberProduct.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1084,6 +1111,9 @@
 			isa = PBXGroup;
 			children = (
 				7E4D2B221F7F915000EA942F /* Model */,
+				B6525EDE254EA15600EFDD39 /* SubscriptionViewController.swift */,
+				B6525EE6254ECCC200EFDD39 /* SubscribeItemTableViewCell.swift */,
+				B6525EE7254ECCC200EFDD39 /* SubscribeItemTableViewCell.xib */,
 			);
 			name = SubscribedList;
 			sourceTree = "<group>";
@@ -1162,6 +1192,7 @@
 				838962E921F5955E0071392F /* Main.storyboard */,
 				7E9F4FA31E2895FC00EC9B69 /* SusilaMobile-Bridging-Header.h */,
 				838962F021F596210071392F /* Localizable.strings */,
+				B6525EE0254EA45900EFDD39 /* New.storyboard */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -1752,7 +1783,9 @@
 				7E374D8B1E3B34BE002A8262 /* HomeTabIconCell.xib in Resources */,
 				836BF634221BF502003C32E8 /* EpisodesTableViewCell.xib in Resources */,
 				58502D641E965B5C0085BD37 /* Assets.xcassets in Resources */,
+				B6525EE1254EA45900EFDD39 /* New.storyboard in Resources */,
 				838962EB21F5955E0071392F /* Main.storyboard in Resources */,
+				B6525EE9254ECCC200EFDD39 /* SubscribeItemTableViewCell.xib in Resources */,
 				836BF62D221BB62A003C32E8 /* SideShowTableViewCell.xib in Resources */,
 				51025A981F81FBC000A3DB55 /* GoogleService-Info.plist in Resources */,
 				CCC571AB1F83E16E005EFB34 /* .gitkeep in Resources */,
@@ -1849,12 +1882,14 @@
 				6D3179F321B84F8800CF855C /* HomeViewController.swift in Sources */,
 				7E12163F1E3A58F800B12288 /* KYDrawerController.swift in Sources */,
 				6D3179DC21B83D4300CF855C /* DashboardViewController.swift in Sources */,
+				B6525EE5254EC7A100EFDD39 /* Notification.swift in Sources */,
 				588C420E1E548A8600C0E974 /* SMWebViewController.swift in Sources */,
 				69C94F6623F51DBC00563A75 /* SongTileSelectSong.swift in Sources */,
 				84BE61D1232F7D1900DADDF2 /* SMResetViewModel.swift in Sources */,
 				69EA24BA24054DFE00E94400 /* SongTileBrowseSquare.swift in Sources */,
 				586C1B212532ECF900101D54 /* UITextField.swift in Sources */,
 				7E76C4EC1E4B883500DC5E87 /* SMHomeBaseViewController.swift in Sources */,
+				B6525EE3254EC2C200EFDD39 /* SubscriberProduct.swift in Sources */,
 				7EE626071E31288900935352 /* PopoverTableViewCell.swift in Sources */,
 				7EE626061E31288900935352 /* PopoverTableCellModel.swift in Sources */,
 				CCC446951F9BBD390088868C /* SMNotificationCell.swift in Sources */,
@@ -1862,6 +1897,7 @@
 				6D39293A21EC90B60058B81C /* Carousel.swift in Sources */,
 				58BC6D5D1E49A3BD00868FA0 /* AVPlayerVC.m in Sources */,
 				7E9F4F9C1E2894FC00EC9B69 /* ConstantsKiKi.swift in Sources */,
+				B6541FC72552C0B7000046BA /* ReachabilityManager.swift in Sources */,
 				2CF40D9520C30F2100DDC432 /* SMSocialMediaLoginViewController.swift in Sources */,
 				586C1B332532F0B600101D54 /* DeviceManager.swift in Sources */,
 				69EA24B824054A8F00E94400 /* SongTileBrowse.swift in Sources */,
@@ -1870,6 +1906,7 @@
 				CCC446941F9BBD390088868C /* NotificationListModel.swift in Sources */,
 				7E0586991E572B25000AE68E /* SMPackageViewModel.swift in Sources */,
 				2C07B5E520F111F000EB7E16 /* SubtitleModel.swift in Sources */,
+				B6525EDF254EA15600EFDD39 /* SubscriptionViewController.swift in Sources */,
 				698A514423FAAE50009CC529 /* SongsTileAddedPlaylistDetails.swift in Sources */,
 				6965B89823CC63EF00583040 /* Artist.swift in Sources */,
 				7E9F4FA91E28A42200EC9B69 /* ErrorHandler.swift in Sources */,
@@ -1922,6 +1959,7 @@
 				2CFAEFBC2215AA1600B917AD /* Extensions.swift in Sources */,
 				69451B1623FE9E060064944C /* AddToPlaylistAlertDialog.swift in Sources */,
 				51CC19CF1F817A790020D2CC /* SMProfileViewController.swift in Sources */,
+				B6525EDD254E981700EFDD39 /* IAPManager.swift in Sources */,
 				6978A11324857C08000319B6 /* ArtistTileSearch.swift in Sources */,
 				588D7F831F9F1D32008F19BA /* DiscardableImageCacheItem.swift in Sources */,
 				6965BC852486DB5200C144D9 /* PlaylistDetailViewController.swift in Sources */,
@@ -1941,6 +1979,7 @@
 				845BD58123714F3A00AE226E /* BrowseViewController.swift in Sources */,
 				7E1216441E3A607000B12288 /* SMMainMenuViewController.swift in Sources */,
 				7E9F4FA01E28958F00EC9B69 /* SMLoginViewController.swift in Sources */,
+				B6541F692552587B000046BA /* ServiceManager.swift in Sources */,
 				83E61A1021F61BA90070ABA2 /* Localize.swift in Sources */,
 				69E3904B246D2E2100D62D6D /* Notify.swift in Sources */,
 				2C055390209ED0B200DD1B25 /* BaseEpisodeModel.swift in Sources */,
@@ -1968,6 +2007,7 @@
 				7EB5077C1E6DC34A00ED25F9 /* SMEpisodesViewController.swift in Sources */,
 				589F5F9E1F8E627C004875A2 /* Channel.swift in Sources */,
 				69BD55B823F2A0540032497D /* SongsTileSelectPlaylistDetails.swift in Sources */,
+				B6525EE8254ECCC200EFDD39 /* SubscribeItemTableViewCell.swift in Sources */,
 				69F4B01B2435B5DE000B2F82 /* SongTileLibraryAllArtists.swift in Sources */,
 				586C1E05253329A300101D54 /* UIConstants.swift in Sources */,
 				69BD55B523F28DCC0032497D /* PlaylistTileSelectPlaylistSeeAll.swift in Sources */,
@@ -2221,7 +2261,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 16.21.0;
+				MARKETING_VERSION = 16.22.0;
 				PODS_PODFILE_DIR_PATH = "${SRCROOT}/";
 				PRODUCT_BUNDLE_IDENTIFIER = kiki.lk.mv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2260,7 +2300,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 16.21.0;
+				MARKETING_VERSION = 16.22.0;
 				PODS_PODFILE_DIR_PATH = "${SRCROOT}/";
 				PRODUCT_BUNDLE_IDENTIFIER = kiki.lk.mv;
 				PRODUCT_NAME = "$(TARGET_NAME)";

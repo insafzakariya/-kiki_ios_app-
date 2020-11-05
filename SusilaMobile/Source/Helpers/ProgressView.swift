@@ -24,7 +24,7 @@ open class ProgressView {
     - parameter mainText:   Title.
     - parameter detailText: Subtitle.
     */
-    open func show(_ view: UIView, mainText: String?, detailText: String?) {
+    open func show(_ view: UIView, mainText: String? = nil, detailText: String? = nil) {
         progressView = MBProgressHUD(view: view)
         progressView.labelText = mainText ?? ""
         progressView.labelColor = UIColor.blue

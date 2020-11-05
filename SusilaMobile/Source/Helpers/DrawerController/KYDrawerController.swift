@@ -173,7 +173,7 @@ open class KYDrawerController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    public var drawerViewController : UIViewController? {
+    @objc public var drawerViewController : UIViewController? {
         didSet {
             if let oldController = oldValue {
                 oldController.willMove(toParent: nil)

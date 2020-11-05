@@ -65,6 +65,9 @@ class ApiClient {
         case SearchByWordAll
         case GetSearchHistory
         case GetSuggessionSongs
+        
+        //IAP
+        case GetPackages
     }
     
     struct SubUrl {
@@ -141,6 +144,11 @@ class ApiClient {
         static let SearchByWordAll = "audio/search-by-type?"
         static let GetSearchHistory = "audio/search-history?limit=5"
         static let GetSuggessionSongs = "audio/songs/suggession/genre?"
+        
+        static let GetPackages = "/rest/plan/planlist/10"
+        static let ActivateIAPPackage = "/rest/apple/pay"
+        static let GetSubscriptionStatus = "/rest/subscription/isSubscribe/%@"
+        
     }
     
     struct StringKeys{
@@ -186,6 +194,106 @@ class ApiClient {
         static let PLAYLISTID = "playlistId";
         
     }
+    
+    func getIAPPackages(onComplete:@escaping (_ packages:[String:Int])->()){
+        let url = URL(string: IAPBaseURL + SubUrl.GetPackages)!
+        Log(url.absoluteString)
+        var tempPackages:[String:Int] = [:]
+        ServiceManager.APIRequest(url: url, method: .get) { (response, responseCode) in
+            if responseCode == 200{
+                let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
+                if let jsonResponse = jsonData as? JSON{
+                    if let packages = jsonResponse.array{
+                        for package in packages{
+                            if let name = package["name"].string,let id = package["id"].int{
+                                tempPackages[name] = id
+                            }
+                        }
+                        onComplete(tempPackages)
+                    }else{
+                        onComplete(tempPackages)
+                    }
+                }else{
+                    onComplete(tempPackages)
+                }
+            }else{
+                onComplete(tempPackages)
+                Log(responseCode.description)
+            }
+        }
+    }
+    
+    func activatePackage(packageID:Int,onComplete:@escaping (_ success:Bool)->()){
+        if let appStoreReceiptURL = Bundle.main.appStoreReceiptURL,
+           FileManager.default.fileExists(atPath: appStoreReceiptURL.path){
+            let rawReceiptData = try! Data(contentsOf: appStoreReceiptURL)
+            let receiptData = rawReceiptData.base64EncodedString()
+            let viewerID = UserDefaultsManager.getUserId()!
+            
+            let params:[String:Any] = [
+                "receiptString":receiptData,
+                "planId":packageID,
+                "viewerId":Int(viewerID)
+            ]
+            Log(params.description)
+            
+            let url = URL(string: IAPBaseURL + SubUrl.ActivateIAPPackage)!
+            Log(url.absoluteString)
+            ServiceManager.APIRequest(url: url, method: .post, params: params) { (response, responseCode) in
+                if responseCode == 200{
+                    let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
+                    Log(jsonData.description)
+                    if let jsonResponse = jsonData as? JSON{
+                        if let status = jsonResponse["status"].string{
+                            if status == "ACCEPT"{
+                                onComplete(true)
+                            }else{
+                                onComplete(false)
+                            }
+                        }else{
+                            onComplete(false)
+                        }
+                    }else{
+                        onComplete(false)
+                    }
+                }else{
+                    onComplete(false)
+                }
+            }
+        }else{
+            onComplete(false)
+        }
+        
+    }
+    
+    func getSubscriptionStatus(onComplete:@escaping (_ name:String?)->()){
+        
+        let url = URL(string: IAPBaseURL + String(format: SubUrl.GetSubscriptionStatus, UserDefaultsManager.getUserId()!))!
+        Log(url.absoluteString)
+        ServiceManager.APIRequest(url: url, method: .get) { (response, responseCode) in
+            if responseCode == 200{
+                let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
+                Log(jsonData.description)
+                if let jsonResponse = jsonData as? JSON{
+                    if let plan = jsonResponse["planDtos"].array?.first{
+                        if let name = plan["name"].string{
+                            onComplete(name)
+                        }else{
+                            onComplete(nil)
+                        }
+                    }else{
+                        onComplete(nil)
+                    }
+                }else{
+                    onComplete(nil)
+                }
+            }else{
+                onComplete(nil)
+            }
+        }
+    }
+    
+    
     
     internal func updateFCMToken(deviceId:String, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
@@ -300,7 +408,6 @@ class ApiClient {
         ]
         
         let parameters = [
-            
             StringKeys.USERNAME:username,
             StringKeys.PASSWORD:password,
             StringKeys.SOCIAL_TYPE:authMethod.rawValue.lowercased(),
@@ -1836,7 +1943,7 @@ class ApiClient {
      */
     
     fileprivate func request(_ url: URL, apiCallType:APICalls, method: HTTPMethod, parameters: [String: Any]?, headers: HTTPHeaders, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
-//        Log(url.description)
+        //        Log(url.description)
         //        NSLog("url ---- : \(url)")
         //        NSLog("parameters ---- : \(String(describing: parameters))")
         //        NSLog("headers ---- : \(headers)")
@@ -1858,7 +1965,7 @@ class ApiClient {
                 
                 if let response = dataResponse.response {
                     let validateResult = HttpValidator.validate(response.statusCode)
-//                    print("validateResult ---- : \(validateResult)")
+                    //                    print("validateResult ---- : \(validateResult)")
                     
                 }
                 switch dataResponse.result {
@@ -1866,8 +1973,8 @@ class ApiClient {
                     if let response = dataResponse.response {
                         let validateResult = HttpValidator.validate(response.statusCode)
                         
-//                        let currentData = JSON(data)
-//                        print("Data ---- : \(currentData)")
+                        //                        let currentData = JSON(data)
+                        //                        print("Data ---- : \(currentData)")
                         
                         switch apiCallType{
                         case .Login:

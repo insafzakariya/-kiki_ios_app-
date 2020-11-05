@@ -55,6 +55,10 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
         
         setupNavigationBarItems()
         
+        IAPManager.shared.getSubscribedPackage {
+            IAPManager.shared.getPackages()
+        }
+        
         
         noSubscribedLabel.center = self.view.center
         noSubscribedLabel.text = NSLocalizedString("NoSubscribed".localized(using: "Localizable"), comment: "")

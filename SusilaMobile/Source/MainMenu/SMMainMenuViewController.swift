@@ -157,15 +157,21 @@ class SMMainMenuViewController: UIViewController {
         self.navigateToPackagePage()
     }
     
-    func navigateToPackagePage() {
-        let elDrawer: KYDrawerController = (UIApplication.shared.delegate as! AppDelegate).getRootViewController();
+    @objc public func navigateToPackagePage() {
+        //        let drawerController: KYDrawerController = (UIApplication.shared.delegate as! AppDelegate).getRootViewController();
+        //let controller = storyboard?.instantiateViewController(withIdentifier: "SMPackagePageViewController") as! SMPackagePageViewController
+        //        homeNavController.viewControllers.removeAll()
+        //        homeNavController.setViewControllers([self.myHomeViewController, controller], animated: false)
+        //        elDrawer.mainViewController = homeNavController
+        //        elDrawer.setDrawerState(KYDrawerController.DrawerState.closed, animated: true)
         
-        let controller = storyboard?.instantiateViewController(withIdentifier: "SMPackagePageViewController") as! SMPackagePageViewController
-        
+        let drawerController: KYDrawerController = (UIApplication.shared.delegate as! AppDelegate).getRootViewController();
+        let subscriptionViewController = UIHelper.makeViewController(in: .New, viewControllerName: .SubscriptionVC) as! SubscriptionViewController
         homeNavController.viewControllers.removeAll()
-        homeNavController.setViewControllers([self.myHomeViewController, controller], animated: false)
-        elDrawer.mainViewController = homeNavController
-        elDrawer.setDrawerState(KYDrawerController.DrawerState.closed, animated: true)
+        homeNavController.setViewControllers([self.myHomeViewController, subscriptionViewController], animated: false)
+        drawerController.mainViewController = homeNavController
+        drawerController.setDrawerState(KYDrawerController.DrawerState.closed, animated: true)
+        
     }
     
     @IBAction func tappedNotificationButton(_ sender: Any) {
@@ -216,7 +222,7 @@ class SMMainMenuViewController: UIViewController {
     }
     
     
-    @IBAction func tappedLogoutButton(_ sender: AnyObject) {
+    @IBAction func tappedLogoutButton(_ sender : AnyObject) {
         
         
         let alertTitle = NSLocalizedString("LOGOUT_CONFIRM_ALERT_TITLE".localized(using: "Localizable"), comment: "")
