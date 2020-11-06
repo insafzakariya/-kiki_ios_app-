@@ -2009,7 +2009,7 @@ to exclusive content from Kiki.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8E-UR-qH4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="-1256"/>
+            <point key="canvasLocation" x="1813" y="-1245"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="F9P-OA-Ebs">
@@ -3103,7 +3103,7 @@ to exclusive content from Kiki.</string>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="TPK-11-GEQ">
                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="Qsk-ag-UPr">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="1Cx-4T-9Bv" userLabel="Account">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="1Cx-4T-9Bv" userLabel="Account">
                                 <rect key="frame" x="20" y="6" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3738,7 +3738,7 @@ to exclusive content from Kiki.</string>
                         <viewControllerLayoutGuide type="bottom" id="nXf-Qj-C8d"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="m8X-yN-7rB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ctO-ic-FWE">
@@ -5180,52 +5180,8 @@ to exclusive content from Kiki.</string>
                                     <constraint firstAttribute="height" constant="0.67000000000000004" id="68y-zP-hVZ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fd7-aR-vOn">
-                                <rect key="frame" x="0.0" y="139.66666666666666" width="414" height="50"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftArrow" translatesAutoresizingMaskIntoConstraints="NO" id="tLt-q8-Wei">
-                                        <rect key="frame" x="373" y="14" width="21" height="22"/>
-                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="21" id="4cT-Ob-32l"/>
-                                            <constraint firstAttribute="height" constant="22" id="cKI-LK-EwU"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="21" id="gDm-1L-gMX"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="jqC-86-QAX"/>
-                                        </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOU-72-ZcF">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="eSd-P8-Uev"/>
-                                        </constraints>
-                                        <state key="normal" title="Payment Methods">
-                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="gef-Ri-Z8K" kind="push" id="XWp-l1-1SP"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="tLt-q8-Wei" secondAttribute="bottom" constant="14" id="Bdz-Ay-oG5"/>
-                                    <constraint firstAttribute="trailing" secondItem="tLt-q8-Wei" secondAttribute="trailing" constant="20" id="CHy-6b-PWr"/>
-                                    <constraint firstItem="tLt-q8-Wei" firstAttribute="top" secondItem="Fd7-aR-vOn" secondAttribute="top" constant="14" id="VxV-Mp-X4h"/>
-                                    <constraint firstItem="kOU-72-ZcF" firstAttribute="top" secondItem="Fd7-aR-vOn" secondAttribute="top" id="dfF-cF-c7P"/>
-                                    <constraint firstAttribute="trailing" secondItem="kOU-72-ZcF" secondAttribute="trailing" constant="20" id="i37-m2-VAf"/>
-                                    <constraint firstAttribute="bottom" secondItem="kOU-72-ZcF" secondAttribute="bottom" id="lB0-NN-YqF"/>
-                                    <constraint firstItem="kOU-72-ZcF" firstAttribute="leading" secondItem="Fd7-aR-vOn" secondAttribute="leading" constant="20" id="oQv-Av-hX1"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUG-7o-cXg">
-                                <rect key="frame" x="20" y="190.66666666666666" width="374" height="0.66666666666665719"/>
-                                <color key="backgroundColor" systemColor="lightTextColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="0.67000000000000004" id="Gb4-8x-FXN"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sE-7U-pZC">
-                                <rect key="frame" x="0.0" y="205.33333333333334" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="126" width="414" height="50"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftArrow" translatesAutoresizingMaskIntoConstraints="NO" id="7uD-00-klf">
                                         <rect key="frame" x="373" y="14" width="21" height="22"/>
@@ -5254,6 +5210,7 @@ to exclusive content from Kiki.</string>
                                 <constraints>
                                     <constraint firstItem="Pe7-CZ-Jg1" firstAttribute="top" secondItem="6sE-7U-pZC" secondAttribute="top" id="15D-27-eWL"/>
                                     <constraint firstAttribute="bottom" secondItem="Pe7-CZ-Jg1" secondAttribute="bottom" id="AXP-0h-2L0"/>
+                                    <constraint firstItem="Pe7-CZ-Jg1" firstAttribute="top" secondItem="6sE-7U-pZC" secondAttribute="top" id="CK4-MM-MfD"/>
                                     <constraint firstAttribute="bottom" secondItem="7uD-00-klf" secondAttribute="bottom" constant="14" id="N6i-Dh-pyP"/>
                                     <constraint firstAttribute="height" constant="50" id="P2H-ck-cpw"/>
                                     <constraint firstAttribute="trailing" secondItem="7uD-00-klf" secondAttribute="trailing" constant="20" id="Rbh-DM-Lxk"/>
@@ -5263,7 +5220,7 @@ to exclusive content from Kiki.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rgc-Sn-rrO">
-                                <rect key="frame" x="20" y="255.33333333333334" width="374" height="0.66666666666665719"/>
+                                <rect key="frame" x="20" y="176" width="374" height="0.66666666666665719"/>
                                 <color key="backgroundColor" systemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.67000000000000004" id="whW-5q-NIU"/>
@@ -5274,28 +5231,19 @@ to exclusive content from Kiki.</string>
                         <constraints>
                             <constraint firstItem="Oga-or-7FR" firstAttribute="top" secondItem="ymd-kp-NfJ" secondAttribute="bottom" constant="32" id="0Vf-6g-Wjw"/>
                             <constraint firstItem="Rgc-Sn-rrO" firstAttribute="trailing" secondItem="mot-vY-qiF" secondAttribute="trailingMargin" id="5ZT-rW-zG6"/>
+                            <constraint firstItem="6sE-7U-pZC" firstAttribute="top" secondItem="Oga-or-7FR" secondAttribute="bottom" id="7UV-S3-egy"/>
                             <constraint firstItem="BXU-i3-sAb" firstAttribute="trailing" secondItem="mot-vY-qiF" secondAttribute="trailingMargin" id="9aJ-Po-srI"/>
-                            <constraint firstItem="tUG-7o-cXg" firstAttribute="trailing" secondItem="mot-vY-qiF" secondAttribute="trailingMargin" id="9wG-FH-bX6"/>
-                            <constraint firstItem="Fd7-aR-vOn" firstAttribute="leading" secondItem="mot-vY-qiF" secondAttribute="leading" id="AVb-eU-od9"/>
                             <constraint firstAttribute="trailing" secondItem="Oga-or-7FR" secondAttribute="trailing" id="BbP-Ra-JKv"/>
-                            <constraint firstItem="tUG-7o-cXg" firstAttribute="top" secondItem="Fd7-aR-vOn" secondAttribute="bottom" constant="0.99999999999991473" id="DKl-7P-Bl8"/>
                             <constraint firstItem="6sE-7U-pZC" firstAttribute="leading" secondItem="mot-vY-qiF" secondAttribute="leading" id="JPt-eW-wrV"/>
                             <constraint firstAttribute="trailing" secondItem="6sE-7U-pZC" secondAttribute="trailing" id="SOV-c4-ivC"/>
-                            <constraint firstItem="Fd7-aR-vOn" firstAttribute="top" secondItem="BXU-i3-sAb" secondAttribute="bottom" constant="13.000000000000071" id="SYp-Ll-o5P"/>
                             <constraint firstItem="Oga-or-7FR" firstAttribute="leading" secondItem="mot-vY-qiF" secondAttribute="leading" id="TwP-T1-UBS"/>
                             <constraint firstItem="BXU-i3-sAb" firstAttribute="leading" secondItem="mot-vY-qiF" secondAttribute="leadingMargin" id="WAi-4v-Whg"/>
                             <constraint firstItem="Rgc-Sn-rrO" firstAttribute="top" secondItem="6sE-7U-pZC" secondAttribute="bottom" id="Xbx-cw-Aeg"/>
                             <constraint firstItem="BXU-i3-sAb" firstAttribute="top" secondItem="Oga-or-7FR" secondAttribute="bottom" id="dlp-VZ-7Vn"/>
-                            <constraint firstItem="6sE-7U-pZC" firstAttribute="top" secondItem="tUG-7o-cXg" secondAttribute="bottom" constant="14" id="eA7-NL-iLM"/>
-                            <constraint firstAttribute="trailing" secondItem="Fd7-aR-vOn" secondAttribute="trailing" id="ev9-yt-5av"/>
                             <constraint firstItem="Rgc-Sn-rrO" firstAttribute="leading" secondItem="mot-vY-qiF" secondAttribute="leadingMargin" id="jv3-6F-PCe"/>
-                            <constraint firstItem="tUG-7o-cXg" firstAttribute="leading" secondItem="mot-vY-qiF" secondAttribute="leadingMargin" id="kTw-BD-QPR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rB4-Nf-oF1"/>
-                    <connections>
-                        <outlet property="hideVw" destination="Fd7-aR-vOn" id="BvO-iQ-Cvj"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XxA-bt-HlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -5401,9 +5349,6 @@ to exclusive content from Kiki.</string>
         </systemColor>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="lightTextColor">
-            <color white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="lightTextColor">
             <color white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
