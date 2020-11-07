@@ -3738,7 +3738,7 @@ to exclusive content from Kiki.</string>
                         <viewControllerLayoutGuide type="bottom" id="nXf-Qj-C8d"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="m8X-yN-7rB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ctO-ic-FWE">
@@ -3839,7 +3839,7 @@ to exclusive content from Kiki.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfm-G5-5e4">
-                                <rect key="frame" x="149.66666666666666" y="561.66666666666663" width="114.99999999999997" height="35"/>
+                                <rect key="frame" x="149" y="561.66666666666663" width="116" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="wvC-zP-LQZ"/>
                                 </constraints>

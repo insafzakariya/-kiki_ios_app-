@@ -19,7 +19,10 @@ class SubscribeItemTableViewCell: UITableViewCell {
             UIHelper.addCornerRadius(to: containerView)
             subscriberProduct.isSelected ? UIHelper.show(view: selectImageView) : UIHelper.hide(view: selectImageView)
             titleLabel.text = subscriberProduct.product.localizedTitle
-            priceLabel.text = "$\(subscriberProduct.product.price.description) \(subscriberProduct.product.localizedTitle.lowercased())"
+            //Pay %@/3 months for exclusive content
+//            priceLabel.text = "\(subscriberProduct.product.priceLocale.currencyCode ?? "USD") \(subscriberProduct.product.price.description) \(subscriberProduct.product.localizedTitle.lowercased())"
+            let priceText = "\(subscriberProduct.product.priceLocale.currencyCode ?? "USD") \(subscriberProduct.product.price.description)"
+            priceLabel.text = "\(String(format: subscriberProduct.product.localizedDescription, priceText))"
         }
     }
     

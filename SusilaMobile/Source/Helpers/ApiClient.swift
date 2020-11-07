@@ -195,29 +195,33 @@ class ApiClient {
         
     }
     
-    func getIAPPackages(onComplete:@escaping (_ packages:[String:Int])->()){
+    func getIAPPackages(onComplete:@escaping (_ packages:[String:Int],_ validityPeriod:[String:Int])->()){
         let url = URL(string: IAPBaseURL + SubUrl.GetPackages)!
         Log(url.absoluteString)
         var tempPackages:[String:Int] = [:]
+        var tempDurations:[String:Int] = [:]
         ServiceManager.APIRequest(url: url, method: .get) { (response, responseCode) in
             if responseCode == 200{
                 let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
                 if let jsonResponse = jsonData as? JSON{
                     if let packages = jsonResponse.array{
                         for package in packages{
-                            if let name = package["name"].string,let id = package["id"].int{
+                            if let name = package["name"].string,
+                               let id = package["id"].int,
+                               let duration = package["day"].int{
                                 tempPackages[name] = id
+                                tempDurations[name] = duration
                             }
                         }
-                        onComplete(tempPackages)
+                        onComplete(tempPackages,tempDurations)
                     }else{
-                        onComplete(tempPackages)
+                        onComplete(tempPackages,tempDurations)
                     }
                 }else{
-                    onComplete(tempPackages)
+                    onComplete(tempPackages,tempDurations)
                 }
             }else{
-                onComplete(tempPackages)
+                onComplete(tempPackages,tempDurations)
                 Log(responseCode.description)
             }
         }

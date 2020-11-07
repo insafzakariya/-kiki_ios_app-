@@ -16,6 +16,7 @@ class IAPManager:NSObject{
     let client = ApiClient()
     
     private var localServerPackages:[String:Int] = [:]
+    private var loaclServerPackageDurations:[String:Int] = [:]
     private var productRequest:SKProductsRequest?
     private var productsRequestCompletionHandler: ProductsRequestCompletionHandler?
     private var purchasedProduct:SubscriberProduct?
@@ -33,7 +34,7 @@ class IAPManager:NSObject{
         didSet{
             requestProduct { (success, products) in
                 if success{
-                    SubscriberProduct.subscriberProdcuts = SubscriberProduct.convert(from: products!, localServerPackages: self.localServerPackages, selectedProducID: self.activatedPackageName)
+                    SubscriberProduct.subscriberProdcuts = SubscriberProduct.convert(from: products!, localServerPackages: self.localServerPackages, localServerPackageDurations: self.loaclServerPackageDurations, selectedProducID: self.activatedPackageName)
                 }
                 
             }
@@ -142,8 +143,9 @@ typealias IAPServices = IAPManager
 extension IAPServices{
     
     func getPackages(){
-        client.getIAPPackages { (packages) in
-            self.localServerPackages = packages 
+        client.getIAPPackages { (packages,durations)  in
+            self.localServerPackages = packages
+            self.loaclServerPackageDurations = durations
             self.productIDs = Set(packages.keys)
         }
     }
