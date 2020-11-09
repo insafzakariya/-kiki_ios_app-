@@ -204,6 +204,7 @@ class ApiClient {
             if responseCode == 200{
                 let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
                 if let jsonResponse = jsonData as? JSON{
+                    Log(jsonResponse.description)
                     if let packages = jsonResponse.array{
                         for package in packages{
                             if let name = package["name"].string,
