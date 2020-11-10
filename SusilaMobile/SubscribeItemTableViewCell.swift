@@ -16,14 +16,12 @@ class SubscribeItemTableViewCell: UITableViewCell {
     
     var subscriberProduct:SubscriberProduct!{
         didSet{
-            //Pay USD 10.00 / 6 months for exclusive content
+            //Pay USD 10.00 / 6 days for exclusive content
             UIHelper.addCornerRadius(to: containerView)
             subscriberProduct.isSelected ? UIHelper.show(view: selectImageView) : UIHelper.hide(view: selectImageView)
             titleLabel.text = subscriberProduct.product.localizedTitle
-            let description:String = subscriberProduct.product.localizedDescription
-            let prefixText = "Pay \(subscriberProduct.product.priceLocale.currencyCode ?? "USD") \(subscriberProduct.product.price.description) /"
-            let priceText = "\(prefixText) \(description)"
-            priceLabel.text = priceText
+            let description:String = "Pay \(subscriberProduct.product.priceLocale.currencyCode ?? "USD") \(subscriberProduct.product.price.description) / \(subscriberProduct.validityPeriod) days for exclusive content"
+            priceLabel.text = description
         }
     }
     

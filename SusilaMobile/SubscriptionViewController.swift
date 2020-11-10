@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseRemoteConfig
 
 class SubscriptionViewController: UIViewController {
     
@@ -13,6 +14,11 @@ class SubscriptionViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var cancelButtonHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var termsAndConditionsLabel: UILabel!
+    @IBOutlet weak var privacyPolicyLabel: UILabel!
+    
+    
+    let remoteConfig:RemoteConfig = RemoteConfig.remoteConfig()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +29,11 @@ class SubscriptionViewController: UIViewController {
         tableView.dataSource = self
         setupUI()
         
+        let termsTapGesture = UITapGestureRecognizer(target: self, action: #selector(termsAndConditionsOnTapped))
+        termsAndConditionsLabel.addGestureRecognizer(termsTapGesture)
         
+        let privacyPolicyTapGesture = UITapGestureRecognizer(target: self, action:  #selector(privacyPolicyOnTapped))
+        privacyPolicyLabel.addGestureRecognizer(privacyPolicyTapGesture)
         
         NotificationCenter.default.addObserver(self, selector: #selector(didPurchased(_:)), name: .DidTransactionUpdated, object: nil)
     }
@@ -43,6 +53,20 @@ class SubscriptionViewController: UIViewController {
         }else{
             cancelButtonHeightConstraint.constant = 0
             UIHelper.hide(view: cancelButton)
+        }
+    }
+    
+    @objc func termsAndConditionsOnTapped(){
+        if let termsURLString = remoteConfig[termsAndConditionsKey].stringValue,
+           let termsURL = URL(string: termsURLString){
+            UIApplication.shared.openURL(termsURL)
+        }
+    }
+    
+    @objc func privacyPolicyOnTapped(){
+        if let termsURLString = remoteConfig[licenseAgreementConfigKey].stringValue,
+           let termsURL = URL(string: termsURLString){
+            UIApplication.shared.openURL(termsURL)
         }
     }
     

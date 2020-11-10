@@ -72,6 +72,7 @@ internal struct ErrorJsonKeys{
 }
 
 // Firebase remote config keys
+let termsAndConditionsKey = "USER_TERMS_PAGE_URL"
 let licenseAgreementConfigKey = "USER_AGREEMENT_PAGE_URL"
 let contactTelephoneConfigKey = "CONTACT_TELEPHONE"
 let specialUserIdConfigKey = "SPECIAL_USER_ID"
