@@ -30,7 +30,7 @@ class AppIconManager{
                 UIApplication.shared.setAlternateIconName(name) { (error) in
                     if let e = error{
                         Log(e.localizedDescription)
-                        UIApplication.shared.setAlternateIconName(nil)
+//                        UIApplication.shared.setAlternateIconName(nil)
                     }else{
                         Log("App icon Changed Successfully")
                     }

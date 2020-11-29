@@ -18,11 +18,8 @@ class SMResetViewController: BaseViewController,CountryPickerDelegate,UIGestureR
     @IBOutlet weak var countryPicker: CountryPicker!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var phoneNoText: UITextField!
-    @IBOutlet weak var countryHeightChanger: NSLayoutConstraint!
     @IBOutlet weak var countryLabel: UILabel!
-    @IBOutlet weak var countryImage: UIImageView!
     @IBOutlet weak var lblOne: UILabel!
-    @IBOutlet weak var lblTwo: UILabel!
     @IBOutlet weak var lblEnterPhoneNo: UILabel!
     @IBOutlet weak var btnConfirm: UIButton!
     
@@ -30,7 +27,7 @@ class SMResetViewController: BaseViewController,CountryPickerDelegate,UIGestureR
     var regionCode: String = ""
     
     override func viewDidLoad() {
-       
+        
         self.setText()
         if navigationController?.isNavigationBarHidden == true {
             backBtn.isHidden = false
@@ -41,8 +38,10 @@ class SMResetViewController: BaseViewController,CountryPickerDelegate,UIGestureR
         }
         lblEnterPhoneNo.text = "EnterYourPhoneNumber".localized(using: "Localizable")
         lblOne.text = "A_CONFIRMATION_CODE_WILL_SENT".localized(using: "Localizable")
-        lblTwo.text = "TO_YOUR_NUMBER_TO_RESET_THE_PASSWORD".localized(using: "Localizable")
         btnConfirm.setTitle("Confirm".localized(using: "Localizable"), for: .normal)
+        
+        let countryPickerTapGesture = UITapGestureRecognizer(target: self, action: #selector(countryPickerOnTapped))
+        countryLabel.addGestureRecognizer(countryPickerTapGesture)
         
         phoneNoText.setLeftPaddingPoints(10)
         
@@ -114,7 +113,7 @@ class SMResetViewController: BaseViewController,CountryPickerDelegate,UIGestureR
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if (countryLabel.text! == "+94") {
+        if (countryLabel.text! == "+94▼") {
             phoneNoText.placeholder = (UserDefaultsManager.getMobeCode()?.isEmpty)! ? "123456789" : UserDefaultsManager.getMobeCode()
         }
     }
@@ -140,29 +139,24 @@ class SMResetViewController: BaseViewController,CountryPickerDelegate,UIGestureR
         
         print(phoneCode, countryCode)
         
-        self.countryLabel.text = phoneCode
+        self.countryLabel.text = phoneCode + "▼"
         self.regionCode = countryCode
         
-        self.countryImage.image = flag
-        if (countryLabel.text! == "+94" && phoneNoText.text == "") {
+        if (countryLabel.text! == "+94▼" && phoneNoText.text == "") {
             phoneNoText.placeholder = (UserDefaultsManager.getMobeCode()?.isEmpty)! ? "123456789" : UserDefaultsManager.getMobeCode()
         }
     }
     
     func getPhoneNumber() -> String {
         var phoneNo = (phoneNoText.text ?? "").trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        if phoneNo.hasPrefix("0")
-        {
+        if phoneNo.hasPrefix("0"){
             phoneNo.remove(at: phoneNo.startIndex)
-            phoneNo = countryLabel.text! + phoneNo
+            phoneNo = countryLabel.text!.split(separator: "▼").first!.description + phoneNo
         }
-        else if phoneNo.hasPrefix(countryLabel.text!.replacingOccurrences(of: "+", with: ""))
-        {
-            phoneNo = "+" + phoneNo
-            
+        else if phoneNo.hasPrefix("+"){
+            phoneNo.remove(at: phoneNo.startIndex)
         } else {
-            phoneNo = countryLabel.text! + phoneNo
-            
+            phoneNo = countryLabel.text!.split(separator: "▼").first!.description + phoneNo
         }
         phoneNo.remove(at: phoneNo.startIndex)
         return phoneNo
@@ -174,13 +168,11 @@ class SMResetViewController: BaseViewController,CountryPickerDelegate,UIGestureR
         self.navigationController?.pushViewController(loginViewController, animated: true)
     }
     
-    
-    @IBAction func countryCodePickerButtonPrssed(_ sender: Any) {
-        
+    @objc func countryPickerOnTapped() {
         view.endEditing(true)
-        
         self.countryPicker.isHidden = false
     }
+    
     @IBAction func confirmButtonPressed(_ sender: Any) {
         
         let phoneNo = getPhoneNumber()
@@ -238,7 +230,7 @@ extension SMResetViewController: UITextFieldDelegate {
         case phoneNoText:
             phoneNoText.resignFirstResponder()
         default:()
-        phoneNoText.resignFirstResponder()
+            phoneNoText.resignFirstResponder()
         }
         
         return false
