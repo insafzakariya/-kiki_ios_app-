@@ -1027,10 +1027,11 @@ class ApiClient {
     internal func searchByWordAll(key: String, type: String, offset: Int, success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
         var url: URL?
+        let baseURLString = kAPIBaseUrl + SubUrl.SearchByWordAll + "query_text=%@&type=%@&offset=%@&limit=10"
         if type=="song" {
-            url = URL(string: kAPIBaseUrl + SubUrl.SearchByWordAll + "query_text="+key+"&type="+type+"&offset="+String(offset)+"&limit=10")
+            url = URL(string: String(format: baseURLString, key,type,offset.description).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
         } else {
-            url = URL(string: kAPIBaseUrl + SubUrl.SearchByWordAll + "query_text="+key+"&type="+type+"&offset=0&limit=100")
+            url = URL(string: String(format: baseURLString, key,type,"0").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
         }
         Log(url?.description ?? "")
         
@@ -1741,7 +1742,6 @@ class ApiClient {
             StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
         ]
         let parameters: [String: Any]? = nil
-        
         request(url!, apiCallType: .SendAnalytics, method: .get, parameters: parameters, headers: headers, success: { (data, code) -> Void in
             success(data, code)
         }) { (error) -> Void in
@@ -1965,8 +1965,7 @@ class ApiClient {
             //            request.httpMethod = HTTPMethod.post.rawValue
             //            request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
             //            request.httpBody = jsonData
-            
-            Alamofire.request(url.absoluteString, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse:DataResponse<Any>) in
+        Alamofire.request(url.absoluteString, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse:DataResponse<Any>) in
                 
                 if let response = dataResponse.response {
                     let validateResult = HttpValidator.validate(response.statusCode)
