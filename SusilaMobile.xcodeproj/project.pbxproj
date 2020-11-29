@@ -225,6 +225,7 @@
 		B6525EEB254ED90800EFDD39 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6525EEA254ED90800EFDD39 /* StoreKit.framework */; };
 		B6541F692552587B000046BA /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6541F682552587B000046BA /* ServiceManager.swift */; };
 		B6541FC72552C0B7000046BA /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6541FC62552C0B7000046BA /* ReachabilityManager.swift */; };
+		B674C1232573B709008935C9 /* AppIconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B674C1222573B709008935C9 /* AppIconManager.swift */; };
 		B6E846772537226000D423C1 /* AppStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E846762537226000D423C1 /* AppStoreManager.swift */; };
 		B6EF0ED925453B4600FCD18E /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EF0ED825453B4500FCD18E /* CoreServices.framework */; };
 		B6EF0F0325453BE000FCD18E /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EF0F0225453BE000FCD18E /* Metal.framework */; };
@@ -502,6 +503,7 @@
 		B6525EEA254ED90800EFDD39 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B6541F682552587B000046BA /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		B6541FC62552C0B7000046BA /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
+		B674C1222573B709008935C9 /* AppIconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconManager.swift; sourceTree = "<group>"; };
 		B6E846762537226000D423C1 /* AppStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManager.swift; sourceTree = "<group>"; };
 		B6EF0ED825453B4500FCD18E /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		B6EF0F0225453BE000FCD18E /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -679,6 +681,7 @@
 				B6525EDC254E981700EFDD39 /* IAPManager.swift */,
 				B6541F682552587B000046BA /* ServiceManager.swift */,
 				B6541FC62552C0B7000046BA /* ReachabilityManager.swift */,
+				B674C1222573B709008935C9 /* AppIconManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -1914,6 +1917,7 @@
 				7EFB84211E2E8CB700A1576C /* SMLoginViewModel.swift in Sources */,
 				6D3179F721B84FA900CF855C /* PlaylistViewController.swift in Sources */,
 				69507D2623F6865A00CB2BE6 /* SongsTileSelectArtistDetailsSeeAll.swift in Sources */,
+				B674C1232573B709008935C9 /* AppIconManager.swift in Sources */,
 				690BA4552403A85B00B706B5 /* PlaylistTileAlertAllPlaylist.swift in Sources */,
 				84BFA4F523310717004A1C43 /* SMNewPasswordModel.swift in Sources */,
 				6D3179FE21B91C8D00CF855C /* HomeDataModel.swift in Sources */,

@@ -138,6 +138,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func fetchConfig() {
         remoteConfig.fetchAndActivate { (status, error) in
             if status == .successFetchedFromRemote || status == .successUsingPreFetchedData{
+                AppIconManager(remoteConfig: self.remoteConfig).setAppIcon()
                 kAPIBaseUrl = self.remoteConfig[baseURL_LIVE].stringValue!
                 IAPBaseURL = self.remoteConfig[IAP_LIVE].stringValue!
                 let appStoreManager = AppStoreManager(remoteConfig: self.remoteConfig)
