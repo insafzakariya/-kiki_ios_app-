@@ -215,6 +215,10 @@
 		B60DDAEB253ADEA600CD46F0 /* IJKDemoHistory.h in Sources */ = {isa = PBXBuildFile; fileRef = 58E8B5C81FC32BEF0068B8E1 /* IJKDemoHistory.h */; };
 		B60DDAEC253ADEA600CD46F0 /* IJKMediaControl.h in Sources */ = {isa = PBXBuildFile; fileRef = 58E8B5C31FC32B090068B8E1 /* IJKMediaControl.h */; };
 		B60DDAED253ADEA600CD46F0 /* IJKVideoViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 58E8B5BF1FC324AC0068B8E1 /* IJKVideoViewController.h */; };
+		B638A4032575154A00B27C0E /* XMAS@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B638A4012575154A00B27C0E /* XMAS@3x.png */; };
+		B638A4042575154A00B27C0E /* XMAS@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B638A4022575154A00B27C0E /* XMAS@2x.png */; };
+		B638A407257516B700B27C0E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B638A405257516B700B27C0E /* Default@2x.png */; };
+		B638A408257516B700B27C0E /* Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B638A406257516B700B27C0E /* Default@3x.png */; };
 		B6525EDD254E981700EFDD39 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6525EDC254E981700EFDD39 /* IAPManager.swift */; };
 		B6525EDF254EA15600EFDD39 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6525EDE254EA15600EFDD39 /* SubscriptionViewController.swift */; };
 		B6525EE1254EA45900EFDD39 /* New.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6525EE0254EA45900EFDD39 /* New.storyboard */; };
@@ -493,6 +497,10 @@
 		84CCCF132360336200D880D1 /* PlayerViewRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewRadio.swift; sourceTree = "<group>"; };
 		94DDB9BE7D67036F48E17ADD /* Pods-SusilaMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SusilaMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-SusilaMobile/Pods-SusilaMobile.release.xcconfig"; sourceTree = "<group>"; };
 		B60F1A02254446CE00CD59C4 /* SusilaMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SusilaMobile.entitlements; sourceTree = "<group>"; };
+		B638A4012575154A00B27C0E /* XMAS@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XMAS@3x.png"; sourceTree = "<group>"; };
+		B638A4022575154A00B27C0E /* XMAS@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XMAS@2x.png"; sourceTree = "<group>"; };
+		B638A405257516B700B27C0E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		B638A406257516B700B27C0E /* Default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@3x.png"; sourceTree = "<group>"; };
 		B6525EDC254E981700EFDD39 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
 		B6525EDE254EA15600EFDD39 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		B6525EE0254EA45900EFDD39 /* New.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = New.storyboard; sourceTree = "<group>"; };
@@ -1184,6 +1192,10 @@
 		7E9F4F8E1E28926F00EC9B69 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				B638A405257516B700B27C0E /* Default@2x.png */,
+				B638A406257516B700B27C0E /* Default@3x.png */,
+				B638A4022575154A00B27C0E /* XMAS@2x.png */,
+				B638A4012575154A00B27C0E /* XMAS@3x.png */,
 				834A71DB221428A80031752E /* Roboto-Bold.ttf */,
 				834A71DC221428A90031752E /* Roboto-Light.ttf */,
 				834A71D9221428A70031752E /* Roboto-Regular.ttf */,
@@ -1772,6 +1784,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				834A71DD221428AA0031752E /* Roboto-Regular.ttf in Resources */,
+				B638A408257516B700B27C0E /* Default@3x.png in Resources */,
 				834A71DE221428AA0031752E /* Roboto-Bold.ttf in Resources */,
 				834A71DF221428AA0031752E /* Roboto-Light.ttf in Resources */,
 				CCC571B01F83E16E005EFB34 /* Flags.xcassets in Resources */,
@@ -1781,12 +1794,15 @@
 				838962EE21F596210071392F /* Localizable.strings in Resources */,
 				7E9F4F871E288E9C00EC9B69 /* LaunchScreen.storyboard in Resources */,
 				6DAB220121C7B98200239C86 /* PlayerView.xib in Resources */,
+				B638A407257516B700B27C0E /* Default@2x.png in Resources */,
 				CCC571AC1F83E16E005EFB34 /* CountryPicker.bundle in Resources */,
 				6D31792B21B67EFC00CF855C /* SMCustomSwitchAV.xib in Resources */,
 				7E374D8B1E3B34BE002A8262 /* HomeTabIconCell.xib in Resources */,
 				836BF634221BF502003C32E8 /* EpisodesTableViewCell.xib in Resources */,
+				B638A4032575154A00B27C0E /* XMAS@3x.png in Resources */,
 				58502D641E965B5C0085BD37 /* Assets.xcassets in Resources */,
 				B6525EE1254EA45900EFDD39 /* New.storyboard in Resources */,
+				B638A4042575154A00B27C0E /* XMAS@2x.png in Resources */,
 				838962EB21F5955E0071392F /* Main.storyboard in Resources */,
 				B6525EE9254ECCC200EFDD39 /* SubscribeItemTableViewCell.xib in Resources */,
 				836BF62D221BB62A003C32E8 /* SideShowTableViewCell.xib in Resources */,

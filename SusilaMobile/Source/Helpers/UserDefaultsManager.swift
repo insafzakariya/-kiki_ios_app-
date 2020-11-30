@@ -15,12 +15,11 @@ class UserDefaultsManager {
         UserDefaults.standard.synchronize()
     }
     
-
+    
     fileprivate class func getValue(_ key: String) -> AnyObject? {
         return UserDefaults.standard.object(forKey: key) as AnyObject?
     }
     
-
     fileprivate class func removeValue(_ key: String) {
         UserDefaults.standard.removeObject(forKey: key)
         UserDefaults.standard.synchronize()
@@ -49,9 +48,17 @@ extension UserDefaultsManager {
         static let KidsMode = "KidsMode"
         static let KidsModePassword = "KidsModePassword"
         static let videoResolution = "videoResolution"
+        static let appIcon = "appIcon"
     }
     
-
+    static func getAppIconName() -> String?{
+        UserDefaultsManager.getValue(PreferencesConstants.appIcon) as? String
+    }
+    
+    static func setAppIconName(for name:String){
+        UserDefaultsManager.setValue(name as AnyObject?, key: PreferencesConstants.appIcon)
+    }
+    
     class func setUsername(_ username: String?) {
         UserDefaultsManager.setValue(username as AnyObject?, key: PreferencesConstants.Username)
     }
