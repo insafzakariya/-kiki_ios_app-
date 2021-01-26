@@ -34,6 +34,7 @@ class AppIconManager{
                 let storedAppName = UserDefaultsManager.getAppIconName() ?? ""
                 if name != storedAppName{
                     UIApplication.shared.setAlternateIconName(name) { (error) in
+                        AppDelegate.IS_APP_ICON_CHANGED = true
                         if let e = error{
                             Log(e.localizedDescription)
                             UIApplication.shared.setAlternateIconName(nil)
