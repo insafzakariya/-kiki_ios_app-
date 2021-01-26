@@ -7,6 +7,8 @@
 //
 
 import SwiftyJSON
+import Alamofire
+    
 
 @objc public class SMPlayerViewModel: NSObject {
     fileprivate let api = ApiClient()
@@ -15,6 +17,13 @@ import SwiftyJSON
     var playerOverlayVC: AVPlayerOverlayVC!
     
     @objc func sendAnalytics(actionType: String, contendId:Int, currentTime: String) -> Void {
+        
+        let sessionManager = Alamofire.SessionManager.default
+        sessionManager.session.getTasksWithCompletionHandler { (dataTasks, uploadTasks, downloadTasks) in
+            dataTasks.forEach {$0.cancel()}
+            uploadTasks.forEach {$0.cancel()}
+            downloadTasks.forEach {$0.cancel()}
+        }
         
         mainInstance.epPlayingStatus = false
         

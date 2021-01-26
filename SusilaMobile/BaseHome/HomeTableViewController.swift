@@ -59,7 +59,10 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
             IAPManager.shared.getPackages()
         }
         
-        
+        DispatchQueue.main.async{
+            AppIconManager(remoteConfig: (UIApplication.shared.delegate as! AppDelegate).getRemoteConfig()).setAppIcon()
+        }
+            
         noSubscribedLabel.center = self.view.center
         noSubscribedLabel.text = NSLocalizedString("NoSubscribed".localized(using: "Localizable"), comment: "")
         noSubscribedLabel.numberOfLines = 3

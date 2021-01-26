@@ -235,9 +235,9 @@ class PlayerView: UIView, AVAudioPlayerDelegate {
     func play() {
         if (currentPlayingIndex<currentPlayingList.count) && (currentPlayingIndex>=0) {
             if radioStatus=="radio" {
-                sMPlayerViewModel.sendAnalytics(actionType: "audio_start", contendId: currentPlayingList[currentPlayingIndex].id, currentTime: stringFromTimeInterval(interval: currentPlayingTime))
+                self.sMPlayerViewModel.sendAnalytics(actionType: "audio_start", contendId: self.currentPlayingList[self.currentPlayingIndex].id, currentTime: self.stringFromTimeInterval(interval: self.currentPlayingTime))
             } else {
-                sMPlayerViewModel.sendAnalytics(actionType: "song_start", contendId: currentPlayingList[currentPlayingIndex].id, currentTime: stringFromTimeInterval(interval: currentPlayingTime))
+                self.sMPlayerViewModel.sendAnalytics(actionType: "song_start", contendId: self.currentPlayingList[self.currentPlayingIndex].id, currentTime: self.stringFromTimeInterval(interval: self.currentPlayingTime))
             }
             
             //updateAction(content_Id:9, screen_Id:16, screen_Action_Id:1, screen_Time:getTimeAsString(time: currentPlayingTime))
