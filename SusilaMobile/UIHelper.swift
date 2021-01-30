@@ -59,6 +59,14 @@ class UIHelper:NSObject{
         return UIApplication.shared.keyWindow!.rootViewController as! KYDrawerController
     }
     
+    static func circular(view:UIView,devider:CGFloat = 2){
+        view.layer.borderWidth = 0.0
+        view.layer.masksToBounds = false
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.cornerRadius = view.frame.height/devider
+        view.clipsToBounds = true
+    }
+    
     static func makeSnackBar(title:String? = nil, message:String,type:SnackType = SnackType.ERROR){
         DispatchQueue.main.async {
             var bannerType:BannerStyle = .danger

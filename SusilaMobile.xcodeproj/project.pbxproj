@@ -232,6 +232,7 @@
 		B674C1232573B709008935C9 /* AppIconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B674C1222573B709008935C9 /* AppIconManager.swift */; };
 		B6ADA38C25C5560B0046ABDB /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6ADA38B25C5560B0046ABDB /* Chat.storyboard */; };
 		B6ADA39025C556C70046ABDB /* Header.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ADA38F25C556C70046ABDB /* Header.xib */; };
+		B6ADA3BD25C560E30046ABDB /* ChatHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ADA3BC25C560E30046ABDB /* ChatHeaderView.swift */; };
 		B6E846772537226000D423C1 /* AppStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E846762537226000D423C1 /* AppStoreManager.swift */; };
 		B6EF0ED925453B4600FCD18E /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EF0ED825453B4500FCD18E /* CoreServices.framework */; };
 		B6EF0F0325453BE000FCD18E /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EF0F0225453BE000FCD18E /* Metal.framework */; };
@@ -516,6 +517,7 @@
 		B674C1222573B709008935C9 /* AppIconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconManager.swift; sourceTree = "<group>"; };
 		B6ADA38B25C5560B0046ABDB /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		B6ADA38F25C556C70046ABDB /* Header.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Header.xib; sourceTree = "<group>"; };
+		B6ADA3BC25C560E30046ABDB /* ChatHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHeaderView.swift; sourceTree = "<group>"; };
 		B6E846762537226000D423C1 /* AppStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManager.swift; sourceTree = "<group>"; };
 		B6EF0ED825453B4500FCD18E /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		B6EF0F0225453BE000FCD18E /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -1665,6 +1667,7 @@
 			isa = PBXGroup;
 			children = (
 				B6ADA38F25C556C70046ABDB /* Header.xib */,
+				B6ADA3BC25C560E30046ABDB /* ChatHeaderView.swift */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -2058,6 +2061,7 @@
 				695710FD241119B100AE5F51 /* LibraryController.swift in Sources */,
 				7EB5077C1E6DC34A00ED25F9 /* SMEpisodesViewController.swift in Sources */,
 				589F5F9E1F8E627C004875A2 /* Channel.swift in Sources */,
+				B6ADA3BD25C560E30046ABDB /* ChatHeaderView.swift in Sources */,
 				69BD55B823F2A0540032497D /* SongsTileSelectPlaylistDetails.swift in Sources */,
 				B6525EE8254ECCC200EFDD39 /* SubscribeItemTableViewCell.swift in Sources */,
 				69F4B01B2435B5DE000B2F82 /* SongTileLibraryAllArtists.swift in Sources */,
