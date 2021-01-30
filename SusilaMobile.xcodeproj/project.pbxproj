@@ -230,6 +230,8 @@
 		B6541F692552587B000046BA /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6541F682552587B000046BA /* ServiceManager.swift */; };
 		B6541FC72552C0B7000046BA /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6541FC62552C0B7000046BA /* ReachabilityManager.swift */; };
 		B674C1232573B709008935C9 /* AppIconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B674C1222573B709008935C9 /* AppIconManager.swift */; };
+		B6ADA38C25C5560B0046ABDB /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6ADA38B25C5560B0046ABDB /* Chat.storyboard */; };
+		B6ADA39025C556C70046ABDB /* Header.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ADA38F25C556C70046ABDB /* Header.xib */; };
 		B6E846772537226000D423C1 /* AppStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E846762537226000D423C1 /* AppStoreManager.swift */; };
 		B6EF0ED925453B4600FCD18E /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EF0ED825453B4500FCD18E /* CoreServices.framework */; };
 		B6EF0F0325453BE000FCD18E /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EF0F0225453BE000FCD18E /* Metal.framework */; };
@@ -512,6 +514,8 @@
 		B6541F682552587B000046BA /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		B6541FC62552C0B7000046BA /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		B674C1222573B709008935C9 /* AppIconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconManager.swift; sourceTree = "<group>"; };
+		B6ADA38B25C5560B0046ABDB /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		B6ADA38F25C556C70046ABDB /* Header.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Header.xib; sourceTree = "<group>"; };
 		B6E846762537226000D423C1 /* AppStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManager.swift; sourceTree = "<group>"; };
 		B6EF0ED825453B4500FCD18E /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		B6EF0F0225453BE000FCD18E /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -1202,12 +1206,10 @@
 				58502D631E965B5C0085BD37 /* Assets.xcassets */,
 				7E9F4F881E288E9C00EC9B69 /* Info.plist */,
 				51025A971F81FB3800A3DB55 /* GoogleService-Info.plist */,
-				7E9F4F851E288E9C00EC9B69 /* LaunchScreen.storyboard */,
+				B6ADA38A25C54E580046ABDB /* Storyboards */,
 				7E9F4FAA1E28A81800EC9B69 /* GBVersionTracking.h */,
-				838962E921F5955E0071392F /* Main.storyboard */,
 				7E9F4FA31E2895FC00EC9B69 /* SusilaMobile-Bridging-Header.h */,
 				838962F021F596210071392F /* Localizable.strings */,
-				B6525EE0254EA45900EFDD39 /* New.storyboard */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -1215,6 +1217,7 @@
 		7E9F4F8F1E28927A00EC9B69 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				B6ADA38D25C556A40046ABDB /* Chat */,
 				586C1E032533299600101D54 /* Constants */,
 				586C1D632532F9D500101D54 /* Model */,
 				586C1B312532F0A500101D54 /* Managers */,
@@ -1639,6 +1642,33 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		B6ADA38A25C54E580046ABDB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				7E9F4F851E288E9C00EC9B69 /* LaunchScreen.storyboard */,
+				838962E921F5955E0071392F /* Main.storyboard */,
+				B6525EE0254EA45900EFDD39 /* New.storyboard */,
+				B6ADA38B25C5560B0046ABDB /* Chat.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		B6ADA38D25C556A40046ABDB /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				B6ADA38E25C556AD0046ABDB /* CustomViews */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
+		B6ADA38E25C556AD0046ABDB /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				B6ADA38F25C556C70046ABDB /* Header.xib */,
+			);
+			name = CustomViews;
+			sourceTree = "<group>";
+		};
 		CCC446901F9BBD1B0088868C /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -1787,8 +1817,10 @@
 				B638A408257516B700B27C0E /* Default@3x.png in Resources */,
 				834A71DE221428AA0031752E /* Roboto-Bold.ttf in Resources */,
 				834A71DF221428AA0031752E /* Roboto-Light.ttf in Resources */,
+				B6ADA38C25C5560B0046ABDB /* Chat.storyboard in Resources */,
 				CCC571B01F83E16E005EFB34 /* Flags.xcassets in Resources */,
 				7EE6260A1E312AC700935352 /* PopoverViewController.xib in Resources */,
+				B6ADA39025C556C70046ABDB /* Header.xib in Resources */,
 				CCC571AF1F83E16E005EFB34 /* CountryView.xib in Resources */,
 				CCDB0001205E33AB007AF0E8 /* version.sh in Resources */,
 				838962EE21F596210071392F /* Localizable.strings in Resources */,
@@ -2187,7 +2219,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2244,7 +2276,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -2276,7 +2308,7 @@
 					"$(PROJECT_DIR)/SusilaMobile/Framework",
 				);
 				INFOPLIST_FILE = SusilaMobile/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2315,7 +2347,7 @@
 					"$(PROJECT_DIR)/SusilaMobile/Framework",
 				);
 				INFOPLIST_FILE = SusilaMobile/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
