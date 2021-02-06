@@ -20,7 +20,7 @@ import Foundation
          "member": true
      }
  */
-struct Channel{
+struct ChatChannel{
     
     var name:String
     var imageURL:URL

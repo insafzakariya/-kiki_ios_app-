@@ -11,12 +11,12 @@ import SwiftyJSON
 import ImageSlideshow
 
 class SMChannelListModel: BaseEpisodeModel {
-
+    
     fileprivate let api = ApiClient()
     
     var programList: [Program] = [Program]()
     var newCategroyProg = Dictionary<String, Any>()
-
+    
     var channelList: [Channel] = [Channel]()
     var channelImageList : [AlamofireSource] = [AlamofireSource]()
     var carousalProgramList : [Program] = [Program]()
@@ -30,11 +30,11 @@ class SMChannelListModel: BaseEpisodeModel {
                 let jsonArray = JSON(data as Any).array
                 
                 if let jsonList = jsonArray{
-
+                    
                     self.channelImageList.removeAll()
                     self.carousalProgramList.removeAll()
                     for jsonObject in jsonList{
-
+                        
                         if let item = AlamofireSource(urlString: (jsonObject[Program.JsonKeys.image].string ?? "").removingPercentEncoding ?? ""){
                             self.channelImageList.append(item)
                         }
@@ -43,7 +43,7 @@ class SMChannelListModel: BaseEpisodeModel {
                     }
                     
                     getCarouselProgramListCallFinished(true, nil, nil)
-
+                    
                 }else{
                     getCarouselProgramListCallFinished(false, nil, nil)
                 }
@@ -72,19 +72,18 @@ class SMChannelListModel: BaseEpisodeModel {
             case 200:
                 
                 let jsonArray = JSON(data as Any).array
-                
+                Log(jsonArray?.description ?? "N/A")
                 if let jsonList = jsonArray{
-
+                    
                     self.channelList.removeAll()
                     for jsonObject in jsonList{
-
-                       let channel = Channel(id: jsonObject[Channel.JsonKeys.id].int ?? -1, name: jsonObject[Channel.JsonKeys.name].string ?? "", image: jsonObject[Channel.JsonKeys.image].string, description_c: jsonObject[Channel.JsonKeys.description_c].string)
-
+                        
+                        let channel = Channel(id: jsonObject[Channel.JsonKeys.id].int ?? -1, name: jsonObject[Channel.JsonKeys.name].string ?? "", image: jsonObject[Channel.JsonKeys.image].string, description_c: jsonObject[Channel.JsonKeys.description_c].string)
+                        
                         self.channelList.append(channel)
                     }
-
                     getChannelListCallFinished(true, nil, nil)
-
+                    
                 } else {
                     getChannelListCallFinished(false, nil, nil)
                 }
@@ -110,7 +109,7 @@ class SMChannelListModel: BaseEpisodeModel {
             switch code {
             case 200:
                 let chId =  "\(channelID)"
-
+                
                 let jsonArray = JSON(data as Any).array
                 if let jsonList = jsonArray {
                     if (!jsonList.isEmpty) {
@@ -120,16 +119,16 @@ class SMChannelListModel: BaseEpisodeModel {
                             //print("asASDSAD",  self.programList.count)
                         }
                         //if self.programList.count>1 {
-                            self.newCategroyProg[chId] = self.programList
+                        self.newCategroyProg[chId] = self.programList
                         //}
                         
                         //                        self.userHostList.add(self.newCategroyProg)
                         //\\print("asASDSAD", self.newCategroyProg)
-
                         
-                    
+                        
+                        
                         getChannelEpisodeListCallFinished(true, nil, false)
-                    
+                        
                     } else {
                         
                         for (ind, jsonObject) in self.channelList.enumerated() {
@@ -139,12 +138,12 @@ class SMChannelListModel: BaseEpisodeModel {
                             
                         }
                         getChannelEpisodeListCallFinished(false, nil, true)
-                }
+                    }
                 }
             default:
-                    let jsonData = JSON(data as Any)
-                    
-                    let error = Common.getErrorFromJson(description: jsonData[ErrorJsonKeys.errorMessage].string ?? "", errorType: "\(jsonData[ErrorJsonKeys.errorCode].int ?? -1)", errorCode: jsonData[ErrorJsonKeys.errorCode].int ?? -1)
+                let jsonData = JSON(data as Any)
+                
+                let error = Common.getErrorFromJson(description: jsonData[ErrorJsonKeys.errorMessage].string ?? "", errorType: "\(jsonData[ErrorJsonKeys.errorCode].int ?? -1)", errorCode: jsonData[ErrorJsonKeys.errorCode].int ?? -1)
                 getChannelEpisodeListCallFinished(false, error, false)
                 
             }

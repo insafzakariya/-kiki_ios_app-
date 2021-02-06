@@ -33,7 +33,6 @@ class ChatHeaderView: UIView {
     var navigationController:UINavigationController?
     let backButtonWidth:CGFloat = 36.0
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -55,9 +54,10 @@ class ChatHeaderView: UIView {
         
     }
     
-    func setupUI(for type:ChatViewType){
+    func setupUI(for type:ChatViewType,for channel:ChatChannel){
         UIHelper.circular(view: chatImageView)
         UIHelper.circular(view: onlineIndicatorView)
+        chatImageView.kf.setImage(with: channel.imageURL)
         switch type {
         case .Main:
             UIHelper.show(view: infoButton)
@@ -85,7 +85,7 @@ class ChatHeaderView: UIView {
     }
     
     @IBAction func homeButtonOnTapped(_ sender: Any) {
-        navigationController?.popToRootViewController(animated: true)
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func infoButtonOnTapped(_ sender: Any) {

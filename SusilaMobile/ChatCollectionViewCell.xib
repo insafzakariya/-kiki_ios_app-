@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ChatCollectionViewCell" customModule="SusilaMobile" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="chatCollectionViewCell" id="gTV-IL-0wX" customClass="ChatCollectionViewCell" customModule="SusilaMobile" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="77" height="82"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -35,7 +35,7 @@
             <connections>
                 <outlet property="chatImageView" destination="wCH-Dl-lte" id="p0l-wh-urV"/>
             </connections>
-            <point key="canvasLocation" x="157.24637681159422" y="141.96428571428569"/>
+            <point key="canvasLocation" x="157.24637681159422" y="141.29464285714286"/>
         </collectionViewCell>
     </objects>
 </document>

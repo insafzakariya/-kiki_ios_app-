@@ -13,9 +13,16 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatInfoTitleview" customModule="SusilaMobile" customModuleProvider="target">
+            <connections>
+                <outlet property="countLabel" destination="9bQ-PG-kUx" id="tBN-rb-zGL"/>
+                <outlet property="indicatorView" destination="AnZ-P2-0jG" id="RIu-sw-Kcz"/>
+                <outlet property="mainView" destination="iN0-l3-epB" id="JVF-GI-zbv"/>
+                <outlet property="titleLabel" destination="XWB-gl-qL2" id="jml-6q-hhD"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ChatInfoTitleview" customModule="SusilaMobile" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -62,12 +69,6 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="countLabel" destination="9bQ-PG-kUx" id="bg9-W7-vuA"/>
-                <outlet property="indicatorView" destination="AnZ-P2-0jG" id="rfM-rP-MYS"/>
-                <outlet property="mainView" destination="nc7-BN-Rue" id="xPY-5i-uPv"/>
-                <outlet property="titleLabel" destination="XWB-gl-qL2" id="sjd-dp-VLP"/>
-            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="-139.62053571428569"/>
         </view>
     </objects>

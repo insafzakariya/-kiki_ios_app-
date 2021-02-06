@@ -11,8 +11,8 @@ class ChatCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var chatImageView: UIImageView!
     
-    func setupCell(){
-        //TODO: Bind with model
+    func setupCell(for channel:ChatChannel){
+        chatImageView.kf.setImage(with: channel.imageURL)
         setupUI()
     }
     

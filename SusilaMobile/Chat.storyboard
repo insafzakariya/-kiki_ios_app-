@@ -14,10 +14,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Chat View Controller-->
         <scene sceneID="OoQ-zz-JG2">
             <objects>
-                <viewController id="4Y8-Ag-MXy" sceneMemberID="viewController">
+                <viewController id="4Y8-Ag-MXy" customClass="ChatViewController" customModule="SusilaMobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rxp-ck-6rH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,15 +95,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oqS-lz-Swv"/>
+                    <connections>
+                        <outlet property="headerView" destination="tHe-gv-kdm" id="lZi-6a-3u5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XPh-it-aGE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="340.57971014492756" y="65.625"/>
         </scene>
-        <!--View Controller-->
+        <!--Chat Info View Controller-->
         <scene sceneID="HQj-7u-lIc">
             <objects>
-                <viewController id="WQz-Rq-GIu" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chatInfoVC" id="WQz-Rq-GIu" customClass="ChatInfoViewController" customModule="SusilaMobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XYt-uV-Lhp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,6 +135,9 @@
                             <constraint firstItem="cdn-6c-42K" firstAttribute="leading" secondItem="6z7-eZ-Abx" secondAttribute="leading" id="xdh-3N-58G"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="headerView" destination="cdn-6c-42K" id="vAj-MO-bPb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FcG-yF-Fzu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -140,7 +146,7 @@
         <!--Navigation Controller-->
         <scene sceneID="QRL-cy-yff">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="TEO-gp-sCf" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="chatNC" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="TEO-gp-sCf" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IZY-14-9oz">
                         <autoresizingMask key="autoresizingMask"/>

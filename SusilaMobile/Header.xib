@@ -16,9 +16,21 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatHeaderView" customModule="SusilaMobile" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="Z2q-8f-c1r" id="5GA-MZ-Sms"/>
+                <outlet property="backButtonWidthConstraint" destination="xLr-bI-yLa" id="MLj-qU-Rw8"/>
+                <outlet property="chatImageView" destination="otk-wc-Uus" id="gKA-nI-deP"/>
+                <outlet property="chatNameLabel" destination="1Qj-ki-F57" id="xwi-CT-lP5"/>
+                <outlet property="infoButton" destination="DJn-qh-HFb" id="VRd-ih-f56"/>
+                <outlet property="infoImageView" destination="UAv-xE-fVT" id="gni-v3-DJ4"/>
+                <outlet property="mainView" destination="iN0-l3-epB" id="Ytd-87-VDG"/>
+                <outlet property="onlineCountLabel" destination="zN3-cw-jS7" id="iU2-4b-bQX"/>
+                <outlet property="onlineIndicatorView" destination="HUp-2z-vyf" id="5XD-P1-q7b"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ChatHeaderView" customModule="SusilaMobile" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -33,7 +45,7 @@
                             </constraints>
                             <state key="normal" image="back_ios"/>
                             <connections>
-                                <action selector="backButtonOnTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="tTC-Bb-tK3"/>
+                                <action selector="backButtonOnTapped:" destination="-1" eventType="touchUpInside" id="wgz-TQ-UEq"/>
                             </connections>
                         </button>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="otk-wc-Uus">
@@ -50,16 +62,16 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="750-wP-QSt">
-                            <rect key="frame" x="101" y="43" width="48" height="7"/>
+                            <rect key="frame" x="101" y="43" width="48.5" height="7"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Online 06" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zN3-cw-jS7">
-                                    <rect key="frame" x="0.0" y="0.0" width="38" height="7"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="38.5" height="7"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HUp-2z-vyf">
-                                    <rect key="frame" x="41" y="0.0" width="7" height="7"/>
+                                    <rect key="frame" x="41.5" y="0.0" width="7" height="7"/>
                                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="7" id="gbP-cq-3uc"/>
@@ -76,7 +88,7 @@
                             </constraints>
                             <state key="normal" image="home_white"/>
                             <connections>
-                                <action selector="homeButtonOnTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Rs3-Lx-0pr"/>
+                                <action selector="homeButtonOnTapped:" destination="-1" eventType="touchUpInside" id="HSl-n1-r0G"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJn-qh-HFb">
@@ -87,7 +99,7 @@
                             </constraints>
                             <state key="normal" image="info_white"/>
                             <connections>
-                                <action selector="infoButtonOnTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="H8t-Hb-7hW"/>
+                                <action selector="infoButtonOnTapped:" destination="-1" eventType="touchUpInside" id="Tgw-mq-uRr"/>
                             </connections>
                         </button>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info_white" translatesAutoresizingMaskIntoConstraints="NO" id="UAv-xE-fVT">
@@ -127,17 +139,6 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="backButton" destination="Z2q-8f-c1r" id="O3O-BF-WVZ"/>
-                <outlet property="backButtonWidthConstraint" destination="xLr-bI-yLa" id="U7J-L1-oFa"/>
-                <outlet property="chatImageView" destination="otk-wc-Uus" id="TWm-pV-956"/>
-                <outlet property="chatNameLabel" destination="1Qj-ki-F57" id="57S-GJ-6H7"/>
-                <outlet property="infoButton" destination="DJn-qh-HFb" id="Icf-5Q-NEh"/>
-                <outlet property="infoImageView" destination="UAv-xE-fVT" id="Jjy-JR-eFs"/>
-                <outlet property="mainView" destination="J6d-pO-SnQ" id="2rH-lL-Bbo"/>
-                <outlet property="onlineCountLabel" destination="zN3-cw-jS7" id="hBh-dK-PPZ"/>
-                <outlet property="onlineIndicatorView" destination="HUp-2z-vyf" id="IDA-xh-pOi"/>
-            </connections>
             <point key="canvasLocation" x="-455" y="102"/>
         </view>
     </objects>

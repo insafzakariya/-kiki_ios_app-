@@ -52,6 +52,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.tableHeaderView = UIView(frame: frame)
         self.navigationController?.isNavigationBarHidden = false
         tableView.register(UINib.init(nibName: "SideShowTableViewCell", bundle: nil), forCellReuseIdentifier: tableViewSideShowCellIdentifier)
+        tableView.register(UINib.init(nibName: "ChatHomeTableViewCell", bundle: nil), forCellReuseIdentifier: "chatHomeTableViewCell")
         
         setupNavigationBarItems()
         
@@ -167,6 +168,8 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
                             self.viewModel.getChannelListEpisode(channelID: programListOne.id) { (status, error, userInfo) in
                                 if status && !userInfo {
                                     self.channelList = self.viewModel.channelList
+                                    let chatChannel = Channel(id: -1, name: "KiKi Chats", image: nil, description_c: nil)
+                                    self.channelList.insert(chatChannel, at: 0)
                                     self.tableView.isHidden = false
                                     self.tableView.reloadData()
                                     ProgressView.shared.hide()
@@ -269,6 +272,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
+            //TODO: Add chat cell size for iPad
             if indexPath.section == 0 {
                 return 500
             } else {
@@ -277,7 +281,9 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
         } else {
             if indexPath.section == 0 {
                 return 250
-            } else {
+            }else if indexPath.section == 1{
+                return 82.0
+            }else {
                 return 160
             }
         }
@@ -292,10 +298,11 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return ""
+            return nil
         } else {
             let channel = channelList[section - 1]
-            return "\(channel.name)"
+            Log("Section: \(section), Channel Name: \(channel.name)")
+            return channel.name
         }
     }
     
@@ -326,9 +333,16 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
             
             return cell
             
-        } else {
+        }else if indexPath.section == 1{
+            //MARK: KiKi Chat
+            let cell = tableView.dequeueReusableCell(withIdentifier: "chatHomeTableViewCell") as! ChatHomeTableViewCell
+            cell.setupCell()
+            cell.delegate = self
+            let chats = [ChatChannel(name: "INBOX", imageURL: URL(string: "https://zohowebstatic.com/sites/default/files/ogimage/teaminbox-logo.png")!, isMember: true, isBlocked: false)]
+            cell.setChannels(for: chats) // TODO: Chat service plugs here
+            return cell
+        }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath) as! HomeTableViewCell
-            
             cell.collectionVw.isHidden = false
             let channel = channelList[indexPath.section - 1]
             cell.collectionVw.tag = channel.id
@@ -596,6 +610,29 @@ extension HomeTableViewController: UICollectionViewDataSource, UICollectionViewD
     }
 }
 
+extension HomeTableViewController:ChatPickerViewDelegate{
+    
+    func didChatChannelTapped(for channel: ChatChannel) {
+        if channel.isBlocked{
+            //TODO: Show error message to the user
+        }else{
+            if channel.isMember{
+                let chatNavController = UIHelper.makeViewController(in: .Chat, viewControllerName: .ChatNC) as! UINavigationController
+                chatNavController.modalPresentationStyle = .fullScreen
+                ChatViewController.channel = channel
+                self.present(chatNavController, animated: true, completion: nil)
+            }else{
+                //TODO: go through the reg process
+            }
+        }
+        
+    }
+    
+    
+    
+    
+}
+
 extension UIImageView {
     func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         contentMode = mode
@@ -616,6 +653,7 @@ extension UIImageView {
         downloaded(from: url, contentMode: mode)
     }
 }
+
 extension UIDevice {
     static func vibrate() {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
