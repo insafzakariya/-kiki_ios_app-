@@ -67,6 +67,20 @@ class UIHelper:NSObject{
         view.clipsToBounds = true
     }
     
+    static func disableView(view:UIView){
+        DispatchQueue.main.async {
+            view.isUserInteractionEnabled = false
+            view.alpha = 0.5
+        }
+    }
+    
+    static func enableView(view:UIView){
+        DispatchQueue.main.async {
+            view.isUserInteractionEnabled = true
+            view.alpha = 1.0
+        }
+    }
+    
     static func makeSnackBar(title:String? = nil, message:String,type:SnackType = SnackType.ERROR){
         DispatchQueue.main.async {
             var bannerType:BannerStyle = .danger
