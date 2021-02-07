@@ -9,6 +9,9 @@ import UIKit
 
 class ChatViewController: UIViewController {
     
+    @IBOutlet weak var sendButtonHolderView: UIView!
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var headerView: ChatHeaderView!
     static var channel:ChatChannel?
     
@@ -25,7 +28,9 @@ class ChatViewController: UIViewController {
     }
     
     private func setupUI(){
-        
+        UIHelper.addCornerRadius(to: textView, withRadius: 10.0)
+        UIHelper.circular(view: sendButtonHolderView)
+        UIHelper.circular(view: sendButton)
     }
     
     

@@ -149,6 +149,14 @@ class ApiClient {
         static let ActivateIAPPackage = "/rest/apple/pay"
         static let GetSubscriptionStatus = "/rest/subscription/isSubscribe/%@"
         
+        
+        //Chat
+        static let ChatToken = "chat/token-generate"
+        static let CreateMember = "chat/create-member"
+        static let Members = "chat/get-chat-members/%@/%@"
+        static let Chennels = "chat/channels"
+        static let Chats = "chat/get-chats"
+        static let MemberRole = "chat/get-role/%@"
     }
     
     struct StringKeys{
@@ -1965,7 +1973,7 @@ class ApiClient {
             //            request.httpMethod = HTTPMethod.post.rawValue
             //            request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
             //            request.httpBody = jsonData
-        Alamofire.request(url.absoluteString, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse:DataResponse<Any>) in
+            Alamofire.request(url.absoluteString, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse:DataResponse<Any>) in
                 
                 if let response = dataResponse.response {
                     let validateResult = HttpValidator.validate(response.statusCode)
@@ -2089,6 +2097,158 @@ class ApiClient {
             return failure(ErrorHandler.NoNetwork)
         }else{
             callAPIrequest()
+        }
+    }
+}
+
+
+typealias ChatService  = ApiClient
+extension ChatService{
+    
+    /*
+     let params:[String:Any] = [
+     "receiptString":receiptData,
+     "planId":packageID,
+     "viewerId":Int(viewerID)
+     ]
+     Log(params.description)
+     
+     let url = URL(string: IAPBaseURL + SubUrl.ActivateIAPPackage)!
+     Log(url.absoluteString)
+     ServiceManager.APIRequest(url: url, method: .post, params: params) { (response, responseCode) in
+     if responseCode == 200{
+     let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
+     Log(jsonData.description)
+     if let jsonResponse = jsonData as? JSON{
+     if let status = jsonResponse["status"].string{
+     if status == "ACCEPT"{
+     onComplete(true)
+     }else{
+     
+     */
+    
+    private func generateChatHeader() -> HTTPHeaders {
+        let headers: HTTPHeaders = [
+            StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
+            StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? "N/A"
+        ]
+        return headers
+    }
+    
+    func getChatToken(onComplete:@escaping (String?)->()){
+        let url = URL(string: kAPIBaseUrl + SubUrl.ChatToken)!
+        ServiceManager.APIRequest(url: url, method: .get,headers: generateChatHeader()) { (response, reponseCode) in
+            if reponseCode == 200{
+                let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
+                if let data = jsonData["data"].dictionary{
+                    if let token = data["Token"]?.string{
+                        onComplete(token)
+                    }
+                }
+                onComplete(nil)
+            }
+            onComplete(nil)
+        }
+    }
+    
+    func getChatChannels(onComplete:@escaping ([ChatChannel]?)->()){
+        let url = URL(string: kAPIBaseUrl + SubUrl.Chennels)!
+        var tempArray:[ChatChannel]?
+        ServiceManager.APIRequest(url: url, method: .get,headers: generateChatHeader()) { (response, responseCode) in
+            if responseCode == 200{
+                tempArray = []
+                let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
+                if let jsonArray = jsonData.array{
+                    for json in jsonArray{
+                        let id = json["id"].int ?? 0
+                        let sid = json["sid"].string ?? ""
+                        let accountSID = json["accountSid"].string ?? ""
+                        let serviceSID = json["serviceSid"].string ?? ""
+                        let friendlyName = json["friendlyName"].string ?? ""
+                        let uniqueName = json["uniqueName"].string ?? ""
+                        let imageURL = json["imagePath"].stringValue.decodedURL
+                        let isBlocked = json["block"].bool ?? false
+                        let isMember = json["member"].bool ?? false
+                        let chatChannel = ChatChannel(id: id, sid: sid, accountSid: accountSID, serviceSid: serviceSID, friendlyName: friendlyName, uniqueName: uniqueName, imageURL: imageURL, isBlocked: isBlocked, isMember: isMember)
+                        tempArray?.append(chatChannel)
+                    }
+                }
+            }
+            onComplete(tempArray)
+        }
+    }
+    
+    func createMember(name:String,roleID:String,userID:String, for channel: ChatChannel,onComplete:@escaping (Bool)->()){
+        let url = URL(string: kAPIBaseUrl + SubUrl.CreateMember)!
+        
+        let params:[String:Any] = [
+            "sid": channel.sid,
+            "accountSid": channel.accountSid,
+            "serviceSid": channel.serviceSid,
+            "name": name, //logged users name
+            "identity": userID, // logged user ID
+            "imagePath": channel.imageURL.absoluteString.encodeURL,
+            "roleId": roleID, // ID from role GET
+            "channelIds": [channel.id]
+        ]
+        
+        ServiceManager.APIRequest(url: url, method: .post, params: params, headers: generateChatHeader()) { (response, responseCode) in
+            if responseCode == 200{
+                let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
+                if let code = jsonData["code"].string, let message = jsonData["message"].string{
+                    if code == "201" && message == "Success"{
+                        onComplete(true)
+                    }else{
+                        onComplete(false)
+                    }
+                }else{
+                    onComplete(false)
+                }
+            }else{
+                onComplete(false)
+            }
+        }
+    }
+    
+    func getMemberRole(for type:MemberRoleType,onComplete:@escaping (String?)->()){
+        let urlSuffix = String(format: SubUrl.MemberRole, type.rawValue)
+        let url = URL(string: kAPIBaseUrl + urlSuffix)!
+        ServiceManager.APIRequest(url: url, method: .get,headers: generateChatHeader()) { (response, reponseCode) in
+            if reponseCode == 200{
+                let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
+                if let roleID = jsonData["id"].int{
+                    onComplete(roleID.description)
+                }else{
+                    onComplete(nil)
+                }
+            }else{
+                onComplete(nil)
+            }
+        }
+    }
+    
+    func getArtistMembers(for type:MemberRoleType, in channel:ChatChannel, onComplete:@escaping ([ChatArtist]?)->()){
+        let urlSuffix = String(format: SubUrl.Members, channel.id.description,type.rawValue)
+        let url = URL(string: kAPIBaseUrl + urlSuffix)!
+        var tempArray:[ChatArtist]?
+        
+        ServiceManager.APIRequest(url: url, method: .get,headers: generateChatHeader()) { (response, responseCode) in
+            if responseCode == 200{
+                tempArray = []
+                let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
+                if let jsonArray = jsonData.array{
+                    for json in jsonArray{
+                        let name = json["name"].stringValue
+                        let color:UIColor = json["colour"].stringValue.hexStringToUIColor
+                        let imageURL = json["imagePath"].stringValue.decodedURL
+                        
+                        let artist = ChatArtist(name: name, color: color, imageURL: imageURL)
+                        tempArray?.append(artist)
+                    }
+                }
+            }
+            onComplete(tempArray)
         }
     }
 }

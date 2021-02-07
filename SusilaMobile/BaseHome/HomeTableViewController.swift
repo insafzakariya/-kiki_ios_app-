@@ -17,6 +17,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
     var mainMenuViewController :SMMainMenuViewController!
     let viewModel = SMChannelListModel()
     let homeViewModel = SMHomeViewModel()
+    fileprivate let chatPresenter = ChatPresenter()
     let notificationListViewModel = NotificationListModel()
     let notificationButton = MIBadgeButton(type: .system)
     
@@ -46,6 +47,8 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        chatPresenter.getChatChannels()
+        chatPresenter.getChatToken()
         ProgressView.shared.hide()
         var frame = CGRect.zero
         frame.size.height = .leastNormalMagnitude
@@ -338,8 +341,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
             let cell = tableView.dequeueReusableCell(withIdentifier: "chatHomeTableViewCell") as! ChatHomeTableViewCell
             cell.setupCell()
             cell.delegate = self
-            let chats = [ChatChannel(name: "INBOX", imageURL: URL(string: "https://zohowebstatic.com/sites/default/files/ogimage/teaminbox-logo.png")!, isMember: true, isBlocked: false)]
-            cell.setChannels(for: chats) // TODO: Chat service plugs here
+            cell.setChannels(for: chatPresenter.chatChannels)
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath) as! HomeTableViewCell
@@ -612,25 +614,40 @@ extension HomeTableViewController: UICollectionViewDataSource, UICollectionViewD
 
 extension HomeTableViewController:ChatPickerViewDelegate{
     
-    func didChatChannelTapped(for channel: ChatChannel) {
-        if channel.isBlocked{
-            //TODO: Show error message to the user
-        }else{
-            if channel.isMember{
+    private func initializeChat(for channel:ChatChannel){
+        ProgressView.shared.show(self.view)
+        chatPresenter.initializeChat(for: channel) { (isCompleted) in
+            ProgressView.shared.hide()
+            if isCompleted{
                 let chatNavController = UIHelper.makeViewController(in: .Chat, viewControllerName: .ChatNC) as! UINavigationController
                 chatNavController.modalPresentationStyle = .fullScreen
                 ChatViewController.channel = channel
                 self.present(chatNavController, animated: true, completion: nil)
             }else{
-                //TODO: go through the reg process
+                //TODO: Error for initialization failure
+            }
+        }
+    }
+    
+    func didChatChannelTapped(for channel: ChatChannel) {
+        ChatManager.shared.channelSID = channel.sid
+        if channel.isBlocked{
+            //TODO: Show error message to the user
+        }else{
+            if channel.isMember{
+                initializeChat(for: channel)
+            }else{
+                chatPresenter.createMember(for: channel) { (isCompleted) in
+                    if isCompleted{
+                        self.initializeChat(for: channel)
+                    }else{
+                        Log("Member creation failed")
+                    }
+                }
             }
         }
         
     }
-    
-    
-    
-    
 }
 
 extension UIImageView {

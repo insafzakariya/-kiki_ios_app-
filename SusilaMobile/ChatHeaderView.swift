@@ -60,10 +60,14 @@ class ChatHeaderView: UIView {
         chatImageView.kf.setImage(with: channel.imageURL)
         switch type {
         case .Main:
+            UIHelper.show(view: onlineCountLabel)
+            UIHelper.show(view: onlineIndicatorView)
             UIHelper.show(view: infoButton)
             UIHelper.hide(view: infoImageView)
             hideBackButton()
         case .Info:
+            UIHelper.hide(view: onlineCountLabel)
+            UIHelper.hide(view: onlineIndicatorView)
             UIHelper.hide(view: infoButton)
             UIHelper.show(view: infoImageView)
             showBackButton()

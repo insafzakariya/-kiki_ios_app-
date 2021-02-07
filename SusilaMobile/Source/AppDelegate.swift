@@ -39,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          print("running on iPhone")
          }*/
         
+        
+       
+        
         let translateSet = defaults.object(forKey: "LanguageSelect") as? String
         if let accessToken = UserDefaultsManager.getAccessToken(), !accessToken.isEmpty {
             

@@ -12,10 +12,11 @@ class ChatInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var artistImageView: UIImageView!
     @IBOutlet weak var artistName: UILabel!
     
-    //TOOD: Bind with model
-    func setValues(){
-        //TODO
-//        setupUI(for: <#T##InfoViewType#>, with: <#T##UIColor#>)
+    
+    func setValues(for artist:ChatArtist){
+        artistImageView.kf.setImage(with: artist.imageURL)
+        artistName.text = artist.name
+        setupUI(for: .Online, with: artist.color)
     }
     
     
