@@ -55,8 +55,8 @@ extension String {
         NSLocalizedString(self.localized(using: "Localizable"), comment: "")
     }
     
-    var decodedURL:URL{
-        return URL(string: self.removingPercentEncoding!)!
+    var decodedURL:URL?{
+        return URL(string: self.removingPercentEncoding ?? "")
     }
     
     var encodeURL:String{

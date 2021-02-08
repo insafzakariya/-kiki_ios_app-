@@ -11,13 +11,13 @@ import ImageSlideshow
 import AudioToolbox
 import AVFoundation
 import SwiftyJSON
-//import MIBadgeButton
 
 class HomeTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+    
     var mainMenuViewController :SMMainMenuViewController!
     let viewModel = SMChannelListModel()
     let homeViewModel = SMHomeViewModel()
-    fileprivate let chatPresenter = ChatPresenter()
+    fileprivate let chatInitPresenter = ChatInitilizationPresenter()
     let notificationListViewModel = NotificationListModel()
     let notificationButton = MIBadgeButton(type: .system)
     
@@ -28,9 +28,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var collectionViewMyList: UICollectionView!
     
     let subscribedListViewModel = SMSubscribedListViewModel()
-    
     let gradientLayer = CAGradientLayer()
-    
     var channelList: [Channel] = [Channel]()
     
     var chId = 0
@@ -46,9 +44,10 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
     var noSubscribedLabel = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-20, height: 100))
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        chatPresenter.getChatChannels()
-        chatPresenter.getChatToken()
+        chatInitPresenter.getChatChannels()
+        chatInitPresenter.getChatToken()
         ProgressView.shared.hide()
         var frame = CGRect.zero
         frame.size.height = .leastNormalMagnitude
@@ -341,7 +340,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
             let cell = tableView.dequeueReusableCell(withIdentifier: "chatHomeTableViewCell") as! ChatHomeTableViewCell
             cell.setupCell()
             cell.delegate = self
-            cell.setChannels(for: chatPresenter.chatChannels)
+            cell.setChannels(for: chatInitPresenter.chatChannels)
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath) as! HomeTableViewCell
@@ -616,7 +615,7 @@ extension HomeTableViewController:ChatPickerViewDelegate{
     
     private func initializeChat(for channel:ChatChannel){
         ProgressView.shared.show(self.view)
-        chatPresenter.initializeChat(for: channel) { (isCompleted) in
+        chatInitPresenter.initializeChat(for: channel) { (isCompleted) in
             ProgressView.shared.hide()
             if isCompleted{
                 let chatNavController = UIHelper.makeViewController(in: .Chat, viewControllerName: .ChatNC) as! UINavigationController
@@ -637,7 +636,7 @@ extension HomeTableViewController:ChatPickerViewDelegate{
             if channel.isMember{
                 initializeChat(for: channel)
             }else{
-                chatPresenter.createMember(for: channel) { (isCompleted) in
+                chatInitPresenter.createMember(for: channel) { (isCompleted) in
                     if isCompleted{
                         self.initializeChat(for: channel)
                     }else{
@@ -665,6 +664,7 @@ extension UIImageView {
             }
         }.resume()
     }
+    
     func downloadedImg(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFill) {
         guard let url = URL(string: link) else { return }
         downloaded(from: url, contentMode: mode)

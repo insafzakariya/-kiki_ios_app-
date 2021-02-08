@@ -14,7 +14,7 @@ struct ChatChannel{
     var serviceSid:String
     var friendlyName:String
     var uniqueName:String
-    var imageURL:URL
+    var imageURL:URL?
     var isBlocked:Bool
     var isMember:Bool
 }

@@ -11,11 +11,11 @@ class ChatInfoPresenter{
     
     fileprivate let chatService = ChatServiceManager.shared
     
-    var members:[ChatArtist]?
+    var members:[ChatMember]?
     
     
     func getMembers(for channel:ChatChannel,onCompleted:@escaping ()->()){
-        chatService.getArtistMembers(in: channel) { (members) in
+        chatService.getMembers(in: channel) { (members) in
             if let members = members{
                 self.members = members
                 onCompleted()

@@ -32,7 +32,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TfS-AT-lyS" userLabel="FooterView">
                                 <rect key="frame" x="0.0" y="796" width="414" height="100"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hey" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JjY-fD-svD">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JjY-fD-svD">
                                         <rect key="frame" x="10" y="10" width="324" height="60"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -50,6 +50,9 @@
                                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.60392156860000001" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                                 <state key="normal" image="send_white"/>
+                                                <connections>
+                                                    <action selector="sendButtonOnTapped:" destination="4Y8-Ag-MXy" eventType="touchUpInside" id="QZT-1o-3P5"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -75,7 +78,7 @@
                                     <constraint firstAttribute="trailing" secondItem="HZm-6n-4PB" secondAttribute="trailing" constant="10" id="n1F-PE-8WX"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ne0-7D-lxS">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ne0-7D-lxS">
                                 <rect key="frame" x="0.0" y="108" width="414" height="688"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -100,6 +103,7 @@
                         <outlet property="headerView" destination="tHe-gv-kdm" id="lZi-6a-3u5"/>
                         <outlet property="sendButton" destination="MKS-E9-w1d" id="9sw-oO-Rrf"/>
                         <outlet property="sendButtonHolderView" destination="HZm-6n-4PB" id="u7t-RN-E5h"/>
+                        <outlet property="tableView" destination="ne0-7D-lxS" id="LaW-BJ-2sR"/>
                         <outlet property="textView" destination="JjY-fD-svD" id="4Co-m6-aWz"/>
                     </connections>
                 </viewController>

@@ -50,8 +50,8 @@ class ChatServiceManager{
     }
     
     
-    func getArtistMembers(for type:MemberRoleType = .Artist, in channel:ChatChannel, onComplete:@escaping ([ChatArtist]?)->()){
-        client.getArtistMembers(for: type, in: channel) { (members) in
+    func getMembers(for type:MemberRoleType = .Artist, in channel:ChatChannel, onComplete:@escaping ([ChatMember]?)->()){
+        client.getMembers(for: type, in: channel) { (members) in
             onComplete(members)
         }
     }

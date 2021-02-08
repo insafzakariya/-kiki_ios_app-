@@ -74,6 +74,23 @@ class ChatHeaderView: UIView {
         }
     }
     
+    func hideCountLabel(){
+        UIHelper.hide(view: onlineCountLabel)
+    }
+    
+    func showCountLabel(){
+        UIHelper.show(view: onlineCountLabel)
+    }
+    
+    func setOnlineCount(for count:Int){
+        if count < 10{
+            onlineCountLabel.text = "Online 0\(count.description)"
+        }else{
+            onlineCountLabel.text = "Online \(count.description)"
+        }
+        
+    }
+    
     private func hideBackButton(){
         UIHelper.hide(view: backButton)
         backButtonWidthConstraint.constant = 0
@@ -89,6 +106,7 @@ class ChatHeaderView: UIView {
     }
     
     @IBAction func homeButtonOnTapped(_ sender: Any) {
+        ChatManager.shared.exit()
         navigationController?.dismiss(animated: true, completion: nil)
     }
     

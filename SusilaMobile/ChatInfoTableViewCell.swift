@@ -13,7 +13,7 @@ class ChatInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var artistName: UILabel!
     
     
-    func setValues(for artist:ChatArtist){
+    func setValues(for artist:ChatMember){
         artistImageView.kf.setImage(with: artist.imageURL)
         artistName.text = artist.name
         setupUI(for: .Online, with: artist.color)

@@ -2188,7 +2188,7 @@ extension ChatService{
             "serviceSid": channel.serviceSid,
             "name": name, //logged users name
             "identity": userID, // logged user ID
-            "imagePath": channel.imageURL.absoluteString.encodeURL,
+            "imagePath": channel.imageURL?.absoluteString.encodeURL,
             "roleId": roleID, // ID from role GET
             "channelIds": [channel.id]
         ]
@@ -2228,10 +2228,10 @@ extension ChatService{
         }
     }
     
-    func getArtistMembers(for type:MemberRoleType, in channel:ChatChannel, onComplete:@escaping ([ChatArtist]?)->()){
+    func getMembers(for type:MemberRoleType, in channel:ChatChannel, onComplete:@escaping ([ChatMember]?)->()){
         let urlSuffix = String(format: SubUrl.Members, channel.id.description,type.rawValue)
         let url = URL(string: kAPIBaseUrl + urlSuffix)!
-        var tempArray:[ChatArtist]?
+        var tempArray:[ChatMember]?
         
         ServiceManager.APIRequest(url: url, method: .get,headers: generateChatHeader()) { (response, responseCode) in
             if responseCode == 200{
@@ -2242,8 +2242,8 @@ extension ChatService{
                         let name = json["name"].stringValue
                         let color:UIColor = json["colour"].stringValue.hexStringToUIColor
                         let imageURL = json["imagePath"].stringValue.decodedURL
-                        
-                        let artist = ChatArtist(name: name, color: color, imageURL: imageURL)
+                        let viewerID = json["viewerId"].stringValue
+                        let artist = ChatMember(name: name, color: color, imageURL: imageURL, viewerID: viewerID, type: type)
                         tempArray?.append(artist)
                     }
                 }

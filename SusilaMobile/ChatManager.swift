@@ -9,8 +9,8 @@ import Foundation
 import TwilioChatClient
 
 protocol ChatManagerDelegate:AnyObject {
-    func reloadMessaged()
-    func receivedNewMessage()
+    func reloadMessages()
+    func receivedNewMessage(message:ChatMessage)
 }
 
 class ChatManager:NSObject{
@@ -58,6 +58,21 @@ class ChatManager:NSObject{
                     Log("send Message failed duw to \(e.localizedDescription)")
                 }
             }
+        }
+    }
+    
+    func getMessages(messageCount:Int,onCompleted:@escaping (Bool,[TCHMessage]?)->()){
+        if let channel = connectedChannel{
+            channel.messages?.getLastWithCount(UInt(messageCount), completion: { (result, messages) in
+                if result.isSuccessful(){
+                    onCompleted(true,messages)
+                }else{
+                    if let e = result.error{
+                        Log("Failed to retreieve messages due to \(e.localizedDescription)")
+                    }
+                    onCompleted(false,nil)
+                }
+            })
         }
     }
     
@@ -119,15 +134,15 @@ extension ChatManager:TwilioChatClientDelegate{
     
     func chatClient(_ client: TwilioChatClient, synchronizationStatusUpdated status: TCHClientSynchronizationStatus) {
         if status == .completed{
-            checkChannel(for: channelSID!) { (result, chanel) in
+            checkChannel(for: channelSID!) { (result, channel) in
                 if let res = result{
                     if res.isSuccessful(){
-                        if let channel = chanel{
+                        if let channel = channel{
                             self.join(channel: channel) { (isJoined) in
                                 if isJoined{
-                                    Log("Joined to \(channel.uniqueName ?? "N/A")")
+                                    Log("Joined to \(channel.friendlyName ?? "N/A")")
                                 }else{
-                                    Log("Couldn't joined to \(channel.uniqueName ?? "N/A")")
+                                    Log("Couldn't joined to \(channel.friendlyName ?? "N/A")")
                                 }
                                 self.initializationCompletionHanler!(isJoined)
                             }
@@ -146,9 +161,11 @@ extension ChatManager:TwilioChatClientDelegate{
     func chatClient(_ client: TwilioChatClient, channel: TCHChannel, messageAdded message: TCHMessage) {
         messages.append(message)
         DispatchQueue.main.async {
-            self.delegate?.reloadMessaged()
+            self.delegate?.reloadMessages()
             if self.messages.count > 0 {
-                self.delegate?.receivedNewMessage()
+                if let convertedMessage = ChatMessage.convertMessage(message: message){
+                    self.delegate?.receivedNewMessage(message: convertedMessage)
+                }
             }
         }
     }

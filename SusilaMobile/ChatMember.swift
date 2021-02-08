@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChatArtist{
+struct ChatMember{
     
     /*
      {
@@ -30,6 +30,14 @@ struct ChatArtist{
     
     var name:String
     var color:UIColor
-    var imageURL:URL
+    var imageURL:URL?
+    var viewerID:String
+    var type:MemberRoleType
+    
+    
+    static func getMember(from members:[ChatMember], for id:String) -> ChatMember?{
+        return members.filter ({ $0.viewerID == id}).first
+    }
+    
     
 }

@@ -2,48 +2,75 @@
 //  ChatPresenter.swift
 //  SusilaMobile
 //
-//  Created by Sajith Konara on 2021-02-07.
+//  Created by Sajith Konara on 2021-02-08.
 //
 
 import Foundation
 
 class ChatPresenter{
     
-    fileprivate let chatService = ChatServiceManager.shared
     fileprivate let chatManager = ChatManager.shared
+    fileprivate let chatService = ChatServiceManager.shared
     
-    var chatChannels:[ChatChannel] = []
-    var chatToken:String?
+    var messages:[ChatMessage] = []
+    var artists:[ChatMember]?
+    var users:[ChatMember]?
+    var allUsers:[ChatMember]?
     
-    func getChatChannels(){
-        chatService.getChannels { (channels) in
-            if let channels = channels{
-                self.chatChannels = channels
+    
+    func getMessages(onCompleted:@escaping()->()){
+        chatManager.getMessages(messageCount: 1000) { (isSuccess, messages) in
+            if let retrevedMessages = messages{
+                for message in retrevedMessages{
+                    var type:ContentType!
+                    var content:String?
+                    if let body = message.body{
+                        if body.starts(with: "http"){
+                            type = .URL
+                            content = ChatMessage.extractURL(from: body)
+                        }else{
+                            type = .Text
+                            content = body
+                        }
+                        self.messages.append(ChatMessage(senderID: message.author ?? "N/A", content: content ?? "", contentType: type))
+                    }
+                }
+                onCompleted()
             }
         }
     }
     
-    func getChatToken(){
-        chatService.getChatToken { token in
-            if let chatToken = token{
-                self.chatToken = chatToken
+    func getArtists(for channel:ChatChannel, onCompleted:@escaping (Int)->()){
+        chatService.getMembers(in: channel) { (members) in
+            if let artists = members{
+                self.artists = artists
+                onCompleted(artists.count)
+            }else{
+                onCompleted(0)
             }
+            
         }
     }
     
-    func initializeChat(for channel:ChatChannel,isCompleted:@escaping(Bool)->()){
-        if let token = self.chatToken{
-            chatManager.initializeClient(with: token) { (isSuccess) in
-                isCompleted(isSuccess)
+    func getFans(for channel:ChatChannel,onCompleted:@escaping()->()){
+        chatService.getMembers(for: .User, in: channel) { (members) in
+            if let fans = members{
+                self.users = fans
+            }else{
+                self.users = []
             }
+            onCompleted()
         }
     }
     
-    func createMember(for channel:ChatChannel,onComplete:@escaping (Bool)->()){
-        if let name = UserDefaultsManager.getUsername(),
-           let userID = UserDefaultsManager.getUserId(){
-            chatService.createMember(name: name, userID: userID, for: channel) { (isSuccess) in
-                onComplete(isSuccess)
+    func setTotalMember(){
+        self.allUsers = self.artists! + self.users!
+    }
+    
+    func sendMessage(message:String){
+        chatManager.sendMessage(message: message) { (result, message) in
+            if result.isSuccessful(){
+                Log("Message Send Success")
             }
         }
     }
