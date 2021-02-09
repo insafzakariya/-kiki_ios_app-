@@ -40,7 +40,7 @@ class ChatPresenter{
         }
     }
     
-    func getArtists(for channel:ChatChannel, onCompleted:@escaping (Int)->()){
+     func getArtists(for channel:ChatChannel, onCompleted:@escaping (Int)->()){
         chatService.getMembers(in: channel) { (members) in
             if let artists = members{
                 self.artists = artists
@@ -52,7 +52,7 @@ class ChatPresenter{
         }
     }
     
-    func getFans(for channel:ChatChannel,onCompleted:@escaping()->()){
+    private func getFans(for channel:ChatChannel,onCompleted:@escaping()->()){
         chatService.getMembers(for: .User, in: channel) { (members) in
             if let fans = members{
                 self.users = fans
@@ -63,14 +63,21 @@ class ChatPresenter{
         }
     }
     
-    func setTotalMember(){
+    private func setTotalMember(){
         self.allUsers = self.artists! + self.users!
     }
     
-    func sendMessage(message:String){
+    func sendMessage(message:String,isSuccess:@escaping(Bool)->()){
         chatManager.sendMessage(message: message) { (result, message) in
-            if result.isSuccessful(){
-                Log("Message Send Success")
+            isSuccess(result.isSuccessful())
+        }
+    }
+    
+    
+    func updateMembers(for channel:ChatChannel){
+        getArtists(for: channel) { (_) in
+            self.getFans(for: channel) {
+                self.setTotalMember()
             }
         }
     }

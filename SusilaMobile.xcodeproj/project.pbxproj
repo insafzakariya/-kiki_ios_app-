@@ -211,6 +211,9 @@
 		84CC5E47230BB4CA0097F736 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC5E46230BB4CA0097F736 /* Global.swift */; };
 		84CCCF142360336200D880D1 /* PlayerViewRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CCCF132360336200D880D1 /* PlayerViewRadio.swift */; };
 		AB1877865878BF97E29C6071 /* Pods_SusilaMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14B05EFED2D2C5F42745CDF /* Pods_SusilaMobile.framework */; };
+		B6036C2625D2F9E4005B4B9B /* ChatConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6036C2525D2F9E4005B4B9B /* ChatConfig.swift */; };
+		B6036C2925D30B2C005B4B9B /* SenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6036C2725D30B2C005B4B9B /* SenderTableViewCell.swift */; };
+		B6036C2A25D30B2C005B4B9B /* SenderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6036C2825D30B2C005B4B9B /* SenderTableViewCell.xib */; };
 		B60DDAEA253ADEA600CD46F0 /* IJKCommon.h in Sources */ = {isa = PBXBuildFile; fileRef = 58E8B5C71FC32BEF0068B8E1 /* IJKCommon.h */; };
 		B60DDAEB253ADEA600CD46F0 /* IJKDemoHistory.h in Sources */ = {isa = PBXBuildFile; fileRef = 58E8B5C81FC32BEF0068B8E1 /* IJKDemoHistory.h */; };
 		B60DDAEC253ADEA600CD46F0 /* IJKMediaControl.h in Sources */ = {isa = PBXBuildFile; fileRef = 58E8B5C31FC32B090068B8E1 /* IJKMediaControl.h */; };
@@ -519,6 +522,9 @@
 		84CC5E46230BB4CA0097F736 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		84CCCF132360336200D880D1 /* PlayerViewRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewRadio.swift; sourceTree = "<group>"; };
 		94DDB9BE7D67036F48E17ADD /* Pods-SusilaMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SusilaMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-SusilaMobile/Pods-SusilaMobile.release.xcconfig"; sourceTree = "<group>"; };
+		B6036C2525D2F9E4005B4B9B /* ChatConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatConfig.swift; sourceTree = "<group>"; };
+		B6036C2725D30B2C005B4B9B /* SenderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderTableViewCell.swift; sourceTree = "<group>"; };
+		B6036C2825D30B2C005B4B9B /* SenderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderTableViewCell.xib; sourceTree = "<group>"; };
 		B60E44C225CE731F00B61506 /* ChatChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatChannel.swift; sourceTree = "<group>"; };
 		B60F1A02254446CE00CD59C4 /* SusilaMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SusilaMobile.entitlements; sourceTree = "<group>"; };
 		B626802625D0FAD30049458A /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
@@ -1733,6 +1739,8 @@
 				B6AC41E925C8F1B7001DE946 /* ChatMessageTableViewCell.xib */,
 				B690EFA725CEACB600E2F4F6 /* ChatHomeTableViewCell.swift */,
 				B690EFA825CEACB600E2F4F6 /* ChatHomeTableViewCell.xib */,
+				B6036C2725D30B2C005B4B9B /* SenderTableViewCell.swift */,
+				B6036C2825D30B2C005B4B9B /* SenderTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1757,6 +1765,7 @@
 				B6ADA38E25C556AD0046ABDB /* CustomViews */,
 				B626815225D185BD0049458A /* Managers */,
 				B626815125D185B30049458A /* Presenters */,
+				B6036C2525D2F9E4005B4B9B /* ChatConfig.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -1929,6 +1938,7 @@
 				CCC571AF1F83E16E005EFB34 /* CountryView.xib in Resources */,
 				CCDB0001205E33AB007AF0E8 /* version.sh in Resources */,
 				838962EE21F596210071392F /* Localizable.strings in Resources */,
+				B6036C2A25D30B2C005B4B9B /* SenderTableViewCell.xib in Resources */,
 				7E9F4F871E288E9C00EC9B69 /* LaunchScreen.storyboard in Resources */,
 				6DAB220121C7B98200239C86 /* PlayerView.xib in Resources */,
 				B638A407257516B700B27C0E /* Default@2x.png in Resources */,
@@ -2155,6 +2165,7 @@
 				69598A9B2444AA83001277E6 /* SongTileLibraryListSquareSongsAdd.swift in Sources */,
 				690BA4622403FB7F00B706B5 /* PlayListTileAll.swift in Sources */,
 				7E4A24441E4A35850075D077 /* SMSVerificationViewModel.swift in Sources */,
+				B6036C2625D2F9E4005B4B9B /* ChatConfig.swift in Sources */,
 				83E8E63222048712006348D8 /* HomeCollectionViewCell.swift in Sources */,
 				2C1B58762102ED040091D4BA /* AdvertisementViewController.swift in Sources */,
 				69507D1C23F654A800CB2BE6 /* TapGesture.swift in Sources */,
@@ -2177,6 +2188,7 @@
 				589F5F9E1F8E627C004875A2 /* Channel.swift in Sources */,
 				B6ADA3BD25C560E30046ABDB /* ChatHeaderView.swift in Sources */,
 				69BD55B823F2A0540032497D /* SongsTileSelectPlaylistDetails.swift in Sources */,
+				B6036C2925D30B2C005B4B9B /* SenderTableViewCell.swift in Sources */,
 				B6525EE8254ECCC200EFDD39 /* SubscribeItemTableViewCell.swift in Sources */,
 				69F4B01B2435B5DE000B2F82 /* SongTileLibraryAllArtists.swift in Sources */,
 				586C1E05253329A300101D54 /* UIConstants.swift in Sources */,

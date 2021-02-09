@@ -11,6 +11,7 @@ import TwilioChatClient
 protocol ChatManagerDelegate:AnyObject {
     func reloadMessages()
     func receivedNewMessage(message:ChatMessage)
+    func memberUpdated()
 }
 
 class ChatManager:NSObject{
@@ -176,5 +177,17 @@ extension ChatManager:TwilioChatClientDelegate{
     
     func chatClientTokenWillExpire(_ client: TwilioChatClient) {
         refreshToken()
+    }
+    
+    func chatClient(_ client: TwilioChatClient, channel: TCHChannel, memberJoined member: TCHMember) {
+        delegate?.memberUpdated()
+    }
+    
+    func chatClient(_ client: TwilioChatClient, channel: TCHChannel, memberLeft member: TCHMember) {
+        delegate?.memberUpdated()
+    }
+    
+    func chatClient(_ client: TwilioChatClient, channel: TCHChannel, member: TCHMember, updated: TCHMemberUpdate) {
+        delegate?.memberUpdated()
     }
 }

@@ -14,7 +14,9 @@ class ChatInfoTableViewCell: UITableViewCell {
     
     
     func setValues(for artist:ChatMember){
-        artistImageView.kf.setImage(with: artist.imageURL)
+        if let imageURL = URL(string: String(format: ChatConfig.imageURL, artist.viewerID)){
+            artistImageView.kf.setImage(with: imageURL)
+        }
         artistName.text = artist.name
         setupUI(for: .Online, with: artist.color)
     }
