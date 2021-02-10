@@ -270,24 +270,15 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
         } else {
             return channelList.count + 1
         }
-        
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if(UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
-            //TODO: Add chat cell size for iPad
-            if indexPath.section == 0 {
-                return 500
-            } else {
-                return 200
-            }
-        } else {
-            if indexPath.section == 0 {
-                return 250
-            }else if indexPath.section == 1{
-                return 82.0
-            }else {
-                return 160
-            }
+        if indexPath.section == 0{
+            return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad ?  500.0 :  250.0
+        }else if indexPath.section == 1{
+            return 82.0
+        }else{
+            return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad ?  200.0 :  160.0
         }
     }
     
