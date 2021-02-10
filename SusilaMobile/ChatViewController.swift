@@ -28,6 +28,8 @@ class ChatViewController: UIViewController {
         
         tableView.register(UINib(nibName: "ChatMessageTableViewCell", bundle: .main), forCellReuseIdentifier: "chatMessageTableViewCell")
         tableView.register(UINib(nibName: "SenderTableViewCell", bundle: .main), forCellReuseIdentifier: "senderTableViewCell")
+        tableView.register(UINib(nibName: "ChatGifMessageTableViewCell", bundle: .main), forCellReuseIdentifier: "chatGifMessageTableViewCell")
+       
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -108,9 +110,15 @@ extension ChatViewController:UITableViewDelegate,UITableViewDataSource{
                 cell.setupCell(for: message, sender: member)
                 return cell
             }else{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "chatMessageTableViewCell") as! ChatMessageTableViewCell
-                cell.setupCell(for: message, sender: member)
-                return cell
+                if message.content.lowercased().starts(with: "http"){
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "chatGifMessageTableViewCell") as! ChatGifMessageTableViewCell
+                    cell.setupCell(for: message, sender: member)
+                    return cell
+                }else{
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "chatMessageTableViewCell") as! ChatMessageTableViewCell
+                    cell.setupCell(for: message, sender: member)
+                    return cell
+                }
             }
         }
         return UITableViewCell()

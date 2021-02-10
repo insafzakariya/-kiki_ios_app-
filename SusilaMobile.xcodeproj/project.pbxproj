@@ -256,7 +256,9 @@
 		B6ADA3BD25C560E30046ABDB /* ChatHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ADA3BC25C560E30046ABDB /* ChatHeaderView.swift */; };
 		B6ADA97025CA413C00E881EE /* ChatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ADA96E25CA413C00E881EE /* ChatCollectionViewCell.swift */; };
 		B6ADA97125CA413C00E881EE /* ChatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ADA96F25CA413C00E881EE /* ChatCollectionViewCell.xib */; };
+		B6B4177925D41AF60089B881 /* ChatGifMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4177725D41AF60089B881 /* ChatGifMessageTableViewCell.swift */; };
 		B6E846772537226000D423C1 /* AppStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E846762537226000D423C1 /* AppStoreManager.swift */; };
+		B6EF0A2325D42C41008540D6 /* ChatGifMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6B4177825D41AF60089B881 /* ChatGifMessageTableViewCell.xib */; };
 		B6EF0ED925453B4600FCD18E /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EF0ED825453B4500FCD18E /* CoreServices.framework */; };
 		B6EF0F0325453BE000FCD18E /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EF0F0225453BE000FCD18E /* Metal.framework */; };
 		CC2DB41C1F0BC18400A06A14 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2DB41B1F0BC18400A06A14 /* iOSDevCenters+GIF.swift */; };
@@ -564,6 +566,8 @@
 		B6ADA3BC25C560E30046ABDB /* ChatHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHeaderView.swift; sourceTree = "<group>"; };
 		B6ADA96E25CA413C00E881EE /* ChatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6ADA96F25CA413C00E881EE /* ChatCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCollectionViewCell.xib; sourceTree = "<group>"; };
+		B6B4177725D41AF60089B881 /* ChatGifMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGifMessageTableViewCell.swift; sourceTree = "<group>"; };
+		B6B4177825D41AF60089B881 /* ChatGifMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatGifMessageTableViewCell.xib; sourceTree = "<group>"; };
 		B6E846762537226000D423C1 /* AppStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManager.swift; sourceTree = "<group>"; };
 		B6EF0ED825453B4500FCD18E /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		B6EF0F0225453BE000FCD18E /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -1735,12 +1739,9 @@
 				B6ADA96F25CA413C00E881EE /* ChatCollectionViewCell.xib */,
 				B6353B1925C845D300965986 /* ChatInfoTableViewCell.swift */,
 				B6353B1A25C845D400965986 /* ChatInfoTableViewCell.xib */,
-				B6AC41E825C8F1B7001DE946 /* ChatMessageTableViewCell.swift */,
-				B6AC41E925C8F1B7001DE946 /* ChatMessageTableViewCell.xib */,
+				B6B4177625D41AE10089B881 /* ChatMessage */,
 				B690EFA725CEACB600E2F4F6 /* ChatHomeTableViewCell.swift */,
 				B690EFA825CEACB600E2F4F6 /* ChatHomeTableViewCell.xib */,
-				B6036C2725D30B2C005B4B9B /* SenderTableViewCell.swift */,
-				B6036C2825D30B2C005B4B9B /* SenderTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1779,6 +1780,19 @@
 				B6353B1625C83F4600965986 /* InfoTitle.xib */,
 			);
 			name = CustomViews;
+			sourceTree = "<group>";
+		};
+		B6B4177625D41AE10089B881 /* ChatMessage */ = {
+			isa = PBXGroup;
+			children = (
+				B6AC41E825C8F1B7001DE946 /* ChatMessageTableViewCell.swift */,
+				B6AC41E925C8F1B7001DE946 /* ChatMessageTableViewCell.xib */,
+				B6B4177725D41AF60089B881 /* ChatGifMessageTableViewCell.swift */,
+				B6B4177825D41AF60089B881 /* ChatGifMessageTableViewCell.xib */,
+				B6036C2725D30B2C005B4B9B /* SenderTableViewCell.swift */,
+				B6036C2825D30B2C005B4B9B /* SenderTableViewCell.xib */,
+			);
+			name = ChatMessage;
 			sourceTree = "<group>";
 		};
 		CCC446901F9BBD1B0088868C /* Notification */ = {
@@ -1925,6 +1939,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6EF0A2325D42C41008540D6 /* ChatGifMessageTableViewCell.xib in Resources */,
 				834A71DD221428AA0031752E /* Roboto-Regular.ttf in Resources */,
 				B6AC41EB25C8F1B7001DE946 /* ChatMessageTableViewCell.xib in Resources */,
 				B638A408257516B700B27C0E /* Default@3x.png in Resources */,
@@ -2205,6 +2220,7 @@
 				CCC87AC71EED333F00732312 /* YDelegate.swift in Sources */,
 				586C1B272532EE3900101D54 /* UIImage.swift in Sources */,
 				69C94F6823F52E3B00563A75 /* PlaylistItem.swift in Sources */,
+				B6B4177925D41AF60089B881 /* ChatGifMessageTableViewCell.swift in Sources */,
 				84BFA4F22330F9AE004A1C43 /* SMVerificationViewModel.swift in Sources */,
 				83E8E62F220486EE006348D8 /* MainHomeViewController.swift in Sources */,
 				6965BC822486CBA600C144D9 /* ArtistDetailViewController.swift in Sources */,

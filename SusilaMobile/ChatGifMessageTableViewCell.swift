@@ -1,5 +1,5 @@
 //
-//  ChatMessageTableViewCell.swift
+//  ChatGifMessageTableViewCell.swift
 //  SusilaMobile
 //
 //  Created by Sajith Konara on 2021-02-02.
@@ -7,19 +7,19 @@
 
 import UIKit
 
-class ChatMessageTableViewCell: UITableViewCell {
+class ChatGifMessageTableViewCell: UITableViewCell {
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var chatContentLabel: UILabel!
     @IBOutlet weak var verfiedImageView: UIImageView!
-    @IBOutlet weak var bubbleView: UIView!
+    @IBOutlet var gifHolderView: UIView!
+    @IBOutlet var gifImageView: UIImageView!
     
     func setupCell(for message:ChatMessage, sender:ChatMember){
         setupUI()
         UIHelper.circular(view: userImageView)
         usernameLabel.textColor = sender.color
-        chatContentLabel.text = message.content
+        
         usernameLabel.text = sender.name
         
         if sender.type == .Artist{
@@ -32,15 +32,32 @@ class ChatMessageTableViewCell: UITableViewCell {
             UIHelper.hide(view: verfiedImageView)
         }
         
-        usernameLabel.adjustsFontSizeToFitWidth = true
-        usernameLabel.minimumScaleFactor = 0.5
-        bubbleView.backgroundColor = sender.color
+        if message.content.lowercased().starts(with: "http"){
+            downloadGif(from: message.content) { (image) in
+                DispatchQueue.main.async {
+                    self.gifImageView.image = image
+                }
+            }
+        }else{
+            fatalError("Invalid Cell Shown")
+        }
+        gifHolderView.backgroundColor = sender.color
     }
     
     private func setupUI(){
-        UIHelper.addCornerRadius(to: bubbleView,withRadius: 12.0)
+        UIHelper.addCornerRadius(to: gifHolderView,withRadius: 12.0)
     }
     
+    private func downloadGif(from url:String,onComplete:@escaping(UIImage?)->()){
+        DispatchQueue.global(qos: .background).async {
+            let image = UIImage.gifImageWithURL(url)
+            onComplete(image)
+        }
+        
+    }
     
+    deinit{
+        gifImageView.image = nil
+    }
     
 }
