@@ -14,6 +14,7 @@ enum LogType{
 }
 
 func Log(_ message:String, file:String = #file , calledBy:String = #function, type:LogType = .DEBUG){
+    #if DEBUG
     let className = file.components(separatedBy: "/").last ?? ""
     switch type {
     case .DEBUG:
@@ -23,5 +24,6 @@ func Log(_ message:String, file:String = #file , calledBy:String = #function, ty
     case .CRITICAL:
         print("LOG ==> CRITICAL!!! ::: \(className) ::: \(calledBy) ::: \(message)")
     }
+    #endif
     
 }

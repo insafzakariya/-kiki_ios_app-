@@ -110,7 +110,7 @@ extension ChatViewController:UITableViewDelegate,UITableViewDataSource{
                 cell.setupCell(for: message, sender: member)
                 return cell
             }else{
-                if message.content.lowercased().starts(with: "http"){
+                if message.content.lowercased().starts(with: "http") && message.content.lowercased().suffix(4) == ".gif" {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "chatGifMessageTableViewCell") as! ChatGifMessageTableViewCell
                     cell.setupCell(for: message, sender: member)
                     return cell

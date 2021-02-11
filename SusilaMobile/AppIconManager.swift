@@ -37,7 +37,7 @@ class AppIconManager{
                         AppDelegate.IS_APP_ICON_CHANGED = true
                         if let e = error{
                             Log(e.localizedDescription)
-                            UIApplication.shared.setAlternateIconName(nil)
+//                            UIApplication.shared.setAlternateIconName(nil)
                         }else{
                             Log("App icon Changed Successfully")
                             UserDefaultsManager.setAppIconName(for: name)
