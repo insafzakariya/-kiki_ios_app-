@@ -18,6 +18,9 @@ import SwiftyJSON
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    
+    static var IS_APP_ICON_CHANGED:Bool = false
+    
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
     var remoteConfig: RemoteConfig!

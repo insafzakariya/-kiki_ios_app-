@@ -11,15 +11,16 @@ import ImageSlideshow
 import AudioToolbox
 import AVFoundation
 import SwiftyJSON
-//import MIBadgeButton
 
 class HomeTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+    
     var mainMenuViewController :SMMainMenuViewController!
     let viewModel = SMChannelListModel()
     let homeViewModel = SMHomeViewModel()
+    fileprivate let chatInitPresenter = ChatInitilizationPresenter()
     let notificationListViewModel = NotificationListModel()
     let notificationButton = MIBadgeButton(type: .system)
-
+    
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var SubscriptionPromotionView: UIView!
     @IBOutlet weak var myListBtn: UIButton!
@@ -27,15 +28,13 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var collectionViewMyList: UICollectionView!
     
     let subscribedListViewModel = SMSubscribedListViewModel()
-    
     let gradientLayer = CAGradientLayer()
-
     var channelList: [Channel] = [Channel]()
     
     var chId = 0
     var totalPrg : Int = 0
     var MyListShow  = false
-
+    
     let tableViewCellIdentifier = "HomeTableCell"
     let collectionViewCellIdentifier = "HomeCollectionCell"
     let tableViewHeaderNibName = "HomeTableViewHeaderView"
@@ -45,13 +44,17 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
     var noSubscribedLabel = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-20, height: 100))
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        chatInitPresenter.getChatChannels()
+        chatInitPresenter.getChatToken()
         ProgressView.shared.hide()
         var frame = CGRect.zero
         frame.size.height = .leastNormalMagnitude
         tableView.tableHeaderView = UIView(frame: frame)
         self.navigationController?.isNavigationBarHidden = false
         tableView.register(UINib.init(nibName: "SideShowTableViewCell", bundle: nil), forCellReuseIdentifier: tableViewSideShowCellIdentifier)
+        tableView.register(UINib.init(nibName: "ChatHomeTableViewCell", bundle: nil), forCellReuseIdentifier: "chatHomeTableViewCell")
         
         setupNavigationBarItems()
         
@@ -60,9 +63,11 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
         }
         
         DispatchQueue.main.async{
-            AppIconManager(remoteConfig: (UIApplication.shared.delegate as! AppDelegate).getRemoteConfig()).setAppIcon()
+            if !AppDelegate.IS_APP_ICON_CHANGED{
+                AppIconManager(remoteConfig: (UIApplication.shared.delegate as! AppDelegate).getRemoteConfig()).setAppIcon()
+            }
         }
-            
+        
         noSubscribedLabel.center = self.view.center
         noSubscribedLabel.text = NSLocalizedString("NoSubscribed".localized(using: "Localizable"), comment: "")
         noSubscribedLabel.numberOfLines = 3
@@ -86,7 +91,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
         notificationButton.badgeEdgeInsets = UIEdgeInsets.init(top: 6, left: 0, bottom: 0, right: 6)
         notificationButton.badgeTextColor = UIColor(red:0.22, green:0.50, blue:0.51, alpha:1.0)
         notificationButton.badgeBackgroundColor = UIColor.clear
-
+        
         notificationButton.contentMode = .scaleAspectFit
         notificationButton.addTarget(self, action: #selector(notifcicationBtn), for: .touchUpInside)
         let menuButton = UIButton(type: .system)
@@ -152,11 +157,11 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
     func loadChannelList() {
         noSubscribedLabel.isHidden = true
         ProgressView.shared.show(self.view, mainText: nil, detailText: nil)
-
+        
         self.viewModel.getChannelList(getChannelListCallFinished: { (status, error, userInfo) in
             if status {
                 DispatchQueue.main.async(execute: {
-
+                    
                     if (self.viewModel.channelList.count > 0) {
                         
                         //for programListOne in programLists {
@@ -165,6 +170,8 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
                             self.viewModel.getChannelListEpisode(channelID: programListOne.id) { (status, error, userInfo) in
                                 if status && !userInfo {
                                     self.channelList = self.viewModel.channelList
+                                    let chatChannel = Channel(id: -1, name: "KiKi Chats", image: nil, description_c: nil)
+                                    self.channelList.insert(chatChannel, at: 0)
                                     self.tableView.isHidden = false
                                     self.tableView.reloadData()
                                     ProgressView.shared.hide()
@@ -182,7 +189,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
                     }
                 })
                 
-               
+                
             } else {
                 if let error = error {
                     print("Error occurred while fetching the current package: \(error)")
@@ -211,7 +218,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
         homeBtn.setTitleColor(UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0), for: .normal)
         homeBtn.tintColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
         myListBtn.tintColor = UIColor(red:0.60, green:0.60, blue:0.60, alpha:1.0)
-
+        
     }
     
     //MyList
@@ -263,21 +270,15 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
         } else {
             return channelList.count + 1
         }
-        
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if(UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
-            if indexPath.section == 0 {
-                return 500
-            } else {
-                return 200
-            }
-        } else {
-            if indexPath.section == 0 {
-                return 250
-            } else {
-                return 160
-            }
+        if indexPath.section == 0{
+            return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad ?  500.0 :  250.0
+        }else if indexPath.section == 1{
+            return 82.0
+        }else{
+            return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad ?  200.0 :  160.0
         }
     }
     
@@ -287,25 +288,26 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
         header.textLabel?.font = Constants.getFont(size: 18)
         header.textLabel?.text = header.textLabel?.text?.capitalized
     }
-     
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return ""
+            return nil
         } else {
             let channel = channelList[section - 1]
-            return "\(channel.name)"
+            Log("Section: \(section), Channel Name: \(channel.name)")
+            return channel.name
         }
- }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: tableViewSideShowCellIdentifier, for: indexPath) as! SideShowTableViewCell
-
+            
             cell.vwCarousel.backgroundColor = Constants.videoAppBackColor
             cell.vwCarousel.slideshowInterval = 3.0
             cell.vwCarousel.pageControlPosition = PageControlPosition.underScrollView
@@ -313,9 +315,9 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
             cell.vwCarousel.pageControl.pageIndicatorTintColor = UIColor.lightGray.withAlphaComponent(0.5)
             cell.vwCarousel.contentScaleMode = UIView.ContentMode.scaleAspectFill
             cell.vwCarousel.setImageInputs(self.viewModel.channelImageList)
-//            cell.playBtn.tag = indexPath.section
+            //            cell.playBtn.tag = indexPath.section
             cell.playBtn.addTarget(self, action: #selector(playClicked), for: .touchUpInside)
-
+            
             // optional way to show activity indicator during image load (skipping the line will show no activity indicator)
             cell.vwCarousel.activityIndicator = DefaultActivityIndicator()
             cell.vwCarousel.currentPageChanged = { page in
@@ -323,10 +325,16 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
             }
             
             return cell
-
-        } else {
+            
+        }else if indexPath.section == 1{
+            //MARK: KiKi Chat
+            let cell = tableView.dequeueReusableCell(withIdentifier: "chatHomeTableViewCell") as! ChatHomeTableViewCell
+            cell.setupCell()
+            cell.delegate = self
+            cell.setChannels(for: chatInitPresenter.chatChannels)
+            return cell
+        }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath) as! HomeTableViewCell
-
             cell.collectionVw.isHidden = false
             let channel = channelList[indexPath.section - 1]
             cell.collectionVw.tag = channel.id
@@ -352,7 +360,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
                         self.navigationController?.pushViewController(episodesViewController, animated: true)
                         ProgressView.shared.hide()
                         self.view.isUserInteractionEnabled = true
-
+                        
                     } else {
                         ProgressView.shared.hide()
                         self.view.isUserInteractionEnabled = true
@@ -389,7 +397,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
                             //self.present(episodesViewController, animated: true, completion: nil)
                             self.navigationController?.pushViewController(episodesViewController, animated: true)
                             self.view.isUserInteractionEnabled = true
-
+                            
                         } else {
                             ProgressView.shared.hide()
                             self.view.isUserInteractionEnabled = true
@@ -401,7 +409,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
             })
         }
     }
-   
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 0
@@ -414,7 +422,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
 
 //MARK: -UICollectionViewDatasource
 extension HomeTableViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-        
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if MyListShow == false {
             let programList = viewModel.programList
@@ -438,91 +446,91 @@ extension HomeTableViewController: UICollectionViewDataSource, UICollectionViewD
                 return subscribedListViewModel.programList.count
             }
         }
-            
-    }
         
+    }
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
+        
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerVw", for: indexPath) as! HeaderCollectionReusableView
         if MyListShow == true {
             headerView.headerLbl.text = NSLocalizedString("MY_LIST".localized(using: "Localizable"), comment: "")
             return headerView
         }
-            return headerView
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            if MyListShow == false {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier:collectionViewCellIdentifier , for: indexPath) as! HomeCollectionViewCell
-                cell.tag = collectionView.tag
-                configureCell(cell, indexPath: indexPath)
-                return cell
-            } else {
-                let cell = collectionViewMyList.dequeueReusableCell(withReuseIdentifier:collectionViewCellIdentifier , for: indexPath) as! HomeCollectionViewCell
-                cell.tag = collectionViewMyList.tag
-                configureCell(cell, indexPath: indexPath)
-                return cell
-            }
-        }
+        return headerView
+    }
     
-        fileprivate func configureCell(_ cell: HomeCollectionViewCell, indexPath: IndexPath) {
-            if MyListShow == false {
-                let stringID = "\(cell.tag)"
-                guard let number = viewModel.newCategroyProg[stringID]
-                    else {
-                        return
-                }
-                
-               
-                let programList = number as! NSArray
-                
-                let program = programList[indexPath.row] as! Program
-                
-                cell.videoImageView.image = nil
-                cell.videoImageView.image = UIImage(named: "logo_grayscale_video")
-                let imageURL = program.image ?? ""
-                let imageLink = imageURL.removingPercentEncoding ?? ""
-                cell.videoImageView.contentMode = .scaleAspectFill
-                cell.videoImageView.sd_setImage(with: URL(string: imageLink), placeholderImage: UIImage(named: "logo_grayscale_video"))
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if MyListShow == false {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier:collectionViewCellIdentifier , for: indexPath) as! HomeCollectionViewCell
+            cell.tag = collectionView.tag
+            configureCell(cell, indexPath: indexPath)
+            return cell
+        } else {
+            let cell = collectionViewMyList.dequeueReusableCell(withReuseIdentifier:collectionViewCellIdentifier , for: indexPath) as! HomeCollectionViewCell
+            cell.tag = collectionViewMyList.tag
+            configureCell(cell, indexPath: indexPath)
+            return cell
+        }
+    }
+    
+    fileprivate func configureCell(_ cell: HomeCollectionViewCell, indexPath: IndexPath) {
+        if MyListShow == false {
+            let stringID = "\(cell.tag)"
+            guard let number = viewModel.newCategroyProg[stringID]
+            else {
+                return
+            }
+            
+            
+            let programList = number as! NSArray
+            
+            let program = programList[indexPath.row] as! Program
+            
+            cell.videoImageView.image = nil
+            cell.videoImageView.image = UIImage(named: "logo_grayscale_video")
+            let imageURL = program.image ?? ""
+            let imageLink = imageURL.removingPercentEncoding ?? ""
+            cell.videoImageView.contentMode = .scaleAspectFill
+            cell.videoImageView.sd_setImage(with: URL(string: imageLink), placeholderImage: UIImage(named: "logo_grayscale_video"))
+            
+        } else {
+            if subscribedListViewModel.programList.isEmpty {
                 
             } else {
-                if subscribedListViewModel.programList.isEmpty {
-                    
-                } else {
-                    func downloadImageFrom(link:String, contentMode: UIView.ContentMode) {
-                        URLSession.shared.dataTask( with: NSURL(string:link)! as URL, completionHandler: {
-                            (data, response, error) -> Void in
-                            DispatchQueue.main.async(execute: {
-                                cell.videoImageView.contentMode = contentMode
-                                if let data = data {
-                                    if case let cellToUpdate as HomeCollectionViewCell = self.collectionViewMyList.cellForItem(at: indexPath) {
-                                        cellToUpdate.videoImageView?.image = UIImage(data: data)
-                                    }
+                func downloadImageFrom(link:String, contentMode: UIView.ContentMode) {
+                    URLSession.shared.dataTask( with: NSURL(string:link)! as URL, completionHandler: {
+                        (data, response, error) -> Void in
+                        DispatchQueue.main.async(execute: {
+                            cell.videoImageView.contentMode = contentMode
+                            if let data = data {
+                                if case let cellToUpdate as HomeCollectionViewCell = self.collectionViewMyList.cellForItem(at: indexPath) {
+                                    cellToUpdate.videoImageView?.image = UIImage(data: data)
                                 }
-                            })
-                        }).resume()
-                    }
+                            }
+                        })
+                    }).resume()
+                }
                 let program = subscribedListViewModel.programList[indexPath.row]
                 cell.videoImageView.image = UIImage(named: "logo_grayscale_video")
-                    cell.videoImageView.contentMode = .scaleAspectFit
-                    cell.videoImageView.kf.setImage(with: URL(string: program.image!.removingPercentEncoding!)!)
-//                downloadImageFrom(link: program.image?.removingPercentEncoding ?? "", contentMode: UIView.ContentMode.scaleAspectFill)
+                cell.videoImageView.contentMode = .scaleAspectFit
+                cell.videoImageView.kf.setImage(with: URL(string: program.image!.removingPercentEncoding!)!)
+                //                downloadImageFrom(link: program.image?.removingPercentEncoding ?? "", contentMode: UIView.ContentMode.scaleAspectFill)
             }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if MyListShow == false {
-                
+            
             self.view.isUserInteractionEnabled = false
             ProgressView.shared.show(self.view, mainText: nil, detailText: nil)
-
+            
             let stringID = "\(collectionView.tag)"
             guard let number = viewModel.newCategroyProg[stringID]
             else {
                 return
             }
-                
+            
             let programList = number as! NSArray
             let program = programList[indexPath.row] as! Program
             
@@ -531,20 +539,20 @@ extension HomeTableViewController: UICollectionViewDataSource, UICollectionViewD
                     notifyInstance.list = program
                 }
             }
-                
+            
             self.homeViewModel.getEpisodeList(programID: program.id, offset: 0, programType: program.type, getEpisodeListCallFinished: { (status, error, userInfo) in
                 if status {
                     DispatchQueue.main.async(execute: {
                         if (self.homeViewModel.episodeList.count > 0) {
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let episodesViewController = storyboard.instantiateViewController(withIdentifier: "SMEpisodesViewController") as! SMEpisodesViewController
-                                
+                            
                             episodesViewController.program = program;
                             episodesViewController.episodeList = self.homeViewModel.episodeList
                             self.navigationController?.pushViewController(episodesViewController, animated: true)
                             ProgressView.shared.hide()
                             self.view.isUserInteractionEnabled = true
-
+                            
                         } else {
                             ProgressView.shared.hide()
                             self.view.isUserInteractionEnabled = true
@@ -560,15 +568,15 @@ extension HomeTableViewController: UICollectionViewDataSource, UICollectionViewD
         } else {
             self.view.isUserInteractionEnabled = false
             ProgressView.shared.show(self.view, mainText: nil, detailText: nil)
-
+            
             let program = subscribedListViewModel.programList[indexPath.row]
-                
+            
             let episodeNameString = program.episode?.name
             let programNameString = program.name
-                
+            
             print(episodeNameString ?? "")
             print(programNameString)
-                
+            
             homeViewModel.getEpisodeList(programID: program.id, offset: 0, programType: program.type , getEpisodeListCallFinished: { (status, error, userInfo) in
                 if status {
                     DispatchQueue.main.async(execute: {
@@ -594,6 +602,44 @@ extension HomeTableViewController: UICollectionViewDataSource, UICollectionViewD
     }
 }
 
+extension HomeTableViewController:ChatPickerViewDelegate{
+    
+    private func initializeChat(for channel:ChatChannel){
+        ProgressView.shared.show(self.view)
+        chatInitPresenter.initializeChat(for: channel) { (isCompleted) in
+            ProgressView.shared.hide()
+            if isCompleted{
+                let chatNavController = UIHelper.makeViewController(in: .Chat, viewControllerName: .ChatNC) as! UINavigationController
+                chatNavController.modalPresentationStyle = .fullScreen
+                ChatViewController.channel = channel
+                self.present(chatNavController, animated: true, completion: nil)
+            }else{
+                //TODO: Error for initialization failure
+            }
+        }
+    }
+    
+    func didChatChannelTapped(for channel: ChatChannel) {
+        ChatManager.shared.channelSID = channel.sid
+        if channel.isBlocked{
+            //TODO: Show error message to the user
+        }else{
+            if channel.isMember{
+                initializeChat(for: channel)
+            }else{
+                chatInitPresenter.createMember(for: channel) { (isCompleted) in
+                    if isCompleted{
+                        self.initializeChat(for: channel)
+                    }else{
+                        Log("Member creation failed")
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
 extension UIImageView {
     func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         contentMode = mode
@@ -603,17 +649,19 @@ extension UIImageView {
                 let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
                 let data = data, error == nil,
                 let image = UIImage(data: data)
-                else { return }
+            else { return }
             DispatchQueue.main.async() {
                 self.image = image
             }
-            }.resume()
+        }.resume()
     }
+    
     func downloadedImg(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFill) {
         guard let url = URL(string: link) else { return }
         downloaded(from: url, contentMode: mode)
     }
 }
+
 extension UIDevice {
     static func vibrate() {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
