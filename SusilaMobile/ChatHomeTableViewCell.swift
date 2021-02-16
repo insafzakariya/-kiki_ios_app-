@@ -12,7 +12,7 @@ protocol ChatPickerViewDelegate{
 }
 
 class ChatHomeTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     var channels:[ChatChannel]?
     var delegate:ChatPickerViewDelegate?
@@ -41,6 +41,11 @@ extension ChatHomeTableViewCell:UICollectionViewDelegate,UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return self.channels?.count ?? 0
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let channel = channels?[indexPath.row]{
