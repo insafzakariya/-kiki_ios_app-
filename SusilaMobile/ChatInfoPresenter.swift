@@ -13,7 +13,6 @@ class ChatInfoPresenter{
     
     var members:[ChatMember]?
     
-    
     func getMembers(for channel:ChatChannel,onCompleted:@escaping ()->()){
         chatService.getMembers(in: channel) { (members) in
             if let members = members{
@@ -23,5 +22,7 @@ class ChatInfoPresenter{
         }
     }
     
-    
+    deinit {
+        members = nil
+    }
 }

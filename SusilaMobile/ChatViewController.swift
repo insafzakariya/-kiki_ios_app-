@@ -29,7 +29,7 @@ class ChatViewController: UIViewController {
         tableView.register(UINib(nibName: "ChatMessageTableViewCell", bundle: .main), forCellReuseIdentifier: "chatMessageTableViewCell")
         tableView.register(UINib(nibName: "SenderTableViewCell", bundle: .main), forCellReuseIdentifier: "senderTableViewCell")
         tableView.register(UINib(nibName: "ChatGifMessageTableViewCell", bundle: .main), forCellReuseIdentifier: "chatGifMessageTableViewCell")
-       
+        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -42,8 +42,8 @@ class ChatViewController: UIViewController {
         headerView.navigationController = self.navigationController
         headerView.hideCountLabel()
         
-        chatPresenter.getArtists(for: ChatViewController.channel!) { (count) in
-            self.headerView.setOnlineCount(for: count)
+        chatPresenter.getArtists(for: ChatViewController.channel!) {
+            self.headerView.setOnlineCount(for: self.chatPresenter.artistCount)
             self.headerView.showCountLabel()
         }
     }
@@ -57,7 +57,7 @@ class ChatViewController: UIViewController {
     
     private func setupData(){
         ProgressView.shared.show(self.view)
-        chatPresenter.updateMembers(for: ChatViewController.channel!)
+        chatPresenter.updateMembers(for: ChatViewController.channel!, onCompleted: nil)
         
         chatPresenter.getMessages{
             ProgressView.shared.hide()
@@ -74,9 +74,11 @@ class ChatViewController: UIViewController {
     }
     
     @IBAction func sendButtonOnTapped(_ sender: Any) {
-        chatPresenter.sendMessage(message: textView.text){ isSuccess in
-            if isSuccess{
-                self.textView.text = ""
+        if textView.text.count > 0{
+            chatPresenter.sendMessage(message: textView.text){ isSuccess in
+                if isSuccess{
+                    self.textView.text = ""
+                }
             }
         }
     }
@@ -142,6 +144,8 @@ extension ChatViewController:ChatManagerDelegate{
     }
     
     func memberUpdated() {
-        chatPresenter.updateMembers(for: ChatViewController.channel!)
+        chatPresenter.updateMembers(for: ChatViewController.channel!, onCompleted: {
+            self.headerView.setOnlineCount(for: self.chatPresenter.artistCount)
+        })
     }
 }

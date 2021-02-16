@@ -10,5 +10,6 @@ import Foundation
 class ChatConfig{
     
     static let imageURL = "https://storage.googleapis.com/kiki_images/live/viewer/1x/%@.jpeg"
+    static let messageCount:Int = 1000
     
 }

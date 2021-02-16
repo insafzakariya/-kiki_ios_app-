@@ -16,10 +16,10 @@ class ChatPresenter{
     var artists:[ChatMember]?
     var users:[ChatMember]?
     var allUsers:[ChatMember]?
-    
+    var artistCount:Int = 0
     
     func getMessages(onCompleted:@escaping()->()){
-        chatManager.getMessages(messageCount: 1000) { (isSuccess, messages) in
+        chatManager.getMessages(messageCount: ChatConfig.messageCount) { (isSuccess, messages) in
             if let retrevedMessages = messages{
                 for message in retrevedMessages{
                     var type:ContentType!
@@ -40,15 +40,13 @@ class ChatPresenter{
         }
     }
     
-     func getArtists(for channel:ChatChannel, onCompleted:@escaping (Int)->()){
+    func getArtists(for channel:ChatChannel, onCompleted:@escaping ()->()){
         chatService.getMembers(in: channel) { (members) in
             if let artists = members{
                 self.artists = artists
-                onCompleted(artists.count)
-            }else{
-                onCompleted(0)
+                self.artistCount = artists.count
             }
-            
+            onCompleted()
         }
     }
     
@@ -74,13 +72,19 @@ class ChatPresenter{
     }
     
     
-    func updateMembers(for channel:ChatChannel){
-        getArtists(for: channel) { (_) in
+    func updateMembers(for channel:ChatChannel,onCompleted:(()->())?){
+        getArtists(for: channel) { 
             self.getFans(for: channel) {
                 self.setTotalMember()
+                onCompleted?()
             }
         }
     }
     
-    
+    deinit {
+        messages.removeAll()
+        artists = nil
+        users = nil
+        allUsers = nil
+    }
 }
