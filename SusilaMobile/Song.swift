@@ -46,6 +46,7 @@ extension Song {
         static let image = "image"
         static let blocked = "blocked"
         static let url = "url"
+        static let fileURL = "fileUrl"
         static let artist = "artist"
     }
     

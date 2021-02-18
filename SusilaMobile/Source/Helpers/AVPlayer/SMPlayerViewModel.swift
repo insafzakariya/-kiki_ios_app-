@@ -23,19 +23,18 @@ import Alamofire
             dataTasks.forEach {$0.cancel()}
             uploadTasks.forEach {$0.cancel()}
             downloadTasks.forEach {$0.cancel()}
-        }
-        
-        mainInstance.epPlayingStatus = false
-        
-        api.sendAnalytics(actionType: actionType, contendId: contendId, currentTime:currentTime, success: { (data, code) -> Void in
-            switch code {
-                case 200:
-                    NSLog("Analytics sent : \(actionType) - \(contendId) - \(currentTime)")
-                default:
-                    NSLog("Analytics sent Error occrrued, code: \(code)")
+            
+            mainInstance.epPlayingStatus = false
+            self.api.sendAnalytics(actionType: actionType, contendId: contendId, currentTime:currentTime, success: { (data, code) -> Void in
+                switch code {
+                    case 200:
+                        Log("Analytics sent : \(actionType) - \(contendId) - \(currentTime)")
+                    default:
+                        Log("Analytics sent Error occrrued, code: \(code)")
+                }
+            }) { (error) -> Void in
+                Log("Error (likeEpisode): \(error.localizedDescription)")
             }
-        }) { (error) -> Void in
-            NSLog("Error (likeEpisode): \(error.localizedDescription)")
         }
     }
     
