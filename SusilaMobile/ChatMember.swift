@@ -34,10 +34,18 @@ struct ChatMember{
     var viewerID:String
     var type:MemberRoleType
     
+    static var memberDict:[String:ChatMember] = [:]
+    
     
     static func getMember(from members:[ChatMember], for id:String) -> ChatMember?{
-        return members.filter ({ $0.viewerID == id}).first
+        if let member = memberDict[id]{
+            return member
+        }else{
+            if let member = members.filter ({ $0.viewerID == id}).first{
+                memberDict[id] = member
+                return member
+            }
+        }
+        return nil
     }
-    
-    
 }

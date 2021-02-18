@@ -622,7 +622,10 @@ extension HomeTableViewController:ChatPickerViewDelegate{
     func didChatChannelTapped(for channel: ChatChannel) {
         ChatManager.shared.channelSID = channel.sid
         if channel.isBlocked{
-            //TODO: Show error message to the user
+            let blockedAlert = UIAlertController(title: "Access Revoked", message: "Your accees to this chat has been revoked due to inappropriate behavior", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            blockedAlert.addAction(okAction)
+            self.present(blockedAlert, animated: true, completion: nil)
         }else{
             if channel.isMember{
                 initializeChat(for: channel)
