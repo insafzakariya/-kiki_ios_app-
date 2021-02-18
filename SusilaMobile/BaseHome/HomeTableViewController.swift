@@ -47,7 +47,6 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
         
         super.viewDidLoad()
         chatInitPresenter.getChatChannels()
-        chatInitPresenter.getChatToken()
         ProgressView.shared.hide()
         var frame = CGRect.zero
         frame.size.height = .leastNormalMagnitude
@@ -606,15 +605,17 @@ extension HomeTableViewController:ChatPickerViewDelegate{
     
     private func initializeChat(for channel:ChatChannel){
         ProgressView.shared.show(self.view)
-        chatInitPresenter.initializeChat(for: channel) { (isCompleted) in
-            ProgressView.shared.hide()
-            if isCompleted{
-                let chatNavController = UIHelper.makeViewController(in: .Chat, viewControllerName: .ChatNC) as! UINavigationController
-                chatNavController.modalPresentationStyle = .fullScreen
-                ChatViewController.channel = channel
-                self.present(chatNavController, animated: true, completion: nil)
-            }else{
-                //TODO: Error for initialization failure
+        chatInitPresenter.getChatToken {
+            self.chatInitPresenter.initializeChat(for: channel) { (isCompleted) in
+                ProgressView.shared.hide()
+                if isCompleted{
+                    let chatNavController = UIHelper.makeViewController(in: .Chat, viewControllerName: .ChatNC) as! UINavigationController
+                    chatNavController.modalPresentationStyle = .fullScreen
+                    ChatViewController.channel = channel
+                    self.present(chatNavController, animated: true, completion: nil)
+                }else{
+                    //TODO: Error for initialization failure
+                }
             }
         }
     }

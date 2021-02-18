@@ -23,10 +23,11 @@ class ChatInitilizationPresenter{
         }
     }
     
-    func getChatToken(){
+    func getChatToken(onCompleted:@escaping()->()){
         chatService.getChatToken { token in
             if let chatToken = token{
                 self.chatToken = chatToken
+                onCompleted()
             }
         }
     }
