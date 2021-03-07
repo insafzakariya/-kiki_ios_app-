@@ -211,8 +211,8 @@ class ApiClient {
         var tempDurations:[String:Int] = [:]
         ServiceManager.APIRequest(url: url, method: .get) { (response, responseCode) in
             if responseCode == 200{
-                let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
-                if let jsonResponse = jsonData as? JSON{
+                if let retrievedResponse = response{
+                    let jsonResponse:JSON = JSON(retrievedResponse)
                     Log(jsonResponse.description)
                     if let packages = jsonResponse.array{
                         for package in packages{
@@ -255,9 +255,9 @@ class ApiClient {
             Log(url.absoluteString)
             ServiceManager.APIRequest(url: url, method: .post, params: params) { (response, responseCode) in
                 if responseCode == 200{
-                    let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
-                    Log(jsonData.description)
-                    if let jsonResponse = jsonData as? JSON{
+                    if let retrievedResponse = response{
+                        let jsonResponse:JSON = JSON(retrievedResponse)
+                        Log(jsonResponse.description)
                         if let status = jsonResponse["status"].string{
                             if status == "ACCEPT"{
                                 onComplete(true)
@@ -286,9 +286,9 @@ class ApiClient {
         Log(url.absoluteString)
         ServiceManager.APIRequest(url: url, method: .get) { (response, responseCode) in
             if responseCode == 200{
-                let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
-                Log(jsonData.description)
-                if let jsonResponse = jsonData as? JSON{
+                if let retrievedResponse = response{
+                    let jsonResponse:JSON = JSON(retrievedResponse)
+                    Log(jsonResponse.description)
                     if let plan = jsonResponse["planDtos"].array?.first{
                         if let name = plan["name"].string{
                             onComplete(name)
@@ -1594,9 +1594,9 @@ class ApiClient {
     
     internal func getSubtitle(urlStr: String, success: @escaping (_ data: String?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         Log(urlStr)
-        Alamofire.request(urlStr,
-                          parameters: nil,
-                          headers: [:]
+        AF.request(urlStr,
+                   parameters: nil,
+                   headers: [:]
         )
         .responseString(encoding: String.Encoding.utf8 ,completionHandler: { response in
             switch response.result {
@@ -1940,7 +1940,7 @@ class ApiClient {
             request.addValue(UserDefaultsManager.getAccessToken() ?? "", forHTTPHeaderField: StringKeys.HEADER_TOKEN_AUTHENTICATION)
             
             
-            Alamofire.request(request).responseJSON { (dataResponse:DataResponse<Any>) in
+            AF.request(request).responseJSON { (dataResponse:AFDataResponse<Any>) in
                 if let response = dataResponse.response {
                     _ = HttpValidator.validate(response.statusCode)
                 }
@@ -1995,13 +1995,13 @@ class ApiClient {
             //            request.httpMethod = HTTPMethod.post.rawValue
             //            request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
             //            request.httpBody = jsonData
-            Alamofire.request(url.absoluteString, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse:DataResponse<Any>) in
+            AF.request(url.absoluteString, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse:AFDataResponse<Any>) in
                 
-                if let response = dataResponse.response {
-                    let validateResult = HttpValidator.validate(response.statusCode)
-                    //                    print("validateResult ---- : \(validateResult)")
-                    
-                }
+                //                if let response = dataResponse.response {
+                //                    let validateResult = HttpValidator.validate(response.statusCode)
+                //                    //                    print("validateResult ---- : \(validateResult)")
+                //
+                //                }
                 switch dataResponse.result {
                 case .success( let data):
                     if let response = dataResponse.response {
@@ -2068,7 +2068,7 @@ class ApiClient {
             request.setValue(UserDefaultsManager.getAccessToken() ?? "", forHTTPHeaderField: StringKeys.HEADER_TOKEN_AUTHENTICATION)
             
             request.httpBody = paramsString?.data(using: .utf8)
-            Alamofire.request(request).responseJSON { (dataResponse:DataResponse<Any>) in
+            AF.request(request).responseJSON { (dataResponse:AFDataResponse<Any>) in
                 
                 if let response = dataResponse.response {
                     let validateResult = HttpValidator.validate(response.statusCode)
@@ -2162,15 +2162,21 @@ extension ChatService{
         let url = URL(string: kAPIBaseUrl + SubUrl.ChatToken)!
         ServiceManager.APIRequest(url: url, method: .get,headers: generateChatHeader()) { (response, reponseCode) in
             if reponseCode == 200{
-                let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
-                if let data = jsonData["data"].dictionary{
-                    if let token = data["Token"]?.string{
-                        onComplete(token)
+                if let retrievedResponse = response{
+                    let jsonData:JSON = JSON(retrievedResponse)
+                    if let data = jsonData["data"].dictionary{
+                        if let token = data["Token"]?.string{
+                            onComplete(token)
+                        }
+                    }else{
+                        onComplete(nil)
                     }
+                }else{
+                    onComplete(nil)
                 }
+            }else{
                 onComplete(nil)
             }
-            onComplete(nil)
         }
     }
     
@@ -2180,20 +2186,22 @@ extension ChatService{
         ServiceManager.APIRequest(url: url, method: .get,headers: generateChatHeader()) { (response, responseCode) in
             if responseCode == 200{
                 tempArray = []
-                let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
-                if let jsonArray = jsonData.array{
-                    for json in jsonArray{
-                        let id = json["id"].int ?? 0
-                        let sid = json["sid"].string ?? ""
-                        let accountSID = json["accountSid"].string ?? ""
-                        let serviceSID = json["serviceSid"].string ?? ""
-                        let friendlyName = json["friendlyName"].string ?? ""
-                        let uniqueName = json["uniqueName"].string ?? ""
-                        let imageURL = json["imagePath"].stringValue.decodedURL
-                        let isBlocked = json["block"].bool ?? false
-                        let isMember = json["member"].bool ?? false
-                        let chatChannel = ChatChannel(id: id, sid: sid, accountSid: accountSID, serviceSid: serviceSID, friendlyName: friendlyName, uniqueName: uniqueName, imageURL: imageURL, isBlocked: isBlocked, isMember: isMember)
-                        tempArray?.append(chatChannel)
+                if let retrievedResponse = response{
+                    let jsonData:JSON = JSON(retrievedResponse)
+                    if let jsonArray = jsonData.array{
+                        for json in jsonArray{
+                            let id = json["id"].int ?? 0
+                            let sid = json["sid"].string ?? ""
+                            let accountSID = json["accountSid"].string ?? ""
+                            let serviceSID = json["serviceSid"].string ?? ""
+                            let friendlyName = json["friendlyName"].string ?? ""
+                            let uniqueName = json["uniqueName"].string ?? ""
+                            let imageURL = json["imagePath"].stringValue.decodedURL
+                            let isBlocked = json["block"].bool ?? false
+                            let isMember = json["member"].bool ?? false
+                            let chatChannel = ChatChannel(id: id, sid: sid, accountSid: accountSID, serviceSid: serviceSID, friendlyName: friendlyName, uniqueName: uniqueName, imageURL: imageURL, isBlocked: isBlocked, isMember: isMember)
+                            tempArray?.append(chatChannel)
+                        }
                     }
                 }
             }
@@ -2217,10 +2225,14 @@ extension ChatService{
         
         ServiceManager.APIRequest(url: url, method: .post, params: params, headers: generateChatHeader()) { (response, responseCode) in
             if responseCode == 200{
-                let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
-                if let code = jsonData["code"].string, let message = jsonData["message"].string{
-                    if code == "201" && message == "Success"{
-                        onComplete(true)
+                if let retrievedResponse = response{
+                    let jsonData:JSON = JSON(retrievedResponse)
+                    if let code = jsonData["code"].string, let message = jsonData["message"].string{
+                        if code == "201" && message == "Success"{
+                            onComplete(true)
+                        }else{
+                            onComplete(false)
+                        }
                     }else{
                         onComplete(false)
                     }
@@ -2238,9 +2250,13 @@ extension ChatService{
         let url = URL(string: kAPIBaseUrl + urlSuffix)!
         ServiceManager.APIRequest(url: url, method: .get,headers: generateChatHeader()) { (response, reponseCode) in
             if reponseCode == 200{
-                let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
-                if let roleID = jsonData["id"].int{
-                    onComplete(roleID.description)
+                if let response = response{
+                    let jsonData:JSON = JSON(response)
+                    if let roleID = jsonData["id"].int{
+                        onComplete(roleID.description)
+                    }else{
+                        onComplete(nil)
+                    }
                 }else{
                     onComplete(nil)
                 }
@@ -2258,15 +2274,17 @@ extension ChatService{
         ServiceManager.APIRequest(url: url, method: .get,headers: generateChatHeader()) { (response, responseCode) in
             if responseCode == 200{
                 tempArray = []
-                let jsonData:JSON = JSON((response as! DataResponse<Any>).result.value!)
-                if let jsonArray = jsonData.array{
-                    for json in jsonArray{
-                        let name = json["name"].stringValue
-                        let color:UIColor = json["colour"].stringValue.hexStringToUIColor
-                        let imageURL = json["imagePath"].stringValue.decodedURL
-                        let viewerID = json["viewerId"].stringValue
-                        let artist = ChatMember(name: name, color: color, imageURL: imageURL, viewerID: viewerID, type: type)
-                        tempArray?.append(artist)
+                if let retrievedResponse = response{
+                    let jsonData:JSON = JSON(retrievedResponse)
+                    if let jsonArray = jsonData.array{
+                        for json in jsonArray{
+                            let name = json["name"].stringValue
+                            let color:UIColor = json["colour"].stringValue.hexStringToUIColor
+                            let imageURL = json["imagePath"].stringValue.decodedURL
+                            let viewerID = json["viewerId"].stringValue
+                            let artist = ChatMember(name: name, color: color, imageURL: imageURL, viewerID: viewerID, type: type)
+                            tempArray?.append(artist)
+                        }
                     }
                 }
             }

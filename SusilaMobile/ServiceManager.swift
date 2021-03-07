@@ -14,9 +14,15 @@ class ServiceManager{
     
     static func APIRequest(url:URL,method:HTTPMethod,params:Parameters? = nil,headers:HTTPHeaders? = nil,encoding:ParameterEncoding? = JSONEncoding.default,onResponse:onAPIResponse?){
         if ReachabilityManager.isConnectedToNetwork(){
-            Alamofire.request(url, method: method, parameters: params, encoding: encoding!, headers: headers).responseJSON { response in
+            AF.request(url, method: method, parameters: params, encoding: encoding!, headers: headers).responseJSON { response in
                 if let statusCode = response.response?.statusCode{
-                    onResponse?(response,statusCode)
+                    switch response.result{
+                    case .success(let data):
+                        onResponse?(data,statusCode)
+                    case .failure(let e):
+                        Log(e.localizedDescription)
+                        onResponse?(nil,statusCode)
+                    }
                 }else{
                     Log("Error")
                 }
