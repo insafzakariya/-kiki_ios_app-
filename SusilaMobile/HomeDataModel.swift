@@ -26,6 +26,7 @@ class HomeDataModel:NSObject{
     
     var userPlaylists: [Message] = [Message]()
     var globalPlaylists: [GlobalPlaylistItem] = [GlobalPlaylistItem]()
+    var radioDramas: [GlobalPlaylistItem] = [GlobalPlaylistItem]()
     
     func updateAction(content_Id:Int, screen_Id:Int, screen_Action_Id:Int, screen_Time:String, updateActionCallFinished: @escaping (_ status: Bool, _ error: NSError?, _ userInfo: [String: AnyObject]?) -> Void) {
         api.updateAction(content_Id:content_Id, screen_Id:screen_Id, screen_Action_Id:screen_Action_Id, screen_Time:screen_Time, success: { (data, code) -> Void in
@@ -402,6 +403,46 @@ class HomeDataModel:NSObject{
                         playlists.append(playlist)
                     }
                     self.globalPlaylists = playlists
+                    
+                    getGlobalPlaylistCallFinished(true, nil, nil)
+                    
+                }else{
+                    getGlobalPlaylistCallFinished(false, nil, nil)
+                }
+                
+                
+            default:
+                let jsonData = JSON(data as Any)
+                
+                let error = Common.getErrorFromJson(description: jsonData[ErrorJsonKeys.errorMessage].string ?? "", errorType: "\(jsonData[ErrorJsonKeys.errorCode].int ?? -1)", errorCode: jsonData[ErrorJsonKeys.errorCode].int ?? -1)
+                getGlobalPlaylistCallFinished(false, error, nil)
+                
+            }
+            
+        }) { (error) -> Void in
+            //            Common.logout()
+            NSLog("Error (getGlobalPlaylistCallFinished): \(error.localizedDescription)")
+            getGlobalPlaylistCallFinished(false, error, nil)
+        }
+    }
+    
+    
+    func getRadioDrama(getGlobalPlaylistCallFinished: @escaping (_ status: Bool, _ error: NSError?, _ userInfo: [String: AnyObject]?) -> Void) {
+        api.getRadioDrama(success: { (data, code) -> Void in
+            
+            switch code {
+            case 200:
+                let jsonArray = JSON(data as Any).array
+                
+                if let jsonList = jsonArray{
+                    var playlists = [GlobalPlaylistItem]()
+                    for jsonObject in jsonList{
+                        
+                        let playlist = GlobalPlaylistItem(id: jsonObject[GlobalPlaylistItem.JsonKeys.id].int ?? -1, order: jsonObject[GlobalPlaylistItem.JsonKeys.order].int ?? -1, name: jsonObject[GlobalPlaylistItem.JsonKeys.name].string ?? "", date: jsonObject[GlobalPlaylistItem.JsonKeys.date].string ?? "", image: jsonObject[GlobalPlaylistItem.JsonKeys.image].string ?? "", number_of_songs: jsonObject[GlobalPlaylistItem.JsonKeys.number_of_songs].int ?? -1)
+                        
+                        playlists.append(playlist)
+                    }
+                    self.radioDramas = playlists
                     
                     getGlobalPlaylistCallFinished(true, nil, nil)
                     
