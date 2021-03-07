@@ -100,6 +100,7 @@ class ApiClient {
         static let AllSongsGenre = "audio/songs/attr/genre"
         static let RecentSongs = "audio/songs/recent"
         static let GlobalPlaylist = "audio/playlist"
+        static let RadioDrama = "audio/radioDrama"
         static let SongsOfPlaylist = "audio/playlist/songs"
         static let createPlaylist = "audio/playlist/create"
         static let AddSongsToPlaylist = "playlist/songs/add"
@@ -1128,6 +1129,27 @@ class ApiClient {
         
         let url = URL(string: kAPIBaseUrl + SubUrl.GlobalPlaylist + "?g=true&offset=0&limit=200")
         Log(url?.description ?? "")
+        
+        let headers: HTTPHeaders = [
+            StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
+            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? ""
+        ]
+        
+        let parameters: [String: Any]? = nil
+        
+        request(url!, apiCallType: .GetPrograms, method: .get, parameters: parameters, headers: headers, success: { (data, code) -> Void in
+            success(data, code)
+            //NSLog("Worked43 : \(String(describing: data))")
+            //NSLog("Worked43C : \(String(describing: code))")
+        }) { (error) -> Void in
+            failure(error)
+        }
+    }
+    
+    internal func getRadioDrama(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
+        
+        let url = URL(string: kAPIBaseUrl + SubUrl.GlobalPlaylist + "?g=true&rd=true&offset=0&limit=200")
+        Log("Radio Drama: \(url?.description ?? "")")
         
         let headers: HTTPHeaders = [
             StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,

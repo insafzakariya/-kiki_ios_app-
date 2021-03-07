@@ -18,6 +18,7 @@ class HomeViewController: UIView {
     var viewBrowseArtist = UIView(frame: CGRect.zero)
     var viewAllPopularArtists = UIView(frame: CGRect.zero)
     var viewAllLatestPlaylists = UIView(frame: CGRect.zero)
+    var viewAllRadioDrama = UIView(frame: CGRect.zero)
     var viewLatestPlaylistDetails = UIView(frame: CGRect.zero)
     var viewAllPopularArtistSongs = UIView(frame: CGRect.zero)
     
@@ -107,7 +108,7 @@ class HomeViewController: UIView {
         scrollView.showsVerticalScrollIndicator = false
         //scrollView.backgroundColor = UIColor.red
         
-        contentView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: ((UIScreen.main.bounds.width-40)*1/3+30)*3+190+(UIScreen.main.bounds.width-40)*1/3+UIScreen.main.bounds.width/2-10+150))
+        contentView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: ((UIScreen.main.bounds.width-40)*1/3+30)*3+440+(UIScreen.main.bounds.width-40)*1/3+UIScreen.main.bounds.width/2-10+150))
         
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: contentView.frame.height)
         
@@ -138,6 +139,10 @@ class HomeViewController: UIView {
         createLatestPlaylistSeeAllView(view: viewAllLatestPlaylists, title:"LastestPlaylist".localizedString)
         loadPlaylists()
         
+        createRadioDramaHeaderView(view: scrollView)
+        createRadioDramaSeeAllView(view: viewAllRadioDrama, title:"RadioDrama".localizedString)
+        loadRadioDrama()
+        
         
         self.addSubview(scrollView)
         
@@ -151,6 +156,9 @@ class HomeViewController: UIView {
         
         self.addSubview(viewAllLatestPlaylists)
         viewAllLatestPlaylists.isHidden = true
+        
+        self.addSubview(viewAllRadioDrama)
+        viewAllRadioDrama.isHidden = true
         
         overLayView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
         addAlertDialog = AddAlertDialog(frame: getCenteredFrameForOverlay(150))
@@ -926,6 +934,38 @@ class HomeViewController: UIView {
         view.addSubview(topBar)
     }
     
+    
+    func createRadioDramaHeaderView(view: UIView) {
+        let topBar = UIView(frame: CGRect(x: 0, y: ((UIScreen.main.bounds.width-40)*1/3+30)*3+440+(UIScreen.main.bounds.width-40)*1/3, width: UIScreen.main.bounds.width, height: 50))
+        topBar.backgroundColor = Constants.color_background
+        
+        let labelSongs = UILabel()
+        labelSongs.frame = CGRect(x: 10, y: 0, width: topBar.frame.width, height:topBar.frame.height)
+        labelSongs.text = "Radio Drama".localizedString
+        labelSongs.font = UIFont(name: "Roboto-Bold", size: 18.0)
+        labelSongs.textColor = UIColor.white
+        
+        let labelSongsSeeAll = UILabel()
+        labelSongsSeeAll.frame = CGRect(x: topBar.frame.width-80, y: 15, width: 70, height:20)
+        labelSongsSeeAll.text = "ViewAll".localizedString
+        labelSongsSeeAll.textAlignment = .center
+        labelSongsSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
+        labelSongsSeeAll.lineBreakMode = .byWordWrapping
+        labelSongsSeeAll.numberOfLines = 2
+        labelSongsSeeAll.layer.cornerRadius = 10
+        labelSongsSeeAll.textColor = UIColor.white
+        labelSongsSeeAll.layer.masksToBounds = true
+        labelSongsSeeAll.backgroundColor = Constants.color_brand
+        let tap = HomeTapGesture(target: self, action: #selector(buttonClickedSeeAllRadioDrama))
+        tap.lname = "Radio Drama"
+        labelSongsSeeAll.isUserInteractionEnabled = true
+        labelSongsSeeAll.addGestureRecognizer(tap)
+        
+        topBar.addSubview(labelSongs)
+        topBar.addSubview(labelSongsSeeAll)
+        view.addSubview(topBar)
+    }
+    
     var globalPlayLists = [GlobalPlaylistItem](){
         didSet{
             let scrollPlayList = UIScrollView(frame: CGRect(x: 0, y: ((UIScreen.main.bounds.width-40)*1/3+30)*3+240+(UIScreen.main.bounds.width-40)*1/3, width: UIScreen.main.bounds.width, height:  UIScreen.main.bounds.width/2-10))
@@ -937,6 +977,51 @@ class HomeViewController: UIView {
             
             var xLength: CGFloat = 10
             for (index, tileData) in globalPlayLists.enumerated(){
+                let playListTile = PlayListTile(frame: CGRect(x: xLength, y: 0, width: UIScreen.main.bounds.width/2-30, height: UIScreen.main.bounds.width/2-30))
+                playListTile.lblTitle.text = tileData.name
+                
+                var decodedImage: String = ""
+                decodedImage = tileData.image!.replacingOccurrences(of: "%3A", with: ":")
+                decodedImage = decodedImage.replacingOccurrences(of: "%2F", with: "/")
+                decodedImage = decodedImage.replacingOccurrences(of: "+", with: "%20")
+                
+                if decodedImage == "" || decodedImage == "https://storage.googleapis.com/kiki_images/live/playlist/"  || decodedImage == "https://storage.googleapis.com/kiki_images/live/playlist/null" {
+                    playListTile.imageURL = ""
+                } else {
+                    playListTile.image.sd_setImage(with: URL(string: decodedImage), placeholderImage: UIImage(named: "logo_grayscale"))
+                }
+                playListTile.index = index
+                xLength += UIScreen.main.bounds.width/2-30+10
+                
+                let dateArr = tileData.date!.components(separatedBy: "-")
+                
+                let tap = PlaylistTapGesture(target: self, action: #selector(buttonClickedPlaylistDetails))
+                tap.id = String(tileData.id)
+                tap.image = decodedImage
+                tap.title = tileData.name
+                tap.songs = String(tileData.number_of_songs)
+                tap.year =  dateArr[0]
+                playListTile.isUserInteractionEnabled = true
+                playListTile.addGestureRecognizer(tap)
+                
+                playListContentView.addSubview(playListTile)
+            }
+            
+            scrollView.addSubview(scrollPlayList)
+        }
+    }
+    
+    var radioDramas = [GlobalPlaylistItem](){
+        didSet{
+            let scrollPlayList = UIScrollView(frame: CGRect(x: 0, y: ((UIScreen.main.bounds.width-40)*1/3+30)*3+490+(UIScreen.main.bounds.width-40)*1/3, width: UIScreen.main.bounds.width, height:  UIScreen.main.bounds.width/2-10))
+            scrollPlayList.showsHorizontalScrollIndicator = false
+            scrollPlayList.showsVerticalScrollIndicator = false
+            let playListContentView = UIView(frame: CGRect(x: 0, y: 0, width: CGFloat(globalPlayLists.count)*(UIScreen.main.bounds.width/2-20)+10, height: scrollPlayList.frame.height))
+            scrollPlayList.addSubview(playListContentView)
+            scrollPlayList.contentSize = CGSize(width: CGFloat(globalPlayLists.count)*(UIScreen.main.bounds.width/2-20)+10, height: scrollPlayList.frame.height)
+            
+            var xLength: CGFloat = 10
+            for (index, tileData) in radioDramas.enumerated(){
                 let playListTile = PlayListTile(frame: CGRect(x: xLength, y: 0, width: UIScreen.main.bounds.width/2-30, height: UIScreen.main.bounds.width/2-30))
                 playListTile.lblTitle.text = tileData.name
                 
@@ -1040,6 +1125,66 @@ class HomeViewController: UIView {
     }
     
     
+    var radioDramaAll = [GlobalPlaylistItem](){
+        didSet{
+            let scrollPlayList = UIScrollView(frame: CGRect(x: 10, y: 40, width: UIScreen.main.bounds.width-20, height: UIScreen.main.bounds.height-40))
+            
+            scrollPlayList.showsHorizontalScrollIndicator = false
+            scrollPlayList.showsVerticalScrollIndicator = false
+            
+            let playListContentView = UIView(frame: CGRect(x: 0, y: 0, width: scrollPlayList.frame.width, height: CGFloat(globalPlayListsAll.count)*(UIScreen.main.bounds.width/6)+(CGFloat(globalPlayListsAll.count)*20)+440))
+            
+            scrollPlayList.addSubview(playListContentView)
+            
+            scrollPlayList.contentSize = CGSize(width: scrollPlayList.frame.width, height: CGFloat(globalPlayListsAll.count)*(UIScreen.main.bounds.width/6)+(CGFloat(globalPlayListsAll.count)*20)+290)
+            
+            var xLength: CGFloat = 10
+            
+            for (index, tileData) in radioDramaAll.enumerated(){
+                let playListTile = PlayListTileAll(frame: CGRect(x: 0, y: xLength, width: UIScreen.main.bounds.width-10, height: UIScreen.main.bounds.width/6))
+                playListTile.lblTitle.text = tileData.name
+                
+                var decodedImage: String = ""
+                decodedImage = tileData.image!.replacingOccurrences(of: "%3A", with: ":")
+                decodedImage = decodedImage.replacingOccurrences(of: "%2F", with: "/")
+                decodedImage = decodedImage.replacingOccurrences(of: "+", with: "%20")
+                
+                if decodedImage == "" || decodedImage == "https://storage.googleapis.com/kiki_images/live/playlist/"  || decodedImage == "https://storage.googleapis.com/kiki_images/live/playlist/null" {
+                    playListTile.imageURL = ""
+                } else {
+                    //playListTile.imageURL = decodedImage
+                    playListTile.image.sd_setImage(with: URL(string: decodedImage), placeholderImage: UIImage(named: "logo_grayscale"))
+                }
+                
+                playListTile.index = index
+                playListTile.songs.text = String(tileData.number_of_songs)+" songs"
+                
+                let dateArr = tileData.date!.components(separatedBy: "-")
+                playListTile.year.text = dateArr[0]
+                
+                let tap = PlaylistTapGesture(target: self, action: #selector(buttonClickedPlaylistDetails))
+                tap.id = String(tileData.id)
+                tap.image = decodedImage
+                tap.title = tileData.name
+                tap.songs = String(tileData.number_of_songs)
+                tap.year =  dateArr[0]
+                playListTile.isUserInteractionEnabled = true
+                playListTile.addGestureRecognizer(tap)
+                
+                let tapAdd = PlaylistPlayGesture(target: self, action: #selector(buttonClickedAddPlaylistToLibrary))
+                tapAdd.id = tileData.id
+                playListTile.add.isUserInteractionEnabled = true
+                playListTile.add.addGestureRecognizer(tapAdd)
+                
+                xLength += UIScreen.main.bounds.width/6+20
+                
+                playListContentView.addSubview(playListTile)
+            }
+            viewAllRadioDrama.addSubview(scrollPlayList)
+        }
+    }
+    
+    
     /*var globalPlayListsAll = [GlobalPlaylistItem](){
      didSet{
      
@@ -1078,10 +1223,29 @@ class HomeViewController: UIView {
                 let minimizedArray = self.homeDataModel.globalPlaylists.chunked(into: 10)
                 self.globalPlayLists = self.homeDataModel.globalPlaylists.count > 10 ? minimizedArray[0] : self.homeDataModel.globalPlaylists
                 
-                
                 //self.globalPlayLists = self.homeDataModel.globalPlaylists
                 //self.parentVC.home?.
                 self.globalPlayListsAll = self.homeDataModel.globalPlaylists
+                
+                
+                //self.parentVC.home?.globalPlayListsAll = self.homeDataModel.globalPlaylists
+            }
+        })
+    }
+    
+    func loadRadioDrama() {
+        
+        self.homeDataModel.getRadioDrama(getGlobalPlaylistCallFinished: { (status, error, userInfo) in
+            if status {
+                //self.parentVC.home?.
+                let minimizedArray = self.homeDataModel.radioDramas.chunked(into: 10)
+                self.radioDramas = self.homeDataModel.radioDramas.count > 10 ? minimizedArray[0] : self.homeDataModel.radioDramas
+                
+                
+                //self.globalPlayLists = self.homeDataModel.globalPlaylists
+                //self.parentVC.home?.
+                self.radioDramaAll = self.homeDataModel.radioDramas
+                
                 //self.parentVC.home?.globalPlayListsAll = self.homeDataModel.globalPlaylists
             }
         })
@@ -1121,6 +1285,11 @@ class HomeViewController: UIView {
     @objc func buttonClickedSeeAllPlaylist(recognizer: HomeTapGesture) {
         
         viewAllLatestPlaylists.isHidden = false
+    }
+    
+    @objc func buttonClickedSeeAllRadioDrama(recognizer: HomeTapGesture) {
+        
+        viewAllRadioDrama.isHidden = false
     }
     
     func createPopularSongsSeeAllView(view: UIView, title: String) {
@@ -1285,11 +1454,37 @@ class HomeViewController: UIView {
         
     }
     
+    func createRadioDramaSeeAllView(view: UIView, title: String) {
+        
+        viewAllRadioDrama = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.frame.height))
+        viewAllRadioDrama.backgroundColor = Constants.color_background
+        
+        
+        let topBar = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
+        
+        let arrow = UIButton(frame: CGRect(x: 10, y: 10, width: 20, height: 20))
+        arrow.setBackgroundImage(UIImage(named: "left_arrow"), for: UIControl.State.normal)
+        arrow.addTarget(self, action: #selector(viewAllSongsButtonClicked), for: .touchUpInside)
+        
+        let label = UILabel(frame: CGRect(x: 40, y: 10, width: UIScreen.main.bounds.width-50, height: 20))
+        label.text = String(title)
+        label.textColor =  UIColor.white
+        
+        topBar.addSubview(arrow)
+        topBar.addSubview(label)
+        
+        
+        viewAllRadioDrama.addSubview(topBar)
+        
+    }
+    
+    
     @objc func viewAllSongsButtonClicked(sender: UIButton) {
         viewAllPopularSongs.isHidden = true
         viewAllLatestSongs.isHidden = true
         viewAllPopularArtists.isHidden = true
         viewAllLatestPlaylists.isHidden = true
+        viewAllRadioDrama.isHidden = true
         viewAllPopularArtistSongs.isHidden = true
     }
     
@@ -1578,628 +1773,6 @@ class HomeViewController: UIView {
             alert.dismiss(animated: true, completion: nil)
         }
     }
-    
-    /*var scrollHome = UIScrollView(frame: CGRect.zero)
-     var viewHome = UIView()
-     
-     var viewSeeAllPopularSongs: UIView!
-     var viewSeeAllLatestSinhalaSongs: UIView!
-     var viewSeeAllRadioChannels: UIView!
-     var viewSeeAllPopularArtists: UIView!
-     
-     var viewPlayLists: UIView!
-     
-     var viewPopularSongs: UIView!
-     var viewLatestSinhalaSongs: UIView!
-     var viewRadioChannels: UIView!
-     var viewPopularArtists: UIView!
-     
-     var viewScrollPopularSongs: UIView!
-     var viewScrollLatestSinhalaSongs: UIView!
-     var viewScrollRadioChannels: UIView!
-     var viewScrollPopularArtists: UIView!
-     
-     var btnSeeAllPopularSongs:UIButton!
-     var btnSeeAllLatestSinhalaSongs:UIButton!
-     var btnSeeAllRadioChannels:UIButton!
-     var btnSeeAllPopularArtists:UIButton!
-     
-     var playerView = PlayerView(){
-     didSet{
-     scrollCollectionMinimizedPopularSongs?.playerView = self.playerView
-     scrollCollectionMinimizedLatestSinhalaSongs?.playerView = self.playerView
-     scrollCollectionMinimizedRadioChannels?.playerView = self.playerView
-     scrollCollectionMinimizedPopularArtists?.playerView = self.playerView
-     
-     scrollCollectionExapndedPopularSongs?.playerView = self.playerView
-     scrollCollectionExapndedLatestSinhalaSongs?.playerView = self.playerView
-     scrollCollectionExapndedRadioChannels?.playerView = self.playerView
-     scrollCollectionExapndedPopularArtists?.playerView = self.playerView
-     }
-     }
-     
-     var scrollCollectionMinimizedPopularSongs:ScrollCollection?
-     var scrollCollectionMinimizedLatestSinhalaSongs:ScrollCollection?
-     var scrollCollectionMinimizedRadioChannels:ScrollCollection?
-     var scrollCollectionMinimizedPopularArtists:ScrollCollection?
-     
-     var scrollCollectionExapndedPopularSongs:ScrollCollection?
-     var scrollCollectionExapndedLatestSinhalaSongs:ScrollCollection?
-     var scrollCollectionExapndedRadioChannels:ScrollCollection?
-     var scrollCollectionExapndedPopularArtists:ScrollCollection?
-     
-     var scrollPlayList:UIScrollView?
-     var playListContentView: UIView?
-     var isSeeAllHidden = true
-     
-     let homeDataModel = HomeDataModel()
-     var parentVC: DashboardViewController!*/
-    /*let months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
-     let weekDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-     
-     func getDayOfWeek(_ today:String) -> String? {
-     let formatter  = DateFormatter()
-     formatter.dateFormat = "yyyy-MM-dd"
-     guard let todayDate = formatter.date(from: today) else { return nil }
-     let myCalendar = Calendar(identifier: .gregorian)
-     let weekDay = myCalendar.component(.weekday, from: todayDate)
-     return weekDays[weekDay-1]
-     }
-     
-     func getMonth(_ today:String) -> String? {
-     let formatter  = DateFormatter()
-     formatter.dateFormat = "yyyy-MM-dd"
-     guard let todayDate = formatter.date(from: today) else { return nil }
-     let myCalendar = Calendar(identifier: .gregorian)
-     let month = myCalendar.component(.month, from: todayDate)
-     return months[month-1]
-     }
-     
-     var globalPlayLists = [GlobalPlaylistItem](){
-     didSet{
-     
-     let scrollPositionY = viewPlayLists.frame.height-10 > 150 ? (viewPlayLists.frame.height - 10 - 150)/2 : 0
-     
-     //let screenSize: CGRect = UIScreen.main.bounds
-     let tileWidth = UIScreen.main.bounds.width/2
-     let tileHeight = UIScreen.main.bounds.width/2
-     
-     scrollPlayList = UIScrollView(frame: CGRect(x: 0, y: 18+scrollPositionY, width: viewPlayLists.frame.width, height: tileHeight))
-     playListContentView = UIView(frame: CGRect(x: 0, y: 0, width: 10 + CGFloat(globalPlayLists.count) * (tileWidth+10), height: tileHeight))
-     
-     scrollPlayList?.contentSize = CGSize(width: 10 + CGFloat(globalPlayLists.count) * (tileWidth+10), height: tileHeight)
-     
-     for (index, tileData) in globalPlayLists.enumerated(){
-     let playListTile = PlayListTile(frame: CGRect(x: 10 + CGFloat(index)*( tileWidth+10 ) , y: 0, width: tileWidth, height: tileHeight))
-     playListTile.lblTitle!.text = tileData.name
-     
-     let dateArr = tileData.date?.components(separatedBy: "-")
-     //                let yearString = dateArr![0]
-     //                let monthString = dateArr![1]
-     let dateString = dateArr![2]
-     
-     let mappedDate = getDayOfWeek(tileData.date!)! + " " + dateString + " " + getMonth(tileData.date!)!
-     
-     playListTile.lblDate?.text = mappedDate
-     playListTile.playListId = tileData.id
-     playListTile.btnPlay?.tag = tileData.id
-     playListTile.btnPlay!.addTarget(self, action: #selector(self.actPlayList(_:)), for: UIControl.Event.touchUpInside)
-     playListContentView!.addSubview(playListTile)
-     }
-     
-     scrollPlayList?.addSubview(playListContentView!)
-     self.viewPlayLists.addSubview(scrollPlayList!)
-     }
-     }
-     
-     @IBAction func actPlayList(_ sender: UIButton) {
-     self.parentVC.playlist?.loadSongsOfGlobalPlaylistGlobal(listID: sender.tag)
-     }*/
-    
-    // MARK: - INIT
-    /*override init(frame: CGRect) {
-     super.init(frame:frame)
-     self.commonInit()
-     }
-     
-     required init?(coder aDecoder: NSCoder) {
-     super.init(coder: aDecoder)
-     self.commonInit()
-     }
-     private func commonInit(){
-     scrollHome = UIScrollView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-     scrollHome.showsHorizontalScrollIndicator = true
-     scrollHome.showsVerticalScrollIndicator = true
-     //scrollHome.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 2200)
-     scrollHome.contentOffset = CGPoint(x: 0, y: 0)
-     
-     
-     
-     self.addSubview(scrollHome)
-     
-     loadPopularSongsViews()
-     loadLatestSinhalaSongViews()
-     loadRadioChannelsViews()
-     loadPopularArtistsViews()
-     loadPlayListViews()
-     
-     loadPopularSongsList()
-     loadLatestSinhalaSongsList()
-     loadRadioChannelsList()
-     loadPopularArtistsList()
-     
-     loadUserPlaylists()
-     }*/
-    
-    
-    /*func loadPopularSongsViews() {
-     
-     print("UIScreen.main.bounds.height", UIScreen.main.bounds.height)
-     if UIScreen.main.bounds.height > 895 {
-     viewPopularSongs = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.width*2/3))
-     } else if UIScreen.main.bounds.height > 735 {
-     viewPopularSongs = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: 220))
-     } else {
-     viewPopularSongs = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: 200))
-     }
-     
-     let lblPopularSongs = UILabel(frame: CGRect(x: 15, y: 10, width: viewPopularSongs.frame.width, height: 40))
-     lblPopularSongs.font = Constants.getFont(size: 17)
-     lblPopularSongs.text = "PopularSongs".localizedString
-     lblPopularSongs.textColor = UIColor.white
-     
-     viewPopularSongs.addSubview(lblPopularSongs)
-     
-     let lblSeeAll = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 90, y: 20, width: 75, height: 20))
-     lblSeeAll.text = "ViewAll".localizedString
-     lblSeeAll.textAlignment = .center
-     lblSeeAll.font = lblSeeAll.font.withSize(13)
-     lblSeeAll.layer.cornerRadius = 10
-     lblSeeAll.textColor = UIColor.white
-     lblSeeAll.layer.masksToBounds = true
-     lblSeeAll.backgroundColor = Constants.color_brand
-     
-     viewPopularSongs.addSubview(lblSeeAll)
-     
-     btnSeeAllPopularSongs = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 100, y: 10, width: 90, height: 40))
-     btnSeeAllPopularSongs.addTarget(self, action: #selector(self.actSeeAllPopularSongs(_:)), for: UIControl.Event.touchUpInside)
-     viewPopularSongs.addSubview(btnSeeAllPopularSongs)
-     
-     viewScrollPopularSongs = UIView(frame: CGRect(x: 0, y: 30, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2 - 207.5/2 - 60))
-     
-     viewPopularSongs.addSubview(viewScrollPopularSongs)
-     
-     scrollHome.addSubview(viewPopularSongs)
-     
-     viewSeeAllPopularSongs = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.height - 190 ))
-     viewSeeAllPopularSongs.isHidden = true
-     scrollHome.addSubview(viewSeeAllPopularSongs)
-     
-     let lblYouMightLikeExpanded = UILabel(frame: CGRect(x: 10, y: 10, width: 200, height: 40))
-     lblYouMightLikeExpanded.text = "PopularSongs".localizedString
-     lblYouMightLikeExpanded.font = Constants.getFont(size: 16)
-     lblYouMightLikeExpanded.textColor = UIColor.white
-     viewSeeAllPopularSongs.addSubview(lblYouMightLikeExpanded)
-     
-     let btnSeeAllMinimize = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 100, y: 10, width: 40, height: 40))
-     btnSeeAllMinimize.addTarget(self, action: #selector(self.actCollapseSeeAll(_:)), for: UIControl.Event.touchUpInside)
-     btnSeeAllMinimize.setBackgroundImage(UIImage(named: "down"), for: UIControl.State.normal)
-     viewSeeAllPopularSongs.addSubview(btnSeeAllMinimize)
-     
-     scrollCollectionMinimizedPopularSongs = ScrollCollection(frame: CGRect(x: 0, y: 0, width: viewScrollPopularSongs.frame.width, height: viewScrollPopularSongs.frame.height))
-     scrollCollectionMinimizedPopularSongs?.styleType = 1
-     self.viewScrollPopularSongs.addSubview(scrollCollectionMinimizedPopularSongs!)
-     
-     scrollCollectionExapndedPopularSongs = ScrollCollection(frame: CGRect(x: 0, y: 50, width: viewSeeAllPopularSongs.frame.width - 100, height: viewSeeAllPopularSongs.frame.height))
-     scrollCollectionExapndedPopularSongs?.styleType = 2
-     
-     self.viewSeeAllPopularSongs.addSubview(scrollCollectionExapndedPopularSongs!)
-     }
-     
-     func loadLatestSinhalaSongViews() {
-     
-     //let playListsViewHeight: CGFloat = UIScreen.main.bounds.height/2 - 207.5/2 - 20
-     //viewPlayLists = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: playListsViewHeight))
-     //self.addSubview(viewPlayLists)
-     if UIScreen.main.bounds.height > 895 {
-     viewLatestSinhalaSongs = UIView(frame: CGRect(x: 0, y: viewPopularSongs.frame.height-10, width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.width*2/3))
-     } else if UIScreen.main.bounds.height > 735 {
-     viewLatestSinhalaSongs = UIView(frame: CGRect(x: 0, y: viewPopularSongs.frame.height-10, width: UIScreen.main.bounds.width , height: 220))
-     } else {
-     viewLatestSinhalaSongs = UIView(frame: CGRect(x: 0, y: viewPopularSongs.frame.height-10, width: UIScreen.main.bounds.width , height:200))
-     }
-     
-     let lblYouMightLike = UILabel(frame: CGRect(x: 15, y: 10, width: 200, height: 40))
-     lblYouMightLike.font = Constants.getFont(size: 17)
-     lblYouMightLike.text = "LatestSongs".localizedString
-     lblYouMightLike.textColor = UIColor.white
-     
-     viewLatestSinhalaSongs.addSubview(lblYouMightLike)
-     
-     let lblSeeAll = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 90, y: 20, width: 75, height: 20))
-     lblSeeAll.text = "ViewAll".localizedString
-     lblSeeAll.textAlignment = .center
-     lblSeeAll.font = lblSeeAll.font.withSize(13)
-     lblSeeAll.layer.cornerRadius = 10
-     lblSeeAll.textColor = UIColor.white
-     lblSeeAll.layer.masksToBounds = true
-     lblSeeAll.backgroundColor = Constants.color_brand
-     
-     
-     viewLatestSinhalaSongs.addSubview(lblSeeAll)
-     
-     btnSeeAllLatestSinhalaSongs = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 100, y: 10, width: 90, height: 40))
-     btnSeeAllLatestSinhalaSongs.addTarget(self, action: #selector(self.actSeeAllLatestSinhalaSongs(_:)), for: UIControl.Event.touchUpInside)
-     viewLatestSinhalaSongs.addSubview(btnSeeAllLatestSinhalaSongs)
-     
-     viewScrollLatestSinhalaSongs = UIView(frame: CGRect(x: 0, y: 30, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2 - 207.5/2 - 60))
-     
-     viewLatestSinhalaSongs.addSubview(viewScrollLatestSinhalaSongs)
-     
-     scrollHome.addSubview(viewLatestSinhalaSongs)
-     
-     viewSeeAllLatestSinhalaSongs = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.height - 190 ))
-     viewSeeAllLatestSinhalaSongs.isHidden = true
-     scrollHome.addSubview(viewSeeAllLatestSinhalaSongs)
-     
-     let lblYouMightLikeExpanded = UILabel(frame: CGRect(x: 10, y: 10, width: 200, height: 40))
-     lblYouMightLikeExpanded.text = "LatestSongs".localizedString
-     lblYouMightLikeExpanded.font = Constants.getFont(size: 16)
-     lblYouMightLikeExpanded.textColor = UIColor.white
-     viewSeeAllLatestSinhalaSongs.addSubview(lblYouMightLikeExpanded)
-     
-     let btnSeeAllMinimize = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 100, y: 10, width: 40, height: 40))
-     btnSeeAllMinimize.addTarget(self, action: #selector(self.actCollapseSeeAll(_:)), for: UIControl.Event.touchUpInside)
-     btnSeeAllMinimize.setBackgroundImage(UIImage(named: "down"), for: UIControl.State.normal)
-     viewSeeAllLatestSinhalaSongs.addSubview(btnSeeAllMinimize)
-     
-     scrollCollectionMinimizedLatestSinhalaSongs = ScrollCollection(frame: CGRect(x: 0, y: 0, width: viewScrollLatestSinhalaSongs.frame.width, height: viewScrollLatestSinhalaSongs.frame.height))
-     scrollCollectionMinimizedLatestSinhalaSongs?.styleType = 1
-     self.viewScrollLatestSinhalaSongs.addSubview(scrollCollectionMinimizedLatestSinhalaSongs!)
-     
-     scrollCollectionExapndedLatestSinhalaSongs = ScrollCollection(frame: CGRect(x: 0, y: 50, width: viewSeeAllLatestSinhalaSongs.frame.width - 100, height: viewSeeAllLatestSinhalaSongs.frame.height))
-     scrollCollectionExapndedLatestSinhalaSongs?.styleType = 2
-     
-     self.viewSeeAllLatestSinhalaSongs.addSubview(scrollCollectionExapndedLatestSinhalaSongs!)
-     }
-     
-     func loadRadioChannelsViews() {
-     if UIScreen.main.bounds.height > 895 {
-     viewRadioChannels = UIView(frame: CGRect(x: 0, y: viewPopularSongs.frame.height+viewLatestSinhalaSongs.frame.height-20, width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.width*2/3))
-     } else if UIScreen.main.bounds.height > 735 {
-     viewRadioChannels = UIView(frame: CGRect(x: 0, y: viewPopularSongs.frame.height+viewLatestSinhalaSongs.frame.height-20, width: UIScreen.main.bounds.width , height: 220))
-     } else {
-     viewRadioChannels = UIView(frame: CGRect(x: 0, y: viewPopularSongs.frame.height+viewLatestSinhalaSongs.frame.height-20, width: UIScreen.main.bounds.width , height: 200))
-     }
-     
-     let lblPopularSongs = UILabel(frame: CGRect(x: 15, y: 10, width: 200, height: 40))
-     lblPopularSongs.font = Constants.getFont(size: 17)
-     lblPopularSongs.text = "RadioChannels".localizedString
-     lblPopularSongs.textColor = UIColor.white
-     
-     viewRadioChannels.addSubview(lblPopularSongs)
-     
-     let lblSeeAll = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 90, y: 20, width: 75, height: 20))
-     lblSeeAll.text = "ViewAll".localizedString
-     lblSeeAll.textAlignment = .center
-     lblSeeAll.font = lblSeeAll.font.withSize(13)
-     lblSeeAll.layer.cornerRadius = 10
-     lblSeeAll.textColor = UIColor.white
-     lblSeeAll.layer.masksToBounds = true
-     lblSeeAll.backgroundColor = Constants.color_brand
-     
-     //viewRadioChannels.addSubview(lblSeeAllPopularSongs)
-     
-     btnSeeAllRadioChannels = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 100, y: 10, width: 90, height: 40))
-     btnSeeAllRadioChannels.addTarget(self, action: #selector(self.actSeeAllPopularSongs(_:)), for: UIControl.Event.touchUpInside)
-     viewRadioChannels.addSubview(btnSeeAllRadioChannels)
-     
-     viewScrollRadioChannels = UIView(frame: CGRect(x: 0, y: 30, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2 - 207.5/2 - 60))
-     
-     viewRadioChannels.addSubview(viewScrollRadioChannels)
-     
-     scrollHome.addSubview(viewRadioChannels)
-     
-     viewSeeAllRadioChannels = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.height - 190 ))
-     viewSeeAllRadioChannels.isHidden = true
-     scrollHome.addSubview(viewSeeAllRadioChannels)
-     
-     let lblYouMightLikeExpanded = UILabel(frame: CGRect(x: 10, y: 10, width: 200, height: 40))
-     lblYouMightLikeExpanded.text = "RadioChannels".localizedString
-     lblYouMightLikeExpanded.font = Constants.getFont(size: 16)
-     lblYouMightLikeExpanded.textColor = UIColor.white
-     viewSeeAllRadioChannels.addSubview(lblYouMightLikeExpanded)
-     
-     let btnSeeAllMinimize = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 100, y: 10, width: 40, height: 40))
-     btnSeeAllMinimize.addTarget(self, action: #selector(self.actCollapseSeeAll(_:)), for: UIControl.Event.touchUpInside)
-     btnSeeAllMinimize.setBackgroundImage(UIImage(named: "down"), for: UIControl.State.normal)
-     viewSeeAllRadioChannels.addSubview(btnSeeAllMinimize)
-     
-     scrollCollectionMinimizedRadioChannels = ScrollCollection(frame: CGRect(x: 0, y: 0, width: viewScrollPopularSongs.frame.width, height: viewScrollRadioChannels.frame.height))
-     scrollCollectionMinimizedRadioChannels?.styleType = 1
-     self.viewScrollRadioChannels.addSubview(scrollCollectionMinimizedRadioChannels!)
-     
-     scrollCollectionExapndedRadioChannels = ScrollCollection(frame: CGRect(x: 0, y: 50, width: viewSeeAllRadioChannels.frame.width - 100, height: viewSeeAllRadioChannels.frame.height))
-     scrollCollectionExapndedRadioChannels?.styleType = 2
-     
-     self.viewSeeAllRadioChannels.addSubview(scrollCollectionExapndedRadioChannels!)
-     }
-     
-     func loadPopularArtistsViews() {
-     if UIScreen.main.bounds.height > 895 {
-     viewPopularArtists = UIView(frame: CGRect(x: 0, y: viewPopularSongs.frame.height+viewLatestSinhalaSongs.frame.height+viewRadioChannels.frame.height-30, width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.width*2/3))
-     } else if UIScreen.main.bounds.height > 735 {
-     viewPopularArtists = UIView(frame: CGRect(x: 0, y: viewPopularSongs.frame.height+viewLatestSinhalaSongs.frame.height+viewRadioChannels.frame.height-30, width: UIScreen.main.bounds.width , height: 220))
-     } else {
-     viewPopularArtists = UIView(frame: CGRect(x: 0, y: viewPopularSongs.frame.height+viewLatestSinhalaSongs.frame.height+viewRadioChannels.frame.height-30, width: UIScreen.main.bounds.width , height: 200))
-     }
-     
-     let lblPopularSongs = UILabel(frame: CGRect(x: 15, y: 10, width: 200, height: 40))
-     lblPopularSongs.font = Constants.getFont(size: 17)
-     lblPopularSongs.text = "PopularArtist".localizedString
-     lblPopularSongs.textColor = UIColor.white
-     
-     viewPopularArtists.addSubview(lblPopularSongs)
-     
-     let lblSeeAll = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 90, y: 20, width: 75, height: 20))
-     lblSeeAll.text = "ViewAll".localizedString
-     lblSeeAll.textAlignment = .center
-     lblSeeAll.font = lblSeeAll.font.withSize(13)
-     lblSeeAll.layer.cornerRadius = 10
-     lblSeeAll.textColor = UIColor.white
-     lblSeeAll.layer.masksToBounds = true
-     lblSeeAll.backgroundColor = Constants.color_brand
-     
-     viewPopularArtists.addSubview(lblSeeAll)
-     
-     btnSeeAllPopularArtists = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 100, y: 10, width: 90, height: 40))
-     btnSeeAllPopularArtists.addTarget(self, action: #selector(self.actSeeAllPopularArtists(_:)), for: UIControl.Event.touchUpInside)
-     viewPopularArtists.addSubview(btnSeeAllPopularArtists)
-     
-     viewScrollPopularArtists = UIView(frame: CGRect(x: 0, y: 30, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2 - 207.5/2 - 60))
-     
-     viewPopularArtists.addSubview(viewScrollPopularArtists)
-     
-     scrollHome.addSubview(viewPopularArtists)
-     
-     viewSeeAllPopularArtists = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.height - 190 ))
-     viewSeeAllPopularArtists.isHidden = true
-     scrollHome.addSubview(viewSeeAllPopularArtists)
-     
-     let lblYouMightLikeExpanded = UILabel(frame: CGRect(x: 10, y: 10, width: 200, height: 40))
-     lblYouMightLikeExpanded.text = "PopularArtist".localizedString
-     lblYouMightLikeExpanded.font = Constants.getFont(size: 16)
-     lblYouMightLikeExpanded.textColor = UIColor.white
-     viewSeeAllPopularArtists.addSubview(lblYouMightLikeExpanded)
-     
-     let btnSeeAllMinimize = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 100, y: 10, width: 40, height: 40))
-     btnSeeAllMinimize.addTarget(self, action: #selector(self.actCollapseSeeAll(_:)), for: UIControl.Event.touchUpInside)
-     btnSeeAllMinimize.setBackgroundImage(UIImage(named: "down"), for: UIControl.State.normal)
-     viewSeeAllPopularArtists.addSubview(btnSeeAllMinimize)
-     
-     scrollCollectionMinimizedPopularArtists = ScrollCollection(frame: CGRect(x: 0, y: 0, width: viewScrollPopularArtists.frame.width, height: viewScrollPopularArtists.frame.height))
-     scrollCollectionMinimizedPopularArtists?.styleType = 1
-     self.viewScrollPopularArtists.addSubview(scrollCollectionMinimizedPopularArtists!)
-     
-     scrollCollectionExapndedPopularArtists = ScrollCollection(frame: CGRect(x: 0, y: 50, width: viewSeeAllPopularArtists.frame.width - 100, height: viewSeeAllPopularArtists.frame.height))
-     scrollCollectionExapndedPopularArtists?.styleType = 2
-     
-     self.viewSeeAllPopularArtists.addSubview(scrollCollectionExapndedPopularArtists!)
-     }
-     
-     func loadPlayListViews() {
-     
-     let playListsViewHeight: CGFloat = UIScreen.main.bounds.height/2 - 207.5/2 - 20
-     
-     if UIScreen.main.bounds.height > 895 {
-     viewPlayLists = UIView(frame: CGRect(x: 0, y: viewPopularSongs.frame.height+viewLatestSinhalaSongs.frame.height+viewRadioChannels.frame.height+viewPopularArtists.frame.height-10, width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.width*2/3))
-     } else if UIScreen.main.bounds.height > 735 {
-     viewPlayLists = UIView(frame: CGRect(x: 0, y: viewPopularSongs.frame.height+viewLatestSinhalaSongs.frame.height+viewRadioChannels.frame.height+viewPopularArtists.frame.height-50, width: UIScreen.main.bounds.width , height: 220))
-     } else {
-     viewPlayLists = UIView(frame: CGRect(x: 0, y: viewPopularSongs.frame.height+viewLatestSinhalaSongs.frame.height+viewRadioChannels.frame.height+viewPopularArtists.frame.height-50, width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.width*2/3+20))
-     }
-     
-     scrollHome.contentSize = CGSize(width: UIScreen.main.bounds.width, height: viewPopularSongs.frame.height+viewLatestSinhalaSongs.frame.height+viewRadioChannels.frame.height+viewPopularArtists.frame.height+playListsViewHeight+200)
-     
-     scrollHome.addSubview(viewPlayLists)
-     
-     let lblPopularSongs = UILabel(frame: CGRect(x: 15, y: 0, width: 200, height: 40))
-     lblPopularSongs.font = Constants.getFont(size: 17)
-     lblPopularSongs.text = "LastestPlaylist".localizedString
-     lblPopularSongs.textColor = UIColor.white
-     
-     viewPlayLists.addSubview(lblPopularSongs)
-     
-     let lblSeeAll = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 90, y: 10, width: 70, height: 20))
-     lblSeeAll.text = "ViewAll".localizedString
-     lblSeeAll.textAlignment = .center
-     lblSeeAll.font = lblSeeAll.font.withSize(13)
-     lblSeeAll.layer.cornerRadius = 10
-     lblSeeAll.textColor = UIColor.white
-     lblSeeAll.layer.masksToBounds = true
-     lblSeeAll.backgroundColor = Constants.color_brand
-     
-     viewPlayLists.addSubview(lblSeeAll)
-     
-     btnSeeAllPopularArtists = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 100, y: 0, width: 90, height: 40))
-     btnSeeAllPopularArtists.addTarget(self, action: #selector(self.actSeeAllPopularArtists(_:)), for: UIControl.Event.touchUpInside)
-     viewPopularArtists.addSubview(btnSeeAllPopularArtists)
-     
-     viewScrollPopularArtists = UIView(frame: CGRect(x: 0, y: 30, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2 - 207.5/2 - 60))
-     
-     viewPopularArtists.addSubview(viewScrollPopularArtists)
-     
-     scrollHome.addSubview(viewPopularArtists)
-     
-     viewSeeAllPopularArtists = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.height - 190 ))
-     viewSeeAllPopularArtists.isHidden = true
-     viewPlayLists.addSubview(viewSeeAllPopularArtists)
-     
-     let lblYouMightLikeExpanded = UILabel(frame: CGRect(x: 10, y: 10, width: 200, height: 40))
-     lblYouMightLikeExpanded.text = "LastestPlaylist".localizedString
-     lblYouMightLikeExpanded.font = Constants.getFont(size: 16)
-     lblYouMightLikeExpanded.textColor = UIColor.white
-     viewSeeAllPopularArtists.addSubview(lblYouMightLikeExpanded)
-     
-     let btnSeeAllMinimize = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 100, y: 10, width: 40, height: 40))
-     btnSeeAllMinimize.addTarget(self, action: #selector(self.actCollapseSeeAll(_:)), for: UIControl.Event.touchUpInside)
-     btnSeeAllMinimize.setBackgroundImage(UIImage(named: "down"), for: UIControl.State.normal)
-     viewSeeAllPopularArtists.addSubview(btnSeeAllMinimize)
-     
-     scrollCollectionMinimizedPopularArtists = ScrollCollection(frame: CGRect(x: 0, y: 0, width: viewScrollPopularArtists.frame.width, height: viewScrollPopularArtists.frame.height))
-     scrollCollectionMinimizedPopularArtists?.styleType = 3
-     self.viewScrollPopularArtists.addSubview(scrollCollectionMinimizedPopularArtists!)
-     
-     scrollCollectionExapndedPopularArtists = ScrollCollection(frame: CGRect(x: 0, y: 50, width: viewSeeAllPopularArtists.frame.width - 100, height: viewSeeAllPopularArtists.frame.height))
-     scrollCollectionExapndedPopularArtists?.styleType = 2
-     
-     self.viewSeeAllPopularArtists.addSubview(scrollCollectionExapndedPopularArtists!)
-     }
-     
-     func loadUserPlaylists() {
-     self.homeDataModel.getUserPlaylists(getUserPlaylistsCallFinished: { (status, error, userInfo) in
-     if status {
-     DispatchQueue.main.async(execute: {})
-     } else {
-     DispatchQueue.main.async(execute: {})
-     }
-     })
-     }
-     
-     func loadPopularSongsList() {
-     self.homeDataModel.getPopularSongs(getPopularSongsListCallFinished: { (status, error, userInfo) in
-     if status{
-     DispatchQueue.main.async(execute: {
-     let minimizedArray = self.homeDataModel.popularSongsList.chunked(into: 5)
-     self.scrollCollectionMinimizedPopularSongs?.currentPlayingList = self.homeDataModel.popularSongsList.count > 5 ? minimizedArray[0] : self.homeDataModel.popularSongsList
-     self.scrollCollectionExapndedPopularSongs?.currentPlayingList = self.homeDataModel.popularSongsList
-     })
-     } else {
-     DispatchQueue.main.async(execute: {})
-     }
-     })
-     }
-     
-     func loadLatestSinhalaSongsList() {
-     self.homeDataModel.getPopularSongs(getPopularSongsListCallFinished: { (status, error, userInfo) in
-     if status{
-     DispatchQueue.main.async(execute: {
-     let minimizedArray = self.homeDataModel.popularSongsList.chunked(into: 5)
-     self.scrollCollectionMinimizedLatestSinhalaSongs?.currentPlayingList = self.homeDataModel.popularSongsList.count > 5 ? minimizedArray[0] : self.homeDataModel.popularSongsList
-     self.scrollCollectionExapndedLatestSinhalaSongs?.currentPlayingList = self.homeDataModel.popularSongsList
-     })
-     } else {
-     DispatchQueue.main.async(execute: {})
-     }
-     })
-     }
-     
-     func loadRadioChannelsList() {
-     self.homeDataModel.getPopularSongs(getPopularSongsListCallFinished: { (status, error, userInfo) in
-     if status{
-     DispatchQueue.main.async(execute: {
-     let minimizedArray = self.homeDataModel.popularSongsList.chunked(into: 5)
-     self.scrollCollectionMinimizedRadioChannels?.currentPlayingList = self.homeDataModel.popularSongsList.count > 5 ? minimizedArray[0] : self.homeDataModel.popularSongsList
-     self.scrollCollectionExapndedRadioChannels?.currentPlayingList = self.homeDataModel.popularSongsList
-     })
-     } else {
-     DispatchQueue.main.async(execute: {})
-     }
-     })
-     }
-     
-     func loadPopularArtistsList() {
-     self.homeDataModel.getPopularSongs(getPopularSongsListCallFinished: { (status, error, userInfo) in
-     if status{
-     DispatchQueue.main.async(execute: {
-     let minimizedArray = self.homeDataModel.popularSongsList.chunked(into: 5)
-     self.scrollCollectionMinimizedPopularArtists?.currentPlayingList = self.homeDataModel.popularSongsList.count > 5 ? minimizedArray[0] : self.homeDataModel.popularSongsList
-     self.scrollCollectionExapndedPopularArtists?.currentPlayingList = self.homeDataModel.popularSongsList
-     })
-     } else {
-     DispatchQueue.main.async(execute: {})
-     }
-     })
-     }
-     
-     @IBAction func actCollapseSeeAll(_ sender: UIButton) {
-     isSeeAllHidden = !isSeeAllHidden
-     viewSeeAllPopularSongs.isHidden = isSeeAllHidden
-     viewSeeAllLatestSinhalaSongs.isHidden = isSeeAllHidden
-     viewSeeAllRadioChannels.isHidden = isSeeAllHidden
-     viewSeeAllPopularArtists.isHidden = isSeeAllHidden
-     viewPopularSongs.isHidden = !isSeeAllHidden
-     viewLatestSinhalaSongs.isHidden = !isSeeAllHidden
-     viewRadioChannels.isHidden = !isSeeAllHidden
-     viewPopularArtists.isHidden = !isSeeAllHidden
-     viewPlayLists.isHidden = !isSeeAllHidden
-     // scrollHome.isUserInteractionEnabled = true
-     }
-     @IBAction func actSeeAllPopularSongs(_ sender: UIButton) {
-     isSeeAllHidden = !isSeeAllHidden
-     viewSeeAllPopularSongs.isHidden = isSeeAllHidden
-     viewSeeAllLatestSinhalaSongs.isHidden = !isSeeAllHidden
-     viewSeeAllRadioChannels.isHidden = !isSeeAllHidden
-     viewSeeAllPopularArtists.isHidden = !isSeeAllHidden
-     viewPopularSongs.isHidden = !isSeeAllHidden
-     viewLatestSinhalaSongs.isHidden = !isSeeAllHidden
-     viewRadioChannels.isHidden = !isSeeAllHidden
-     viewPopularArtists.isHidden = !isSeeAllHidden
-     viewPlayLists.isHidden = !isSeeAllHidden
-     // scrollHome.isUserInteractionEnabled = false
-     }
-     
-     @IBAction func actSeeAllLatestSinhalaSongs(_ sender: UIButton) {
-     isSeeAllHidden = !isSeeAllHidden
-     viewSeeAllPopularSongs.isHidden = !isSeeAllHidden
-     viewSeeAllLatestSinhalaSongs.isHidden = isSeeAllHidden
-     viewSeeAllRadioChannels.isHidden = !isSeeAllHidden
-     viewSeeAllPopularArtists.isHidden = !isSeeAllHidden
-     viewPopularSongs.isHidden = !isSeeAllHidden
-     viewLatestSinhalaSongs.isHidden = !isSeeAllHidden
-     viewRadioChannels.isHidden = !isSeeAllHidden
-     viewPopularArtists.isHidden = !isSeeAllHidden
-     viewPlayLists.isHidden = !isSeeAllHidden
-     // scrollHome.isUserInteractionEnabled = false
-     }
-     
-     @IBAction func actSeeAllRadioChannels(_ sender: UIButton) {
-     isSeeAllHidden = !isSeeAllHidden
-     viewSeeAllRadioChannels.isHidden = isSeeAllHidden
-     viewSeeAllPopularSongs.isHidden = !isSeeAllHidden
-     viewSeeAllLatestSinhalaSongs.isHidden = !isSeeAllHidden
-     viewSeeAllPopularArtists.isHidden = !isSeeAllHidden
-     viewPopularSongs.isHidden = !isSeeAllHidden
-     viewLatestSinhalaSongs.isHidden = !isSeeAllHidden
-     viewRadioChannels.isHidden = !isSeeAllHidden
-     viewPopularArtists.isHidden = !isSeeAllHidden
-     viewPlayLists.isHidden = !isSeeAllHidden
-     // scrollHome.isUserInteractionEnabled = false
-     }
-     
-     @IBAction func actSeeAllPopularArtists(_ sender: UIButton) {
-     isSeeAllHidden = !isSeeAllHidden
-     viewSeeAllPopularArtists.isHidden = isSeeAllHidden
-     viewSeeAllRadioChannels.isHidden = !isSeeAllHidden
-     viewSeeAllPopularSongs.isHidden = !isSeeAllHidden
-     viewSeeAllLatestSinhalaSongs.isHidden = !isSeeAllHidden
-     viewPopularSongs.isHidden = !isSeeAllHidden
-     viewLatestSinhalaSongs.isHidden = !isSeeAllHidden
-     viewRadioChannels.isHidden = !isSeeAllHidden
-     viewPopularArtists.isHidden = !isSeeAllHidden
-     viewPlayLists.isHidden = !isSeeAllHidden
-     // scrollHome.isUserInteractionEnabled = false
-     }*/
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 extension Array {
