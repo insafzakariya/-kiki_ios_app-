@@ -52,13 +52,20 @@ class SMMainMenuViewController: UIViewController {
     
     private func getRemoteConfig(onSuccess:@escaping ()->()){
         var expirationDuration = 3600
-        if remoteConfig.configSettings.isDeveloperModeEnabled {
-            expirationDuration = 0
-        }
+//        if remoteConfig.configSettings.isDeveloperModeEnabled {
+//            expirationDuration = 0
+//        }
         remoteConfig.fetch(withExpirationDuration: TimeInterval(expirationDuration)) { (status, error) -> Void in
             if status == .success {
-                self.remoteConfig.activateFetched()
-                onSuccess()
+                self.remoteConfig.fetch { (status, error) in
+                    if status == .success{
+                        self.remoteConfig.activate { (isSuccess, error) in
+                            if isSuccess{
+                                onSuccess()
+                            }
+                        }
+                    }
+                }
             } else {
                 Log("Error occurred while fetching configs: \(error?.localizedDescription ?? "No error available.")")
             }

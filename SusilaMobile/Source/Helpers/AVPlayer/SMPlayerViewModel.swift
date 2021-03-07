@@ -18,8 +18,7 @@ import Alamofire
     
     @objc func sendAnalytics(actionType: String, contendId:Int, currentTime: String) -> Void {
         
-        let sessionManager = Alamofire.SessionManager.default
-        sessionManager.session.getTasksWithCompletionHandler { (dataTasks, uploadTasks, downloadTasks) in
+        AF.session.getTasksWithCompletionHandler { (dataTasks, uploadTasks, downloadTasks) in
             dataTasks.forEach {$0.cancel()}
             uploadTasks.forEach {$0.cancel()}
             downloadTasks.forEach {$0.cancel()}
