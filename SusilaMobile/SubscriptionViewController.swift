@@ -59,19 +59,19 @@ class SubscriptionViewController: UIViewController {
     @objc func termsAndConditionsOnTapped(){
         if let termsURLString = remoteConfig[termsAndConditionsKey].stringValue,
            let termsURL = URL(string: termsURLString){
-            UIApplication.shared.openURL(termsURL)
+            UIApplication.shared.open(termsURL)
         }
     }
     
     @objc func privacyPolicyOnTapped(){
         if let termsURLString = remoteConfig[licenseAgreementConfigKey].stringValue,
            let termsURL = URL(string: termsURLString){
-            UIApplication.shared.openURL(termsURL)
+            UIApplication.shared.open(termsURL)
         }
     }
     
     @IBAction func cancelButtonOnTapped(_ sender: Any) {
-        UIApplication.shared.openURL(URL(string: "itms-apps://apps.apple.com/account/subscriptions")!)
+        UIApplication.shared.open(URL(string: "itms-apps://apps.apple.com/account/subscriptions")!)
     }
     
     @IBAction func restoreButtonOnTapped(_ sender: Any) {
