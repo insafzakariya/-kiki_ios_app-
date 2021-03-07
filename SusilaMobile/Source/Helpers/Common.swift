@@ -177,7 +177,7 @@ class Common: NSObject {
             if let phoneCallURL:NSURL = NSURL(string: "tel://\(editedPhoneNumber)") {
                 let application:UIApplication = UIApplication.shared
                 if (application.canOpenURL(phoneCallURL as URL)) {
-                    application.openURL(phoneCallURL as URL);
+                    application.open(phoneCallURL as URL);
                 }else{
                     return false
                 }

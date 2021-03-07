@@ -10,16 +10,16 @@ import UIKit
 import MessageUI
 
 class SMContactUsViewController: MenuChiledViewController {
-
+    
     @IBOutlet weak var phoneNumber: UIButton!
     @IBOutlet weak var emailAddressBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_arrow"), style: .plain, target: self, action: #selector(backAction))
         
         self.title = "Contact"
-
+        
     }
     
     override var shouldAutorotate: Bool {
@@ -34,8 +34,8 @@ class SMContactUsViewController: MenuChiledViewController {
         let view = self.navigationController?.popViewController(animated: true)
         print(view ?? "")
     }
-
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,18 +46,18 @@ class SMContactUsViewController: MenuChiledViewController {
         
         enableTPButtons()
         //NotificationCenter.default.addObserver(self,
-                                            ///   selector: #selector(UIApplicationDelegate.applicationDidBecomeActive(_:)),
-                                             //  name: UIApplication.didBecomeActiveNotification,
-                                              // object: nil)
+        ///   selector: #selector(UIApplicationDelegate.applicationDidBecomeActive(_:)),
+        //  name: UIApplication.didBecomeActiveNotification,
+        // object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        let attributes = [NSUnderlineStyleAttributeName : 1] as [String : Any]
-//        let phoneNumberButtonTitle = NSMutableAttributedString(string:phoneNumberString!, attributes:attributes)
-//        let emailButtonTitle = NSMutableAttributedString(string:emailAddressString!, attributes:attributes)
-//        phoneNumber.setAttributedTitle(phoneNumberButtonTitle, for: .normal)
-//        emailAddressBtn.setAttributedTitle(emailButtonTitle, for: .normal)
+        //        let attributes = [NSUnderlineStyleAttributeName : 1] as [String : Any]
+        //        let phoneNumberButtonTitle = NSMutableAttributedString(string:phoneNumberString!, attributes:attributes)
+        //        let emailButtonTitle = NSMutableAttributedString(string:emailAddressString!, attributes:attributes)
+        //        phoneNumber.setAttributedTitle(phoneNumberButtonTitle, for: .normal)
+        //        emailAddressBtn.setAttributedTitle(emailButtonTitle, for: .normal)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -77,7 +77,7 @@ class SMContactUsViewController: MenuChiledViewController {
     }
     
     @IBAction func tappedTelephoneButton(_ sender: Any) {
-//        let phoneNumberString = phoneNumber.titleLabel!.text!
+        //        let phoneNumberString = phoneNumber.titleLabel!.text!
         
         phoneNumber.isEnabled = false
         if Common.callNumber(phoneNumber: "+94117696300"){
@@ -85,39 +85,32 @@ class SMContactUsViewController: MenuChiledViewController {
         }
         
     }
-
+    
     @IBAction func tappedEmailButton(_ sender: Any) {
         //"care@kiki.lk"
-    
-       let supportEmail = "abc@xyz.com"
-        let appURL = URL(string: "mailto:TEST@EXAMPLE.COM")!
-        if let emailURL = URL(string: "mailto:\(supportEmail)"), UIApplication.shared.canOpenURL(emailURL)
-        {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(emailURL, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(appURL)
-            }
+        let supportEmail = "care@kiki.lk"
+        if let emailURL = URL(string: "mailto:\(supportEmail)"), UIApplication.shared.canOpenURL(emailURL){
+            UIApplication.shared.open(emailURL, options: [:], completionHandler: nil)
         }
         
         /*func configuredMailComposeViewController(emailString: String) -> MFMailComposeViewController {
-            let mailComposerVC = MFMailComposeViewController()
-            mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
-            
-            mailComposerVC.setToRecipients([emailString])
-            //            mailComposerVC.setSubject("Sending you an in-app e-mail...")
-            //            mailComposerVC.setMessageBody("Sending e-mail in-app is not so bad!", isHTML: false)
-            
-            return mailComposerVC
-        }
-        
-//        let emailString = (sender as! UIButton).title(for: .normal) ?? ""
-        let mailComposeViewController = configuredMailComposeViewController(emailString: emailAddressString ?? "")
-        if MFMailComposeViewController.canSendMail() {
-            self.present(mailComposeViewController, animated: true, completion: nil)
-        } else {
-//            Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE", comment: ""), alertMessage: NSLocalizedString("EMAIL_SEND_ERROR", comment: ""))
-        }*/
+         let mailComposerVC = MFMailComposeViewController()
+         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+         
+         mailComposerVC.setToRecipients([emailString])
+         //            mailComposerVC.setSubject("Sending you an in-app e-mail...")
+         //            mailComposerVC.setMessageBody("Sending e-mail in-app is not so bad!", isHTML: false)
+         
+         return mailComposerVC
+         }
+         
+         //        let emailString = (sender as! UIButton).title(for: .normal) ?? ""
+         let mailComposeViewController = configuredMailComposeViewController(emailString: emailAddressString ?? "")
+         if MFMailComposeViewController.canSendMail() {
+         self.present(mailComposeViewController, animated: true, completion: nil)
+         } else {
+         //            Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE", comment: ""), alertMessage: NSLocalizedString("EMAIL_SEND_ERROR", comment: ""))
+         }*/
         
     }
 }

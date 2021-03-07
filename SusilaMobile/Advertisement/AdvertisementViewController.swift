@@ -70,7 +70,7 @@ class AdvertisementViewController: UIView {
                         controller.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_arrow"), style: .plain, target: self, action: #selector(self.back))
                     } )
                 } else {
-                    UIApplication.shared.openURL(URL(string: (fullScreenAdvertisement?.webUrl)!)!)
+                    UIApplication.shared.open(URL(string: (fullScreenAdvertisement?.webUrl)!)!)
                 }
             }
         }
@@ -82,7 +82,7 @@ class AdvertisementViewController: UIView {
     
     func webView(shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         if navigationType == UIWebView.NavigationType.linkClicked {
-            UIApplication.shared.openURL(request.url!)
+            UIApplication.shared.open(request.url!)
             return false
         }
         return true
