@@ -6,146 +6,69 @@
 //
 
 import UIKit
+import WebKit
 
 class ChatViewController: UIViewController {
     
-    @IBOutlet weak var sendButtonHolderView: UIView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var headerView: ChatHeaderView!
     
-    static var channel:ChatChannel?
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    static var token:String!
+    static var chatID:String!
     fileprivate let chatPresenter = ChatPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupHeader()
         setupUI()
-        setupData()
-        
-        ChatManager.shared.delegate = self
-        
-        tableView.register(UINib(nibName: "ChatMessageTableViewCell", bundle: .main), forCellReuseIdentifier: "chatMessageTableViewCell")
-        tableView.register(UINib(nibName: "SenderTableViewCell", bundle: .main), forCellReuseIdentifier: "senderTableViewCell")
-        tableView.register(UINib(nibName: "ChatGifMessageTableViewCell", bundle: .main), forCellReuseIdentifier: "chatGifMessageTableViewCell")
-        
-        
-        tableView.delegate = self
-        tableView.dataSource = self
+        setupWebView()
+        loadChatView()
+    }
+    
+    private func setupWebView(){
+        webView.navigationDelegate = self
+        let config = WKWebViewConfiguration()
+        config.userContentController.add(self, name: chatPresenter.navDismissHandler)
         
     }
     
-    private func setupHeader(){
-        headerView.delegate = self
-        headerView.setupUI(for: .Main, for: ChatViewController.channel!)
-        headerView.navigationController = self.navigationController
-        headerView.hideCountLabel()
-        
-        chatPresenter.getArtists(for: ChatViewController.channel!) {
-            self.headerView.setOnlineCount(for: self.chatPresenter.artistCount)
-            self.headerView.showCountLabel()
-        }
+    private func loadChatView(){
+        let url = chatPresenter.getChatWebURL(for: ChatViewController.chatID, using: ChatViewController.token)
+        let request = URLRequest(url: url)
+        webView.load(request)
     }
     
     private func setupUI(){
-        textView.backgroundColor = .white
-        UIHelper.addCornerRadius(to: textView, withRadius: 10.0)
-        UIHelper.circular(view: sendButtonHolderView)
-        UIHelper.circular(view: sendButton)
-    }
-    
-    private func setupData(){
-        ProgressView.shared.show(self.view)
-        chatPresenter.updateMembers(for: ChatViewController.channel!, onCompleted: nil)
-        
-        chatPresenter.getMessages{
-            ProgressView.shared.hide()
-            self.tableView.reloadData()
-            self.scrollToBottomMessage()
-        }
-        
-    }
-    
-    private func scrollToBottomMessage() {
-        if chatPresenter.messages.count == 0 {return}
-        let bottomMessageIndex = IndexPath(row: chatPresenter.messages.count - 1,section: 0)
-        tableView.scrollToRow(at: bottomMessageIndex, at: .bottom, animated: true)
-    }
-    
-    @IBAction func sendButtonOnTapped(_ sender: Any) {
-        if textView.text.count > 0{
-            chatPresenter.sendMessage(message: textView.text){ isSuccess in
-                if isSuccess{
-                    self.textView.text = ""
-                }
-            }
-        }
+        activityIndicator.startAnimating()
     }
     
     deinit {
-        ChatViewController.channel = nil
+        ChatViewController.token = nil
+        ChatViewController.chatID = nil
     }
     
 }
 
-extension ChatViewController:ChatHeaderDelegate{
-    
-    func infoButtonOnTapped() {
-        let chatInfoVC = UIHelper.makeViewController(in: .Chat, viewControllerName: .ChatInfoVC) as! ChatInfoViewController
-        chatInfoVC.channel = ChatViewController.channel
-        self.navigationController?.pushViewController(chatInfoVC, animated: true)
-    }
-}
-
-extension ChatViewController:UITableViewDelegate,UITableViewDataSource{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        chatPresenter.messages.count
+extension ChatViewController:WKNavigationDelegate,WKScriptMessageHandler{
+   
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = chatPresenter.messages[indexPath.row]
-        if let member = ChatMember.getMember(from: chatPresenter.allUsers ?? [], for: message.senderID){
-            if member.viewerID == UserDefaultsManager.getUserId(){
-                let cell = tableView.dequeueReusableCell(withIdentifier: "senderTableViewCell") as! SenderTableViewCell
-                cell.setupCell(for: message, sender: member)
-                return cell
-            }else{
-                if message.content.lowercased().starts(with: "http") && message.content.lowercased().suffix(4) == ".gif" {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "chatGifMessageTableViewCell") as! ChatGifMessageTableViewCell
-                    cell.setupCell(for: message, sender: member)
-                    return cell
-                }else{
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "chatMessageTableViewCell") as! ChatMessageTableViewCell
-                    cell.setupCell(for: message, sender: member)
-                    return cell
-                }
-            }
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        activityIndicator.stopAnimating()
+    }
+    
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        activityIndicator.stopAnimating()
+        Log(error.localizedDescription)
+    }
+    
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        if message.name == chatPresenter.navDismissHandler{
+            self.navigationController?.dismiss(animated: true, completion: nil)
         }
-        return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.view.endEditing(true)
-    }
-}
-
-extension ChatViewController:ChatManagerDelegate{
-    
-    func reloadMessages() {
-        self.tableView.reloadData()
-    }
-    
-    func receivedNewMessage(message:ChatMessage) {
-        chatPresenter.messages.append(message)
-        reloadMessages()
-        scrollToBottomMessage()
-    }
-    
-    func memberUpdated() {
-        chatPresenter.updateMembers(for: ChatViewController.channel!, onCompleted: {
-            self.headerView.setOnlineCount(for: self.chatPresenter.artistCount)
-        })
     }
 }
