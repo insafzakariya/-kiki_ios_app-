@@ -162,7 +162,6 @@ PODS:
   - SnapKit (5.0.1)
   - SwiftyJSON (5.0.0)
   - SWXMLHash (5.0.1)
-  - TwilioChatClient (4.1.0)
   - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
@@ -189,7 +188,6 @@ DEPENDENCIES:
   - SDWebImage
   - SwiftyJSON
   - SWXMLHash
-  - TwilioChatClient
   - XLPagerTabStrip
 
 SPEC REPOS:
@@ -233,7 +231,6 @@ SPEC REPOS:
     - SnapKit
     - SwiftyJSON
     - SWXMLHash
-    - TwilioChatClient
     - XLPagerTabStrip
 
 SPEC CHECKSUMS:
@@ -276,9 +273,8 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SWXMLHash: 9cc0c2e4807926c74377724aa8722ee5707a0485
-  TwilioChatClient: 88217a65e6b5eeba81be09c49b7dec1210b1e9b9
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 4034eaba7032e9df9fea1860b8e8dce434aa09ce
+PODFILE CHECKSUM: a1fced586740a09c6a320234c3f2e03493f818ad
 
 COCOAPODS: 1.10.1

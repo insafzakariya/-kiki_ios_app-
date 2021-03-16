@@ -143,6 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if status == .successFetchedFromRemote || status == .successUsingPreFetchedData{
                 kAPIBaseUrl = self.remoteConfig[baseURL_LIVE].stringValue!
                 IAPBaseURL = self.remoteConfig[IAP_LIVE].stringValue!
+                chatBaseURL = self.remoteConfig[chatBaseURLKey].stringValue!
                 let appStoreManager = AppStoreManager(remoteConfig: self.remoteConfig)
                 AppStoreManager.IS_ON_REVIEW = appStoreManager.isCurrentlyOnReview()
             }else{
@@ -151,6 +152,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         kAPIBaseUrl = self.remoteConfig[baseURL_LIVE].stringValue!
         IAPBaseURL = remoteConfig[IAP_LIVE].stringValue!
+        chatBaseURL = remoteConfig[chatBaseURLKey].stringValue!
         Log("Base URL: \(kAPIBaseUrl)")
         
     }

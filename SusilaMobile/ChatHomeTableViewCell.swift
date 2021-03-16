@@ -25,25 +25,27 @@ class ChatHomeTableViewCell: UITableViewCell {
     private func setDataSourceAndDelegate(){
         collectionView.dataSource = self
         collectionView.delegate = self
+//
+//        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//            layout.scrollDirection = .horizontal
+//        }
     }
     
     func setChannels(for channels:[ChatChannel]){
         self.channels = channels
         self.collectionView.reloadData()
     }
-    
-    
 }
 
 
 extension ChatHomeTableViewCell:UICollectionViewDelegate,UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        self.channels?.count ?? 0
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.channels?.count ?? 0
+        return 1
     }
     
     

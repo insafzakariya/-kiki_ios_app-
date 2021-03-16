@@ -100,7 +100,7 @@ class ApiClient {
         static let AllSongsGenre = "audio/songs/attr/genre"
         static let RecentSongs = "audio/songs/recent"
         static let GlobalPlaylist = "audio/playlist"
-        static let RadioDrama = "audio/radioDrama"
+        static let RadioDrama = "/audio/playlist?rd=true"
         static let SongsOfPlaylist = "audio/playlist/songs"
         static let createPlaylist = "audio/playlist/create"
         static let AddSongsToPlaylist = "playlist/songs/add"
@@ -151,13 +151,10 @@ class ApiClient {
         static let GetSubscriptionStatus = "/rest/subscription/isSubscribe/%@"
         
         
-        //Chat
-        static let ChatToken = "chat/token-generate"
-        static let CreateMember = "chat/create-member"
-        static let Members = "chat/get-chat-members/%@/%@"
-        static let Chennels = "chat/channels"
-        static let Chats = "chat/get-chats"
-        static let MemberRole = "chat/get-role/%@"
+        //MARK: Chat
+        static let CreateMember = "/auth/login"
+        static let ChatChannels = "/rest/chat/chatlist"
+        static let chatWebView = "/chat/?token=%@&chatId=%@&ios=true"
     }
     
     struct StringKeys{
@@ -1148,7 +1145,7 @@ class ApiClient {
     
     internal func getRadioDrama(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
-        let url = URL(string: kAPIBaseUrl + SubUrl.GlobalPlaylist + "?g=true&rd=true&offset=0&limit=200")
+        let url = URL(string: kAPIBaseUrl + SubUrl.RadioDrama)
         Log("Radio Drama: \(url?.description ?? "")")
         
         let headers: HTTPHeaders = [
@@ -2149,146 +2146,59 @@ extension ChatService{
      
      */
     
-    private func generateChatHeader() -> HTTPHeaders {
-        let headers: HTTPHeaders = [
-            StringKeys.HEADER_CONTENT_TYPE: StringKeys.CONTENT_TYPE,
-            StringKeys.HEADER_AUTHORIZATION: kBasicServerAuthToken,
-            StringKeys.HEADER_TOKEN_AUTHENTICATION: UserDefaultsManager.getAccessToken() ?? "N/A"
+    func getChatChannels(onComplete:@escaping ([ChatChannel]?)->()){
+        
+        let params = [
+            "username" : "kiki",
+            "secret" : "123456"
         ]
-        return headers
+        
+        let url = URL(string: chatBaseURL + SubUrl.ChatChannels)!
+        var tempArray:[ChatChannel]?
+        ServiceManager.APIRequest(url: url, method: .post, params: params) { (response, responseCode) in
+            if responseCode == 200{
+                tempArray = []
+                if let retrievedResponse = response{
+                    let jsonData:JSON = JSON(retrievedResponse)
+                    if let jsonArray = jsonData.array{
+                        for channel in jsonArray{
+                            if let id = channel["chatId"].int,
+                               let url = channel["imageURL"].string?.removingPercentEncoding,
+                               let name = channel["chatName"].string{
+                                let chatChannel = ChatChannel(id: id.description, imageURL: URL(string: url)!, name: name)
+                                tempArray?.append(chatChannel)
+                            }
+                        }
+                    }
+                }
+            }
+            onComplete(tempArray)
+        }
     }
     
-    func getChatToken(onComplete:@escaping (String?)->()){
-        let url = URL(string: kAPIBaseUrl + SubUrl.ChatToken)!
-        ServiceManager.APIRequest(url: url, method: .get,headers: generateChatHeader()) { (response, reponseCode) in
-            if reponseCode == 200{
+    func createMember(username:String,userID:Int,onComplete:@escaping (String?)->()){
+        let url = URL(string: chatBaseURL + SubUrl.CreateMember)!
+        let params:[String:Any] = [
+            "name" : username,
+            "identity" : userID,
+            "username" : "kiki",
+            "secret" : "123456"
+        ]
+        
+        ServiceManager.APIRequest(url: url, method: .post, params: params) { (response, responseCode) in
+            if responseCode == 200{
                 if let retrievedResponse = response{
                     let jsonData:JSON = JSON(retrievedResponse)
                     if let data = jsonData["data"].dictionary{
-                        if let token = data["Token"]?.string{
+                        if let token = data["token"]?.string{
                             onComplete(token)
+                            return
                         }
-                    }else{
-                        onComplete(nil)
-                    }
-                }else{
-                    onComplete(nil)
-                }
-            }else{
-                onComplete(nil)
-            }
-        }
-    }
-    
-    func getChatChannels(onComplete:@escaping ([ChatChannel]?)->()){
-        let url = URL(string: kAPIBaseUrl + SubUrl.Chennels)!
-        var tempArray:[ChatChannel]?
-        ServiceManager.APIRequest(url: url, method: .get,headers: generateChatHeader()) { (response, responseCode) in
-            if responseCode == 200{
-                tempArray = []
-                if let retrievedResponse = response{
-                    let jsonData:JSON = JSON(retrievedResponse)
-                    if let jsonArray = jsonData.array{
-                        for json in jsonArray{
-                            let id = json["id"].int ?? 0
-                            let sid = json["sid"].string ?? ""
-                            let accountSID = json["accountSid"].string ?? ""
-                            let serviceSID = json["serviceSid"].string ?? ""
-                            let friendlyName = json["friendlyName"].string ?? ""
-                            let uniqueName = json["uniqueName"].string ?? ""
-                            let imageURL = json["imagePath"].stringValue.decodedURL
-                            let isBlocked = json["block"].bool ?? false
-                            let isMember = json["member"].bool ?? false
-                            let chatChannel = ChatChannel(id: id, sid: sid, accountSid: accountSID, serviceSid: serviceSID, friendlyName: friendlyName, uniqueName: uniqueName, imageURL: imageURL, isBlocked: isBlocked, isMember: isMember)
-                            tempArray?.append(chatChannel)
-                        }
+                        
                     }
                 }
             }
-            onComplete(tempArray)
-        }
-    }
-    
-    func createMember(name:String,roleID:String,userID:String, for channel: ChatChannel,onComplete:@escaping (Bool)->()){
-        let url = URL(string: kAPIBaseUrl + SubUrl.CreateMember)!
-        
-        let params:[String:Any] = [
-            "sid": channel.sid,
-            "accountSid": channel.accountSid,
-            "serviceSid": channel.serviceSid,
-            "name": name, //logged users name
-            "identity": userID, // logged user ID
-            "imagePath": channel.imageURL?.absoluteString.encodeURL,
-            "roleId": roleID, // ID from role GET
-            "channelIds": [channel.id]
-        ]
-        
-        ServiceManager.APIRequest(url: url, method: .post, params: params, headers: generateChatHeader()) { (response, responseCode) in
-            if responseCode == 200{
-                if let retrievedResponse = response{
-                    let jsonData:JSON = JSON(retrievedResponse)
-                    if let code = jsonData["code"].string, let message = jsonData["message"].string{
-                        if code == "201" && message == "Success"{
-                            onComplete(true)
-                        }else{
-                            onComplete(false)
-                        }
-                    }else{
-                        onComplete(false)
-                    }
-                }else{
-                    onComplete(false)
-                }
-            }else{
-                onComplete(false)
-            }
-        }
-    }
-    
-    func getMemberRole(for type:MemberRoleType,onComplete:@escaping (String?)->()){
-        let urlSuffix = String(format: SubUrl.MemberRole, type.rawValue)
-        let url = URL(string: kAPIBaseUrl + urlSuffix)!
-        ServiceManager.APIRequest(url: url, method: .get,headers: generateChatHeader()) { (response, reponseCode) in
-            if reponseCode == 200{
-                if let response = response{
-                    let jsonData:JSON = JSON(response)
-                    if let roleID = jsonData["id"].int{
-                        onComplete(roleID.description)
-                    }else{
-                        onComplete(nil)
-                    }
-                }else{
-                    onComplete(nil)
-                }
-            }else{
-                onComplete(nil)
-            }
-        }
-    }
-    
-    func getMembers(for type:MemberRoleType, in channel:ChatChannel, onComplete:@escaping ([ChatMember]?)->()){
-        let urlSuffix = String(format: SubUrl.Members, channel.id.description,type.rawValue)
-        let url = URL(string: kAPIBaseUrl + urlSuffix)!
-        var tempArray:[ChatMember]?
-        
-        ServiceManager.APIRequest(url: url, method: .get,headers: generateChatHeader()) { (response, responseCode) in
-            if responseCode == 200{
-                tempArray = []
-                if let retrievedResponse = response{
-                    let jsonData:JSON = JSON(retrievedResponse)
-                    if let jsonArray = jsonData.array{
-                        for json in jsonArray{
-                            let name = json["name"].stringValue
-                            let color:UIColor = json["colour"].stringValue.hexStringToUIColor
-                            let imageURL = json["imagePath"].stringValue.decodedURL
-                            let viewerID = json["viewerId"].stringValue
-                            let artist = ChatMember(name: name, color: color, imageURL: imageURL, viewerID: viewerID, type: type)
-                            tempArray?.append(artist)
-                        }
-                    }
-                }
-            }
-            onComplete(tempArray)
+            onComplete(nil)
         }
     }
 }

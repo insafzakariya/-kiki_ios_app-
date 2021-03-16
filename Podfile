@@ -31,5 +31,4 @@ target 'SusilaMobile' do
   pod 'Kingfisher'
   pod 'ijkplayer'
   pod 'NotificationBannerSwift'
-  pod 'TwilioChatClient'
 end
