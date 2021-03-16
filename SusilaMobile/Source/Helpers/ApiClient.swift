@@ -100,7 +100,7 @@ class ApiClient {
         static let AllSongsGenre = "audio/songs/attr/genre"
         static let RecentSongs = "audio/songs/recent"
         static let GlobalPlaylist = "audio/playlist"
-        static let RadioDrama = "audio/radioDrama"
+        static let RadioDrama = "/audio/playlist?rd=true"
         static let SongsOfPlaylist = "audio/playlist/songs"
         static let createPlaylist = "audio/playlist/create"
         static let AddSongsToPlaylist = "playlist/songs/add"
@@ -152,9 +152,9 @@ class ApiClient {
         
         
         //MARK: Chat
-        static let CreateMember = "kiki-chat/api/v1/auth/register"
-        static let ChatChannels = "kiki-chat/api/v1/rest/chat/chatlist"
-        static let chatWebView = "chat/?token=%@&chatId=%@&ios=true"
+        static let CreateMember = "/auth/login"
+        static let ChatChannels = "/rest/chat/chatlist"
+        static let chatWebView = "/chat/?token=%@&chatId=%@&ios=true"
     }
     
     struct StringKeys{
@@ -1145,7 +1145,7 @@ class ApiClient {
     
     internal func getRadioDrama(success: @escaping (_ data: AnyObject?, _ code: Int) -> Void, failure: @escaping (_ error: NSError) -> Void) {
         
-        let url = URL(string: kAPIBaseUrl + SubUrl.GlobalPlaylist + "?g=true&rd=true&offset=0&limit=200")
+        let url = URL(string: kAPIBaseUrl + SubUrl.RadioDrama)
         Log("Radio Drama: \(url?.description ?? "")")
         
         let headers: HTTPHeaders = [
@@ -2153,7 +2153,7 @@ extension ChatService{
             "secret" : "123456"
         ]
         
-        let url = URL(string: kAPIBaseUrl + SubUrl.ChatChannels)!
+        let url = URL(string: chatBaseURL + SubUrl.ChatChannels)!
         var tempArray:[ChatChannel]?
         ServiceManager.APIRequest(url: url, method: .post, params: params) { (response, responseCode) in
             if responseCode == 200{
@@ -2162,10 +2162,10 @@ extension ChatService{
                     let jsonData:JSON = JSON(retrievedResponse)
                     if let jsonArray = jsonData.array{
                         for channel in jsonArray{
-                            if let id = channel["chatId"].string,
-                               let url = channel["imageURL"].string,
+                            if let id = channel["chatId"].int,
+                               let url = channel["imageURL"].string?.removingPercentEncoding,
                                let name = channel["chatName"].string{
-                                let chatChannel = ChatChannel(id: id, imageURL: URL(string: url)!, name: name)
+                                let chatChannel = ChatChannel(id: id.description, imageURL: URL(string: url)!, name: name)
                                 tempArray?.append(chatChannel)
                             }
                         }
@@ -2176,10 +2176,10 @@ extension ChatService{
         }
     }
     
-    func createMember(name:String,userID:String,onComplete:@escaping (String?)->()){
-        let url = URL(string: kAPIBaseUrl + SubUrl.CreateMember)!
-        let params = [
-            "name" : name,
+    func createMember(username:String,userID:Int,onComplete:@escaping (String?)->()){
+        let url = URL(string: chatBaseURL + SubUrl.CreateMember)!
+        let params:[String:Any] = [
+            "name" : username,
             "identity" : userID,
             "username" : "kiki",
             "secret" : "123456"
@@ -2189,10 +2189,12 @@ extension ChatService{
             if responseCode == 200{
                 if let retrievedResponse = response{
                     let jsonData:JSON = JSON(retrievedResponse)
-                    //TODO: Check
-                    if let token = jsonData["token"].string{
-                        onComplete(token)
-                        return
+                    if let data = jsonData["data"].dictionary{
+                        if let token = data["token"]?.string{
+                            onComplete(token)
+                            return
+                        }
+                        
                     }
                 }
             }

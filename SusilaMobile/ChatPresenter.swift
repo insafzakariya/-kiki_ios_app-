@@ -16,7 +16,7 @@ class ChatPresenter{
     
     
     func getChatWebURL(for chatID:String,using token:String) -> URL{
-        let urlString = kAPIBaseUrl + ApiClient.SubUrl.chatWebView
+        let urlString = chatWebViewBaseURL + ApiClient.SubUrl.chatWebView
         return URL(string: String(format: urlString,token,chatID))!
     }
     
@@ -27,8 +27,8 @@ class ChatPresenter{
     }
     
     func getToken(onComplete:@escaping(String?)->()){
-        if let user = UserDefaultsManager.getUser(){
-            serviceLayer.createMember(name: user.name, userID: user.id.description) { (token) in
+        if  let userID = Int(UserDefaultsManager.getUserId()!), let userName = UserDefaultsManager.getUsername(){
+            serviceLayer.createMember(username: userName, userID: userID) { (token) in
                 onComplete(token)
             }
         }

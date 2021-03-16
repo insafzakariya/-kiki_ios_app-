@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 
 class ChatViewController: UIViewController {
-    
+
     
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -27,13 +27,12 @@ class ChatViewController: UIViewController {
     
     private func setupWebView(){
         webView.navigationDelegate = self
-        let config = WKWebViewConfiguration()
-        config.userContentController.add(self, name: chatPresenter.navDismissHandler)
-        
+        webView.configuration.userContentController.add(self, name: chatPresenter.navDismissHandler)
     }
     
     private func loadChatView(){
         let url = chatPresenter.getChatWebURL(for: ChatViewController.chatID, using: ChatViewController.token)
+        Log("Chat WEb View URL: \(url)")
         let request = URLRequest(url: url)
         webView.load(request)
     }
@@ -46,7 +45,6 @@ class ChatViewController: UIViewController {
         ChatViewController.token = nil
         ChatViewController.chatID = nil
     }
-    
 }
 
 extension ChatViewController:WKNavigationDelegate,WKScriptMessageHandler{
