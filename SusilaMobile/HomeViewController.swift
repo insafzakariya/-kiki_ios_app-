@@ -30,6 +30,8 @@ class HomeViewController: UIView {
     var latestPlayList:[Song] = [Song]()
     var artistList:[Artist] = [Artist]()
     
+    var playlistCellHeight:CGFloat = 200.0
+    
     var playerView = PlayerView() {
         didSet{
             scrollCollectionMinimizedPopularSongs?.playerView = self.playerView
@@ -108,7 +110,11 @@ class HomeViewController: UIView {
         scrollView.showsVerticalScrollIndicator = false
         //scrollView.backgroundColor = UIColor.red
         
-        contentView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: ((UIScreen.main.bounds.width-40)*1/3+30)*3+440+(UIScreen.main.bounds.width-40)*1/3+UIScreen.main.bounds.width/2-10+150))
+        if UIDevice.current.userInterfaceIdiom == .phone{
+            contentView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: ((UIScreen.main.bounds.width-40)*1/3+30)*4+290+(UIScreen.main.bounds.width-40)*1/3+UIScreen.main.bounds.width/2-10+150))
+        }else{
+            contentView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: ((UIScreen.main.bounds.width-40)*1/3+30)*3+700+(UIScreen.main.bounds.width-40)*1/3+UIScreen.main.bounds.width/2-10+150))
+        }
         
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: contentView.frame.height)
         
@@ -137,11 +143,13 @@ class HomeViewController: UIView {
         
         createPlaylistHeaderView(view: scrollView)
         createLatestPlaylistSeeAllView(view: viewAllLatestPlaylists, title:"LastestPlaylist".localizedString)
-        loadPlaylists()
+        loadPlaylists {
+            self.createRadioDramaHeaderView(view: self.scrollView)
+            self.createRadioDramaSeeAllView(view: self.viewAllRadioDrama, title:"RadioDrama".localizedString)
+            self.loadRadioDrama()
+        }
         
-        createRadioDramaHeaderView(view: scrollView)
-        createRadioDramaSeeAllView(view: viewAllRadioDrama, title:"RadioDrama".localizedString)
-        loadRadioDrama()
+       
         
         
         self.addSubview(scrollView)
@@ -189,6 +197,7 @@ class HomeViewController: UIView {
         } else if notifyInstance.status && notifyInstance.content_type == "playlistid" {
             self.getPlaylistById(pid: notifyInstance.content_id)
         }
+        
     }
     
     @objc func buttonClickAddSongToPlaylist(sender: PlaylistTapGesture) {
@@ -665,6 +674,7 @@ class HomeViewController: UIView {
     func loadHomePopularArtistsViews(view: UIView) {
         
         let viewArtist = UIScrollView(frame: CGRect(x: 0, y: ((UIScreen.main.bounds.width-40)*1/3+30)*3+180, width: UIScreen.main.bounds.width , height: (UIScreen.main.bounds.width-40)*1/3+10))
+
         //viewGenreSongs.backgroundColor = UIColor.yellow
         viewArtist.showsHorizontalScrollIndicator = false
         viewArtist.showsVerticalScrollIndicator = false
@@ -905,6 +915,8 @@ class HomeViewController: UIView {
     //Latest Playlist Header View
     func createPlaylistHeaderView(view: UIView) {
         let topBar = UIView(frame: CGRect(x: 0, y: ((UIScreen.main.bounds.width-40)*1/3+30)*3+190+(UIScreen.main.bounds.width-40)*1/3, width: UIScreen.main.bounds.width, height: 50))
+        Log("Y for Latest Playlist header \(((UIScreen.main.bounds.width-40)*1/3+30)*3+190+(UIScreen.main.bounds.width-40)*1/3)")
+        
         topBar.backgroundColor = Constants.color_background
         
         let labelSongs = UILabel()
@@ -936,7 +948,9 @@ class HomeViewController: UIView {
     
     
     func createRadioDramaHeaderView(view: UIView) {
-        let topBar = UIView(frame: CGRect(x: 0, y: ((UIScreen.main.bounds.width-40)*1/3+30)*3+440+(UIScreen.main.bounds.width-40)*1/3, width: UIScreen.main.bounds.width, height: 50))
+        
+        let topBar = UIView(frame: CGRect(x: 0, y: (((UIScreen.main.bounds.width-40)*1/3+30)*3+240+(UIScreen.main.bounds.width-40)*1/3)+playlistCellHeight, width: UIScreen.main.bounds.width, height: 50))
+       
         topBar.backgroundColor = Constants.color_background
         
         let labelSongs = UILabel()
@@ -969,6 +983,9 @@ class HomeViewController: UIView {
     var globalPlayLists = [GlobalPlaylistItem](){
         didSet{
             let scrollPlayList = UIScrollView(frame: CGRect(x: 0, y: ((UIScreen.main.bounds.width-40)*1/3+30)*3+240+(UIScreen.main.bounds.width-40)*1/3, width: UIScreen.main.bounds.width, height:  UIScreen.main.bounds.width/2-10))
+            Log("Y for Latest Playlist \(((UIScreen.main.bounds.width-40)*1/3+30)*3+240+(UIScreen.main.bounds.width-40)*1/3)")
+            playlistCellHeight = (UIScreen.main.bounds.width/2-10)
+            
             scrollPlayList.showsHorizontalScrollIndicator = false
             scrollPlayList.showsVerticalScrollIndicator = false
             let playListContentView = UIView(frame: CGRect(x: 0, y: 0, width: CGFloat(globalPlayLists.count)*(UIScreen.main.bounds.width/2-20)+10, height: scrollPlayList.frame.height))
@@ -1013,7 +1030,9 @@ class HomeViewController: UIView {
     
     var radioDramas = [GlobalPlaylistItem](){
         didSet{
-            let scrollPlayList = UIScrollView(frame: CGRect(x: 0, y: ((UIScreen.main.bounds.width-40)*1/3+30)*3+490+(UIScreen.main.bounds.width-40)*1/3, width: UIScreen.main.bounds.width, height:  UIScreen.main.bounds.width/2-10))
+            
+            let scrollPlayList = UIScrollView(frame: CGRect(x: 0, y: (((UIScreen.main.bounds.width-40)*1/3+30)*3+240+(UIScreen.main.bounds.width-40)*1/3)+playlistCellHeight+50, width: UIScreen.main.bounds.width, height:  UIScreen.main.bounds.width/2-10))
+            
             scrollPlayList.showsHorizontalScrollIndicator = false
             scrollPlayList.showsVerticalScrollIndicator = false
             let playListContentView = UIView(frame: CGRect(x: 0, y: 0, width: CGFloat(globalPlayLists.count)*(UIScreen.main.bounds.width/2-20)+10, height: scrollPlayList.frame.height))
@@ -1025,15 +1044,8 @@ class HomeViewController: UIView {
                 let playListTile = PlayListTile(frame: CGRect(x: xLength, y: 0, width: UIScreen.main.bounds.width/2-30, height: UIScreen.main.bounds.width/2-30))
                 playListTile.lblTitle.text = tileData.name
                 
-                var decodedImage: String = ""
-                decodedImage = tileData.image!.replacingOccurrences(of: "%3A", with: ":")
-                decodedImage = decodedImage.replacingOccurrences(of: "%2F", with: "/")
-                decodedImage = decodedImage.replacingOccurrences(of: "+", with: "%20")
-                
-                if decodedImage == "" || decodedImage == "https://storage.googleapis.com/kiki_images/live/playlist/"  || decodedImage == "https://storage.googleapis.com/kiki_images/live/playlist/null" {
-                    playListTile.imageURL = ""
-                } else {
-                    playListTile.image.sd_setImage(with: URL(string: decodedImage), placeholderImage: UIImage(named: "logo_grayscale"))
+                if let imageURlString = tileData.image{
+                    playListTile.image.sd_setImage(with: URL(string: imageURlString.removingPercentEncoding!), placeholderImage: UIImage(named: "logo_grayscale"))
                 }
                 playListTile.index = index
                 xLength += UIScreen.main.bounds.width/2-30+10
@@ -1042,7 +1054,7 @@ class HomeViewController: UIView {
                 
                 let tap = PlaylistTapGesture(target: self, action: #selector(buttonClickedPlaylistDetails))
                 tap.id = String(tileData.id)
-                tap.image = decodedImage
+                tap.image = (tileData.image ?? "").removingPercentEncoding ?? ""
                 tap.title = tileData.name
                 tap.songs = String(tileData.number_of_songs)
                 tap.year =  dateArr[0]
@@ -1055,8 +1067,6 @@ class HomeViewController: UIView {
             scrollView.addSubview(scrollPlayList)
         }
     }
-    
-    
     
     @objc func buttonClickedPlaylistDetails(recognizer: PlaylistTapGesture) {
         print("Printer ", recognizer.id," ", recognizer.title," ", recognizer.image)
@@ -1215,7 +1225,7 @@ class HomeViewController: UIView {
      }
      }*/
     
-    func loadPlaylists() {
+    func loadPlaylists(onCompleted:@escaping()->()) {
         
         self.homeDataModel.getPlaylists(getGlobalPlaylistCallFinished: { (status, error, userInfo) in
             if status {
@@ -1227,7 +1237,7 @@ class HomeViewController: UIView {
                 //self.parentVC.home?.
                 self.globalPlayListsAll = self.homeDataModel.globalPlaylists
                 
-                
+                onCompleted()
                 //self.parentVC.home?.globalPlayListsAll = self.homeDataModel.globalPlaylists
             }
         })
