@@ -17,7 +17,6 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
     var mainMenuViewController :SMMainMenuViewController!
     let viewModel = SMChannelListModel()
     let homeViewModel = SMHomeViewModel()
-    fileprivate let chatInitPresenter = ChatInitilizationPresenter()
     let notificationListViewModel = NotificationListModel()
     let notificationButton = MIBadgeButton(type: .system)
     
@@ -30,6 +29,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
     let subscribedListViewModel = SMSubscribedListViewModel()
     let gradientLayer = CAGradientLayer()
     var channelList: [Channel] = [Channel]()
+    fileprivate let chatPresenter = ChatPresenter()
     
     var chId = 0
     var totalPrg : Int = 0
@@ -46,7 +46,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        chatInitPresenter.getChatChannels()
+        chatPresenter.getChannels()
         ProgressView.shared.hide()
         var frame = CGRect.zero
         frame.size.height = .leastNormalMagnitude
@@ -330,7 +330,7 @@ class HomeTableViewController: UIViewController, UITableViewDataSource, UITableV
             let cell = tableView.dequeueReusableCell(withIdentifier: "chatHomeTableViewCell") as! ChatHomeTableViewCell
             cell.setupCell()
             cell.delegate = self
-            cell.setChannels(for: chatInitPresenter.chatChannels)
+            cell.setChannels(for: chatPresenter.channels)
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath) as! HomeTableViewCell
@@ -603,44 +603,20 @@ extension HomeTableViewController: UICollectionViewDataSource, UICollectionViewD
 
 extension HomeTableViewController:ChatPickerViewDelegate{
     
-    private func initializeChat(for channel:ChatChannel){
-        ProgressView.shared.show(self.view)
-        chatInitPresenter.getChatToken {
-            self.chatInitPresenter.initializeChat(for: channel) { (isCompleted) in
-                ProgressView.shared.hide()
-                if isCompleted{
-                    let chatNavController = UIHelper.makeViewController(in: .Chat, viewControllerName: .ChatNC) as! UINavigationController
-                    chatNavController.modalPresentationStyle = .fullScreen
-                    ChatViewController.channel = channel
-                    self.present(chatNavController, animated: true, completion: nil)
-                }else{
-                    //TODO: Error for initialization failure
-                }
-            }
-        }
-    }
-    
     func didChatChannelTapped(for channel: ChatChannel) {
-        ChatManager.shared.channelSID = channel.sid
-        if channel.isBlocked{
-            let blockedAlert = UIAlertController(title: "Access Revoked", message: "Your accees to this chat has been revoked due to inappropriate behavior", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            blockedAlert.addAction(okAction)
-            self.present(blockedAlert, animated: true, completion: nil)
-        }else{
-            if channel.isMember{
-                initializeChat(for: channel)
+        ProgressView.shared.show(self.view)
+        chatPresenter.getToken { (token) in
+            ProgressView.shared.hide()
+            if let userToken = token{
+                let chatNavController = UIHelper.makeViewController(in: .Chat, viewControllerName: .ChatNC) as! UINavigationController
+                chatNavController.modalPresentationStyle = .fullScreen
+                ChatViewController.token = userToken
+                ChatViewController.chatID = channel.id
+                self.present(chatNavController, animated: true, completion: nil)
             }else{
-                chatInitPresenter.createMember(for: channel) { (isCompleted) in
-                    if isCompleted{
-                        self.initializeChat(for: channel)
-                    }else{
-                        Log("Member creation failed")
-                    }
-                }
+                Log("Chat Token is nil")
             }
         }
-        
     }
 }
 

@@ -1,20 +1,14 @@
 //
-//  Channel.swift
+//  ChatChannel.swift
 //  SusilaMobile
 //
-//  Created by Sajith Konara on 2021-02-06.
+//  Created by Sajith Konara on 2021-03-10.
 //
 
 import Foundation
 
-struct ChatChannel{
-    var id:Int
-    var sid:String
-    var accountSid:String
-    var serviceSid:String
-    var friendlyName:String
-    var uniqueName:String
-    var imageURL:URL?
-    var isBlocked:Bool
-    var isMember:Bool
+struct ChatChannel {
+    var id:String
+    var imageURL:URL
+    var name:String
 }
