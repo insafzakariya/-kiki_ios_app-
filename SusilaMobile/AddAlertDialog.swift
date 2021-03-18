@@ -44,7 +44,7 @@ class AddAlertDialog: UIView {
         line.backgroundColor = UIColor.gray
         
         lblAddToLibrary = UILabel(frame: CGRect(x: 15, y: lblTitle.frame.height+45, width: self.frame.width - 30, height: 20))
-        lblAddToLibrary.text = NSLocalizedString("Addtolibrary".localized(using: "Localizable"), comment: "")
+        lblAddToLibrary.text = "Addtolibrary".localizedString
         lblAddToLibrary.textAlignment = NSTextAlignment.center
         lblAddToLibrary.font = UIFont.systemFont(ofSize: 17)
         lblAddToLibrary.textColor = Constants.color_brand
@@ -53,7 +53,7 @@ class AddAlertDialog: UIView {
         line2.backgroundColor = UIColor.gray
         
         lblAddToPlaylist = UILabel(frame: CGRect(x: 15, y: lblTitle.frame.height+lblAddToLibrary.frame.height+75, width: self.frame.width - 30, height: 20))
-        lblAddToPlaylist.text = NSLocalizedString("AddtoPlaylist".localized(using: "Localizable"), comment: "")+" >"
+        lblAddToPlaylist.text = "AddtoPlaylist".localizedString + " >"
         lblAddToPlaylist.textAlignment = NSTextAlignment.center
         lblAddToPlaylist.font = UIFont.systemFont(ofSize: 17)
         lblAddToPlaylist.textColor = Constants.color_brand

@@ -21,29 +21,55 @@ class SMMainMenuViewController: UIViewController {
     @IBOutlet weak var logoutContactSupportConstraint: NSLayoutConstraint!
     @IBOutlet weak var btnChildMode: UIButton!
     @IBOutlet var menuView: UIView!
-   // @IBOutlet weak var btnGuide: UIButton!
+    // @IBOutlet weak var btnGuide: UIButton!
     @IBOutlet weak var btnSettings: UIButton!
     @IBOutlet weak var btnContactSupport: UIButton!
     @IBOutlet weak var btLogOut: UIButton!
     
     weak var homeNavController : UINavigationController!
-    var remoteConfig: RemoteConfig!
+    var remoteConfig: RemoteConfig = RemoteConfig.remoteConfig()
     var myHomeViewController : UIViewController!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        memberName.text = "Welcome \(Preferences.getUsername() ?? "")"
-        
-        if let name = Preferences.getUsername() {
+        checkReviewStatus()
+        memberName.text = "Welcome \(UserDefaultsManager.getUsername() ?? "")"
+        btnChildMode.setTitle(NSLocalizedString("CHILD_MODE".localized(using: "Localizable"), comment: ""), for: .normal)
+    }
+    
+    
+    private func checkReviewStatus(){
+        getRemoteConfig {
             
-            if name == "Rashminda@1234" {
-//                self.heightPackageConstrain.constant = 0.0;
-//                self.topPackageContrain.constant = 0.0;
+            if AppStoreManager.IS_ON_REVIEW{
+                //                self.heightPackageConstrain.constant = 0.0;
+                //                self.topPackageContrain.constant = 0.0;
                 self.btnPackage.isHidden = true
             }
         }
-        
-        btnChildMode.setTitle(NSLocalizedString("CHILD_MODE".localized(using: "Localizable"), comment: ""), for: .normal)
+    }
+    
+    private func getRemoteConfig(onSuccess:@escaping ()->()){
+        var expirationDuration = 3600
+//        if remoteConfig.configSettings.isDeveloperModeEnabled {
+//            expirationDuration = 0
+//        }
+        remoteConfig.fetch(withExpirationDuration: TimeInterval(expirationDuration)) { (status, error) -> Void in
+            if status == .success {
+                self.remoteConfig.fetch { (status, error) in
+                    if status == .success{
+                        self.remoteConfig.activate { (isSuccess, error) in
+                            if isSuccess{
+                                onSuccess()
+                            }
+                        }
+                    }
+                }
+            } else {
+                Log("Error occurred while fetching configs: \(error?.localizedDescription ?? "No error available.")")
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,7 +79,7 @@ class SMMainMenuViewController: UIViewController {
             btnChildMode.isHidden = true
             menuView.backgroundColor = Constants.videoAppBackColor
             memberName.textColor = UIColor.white
-           // btnn n nGuide.titleLabel?.textColor = UIColor.black
+            // btnn n nGuide.titleLabel?.textColor = UIColor.black
             btnPackage.titleLabel?.textColor = UIColor.white
             btnSettings.titleLabel?.textColor = UIColor.white
             btnContactSupport.titleLabel?.textColor = UIColor.white
@@ -64,7 +90,7 @@ class SMMainMenuViewController: UIViewController {
             btnChildMode.isHidden = false
             menuView.backgroundColor = UIColor.black
             memberName.textColor = UIColor.white
-           // btnGuide.titleLabel?.textColor = UIColor.white
+            // btnGuide.titleLabel?.textColor = UIColor.white
             btnPackage.titleLabel?.textColor = UIColor.white
             btnSettings.titleLabel?.textColor = UIColor.white
             btnContactSupport.titleLabel?.textColor = UIColor.white
@@ -108,7 +134,7 @@ class SMMainMenuViewController: UIViewController {
     }
     
     @IBAction func tappedChannelsButton(_ sender: Any) {
-
+        
         let elDrawer: KYDrawerController = (UIApplication.shared.delegate as! AppDelegate).getRootViewController();
         
         homeNavController.viewControllers.removeAll()
@@ -138,15 +164,21 @@ class SMMainMenuViewController: UIViewController {
         self.navigateToPackagePage()
     }
     
-    func navigateToPackagePage() {
-        let elDrawer: KYDrawerController = (UIApplication.shared.delegate as! AppDelegate).getRootViewController();
+    @objc public func navigateToPackagePage() {
+        //        let drawerController: KYDrawerController = (UIApplication.shared.delegate as! AppDelegate).getRootViewController();
+        //let controller = storyboard?.instantiateViewController(withIdentifier: "SMPackagePageViewController") as! SMPackagePageViewController
+        //        homeNavController.viewControllers.removeAll()
+        //        homeNavController.setViewControllers([self.myHomeViewController, controller], animated: false)
+        //        elDrawer.mainViewController = homeNavController
+        //        elDrawer.setDrawerState(KYDrawerController.DrawerState.closed, animated: true)
         
-        let controller = storyboard?.instantiateViewController(withIdentifier: "SMPackagePageViewController") as! SMPackagePageViewController
-        
+        let drawerController: KYDrawerController = (UIApplication.shared.delegate as! AppDelegate).getRootViewController();
+        let subscriptionViewController = UIHelper.makeViewController(in: .New, viewControllerName: .SubscriptionVC) as! SubscriptionViewController
         homeNavController.viewControllers.removeAll()
-        homeNavController.setViewControllers([self.myHomeViewController, controller], animated: false)
-        elDrawer.mainViewController = homeNavController
-        elDrawer.setDrawerState(KYDrawerController.DrawerState.closed, animated: true)
+        homeNavController.setViewControllers([self.myHomeViewController, subscriptionViewController], animated: false)
+        drawerController.mainViewController = homeNavController
+        drawerController.setDrawerState(KYDrawerController.DrawerState.closed, animated: true)
+        
     }
     
     @IBAction func tappedNotificationButton(_ sender: Any) {
@@ -167,8 +199,8 @@ class SMMainMenuViewController: UIViewController {
         let controller = storyboard?.instantiateViewController(withIdentifier: "SMContactUsViewController") as! SMContactUsViewController
         homeNavController.viewControllers.removeAll()
         homeNavController.setViewControllers([self.myHomeViewController, controller], animated: false)
-//        controller.phoneNumberString = remoteConfig[contactTelephoneConfigKey].stringValue!
-//        controller.emailAddressString = remoteConfig[contactEmailConfigKey].stringValue!
+        //        controller.phoneNumberString = remoteConfig[contactTelephoneConfigKey].stringValue!
+        //        controller.emailAddressString = remoteConfig[contactEmailConfigKey].stringValue!
         elDrawer.mainViewController = homeNavController
         elDrawer.setDrawerState(KYDrawerController.DrawerState.closed, animated: true)
         
@@ -197,7 +229,7 @@ class SMMainMenuViewController: UIViewController {
     }
     
     
-    @IBAction func tappedLogoutButton(_ sender: AnyObject) {
+    @IBAction func tappedLogoutButton(_ sender : AnyObject) {
         
         
         let alertTitle = NSLocalizedString("LOGOUT_CONFIRM_ALERT_TITLE".localized(using: "Localizable"), comment: "")

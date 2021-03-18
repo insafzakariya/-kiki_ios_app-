@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CollapsibleTableViewCell: UITableViewCell {
     var playerView:PlayerView!
@@ -14,7 +15,8 @@ class CollapsibleTableViewCell: UITableViewCell {
         didSet {
             self.nameLabel.text = song.name
             self.detailLabel.text = song.description
-            self.imgVw.downloadImage(from: URL(string: song.image!)!)
+            self.imgVw.kf.setImage(with: URL(string: song.image!)!)
+//            self.imgVw.downloadImage(from: URL(string: song.image!)!)
         }
     }
     var index: Int!

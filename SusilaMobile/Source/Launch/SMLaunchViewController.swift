@@ -22,7 +22,7 @@ class SMLaunchViewController: UIViewController {
             bgImageView.image = UIImage(named: "BGImage_iPhone4s")
         }
         
-        if let accessToken = Preferences.getAccessToken(), !accessToken.isEmpty{
+        if let accessToken = UserDefaultsManager.getAccessToken(), !accessToken.isEmpty{
             checkKeepMeLogin()
             
         }else{
@@ -80,8 +80,6 @@ class SMLaunchViewController: UIViewController {
     func checkKeepMeLogin(){
         let api = ApiClient()
         api.authLoginWithAccessToken(success: { (data, code) -> Void in
-            
-            
             let jsonData = JSON(data as Any)
             NSLog("authLoginWithAccessToken : \(jsonData)")
             
@@ -97,17 +95,17 @@ class SMLaunchViewController: UIViewController {
 //                                        mobileNumber: jsonData[AuthUser.JsonKeys.mobile_number].string)
 //                
                 
-                Preferences.setIsActiveUser(jsonData[AuthUser.JsonKeys.verified].bool ?? false)
-                Preferences.setAccessToken(jsonData[AuthUser.JsonKeys.access_token].string ?? nil)
-                Preferences.setUsername(jsonData[AuthUser.JsonKeys.name].string ?? "")
-                Preferences.setGender(jsonData[AuthUser.JsonKeys.gender].string ?? "")
-                Preferences.setLangauge(jsonData[AuthUser.JsonKeys.language].string ?? "")
-                Preferences.setMobileNo(jsonData[AuthUser.JsonKeys.mobile_number].string ?? "")
-                Preferences.setBirthDate(jsonData[AuthUser.JsonKeys.date_of_birth].string ?? "")
+                UserDefaultsManager.setIsActiveUser(jsonData[AuthUser.JsonKeys.verified].bool ?? false)
+                UserDefaultsManager.setAccessToken(jsonData[AuthUser.JsonKeys.access_token].string ?? nil)
+                UserDefaultsManager.setUsername(jsonData[AuthUser.JsonKeys.name].string ?? "")
+                UserDefaultsManager.setGender(jsonData[AuthUser.JsonKeys.gender].string ?? "")
+                UserDefaultsManager.setLangauge(jsonData[AuthUser.JsonKeys.language].string ?? "")
+                UserDefaultsManager.setMobileNo(jsonData[AuthUser.JsonKeys.mobile_number].string ?? "")
+                UserDefaultsManager.setBirthDate(jsonData[AuthUser.JsonKeys.date_of_birth].string ?? "")
                 
-                Preferences.setCountryCode(jsonData[AuthUser.JsonKeys.country].string ?? "")
+                UserDefaultsManager.setCountryCode(jsonData[AuthUser.JsonKeys.country].string ?? "")
                 
-                if Preferences.getIsActiveUser(){
+                if UserDefaultsManager.getIsActiveUser(){
                     (UIApplication.shared.delegate as! AppDelegate).gotoHomeView()
                 }else{
                     self.goToRegisterInfoView()
@@ -116,7 +114,7 @@ class SMLaunchViewController: UIViewController {
                 
             default:
                 let error = Common.getErrorFromJson(description: jsonData[ErrorJsonKeys.errorMessage].string ?? "", errorType: "\(jsonData[ErrorJsonKeys.errorCode].int ?? -1)", errorCode: jsonData[ErrorJsonKeys.errorCode].int ?? -1)
-                Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: error.localizedDescription)
+                Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: error.localizedDescription)
                 Common.logout()
             }
             

@@ -9,24 +9,17 @@
 import Foundation
 import SwiftyJSON
 
-@objc protocol LoginDelegate {
-    /**
-     Executes when the login API call retrieves the result.
-     
-     - parameter status: true if successfully logged in. false if not.
-     - parameter error:  Login error.
-     */
-    @objc optional func loginCallFinished(_ status: Bool, error: NSError?, userInfo: [String: AnyObject]?)
-    
-}
-
-
 class SMLoginViewModel: NSObject {
-
+    
     fileprivate let api = ApiClient()
     
-    var delegate: LoginDelegate?
     
+    override init() {
+        super.init()
+        if kAPIBaseUrl == ""{
+            
+        }
+    }
     
     /**
      Validates user input in the login view.
@@ -38,69 +31,39 @@ class SMLoginViewModel: NSObject {
      */
     func validate(username: String, password: String) -> StatusCode {
         if username.isEmpty || password.isEmpty {
-            return .failedValidation(NSLocalizedString("LOGIN_EMPTY_FIELD_ERROR_ALERT_MESSAGE".localized(using: "Localizable"), comment: ""))
+            return .failedValidation("LOGIN_EMPTY_FIELD_ERROR_ALERT_MESSAGE".localizedString)
         }
         
         return .passedValidation
     }
     
     
-    func login(username: String, password: String) {
+    func login(username: String, password: String,onCompleted:@escaping (_ isSucess:Bool,_ error:Error?)->()) {
         api.loginWithUsername(username: username, password: password, authMethod: AuthMethod.CUSTOM, success: { (data, code) -> Void in
-            
             let jsonData = JSON(data as Any)
-            NSLog("userLogin : \(jsonData)")
-            
+            Log("userLogin : \(jsonData)")
+            Log("HTTP Status Code: \(code)")
             switch code {
             case 200:
-                
-                //            if jsonData[AuthUser.JsonKeys.verified].bool ?? false{
-                
-//                let authUser = AuthUser(id: jsonData[AuthUser.JsonKeys.id].int ?? -1 ,
-//                                        name: jsonData[AuthUser.JsonKeys.name].string ?? "",
-//                                        accessToken: jsonData[AuthUser.JsonKeys.access_token].string ?? "",
-//                                        dateOfBirth: jsonData[AuthUser.JsonKeys.date_of_birth].string,
-//                                        gender: AuthUser.getGender(text: jsonData[AuthUser.JsonKeys.gender].string ?? "") ,
-//                                        language: AuthUser.getLanguage(text: jsonData[AuthUser.JsonKeys.language].string ?? "") ,
-//                                        mobileNumber: jsonData[AuthUser.JsonKeys.mobile_number].string)
-                
-                //Preferences.setUser(authUser)
-                
-//                let encodedData = NSKeyedArchiver.archivedData(withRootObject: authUser)
-//                UserDefaults.standard.set(encodedData, forKey: "AuthUser")
-//                
-//                // retrieving a value for a key
-//                if let data = UserDefaults.standard.data(forKey: "AuthUser"),
-//                    let myPeopleList = NSKeyedUnarchiver.unarchiveObject(with: data) as? [AuthUser] {
-//                    myPeopleList.forEach({print( $0.name, $0.id)})  // Joe 10
-//                } else {
-//                    print("There is an issue")
-//                }
-                Preferences.setIsActiveUser(jsonData[AuthUser.JsonKeys.verified].bool ?? false)
-                Preferences.setAccessToken(jsonData[AuthUser.JsonKeys.access_token].string ?? nil)
-                Preferences.setUsername(jsonData[AuthUser.JsonKeys.name].string ?? "")
-                Preferences.setGender(jsonData[AuthUser.JsonKeys.gender].string ?? "")
-                Preferences.setLangauge(jsonData[AuthUser.JsonKeys.language].string ?? "")
-                Preferences.setMobileNo(jsonData[AuthUser.JsonKeys.mobile_number].string ?? "")
-                Preferences.setBirthDate(jsonData[AuthUser.JsonKeys.date_of_birth].string ?? "")
-                Preferences.setCountryCode(jsonData[AuthUser.JsonKeys.country].string ?? "")
-                Preferences.setUserId(jsonData[AuthUser.JsonKeys.id].stringValue)
-                self.delegate?.loginCallFinished!(true, error: nil, userInfo: nil)
-                //            }else{
-                //                Common.logout()
-                //                self.delegate?.loginCallFinished!(false, error: ErrorHandler.WrongUserCredentials, userInfo: nil)
-                //            }
+                UserDefaultsManager.setIsActiveUser(jsonData[AuthUser.JsonKeys.verified].bool ?? false)
+                UserDefaultsManager.setAccessToken(jsonData[AuthUser.JsonKeys.access_token].string ?? nil)
+                UserDefaultsManager.setUsername(jsonData[AuthUser.JsonKeys.name].string ?? "")
+                UserDefaultsManager.setGender(jsonData[AuthUser.JsonKeys.gender].string ?? "")
+                UserDefaultsManager.setLangauge(jsonData[AuthUser.JsonKeys.language].string ?? "")
+                UserDefaultsManager.setMobileNo(jsonData[AuthUser.JsonKeys.mobile_number].string ?? "")
+                UserDefaultsManager.setBirthDate(jsonData[AuthUser.JsonKeys.date_of_birth].string ?? "")
+                UserDefaultsManager.setCountryCode(jsonData[AuthUser.JsonKeys.country].string ?? "")
+                UserDefaultsManager.setUserId(jsonData[AuthUser.JsonKeys.id].stringValue)
+                onCompleted(true,nil)
             default:
                 let error = Common.getErrorFromJson(description: jsonData[ErrorJsonKeys.errorMessage].string ?? "", errorType: "\(jsonData[ErrorJsonKeys.errorCode].int ?? -1)", errorCode: jsonData[ErrorJsonKeys.errorCode].int ?? -1)
-                self.delegate?.loginCallFinished!(false, error: error, userInfo: nil)
-            
+                Log(error.localizedDescription)
+                onCompleted(false,error)
             }
-            
-            
         }) { (error) -> Void in
             Common.logout()
-            NSLog("Error (Login): \(error.localizedDescription)")
-            self.delegate?.loginCallFinished!(false, error: error, userInfo: nil)
+            Log("Error (Login): \(error.localizedDescription)")
+            onCompleted(false,error)
         }
     }
     func requestMobileCode() {
@@ -109,18 +72,18 @@ class SMLoginViewModel: NSObject {
         api.requestPhoneCode(success: { (data, code) -> Void in
             
             let jsonData = JSON(data as Any)
-            NSLog("requestMobileCode : \(jsonData)")
+            Log("requestMobileCode : \(jsonData)")
             
             switch code {
             case 200, 201:
                 if (jsonData[AuthUser.JsonKeys.mobno].string) != "" || (jsonData[AuthUser.JsonKeys.mobno].string) != nil{
-                    Preferences.setWhitList(true)
-                    Preferences.setMobeCode(jsonData[AuthUser.JsonKeys.mobno].string ?? "")
+                    UserDefaultsManager.setWhitList(true)
+                    UserDefaultsManager.setMobeCode(jsonData[AuthUser.JsonKeys.mobno].string ?? "")
                 }
                 else{
-                    Preferences.setWhitList(false)
-//                    (jsonData[AuthUser.JsonKeys.mobno].string ?? "")
-
+                    UserDefaultsManager.setWhitList(false)
+                    //                    (jsonData[AuthUser.JsonKeys.mobno].string ?? "")
+                    
                 }
                 
             default:

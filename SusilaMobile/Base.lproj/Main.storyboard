@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SMG-wA-GWM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SMG-wA-GWM">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -91,10 +91,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1k9-Za-6nJ">
-                                        <rect key="frame" x="34.333333333333343" y="518" width="305.66666666666663" height="70"/>
+                                        <rect key="frame" x="34" y="518" width="306" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your SMS verification code" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rn2-3A-bSX">
-                                                <rect key="frame" x="0.0" y="8" width="305.66666666666669" height="50"/>
+                                                <rect key="frame" x="0.0" y="8" width="306" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="wKH-l6-YfP"/>
                                                 </constraints>
@@ -115,13 +115,13 @@
                                         <rect key="frame" x="0.0" y="608" width="374" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code K" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKs-wZ-pHF">
-                                                <rect key="frame" x="8.0000000000000036" y="8" width="57.333333333333343" height="20"/>
+                                                <rect key="frame" x="7.9999999999999964" y="8" width="54.666666666666657" height="20"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="wUF-ym-3e6" customClass="TextField" customModule="SusilaMobile" customModuleProvider="target">
-                                                <rect key="frame" x="80.333333333333343" y="4" width="285.66666666666663" height="28"/>
+                                                <rect key="frame" x="77.666666666666657" y="4" width="288.33333333333337" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="kMQ-zM-LMo"/>
                                                 </constraints>
@@ -541,7 +541,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="separatorColor" red="0.90196084976196289" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="viewFlipsideBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SMEpisodesTableViewCell" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SMEpisodesTableViewCell" rowHeight="120" id="XOz-KY-HSs" customClass="SMEpisodesTableViewCell" customModule="SusilaMobile" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="120"/>
@@ -634,7 +634,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3yr-rK-LNn" firstAttribute="top" secondItem="Ezf-Ae-32u" secondAttribute="bottom" id="Lh7-6n-Kni"/>
                             <constraint firstItem="Ezf-Ae-32u" firstAttribute="top" secondItem="Krt-km-4yG" secondAttribute="top" id="SRq-fh-bWS"/>
@@ -815,7 +815,7 @@
                                                         <rect key="frame" x="48" y="352.66666666666669" width="319" height="147"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscribe to watch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWc-wV-oHL">
-                                                                <rect key="frame" x="86.000000000000014" y="15" width="147.33333333333337" height="21"/>
+                                                                <rect key="frame" x="86.333333333333329" y="15" width="146.33333333333337" height="21"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="21" id="OFm-MO-Jq7"/>
@@ -835,7 +835,7 @@ to exclusive content from Kiki.</string>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PSr-Tv-wh2">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PSr-Tv-wh2">
                                                                 <rect key="frame" x="56.666666666666686" y="78" width="206" height="26"/>
                                                                 <color key="backgroundColor" red="0.22539353370000001" green="0.50164419410000005" blue="0.51373338700000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <constraints>
@@ -855,7 +855,7 @@ to exclusive content from Kiki.</string>
                                                                     <action selector="gotoSubcription:" destination="TBK-sV-Pxm" eventType="touchUpInside" id="mzj-SJ-a5p"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIm-IX-iBK">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIm-IX-iBK">
                                                                 <rect key="frame" x="130" y="109" width="59" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="18" id="Unq-IC-iD1"/>
@@ -1156,7 +1156,7 @@ to exclusive content from Kiki.</string>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYB-uy-Kn2" userLabel="SubtitleMenuView">
                                                 <rect key="frame" x="51" y="691" width="53" height="90"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGM-ga-F3G">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGM-ga-F3G">
                                                         <rect key="frame" x="3" y="0.0" width="47" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="47" id="Aco-UG-YvU"/>
@@ -1164,37 +1164,37 @@ to exclusive content from Kiki.</string>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <state key="normal" title="None">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="titleColor" systemColor="darkTextColor"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="onSelectSubtitleLanguage:" destination="TBK-sV-Pxm" eventType="touchUpInside" id="wij-wU-kKA"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dq3-Og-Tf6">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dq3-Og-Tf6">
                                                         <rect key="frame" x="3" y="21" width="47" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <state key="normal" title="English">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="titleColor" systemColor="darkTextColor"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="onSelectSubtitleLanguage:" destination="TBK-sV-Pxm" eventType="touchUpInside" id="nkJ-PQ-CMV"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJE-ny-t6T">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJE-ny-t6T">
                                                         <rect key="frame" x="3" y="42" width="47" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <state key="normal" title="Sinhala">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="titleColor" systemColor="darkTextColor"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="onSelectSubtitleLanguage:" destination="TBK-sV-Pxm" eventType="touchUpInside" id="n3e-Zo-7b2"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7L-Tj-5V0">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7L-Tj-5V0">
                                                         <rect key="frame" x="3" y="63" width="47" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <state key="normal" title="Tamil">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="titleColor" systemColor="darkTextColor"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="onSelectSubtitleLanguage:" destination="TBK-sV-Pxm" eventType="touchUpInside" id="ptp-qD-sih"/>
@@ -1225,18 +1225,18 @@ to exclusive content from Kiki.</string>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFZ-zh-ozW" userLabel="ResolutionMenuView">
                                                 <rect key="frame" x="107" y="719" width="50" height="62"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6AT-MW-AZZ">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6AT-MW-AZZ">
                                                         <rect key="frame" x="0.0" y="2" width="50" height="29"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="720p">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="titleColor" systemColor="darkTextColor"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="onClickResolutionItem:" destination="TBK-sV-Pxm" eventType="touchUpInside" id="gtM-Cn-qW9"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1I-Hk-iws">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1I-Hk-iws">
                                                         <rect key="frame" x="0.0" y="31" width="50" height="29"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1355,6 +1355,7 @@ to exclusive content from Kiki.</string>
                     <connections>
                         <outlet property="advertiesemetnView" destination="ath-qu-mqe" id="Ytr-r9-NYI"/>
                         <outlet property="advetisementViewContoller" destination="ath-qu-mqe" id="5sm-Ll-egD"/>
+                        <outlet property="alertMessageLabel" destination="Liu-25-WiG" id="PxP-h0-pHT"/>
                         <outlet property="blockingLabel" destination="8RB-vN-YCf" id="Dy5-GT-Vhz"/>
                         <outlet property="fullscreenButton" destination="hUj-Ld-3jC" id="DlI-po-lGm"/>
                         <outlet property="labelSubscribeToWatech" destination="LWc-wV-oHL" id="Ssv-zd-hRn"/>
@@ -1366,6 +1367,7 @@ to exclusive content from Kiki.</string>
                         <outlet property="resolutionMenuView" destination="rFZ-zh-ozW" id="Ayk-YE-zW8"/>
                         <outlet property="subcriptionImage" destination="r7p-h9-o2L" id="EYs-wD-HOa"/>
                         <outlet property="subcriptionView" destination="gJb-aG-0N1" id="lLz-Ut-LLY"/>
+                        <outlet property="subscribeNowButton" destination="PSr-Tv-wh2" id="7o7-NT-u1W"/>
                         <outlet property="subtitleButton" destination="jwN-OK-aCy" id="Mnm-D0-TM0"/>
                         <outlet property="subtitleLabel" destination="b5g-BN-Cr8" id="Mhv-ji-q2M"/>
                         <outlet property="subtitleMenuView" destination="xYB-uy-Kn2" id="QcT-cn-uhl"/>
@@ -1917,7 +1919,7 @@ to exclusive content from Kiki.</string>
                                     <constraint firstAttribute="width" constant="20" id="eMk-nJ-svO"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" tag="99" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8C-zO-RR7">
+                            <button opaque="NO" tag="99" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8C-zO-RR7">
                                 <rect key="frame" x="20" y="83" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="BMI-EY-cBI"/>
@@ -1928,7 +1930,7 @@ to exclusive content from Kiki.</string>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfP-gB-n3u">
                                 <rect key="frame" x="20" y="121" width="374" height="0.6666666666666714"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" systemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.67000000000000004" id="g76-Gg-OUF"/>
                                 </constraints>
@@ -1940,7 +1942,7 @@ to exclusive content from Kiki.</string>
                                     <constraint firstAttribute="height" constant="20" id="T3Z-To-q6P"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYb-gR-qZu">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYb-gR-qZu">
                                 <rect key="frame" x="20" y="138" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="aLd-Ao-jTJ"/>
@@ -1960,7 +1962,7 @@ to exclusive content from Kiki.</string>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAA-WV-fOF">
                                 <rect key="frame" x="20" y="176" width="374" height="0.66666666666665719"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" systemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.67000000000000004" id="Ke7-uh-PSh"/>
                                 </constraints>
@@ -2007,7 +2009,7 @@ to exclusive content from Kiki.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8E-UR-qH4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="-1256"/>
+            <point key="canvasLocation" x="1813" y="-1245"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="F9P-OA-Ebs">
@@ -2041,7 +2043,7 @@ to exclusive content from Kiki.</string>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LW8-1d-DWY">
                                 <rect key="frame" x="20" y="88" width="374" height="0.6666666666666714"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" systemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.67000000000000004" id="vfq-Ci-MhN"/>
                                 </constraints>
@@ -2091,7 +2093,7 @@ to exclusive content from Kiki.</string>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cry-hQ-kEZ">
                                 <rect key="frame" x="20" y="157.66666666666666" width="374" height="0.66666666666665719"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" systemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.67000000000000004" id="4AO-Rx-XEY"/>
                                 </constraints>
@@ -2105,13 +2107,13 @@ to exclusive content from Kiki.</string>
                                 <color key="textColor" red="0.0" green="0.66274509800000003" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAt-vv-Gyw">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAt-vv-Gyw">
                                 <rect key="frame" x="20" y="130" width="374" height="30"/>
                                 <connections>
                                     <segue destination="7fw-S2-fTk" kind="push" id="MmL-Xa-YNM"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7b-ru-qGO">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7b-ru-qGO">
                                 <rect key="frame" x="20" y="136" width="67" height="42"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2143,7 +2145,7 @@ to exclusive content from Kiki.</string>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="ypz-WL-WD7"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" tag="991" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGL-Mx-1j5">
+                            <button opaque="NO" tag="991" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGL-Mx-1j5">
                                 <rect key="frame" x="20" y="204" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="Uq4-ae-RlS"/>
@@ -2175,7 +2177,7 @@ to exclusive content from Kiki.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="992" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tF6-hX-CiX">
+                            <button opaque="NO" tag="992" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tF6-hX-CiX">
                                 <rect key="frame" x="20" y="246" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="4RR-UO-0oH"/>
@@ -2188,7 +2190,7 @@ to exclusive content from Kiki.</string>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rxr-zV-kF7">
                                 <rect key="frame" x="20" y="330" width="374" height="0.66666666666668561"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" systemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.67000000000000004" id="ZBk-ly-B1D"/>
                                 </constraints>
@@ -2214,7 +2216,7 @@ to exclusive content from Kiki.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="993" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8V-Mx-eNb">
+                            <button opaque="NO" tag="993" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8V-Mx-eNb">
                                 <rect key="frame" x="20" y="288" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="iTE-rf-m3Q"/>
@@ -2225,7 +2227,7 @@ to exclusive content from Kiki.</string>
                                     <action selector="tappedLanguageButton:" destination="h6H-Nl-zAI" eventType="touchUpInside" id="YwK-8N-UYO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bl-H6-4iF">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bl-H6-4iF">
                                 <rect key="frame" x="40" y="355.66666666666669" width="334" height="50"/>
                                 <color key="backgroundColor" red="0.22539353370666504" green="0.50164419412612915" blue="0.5137333869934082" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -2392,7 +2394,7 @@ to exclusive content from Kiki.</string>
                                                     <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ba4-1F-zGZ">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ba4-1F-zGZ">
                                                     <rect key="frame" x="374" y="15" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="EXx-NB-sMM"/>
@@ -2429,7 +2431,7 @@ to exclusive content from Kiki.</string>
                                     <outlet property="delegate" destination="pHi-Pn-cjS" id="iVu-c6-1QB"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kt2-fj-zNb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kt2-fj-zNb">
                                 <rect key="frame" x="304" y="49" width="90" height="40"/>
                                 <color key="backgroundColor" red="0.22352941176470587" green="0.50196078431372548" blue="0.51372549019607838" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -2438,7 +2440,7 @@ to exclusive content from Kiki.</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                                 <state key="normal" title="Clear All">
-                                    <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                    <color key="titleColor" systemColor="tableCellGroupedBackgroundColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2505,7 +2507,7 @@ to exclusive content from Kiki.</string>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R11-fj-a3K">
                                 <rect key="frame" x="20" y="144" width="374" height="0.66666666666665719"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" systemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.67000000000000004" id="aTN-ce-wsA"/>
                                 </constraints>
@@ -2552,7 +2554,7 @@ to exclusive content from Kiki.</string>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWd-0A-fIz">
                                 <rect key="frame" x="20" y="351" width="374" height="0.66666666666668561"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" systemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.67000000000000004" id="KxH-3i-Z1K"/>
                                 </constraints>
@@ -2642,16 +2644,15 @@ to exclusive content from Kiki.</string>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1234" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JdA-8Q-uEn">
-                                <rect key="frame" x="116" y="490" width="182" height="37"/>
+                                <rect key="frame" x="60" y="490" width="294" height="37"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="postal-code"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ek0-TX-uZI">
-                                <rect key="frame" x="40" y="572" width="334" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ek0-TX-uZI">
+                                <rect key="frame" x="30" y="572" width="354" height="48"/>
                                 <color key="backgroundColor" red="0.22539353370000001" green="0.50164419410000005" blue="0.51373338700000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="334" id="hxf-95-3Xt"/>
                                     <constraint firstAttribute="height" constant="48" id="lLQ-FN-b5Z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -2660,10 +2661,7 @@ to exclusive content from Kiki.</string>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="6"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="spinnerColor">
-                                        <color key="value" red="0.22539353370000001" green="0.50164419410000005" blue="0.51373338700000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -2671,7 +2669,7 @@ to exclusive content from Kiki.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please confirm your code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbv-JB-vxE">
-                                <rect key="frame" x="120.66666666666669" y="161" width="171" height="18"/>
+                                <rect key="frame" x="120" y="161" width="172" height="18"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -2685,8 +2683,8 @@ to exclusive content from Kiki.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsZ-jg-cDj">
-                                <rect key="frame" x="165.66666666666666" y="651" width="83" height="29"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsZ-jg-cDj">
+                                <rect key="frame" x="50" y="651" width="314" height="29"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
                                 <state key="normal" title="Resend code">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2699,19 +2697,23 @@ to exclusive content from Kiki.</string>
                         <color key="backgroundColor" red="0.097596763959390875" green="0.097596763959390875" blue="0.097596763959390875" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="g43-Pr-aXu" firstAttribute="leading" secondItem="YZ3-15-tQf" secondAttribute="leadingMargin" constant="2" id="3Wf-0m-Nin"/>
+                            <constraint firstAttribute="trailing" secondItem="ek0-TX-uZI" secondAttribute="trailing" constant="30" id="5qX-X9-uJS"/>
+                            <constraint firstAttribute="trailing" secondItem="JdA-8Q-uEn" secondAttribute="trailing" constant="60" id="9Hq-mi-I4K"/>
+                            <constraint firstAttribute="trailing" secondItem="lsZ-jg-cDj" secondAttribute="trailing" constant="50" id="Bnw-Q2-sx8"/>
                             <constraint firstItem="LUb-Bj-HNG" firstAttribute="top" secondItem="ek0-TX-uZI" secondAttribute="bottom" constant="242" id="Hgl-VU-wmr"/>
-                            <constraint firstItem="lsZ-jg-cDj" firstAttribute="centerX" secondItem="ek0-TX-uZI" secondAttribute="centerX" id="M9P-8b-EJD"/>
+                            <constraint firstItem="ek0-TX-uZI" firstAttribute="top" secondItem="JdA-8Q-uEn" secondAttribute="bottom" constant="45" id="Q3k-IW-0Fb"/>
                             <constraint firstItem="iBW-bJ-GoF" firstAttribute="top" secondItem="oxS-Vb-8Wp" secondAttribute="bottom" constant="8" symbolic="YES" id="QPs-H7-lmo"/>
                             <constraint firstItem="sbv-JB-vxE" firstAttribute="centerX" secondItem="YZ3-15-tQf" secondAttribute="centerX" constant="-1" id="U7k-Cv-rgf"/>
                             <constraint firstItem="iBW-bJ-GoF" firstAttribute="leading" secondItem="YZ3-15-tQf" secondAttribute="leadingMargin" constant="1" id="WCF-WJ-B97"/>
+                            <constraint firstItem="ek0-TX-uZI" firstAttribute="leading" secondItem="YZ3-15-tQf" secondAttribute="leading" constant="30" id="Y4N-8N-nzk"/>
+                            <constraint firstItem="lsZ-jg-cDj" firstAttribute="leading" secondItem="YZ3-15-tQf" secondAttribute="leading" constant="50" id="bYH-y8-q9X"/>
                             <constraint firstItem="sbv-JB-vxE" firstAttribute="top" secondItem="oxS-Vb-8Wp" secondAttribute="bottom" constant="117" id="baG-RE-mZh"/>
+                            <constraint firstItem="ek0-TX-uZI" firstAttribute="centerX" secondItem="YZ3-15-tQf" secondAttribute="centerX" id="dSo-Uq-CGB"/>
                             <constraint firstItem="lsZ-jg-cDj" firstAttribute="top" secondItem="ek0-TX-uZI" secondAttribute="bottom" constant="31" id="fOJ-mS-09i"/>
-                            <constraint firstItem="ek0-TX-uZI" firstAttribute="top" secondItem="JdA-8Q-uEn" secondAttribute="bottom" constant="45" id="fiw-bU-MWO"/>
                             <constraint firstItem="g43-Pr-aXu" firstAttribute="top" secondItem="sbv-JB-vxE" secondAttribute="bottom" constant="8" symbolic="YES" id="jAF-X8-N5s"/>
                             <constraint firstItem="g43-Pr-aXu" firstAttribute="centerX" secondItem="sbv-JB-vxE" secondAttribute="centerX" constant="1" id="kRx-kR-fPh"/>
-                            <constraint firstItem="JdA-8Q-uEn" firstAttribute="leading" secondItem="YZ3-15-tQf" secondAttribute="leadingMargin" constant="96" id="kVV-U4-xOx"/>
-                            <constraint firstItem="ek0-TX-uZI" firstAttribute="centerX" secondItem="JdA-8Q-uEn" secondAttribute="centerX" id="q9a-Tz-JCz"/>
-                            <constraint firstItem="JdA-8Q-uEn" firstAttribute="centerX" secondItem="YZ3-15-tQf" secondAttribute="centerX" id="tRa-I5-ESn"/>
+                            <constraint firstItem="JdA-8Q-uEn" firstAttribute="leading" secondItem="YZ3-15-tQf" secondAttribute="leading" constant="60" id="uTM-DG-Ga9"/>
+                            <constraint firstItem="JdA-8Q-uEn" firstAttribute="centerX" secondItem="YZ3-15-tQf" secondAttribute="centerX" id="zzg-ex-BPu"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2747,7 +2749,7 @@ to exclusive content from Kiki.</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter new password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQM-9a-ujn">
-                                <rect key="frame" x="138.66666666666666" y="274" width="136.99999999999997" height="18"/>
+                                <rect key="frame" x="139" y="274" width="136" height="18"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -2807,7 +2809,7 @@ to exclusive content from Kiki.</string>
                                     <outlet property="delegate" destination="8sN-Kt-AHw" id="DLx-Uk-Aph"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LjD-cx-w9g">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LjD-cx-w9g">
                                 <rect key="frame" x="40" y="446" width="334" height="48"/>
                                 <color key="backgroundColor" red="0.22352941179999999" green="0.50196078430000002" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -2867,14 +2869,14 @@ to exclusive content from Kiki.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please login with your new password." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8a-bB-vY4">
-                                <rect key="frame" x="82.333333333333329" y="326" width="249.66666666666669" height="18"/>
+                                <rect key="frame" x="82" y="326" width="250" height="18"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuz-gw-SGS">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuz-gw-SGS">
                                 <rect key="frame" x="40" y="368" width="334" height="48"/>
-                                <color key="backgroundColor" red="0.22539353370000001" green="0.50164419410000005" blue="0.51373338700000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.18823529411764706" green="0.50980392156862742" blue="0.51764705882352935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Zc5-1d-Opk"/>
                                     <constraint firstAttribute="width" constant="334" id="om8-oI-8pt"/>
@@ -3067,7 +3069,7 @@ to exclusive content from Kiki.</string>
                                     </tabBar>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wYn-mH-13F" customClass="PlayerView" customModule="SusilaMobile" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="692" width="414" height="70"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="Sqq-3R-bKo"/>
                                         </constraints>
@@ -3101,7 +3103,7 @@ to exclusive content from Kiki.</string>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="TPK-11-GEQ">
                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="Qsk-ag-UPr">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1Cx-4T-9Bv" userLabel="Account">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="1Cx-4T-9Bv" userLabel="Account">
                                 <rect key="frame" x="20" y="6" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3116,7 +3118,7 @@ to exclusive content from Kiki.</string>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="82L-lg-o2F">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ugc-DQ-4N8" userLabel="Search">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ugc-DQ-4N8" userLabel="Search">
                                 <rect key="frame" x="362" y="6" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -3254,7 +3256,7 @@ to exclusive content from Kiki.</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pjx-r4-Clu">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pjx-r4-Clu">
                                         <rect key="frame" x="300" y="10" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="GtC-9I-XEi"/>
@@ -3301,7 +3303,7 @@ to exclusive content from Kiki.</string>
                                         <color key="textColor" red="0.086274509799999996" green="0.59607843140000005" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="miW-XY-dFP">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="miW-XY-dFP">
                                         <rect key="frame" x="210" y="10" width="154" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="RCG-WI-wOi"/>
@@ -3395,24 +3397,24 @@ to exclusive content from Kiki.</string>
                         <viewControllerLayoutGuide type="bottom" id="was-Dn-BVs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="97u-Za-JZq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="0Qe-YU-dkX">
-                                <rect key="frame" x="141.66666666666666" y="165" width="130.99999999999997" height="128"/>
+                                <rect key="frame" x="141.66666666666666" y="138" width="130.99999999999997" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="131" id="Iih-E2-GEw"/>
                                     <constraint firstAttribute="height" constant="128" id="Jgd-95-r5f"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose language" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdO-Tc-wzZ">
-                                <rect key="frame" x="148.66666666666666" y="325" width="116.99999999999997" height="18"/>
+                                <rect key="frame" x="148.66666666666666" y="298" width="116.99999999999997" height="18"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHe-GH-ZU1">
-                                <rect key="frame" x="40" y="363" width="334" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHe-GH-ZU1">
+                                <rect key="frame" x="40" y="336" width="334" height="50"/>
                                 <color key="backgroundColor" red="0.30196076630000002" green="0.30196076630000002" blue="0.30196073649999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="334" id="8G1-wQ-8yW"/>
@@ -3431,8 +3433,8 @@ to exclusive content from Kiki.</string>
                                     <action selector="sinhalaBtn:" destination="o1k-UV-rVP" eventType="touchUpInside" id="wSs-1k-P1M"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zpf-gK-ubC">
-                                <rect key="frame" x="40" y="424" width="334" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zpf-gK-ubC">
+                                <rect key="frame" x="40" y="397" width="334" height="48"/>
                                 <color key="backgroundColor" red="0.30196076630000002" green="0.30196076630000002" blue="0.30196073649999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="334" id="Jet-2d-2qS"/>
@@ -3451,8 +3453,8 @@ to exclusive content from Kiki.</string>
                                     <action selector="tamilBtn:" destination="o1k-UV-rVP" eventType="touchUpInside" id="Q3I-M9-0MO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CV0-0I-Of3">
-                                <rect key="frame" x="40" y="483" width="334" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CV0-0I-Of3">
+                                <rect key="frame" x="40" y="456" width="334" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="334" id="0D8-e6-iKg"/>
@@ -3471,9 +3473,9 @@ to exclusive content from Kiki.</string>
                                     <action selector="engBtn:" destination="o1k-UV-rVP" eventType="touchUpInside" id="kY1-qg-lRA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUv-Il-Ucw">
-                                <rect key="frame" x="40" y="567" width="334" height="50"/>
-                                <color key="backgroundColor" red="0.22539353370000001" green="0.50164419410000005" blue="0.51373338700000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUv-Il-Ucw">
+                                <rect key="frame" x="40" y="540" width="334" height="50"/>
+                                <color key="backgroundColor" red="0.18823529411764706" green="0.50980392156862742" blue="0.51764705882352935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="4NN-Nm-Snb"/>
                                     <constraint firstAttribute="width" constant="334" id="Oy7-dY-8n4"/>
@@ -3607,8 +3609,8 @@ to exclusive content from Kiki.</string>
                                     <action selector="tappedGoogleButton:" destination="NlH-qC-zBC" eventType="touchUpInside" id="qWG-Cu-1xj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nkq-Kb-7Gi">
-                                <rect key="frame" x="155" y="512" width="104" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nkq-Kb-7Gi">
+                                <rect key="frame" x="155" y="573" width="104" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="ycB-vI-4fP"/>
                                 </constraints>
@@ -3628,8 +3630,8 @@ to exclusive content from Kiki.</string>
                                     <segue destination="8sN-Kt-AHw" kind="show" id="Mh9-A6-8Lq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xE-nu-z2x">
-                                <rect key="frame" x="149.66666666666666" y="568" width="114.99999999999997" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xE-nu-z2x">
+                                <rect key="frame" x="149.66666666666666" y="629" width="114.99999999999997" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="B1s-Qg-jc8"/>
                                 </constraints>
@@ -3650,7 +3652,7 @@ to exclusive content from Kiki.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don’t have Facebook or Gmail?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLV-mN-KcA">
-                                <rect key="frame" x="113.00000000000001" y="490" width="188.33333333333337" height="21"/>
+                                <rect key="frame" x="113" y="551" width="188" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="dSH-iq-K1A"/>
                                 </constraints>
@@ -3659,7 +3661,7 @@ to exclusive content from Kiki.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nt6-HW-5LA">
-                                <rect key="frame" x="200.66666666666666" y="546" width="13" height="21"/>
+                                <rect key="frame" x="200.66666666666666" y="607" width="13" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="FwX-uJ-ia1"/>
                                 </constraints>
@@ -3678,17 +3680,27 @@ to exclusive content from Kiki.</string>
                                     <segue destination="o1k-UV-rVP" kind="push" id="4kt-9H-yFb"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KC3-cn-oMS">
+                                <rect key="frame" x="40" y="456" width="334" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="334" id="Es3-2F-Kyt"/>
+                                    <constraint firstAttribute="height" constant="50" id="YIM-Ib-ptd"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="BLV-mN-KcA" firstAttribute="top" secondItem="cf0-ZV-mBt" secondAttribute="bottom" constant="45" id="0s0-GP-ca7"/>
                             <constraint firstItem="Nkq-Kb-7Gi" firstAttribute="centerX" secondItem="vxT-GH-kVg" secondAttribute="centerX" id="2V2-fF-vYo"/>
                             <constraint firstItem="cf0-ZV-mBt" firstAttribute="top" secondItem="8xg-TB-dZn" secondAttribute="bottom" constant="11" id="7Ry-s4-Oh0"/>
                             <constraint firstItem="9xE-nu-z2x" firstAttribute="top" secondItem="nt6-HW-5LA" secondAttribute="bottom" constant="1" id="8XV-nU-5il"/>
                             <constraint firstItem="Nkq-Kb-7Gi" firstAttribute="top" secondItem="BLV-mN-KcA" secondAttribute="bottom" constant="1" id="9be-qo-i8F"/>
+                            <constraint firstItem="BLV-mN-KcA" firstAttribute="top" secondItem="KC3-cn-oMS" secondAttribute="bottom" constant="45" id="Px6-ai-dZZ"/>
+                            <constraint firstItem="KC3-cn-oMS" firstAttribute="centerX" secondItem="vxT-GH-kVg" secondAttribute="centerX" id="Tns-5V-2x9"/>
                             <constraint firstItem="cf0-ZV-mBt" firstAttribute="centerX" secondItem="vxT-GH-kVg" secondAttribute="centerX" id="VWb-HD-hat"/>
                             <constraint firstItem="8xg-TB-dZn" firstAttribute="top" secondItem="yki-bb-c0A" secondAttribute="bottom" constant="70" id="W4a-5V-vOO"/>
                             <constraint firstItem="cf0-ZV-mBt" firstAttribute="centerY" secondItem="vxT-GH-kVg" secondAttribute="centerY" id="Xqg-kh-EX8"/>
+                            <constraint firstItem="KC3-cn-oMS" firstAttribute="top" secondItem="cf0-ZV-mBt" secondAttribute="bottom" constant="11" id="Z1G-Sr-t9Q"/>
                             <constraint firstItem="WHb-Zq-Zg7" firstAttribute="top" secondItem="lD2-Ow-tCR" secondAttribute="bottom" constant="8" id="aPt-CL-Yow"/>
                             <constraint firstItem="BLV-mN-KcA" firstAttribute="centerX" secondItem="vxT-GH-kVg" secondAttribute="centerX" id="cDY-w1-xNh"/>
                             <constraint firstItem="9xE-nu-z2x" firstAttribute="centerX" secondItem="vxT-GH-kVg" secondAttribute="centerX" id="dAf-Ag-n3n"/>
@@ -3709,6 +3721,8 @@ to exclusive content from Kiki.</string>
                         <outlet property="googleBtn" destination="cf0-ZV-mBt" id="1b6-hf-Dfb"/>
                         <outlet property="loginEmailBtn" destination="Nkq-Kb-7Gi" id="IVY-Cl-Ixz"/>
                         <outlet property="orLable" destination="nt6-HW-5LA" id="557-G5-8pX"/>
+                        <outlet property="signInWithAppleHolderView" destination="KC3-cn-oMS" id="7Gj-fm-0Bd"/>
+                        <outlet property="signInWithAppleHolderViewHeightConstraint" destination="YIM-Ib-ptd" id="OXO-Fo-SN5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60N-eV-QMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3724,7 +3738,7 @@ to exclusive content from Kiki.</string>
                         <viewControllerLayoutGuide type="bottom" id="nXf-Qj-C8d"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="m8X-yN-7rB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ctO-ic-FWE">
@@ -3804,7 +3818,7 @@ to exclusive content from Kiki.</string>
                                     <outlet property="delegate" destination="8sN-Kt-AHw" id="s5Z-pM-tik"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDY-7Z-vff">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDY-7Z-vff">
                                 <rect key="frame" x="40" y="500.66666666666674" width="334" height="48"/>
                                 <color key="backgroundColor" red="0.22539353370000001" green="0.50164419410000005" blue="0.51373338700000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -3824,7 +3838,7 @@ to exclusive content from Kiki.</string>
                                     <action selector="tappedLoginButton:" destination="8sN-Kt-AHw" eventType="touchUpInside" id="A7a-OR-Goo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfm-G5-5e4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfm-G5-5e4">
                                 <rect key="frame" x="149" y="561.66666666666663" width="116" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="wvC-zP-LQZ"/>
@@ -3856,7 +3870,7 @@ to exclusive content from Kiki.</string>
                                     <segue destination="NlH-qC-zBC" kind="push" id="hac-DG-uXz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fd-i3-ZLk">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fd-i3-ZLk">
                                 <rect key="frame" x="107" y="599.66666666666663" width="200" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="Emy-cz-QGR"/>
@@ -3920,7 +3934,7 @@ to exclusive content from Kiki.</string>
                         <viewControllerLayoutGuide type="bottom" id="suT-HK-DpB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WAp-D5-Xoi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="xmD-rp-oje">
@@ -4032,7 +4046,7 @@ to exclusive content from Kiki.</string>
                                     <outlet property="delegate" destination="TRi-Ke-NGp" id="Xw5-FN-b4K"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aG-rj-3IY">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aG-rj-3IY">
                                 <rect key="frame" x="40" y="577.66666666666663" width="334" height="48"/>
                                 <color key="backgroundColor" red="0.22352941176470587" green="0.50196078431372548" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -4052,8 +4066,8 @@ to exclusive content from Kiki.</string>
                                     <action selector="tappedRegisterButton:" destination="TRi-Ke-NGp" eventType="touchUpInside" id="mUG-XW-8pa"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Naq-Ag-4IA">
-                                <rect key="frame" x="156" y="638.66666666666663" width="102" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Naq-Ag-4IA">
+                                <rect key="frame" x="155" y="638.66666666666663" width="104" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="hkf-Ht-ccG"/>
                                 </constraints>
@@ -4144,21 +4158,18 @@ to exclusive content from Kiki.</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="0AZ-0j-YOk">
                                 <rect key="frame" x="141.66666666666666" y="105" width="130.99999999999997" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="131" id="4p0-hH-H2G"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="88M-KZ-tsn"/>
                                     <constraint firstAttribute="width" constant="131" id="cxE-Vw-oGG"/>
                                     <constraint firstAttribute="height" constant="128" id="hkp-bR-xmh"/>
                                 </constraints>
                             </imageView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJL-e1-IyK" customClass="CountryPicker" customModule="SusilaMobile" customModuleProvider="target">
-                                <rect key="frame" x="4" y="638" width="406" height="216"/>
+                                <rect key="frame" x="30" y="582" width="354" height="314"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8w-rW-sIU">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8w-rW-sIU">
                                 <rect key="frame" x="40" y="524" width="334" height="48"/>
                                 <color key="backgroundColor" red="0.22539353370000001" green="0.50164419410000005" blue="0.51373338700000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="334" id="O8b-HU-Bij"/>
                                     <constraint firstAttribute="height" constant="48" id="iXB-zt-pp4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
@@ -4191,12 +4202,8 @@ to exclusive content from Kiki.</string>
                                 <rect key="frame" x="40" y="463" width="334" height="48"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oF3-oJ-aV0">
-                                        <rect key="frame" x="62" y="0.0" width="256" height="48"/>
+                                        <rect key="frame" x="62" y="0.0" width="262" height="48"/>
                                         <color key="backgroundColor" red="0.30196076630000002" green="0.30196076630000002" blue="0.30196073649999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="256" id="RvE-ed-LMt"/>
-                                            <constraint firstAttribute="height" constant="48" id="wtz-YT-89T"/>
-                                        </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" keyboardAppearance="alert" textContentType="tel"/>
@@ -4212,69 +4219,22 @@ to exclusive content from Kiki.</string>
                                             <outlet property="delegate" destination="7fw-S2-fTk" id="w7k-Qt-QvW"/>
                                         </connections>
                                     </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNG-WA-I6b">
-                                        <rect key="frame" x="14" y="8" width="42" height="30"/>
-                                        <subviews>
-                                            <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="sri-lanka" translatesAutoresizingMaskIntoConstraints="NO" id="AXd-NA-LJb">
-                                                <rect key="frame" x="0.0" y="0.0" width="21.333333333333332" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="35" id="jjm-RN-pb5"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="▼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoJ-S1-dv0">
-                                                <rect key="frame" x="27" y="6" width="13" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+94" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhK-Zt-dF6">
-                                                <rect key="frame" x="-5" y="6" width="27" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zp7-Vf-Iy1">
-                                                <rect key="frame" x="-5" y="0.0" width="30" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="clH-C0-7HJ"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <connections>
-                                                    <action selector="btnSelectCountryClicked:" destination="7fw-S2-fTk" eventType="touchUpInside" id="DKs-2D-EC6"/>
-                                                    <action selector="countryCodePickerButtonPrssed:" destination="ruL-Pf-zv2" eventType="touchUpInside" id="8PT-Kx-MiY"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="jhK-Zt-dF6" firstAttribute="leading" secondItem="qNG-WA-I6b" secondAttribute="leading" constant="-5" id="2wY-b4-3Ds"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yoJ-S1-dv0" secondAttribute="trailing" constant="2" id="6IL-ew-D2Y"/>
-                                            <constraint firstAttribute="bottom" secondItem="AXd-NA-LJb" secondAttribute="bottom" id="6We-tc-t3g"/>
-                                            <constraint firstItem="zp7-Vf-Iy1" firstAttribute="top" secondItem="qNG-WA-I6b" secondAttribute="top" id="8Fx-wi-oOO"/>
-                                            <constraint firstItem="AXd-NA-LJb" firstAttribute="leading" secondItem="qNG-WA-I6b" secondAttribute="leading" id="II0-1k-vEb"/>
-                                            <constraint firstAttribute="bottom" secondItem="zp7-Vf-Iy1" secondAttribute="bottom" id="JRr-Jk-Qgh"/>
-                                            <constraint firstAttribute="width" secondItem="jhK-Zt-dF6" secondAttribute="width" constant="15" id="LHo-RL-58K"/>
-                                            <constraint firstItem="yoJ-S1-dv0" firstAttribute="leading" secondItem="jhK-Zt-dF6" secondAttribute="trailing" id="NkK-3l-M71"/>
-                                            <constraint firstItem="zp7-Vf-Iy1" firstAttribute="leading" secondItem="qNG-WA-I6b" secondAttribute="leading" constant="-5" id="QLJ-Fg-mzg"/>
-                                            <constraint firstAttribute="height" constant="30" id="eqJ-SV-1VJ"/>
-                                            <constraint firstItem="yoJ-S1-dv0" firstAttribute="centerY" secondItem="jhK-Zt-dF6" secondAttribute="centerY" id="x6B-xu-57F"/>
-                                            <constraint firstAttribute="bottom" secondItem="jhK-Zt-dF6" secondAttribute="bottom" constant="6" id="xHl-mp-pfc"/>
-                                            <constraint firstItem="jhK-Zt-dF6" firstAttribute="top" secondItem="qNG-WA-I6b" secondAttribute="top" constant="6" id="xS0-51-qhJ"/>
-                                            <constraint firstItem="AXd-NA-LJb" firstAttribute="top" secondItem="qNG-WA-I6b" secondAttribute="top" id="zio-I7-qA7"/>
-                                        </constraints>
-                                    </view>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1294▼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhK-Zt-dF6">
+                                        <rect key="frame" x="5" y="15.666666666666686" width="52" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.30196076630000002" green="0.30196076630000002" blue="0.30196073649999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="334" id="1pW-qP-Qiw"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="EeD-vE-SeI"/>
+                                    <constraint firstItem="jhK-Zt-dF6" firstAttribute="leading" secondItem="jTU-XF-ySM" secondAttribute="leading" constant="5" id="CAx-bt-UbN"/>
                                     <constraint firstAttribute="bottom" secondItem="oF3-oJ-aV0" secondAttribute="bottom" id="J4b-hL-dgi"/>
-                                    <constraint firstItem="oF3-oJ-aV0" firstAttribute="leading" secondItem="qNG-WA-I6b" secondAttribute="trailing" constant="6" id="QcZ-5H-3ln"/>
+                                    <constraint firstItem="oF3-oJ-aV0" firstAttribute="leading" secondItem="jhK-Zt-dF6" secondAttribute="trailing" constant="5" id="Oz1-gh-3w9"/>
                                     <constraint firstItem="oF3-oJ-aV0" firstAttribute="top" secondItem="jTU-XF-ySM" secondAttribute="top" id="QyV-6j-S2x"/>
-                                    <constraint firstAttribute="width" constant="334" id="VAx-KQ-wRn"/>
+                                    <constraint firstItem="jhK-Zt-dF6" firstAttribute="centerY" secondItem="jTU-XF-ySM" secondAttribute="centerY" id="VUT-Ei-1uq"/>
                                     <constraint firstAttribute="height" constant="48" id="XaR-Sd-saR"/>
-                                    <constraint firstAttribute="trailing" secondItem="oF3-oJ-aV0" secondAttribute="trailing" constant="16" id="anJ-8n-ItD"/>
-                                    <constraint firstItem="qNG-WA-I6b" firstAttribute="top" secondItem="jTU-XF-ySM" secondAttribute="topMargin" id="gqr-XX-cF1"/>
+                                    <constraint firstAttribute="trailing" secondItem="oF3-oJ-aV0" secondAttribute="trailing" constant="10" id="anJ-8n-ItD"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -4282,22 +4242,8 @@ to exclusive content from Kiki.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A confirmation code will be sent" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMd-V5-NoM">
-                                <rect key="frame" x="107" y="406" width="200" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="VdE-xX-QfC"/>
-                                    <constraint firstAttribute="height" constant="17" id="wCm-7o-AMK"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to your number to reset password." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMA-3t-hfh">
-                                <rect key="frame" x="100.66666666666669" y="426" width="213" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="213" id="VOm-fS-SY2"/>
-                                    <constraint firstAttribute="height" constant="17" id="m1r-R0-w3w"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A confirmation code will be sent to your number to reset the password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMd-V5-NoM">
+                                <rect key="frame" x="30" y="390" width="354" height="33"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -4311,36 +4257,36 @@ to exclusive content from Kiki.</string>
                         </subviews>
                         <color key="backgroundColor" white="0.080000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="M8w-rW-sIU" firstAttribute="leading" secondItem="oJL-e1-IyK" secondAttribute="trailing" constant="-370" id="0Nj-tw-FhB"/>
                             <constraint firstItem="0AZ-0j-YOk" firstAttribute="top" secondItem="EgC-lA-5fg" secondAttribute="bottom" constant="61" id="0fH-7V-gUA"/>
                             <constraint firstItem="0AZ-0j-YOk" firstAttribute="centerX" secondItem="mBl-Pb-V2b" secondAttribute="centerX" id="1gh-zv-JPo"/>
-                            <constraint firstItem="oJL-e1-IyK" firstAttribute="leading" secondItem="mBl-Pb-V2b" secondAttribute="leadingMargin" constant="-16" id="3ob-VS-XRm"/>
                             <constraint firstItem="0AZ-0j-YOk" firstAttribute="centerX" secondItem="M8w-rW-sIU" secondAttribute="centerX" id="AZO-xY-BoP"/>
+                            <constraint firstItem="M8w-rW-sIU" firstAttribute="width" secondItem="jTU-XF-ySM" secondAttribute="width" id="Ams-To-qD6"/>
+                            <constraint firstAttribute="trailing" secondItem="fMd-V5-NoM" secondAttribute="trailing" constant="30" id="CIb-70-z9S"/>
+                            <constraint firstAttribute="trailing" secondItem="oJL-e1-IyK" secondAttribute="trailing" constant="30" id="Ggd-bc-dhf"/>
+                            <constraint firstItem="jTU-XF-ySM" firstAttribute="top" secondItem="fMd-V5-NoM" secondAttribute="bottom" constant="40" id="Gk8-F2-NCv"/>
+                            <constraint firstItem="oJL-e1-IyK" firstAttribute="top" secondItem="M8w-rW-sIU" secondAttribute="bottom" constant="10" id="HoY-Lk-VQc"/>
+                            <constraint firstItem="M8w-rW-sIU" firstAttribute="leading" secondItem="mBl-Pb-V2b" secondAttribute="leading" constant="40" id="I3o-fw-BM2"/>
                             <constraint firstItem="Ntw-hk-9C8" firstAttribute="leading" secondItem="mBl-Pb-V2b" secondAttribute="leadingMargin" id="KZp-SM-oZ1"/>
-                            <constraint firstItem="ZMA-3t-hfh" firstAttribute="top" secondItem="fMd-V5-NoM" secondAttribute="bottom" constant="3" id="Ksk-Z2-8TX"/>
-                            <constraint firstItem="ZMA-3t-hfh" firstAttribute="centerX" secondItem="htT-kx-3uI" secondAttribute="centerX" id="LPy-kg-EV7"/>
                             <constraint firstItem="htT-kx-3uI" firstAttribute="top" secondItem="0AZ-0j-YOk" secondAttribute="bottom" constant="49" id="NGW-ZV-ELE"/>
-                            <constraint firstItem="gfR-dg-tXm" firstAttribute="top" secondItem="oJL-e1-IyK" secondAttribute="bottom" constant="8" symbolic="YES" id="ODh-WA-Jtz"/>
+                            <constraint firstItem="fMd-V5-NoM" firstAttribute="centerX" secondItem="mBl-Pb-V2b" secondAttribute="centerX" id="THQ-wP-A2I"/>
                             <constraint firstItem="M8w-rW-sIU" firstAttribute="top" secondItem="jTU-XF-ySM" secondAttribute="bottom" constant="13" id="VeZ-Od-pNF"/>
-                            <constraint firstItem="0AZ-0j-YOk" firstAttribute="centerX" secondItem="oJL-e1-IyK" secondAttribute="centerX" id="buY-fQ-tk2"/>
-                            <constraint firstItem="0AZ-0j-YOk" firstAttribute="centerX" secondItem="mBl-Pb-V2b" secondAttribute="centerX" id="caY-nI-QX2"/>
+                            <constraint firstAttribute="trailing" secondItem="M8w-rW-sIU" secondAttribute="trailing" constant="40" id="aMP-BZ-AX0"/>
                             <constraint firstItem="Ntw-hk-9C8" firstAttribute="top" secondItem="EgC-lA-5fg" secondAttribute="bottom" constant="8" symbolic="YES" id="jgw-3J-Yvp"/>
-                            <constraint firstItem="ZMA-3t-hfh" firstAttribute="centerX" secondItem="fMd-V5-NoM" secondAttribute="centerX" id="jkL-KE-fy0"/>
-                            <constraint firstItem="0AZ-0j-YOk" firstAttribute="centerX" secondItem="htT-kx-3uI" secondAttribute="centerX" id="rRe-gx-WJS"/>
-                            <constraint firstItem="jTU-XF-ySM" firstAttribute="top" secondItem="ZMA-3t-hfh" secondAttribute="bottom" constant="20" id="sK0-rM-79Y"/>
+                            <constraint firstItem="htT-kx-3uI" firstAttribute="centerX" secondItem="mBl-Pb-V2b" secondAttribute="centerX" id="qdN-Zo-BRN"/>
+                            <constraint firstItem="oJL-e1-IyK" firstAttribute="leading" secondItem="mBl-Pb-V2b" secondAttribute="leading" constant="30" id="rJi-1T-Vqh"/>
+                            <constraint firstAttribute="bottom" secondItem="oJL-e1-IyK" secondAttribute="bottom" id="tN4-86-naL"/>
                             <constraint firstItem="jTU-XF-ySM" firstAttribute="centerY" secondItem="mBl-Pb-V2b" secondAttribute="centerY" constant="39" id="uKV-8Y-5sm"/>
                             <constraint firstItem="jTU-XF-ySM" firstAttribute="leading" secondItem="M8w-rW-sIU" secondAttribute="leading" id="uNH-3R-HEB"/>
+                            <constraint firstItem="fMd-V5-NoM" firstAttribute="leading" secondItem="mBl-Pb-V2b" secondAttribute="leading" constant="30" id="zhn-wL-TPw"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backBtn" destination="Ntw-hk-9C8" id="FGM-4n-FVV"/>
                         <outlet property="btnConfirm" destination="M8w-rW-sIU" id="Pll-yA-Dqe"/>
-                        <outlet property="countryImage" destination="AXd-NA-LJb" id="9M4-GP-Ov5"/>
                         <outlet property="countryLabel" destination="jhK-Zt-dF6" id="ziN-sy-uH6"/>
                         <outlet property="countryPicker" destination="oJL-e1-IyK" id="IWz-zv-IvF"/>
                         <outlet property="lblEnterPhoneNo" destination="htT-kx-3uI" id="82I-th-5N8"/>
                         <outlet property="lblOne" destination="fMd-V5-NoM" id="uQT-zQ-LVI"/>
-                        <outlet property="lblTwo" destination="ZMA-3t-hfh" id="jzm-zd-QpL"/>
                         <outlet property="phoneNoText" destination="oF3-oJ-aV0" id="Nzc-OH-sPJ"/>
                     </connections>
                 </viewController>
@@ -4414,12 +4360,12 @@ to exclusive content from Kiki.</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IkQ-a7-SsC">
-                                                <rect key="frame" x="26.999999999999996" y="6" width="11.333333333333332" height="18"/>
+                                                <rect key="frame" x="27.000000000000004" y="6" width="11.666666666666668" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgP-5p-u3k">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgP-5p-u3k">
                                                 <rect key="frame" x="0.0" y="0.0" width="42" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="d1s-R8-ipY"/>
@@ -4471,7 +4417,7 @@ to exclusive content from Kiki.</string>
                                 <rect key="frame" x="4" y="584" width="406" height="216"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggo-1l-L18">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggo-1l-L18">
                                 <rect key="frame" x="40" y="458" width="334" height="48"/>
                                 <color key="backgroundColor" red="0.22539353370000001" green="0.50164419410000005" blue="0.51373338700000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -4583,7 +4529,7 @@ to exclusive content from Kiki.</string>
                                     <outlet property="delegate" destination="WMd-wC-cBh" id="Z3C-OO-UBe"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ID-RR-Djc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ID-RR-Djc">
                                 <rect key="frame" x="40" y="482" width="334" height="48"/>
                                 <color key="backgroundColor" red="0.22539353370000001" green="0.50164419410000005" blue="0.51373338700000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -5083,7 +5029,7 @@ to exclusive content from Kiki.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QGY-6M-qzk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5440.579710144928" y="-1970.3804347826087"/>
+            <point key="canvasLocation" x="5564" y="-1994"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="gAq-xc-ftL">
@@ -5110,7 +5056,7 @@ to exclusive content from Kiki.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbX-cB-uf5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6166.666666666667" y="-1970.3804347826087"/>
+            <point key="canvasLocation" x="6352" y="-1971"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="NHv-6W-eRO">
@@ -5135,7 +5081,7 @@ to exclusive content from Kiki.</string>
                                             <constraint firstAttribute="width" constant="21" id="yYc-mh-ds2"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sz-9a-9nJ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sz-9a-9nJ">
                                         <rect key="frame" x="20" y="0.0" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="aef-3f-d9o"/>
@@ -5161,57 +5107,13 @@ to exclusive content from Kiki.</string>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BXU-i3-sAb">
                                 <rect key="frame" x="20" y="126" width="374" height="0.6666666666666714"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" systemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.67000000000000004" id="68y-zP-hVZ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fd7-aR-vOn">
-                                <rect key="frame" x="0.0" y="139.66666666666666" width="414" height="50"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftArrow" translatesAutoresizingMaskIntoConstraints="NO" id="tLt-q8-Wei">
-                                        <rect key="frame" x="373" y="14" width="21" height="22"/>
-                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="21" id="4cT-Ob-32l"/>
-                                            <constraint firstAttribute="height" constant="22" id="cKI-LK-EwU"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="21" id="gDm-1L-gMX"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="jqC-86-QAX"/>
-                                        </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOU-72-ZcF">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="eSd-P8-Uev"/>
-                                        </constraints>
-                                        <state key="normal" title="Payment Methods">
-                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="gef-Ri-Z8K" kind="push" id="XWp-l1-1SP"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="tLt-q8-Wei" secondAttribute="bottom" constant="14" id="Bdz-Ay-oG5"/>
-                                    <constraint firstAttribute="trailing" secondItem="tLt-q8-Wei" secondAttribute="trailing" constant="20" id="CHy-6b-PWr"/>
-                                    <constraint firstItem="tLt-q8-Wei" firstAttribute="top" secondItem="Fd7-aR-vOn" secondAttribute="top" constant="14" id="VxV-Mp-X4h"/>
-                                    <constraint firstItem="kOU-72-ZcF" firstAttribute="top" secondItem="Fd7-aR-vOn" secondAttribute="top" id="dfF-cF-c7P"/>
-                                    <constraint firstAttribute="trailing" secondItem="kOU-72-ZcF" secondAttribute="trailing" constant="20" id="i37-m2-VAf"/>
-                                    <constraint firstAttribute="bottom" secondItem="kOU-72-ZcF" secondAttribute="bottom" id="lB0-NN-YqF"/>
-                                    <constraint firstItem="kOU-72-ZcF" firstAttribute="leading" secondItem="Fd7-aR-vOn" secondAttribute="leading" constant="20" id="oQv-Av-hX1"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUG-7o-cXg">
-                                <rect key="frame" x="20" y="190.66666666666666" width="374" height="0.66666666666665719"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="0.67000000000000004" id="Gb4-8x-FXN"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sE-7U-pZC">
-                                <rect key="frame" x="0.0" y="205.33333333333334" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="126" width="414" height="50"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftArrow" translatesAutoresizingMaskIntoConstraints="NO" id="7uD-00-klf">
                                         <rect key="frame" x="373" y="14" width="21" height="22"/>
@@ -5223,7 +5125,7 @@ to exclusive content from Kiki.</string>
                                             <constraint firstAttribute="height" constant="22" id="we5-D1-SjN"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pe7-CZ-Jg1">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pe7-CZ-Jg1">
                                         <rect key="frame" x="20" y="0.0" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="wXc-DU-rjd"/>
@@ -5240,6 +5142,7 @@ to exclusive content from Kiki.</string>
                                 <constraints>
                                     <constraint firstItem="Pe7-CZ-Jg1" firstAttribute="top" secondItem="6sE-7U-pZC" secondAttribute="top" id="15D-27-eWL"/>
                                     <constraint firstAttribute="bottom" secondItem="Pe7-CZ-Jg1" secondAttribute="bottom" id="AXP-0h-2L0"/>
+                                    <constraint firstItem="Pe7-CZ-Jg1" firstAttribute="top" secondItem="6sE-7U-pZC" secondAttribute="top" id="CK4-MM-MfD"/>
                                     <constraint firstAttribute="bottom" secondItem="7uD-00-klf" secondAttribute="bottom" constant="14" id="N6i-Dh-pyP"/>
                                     <constraint firstAttribute="height" constant="50" id="P2H-ck-cpw"/>
                                     <constraint firstAttribute="trailing" secondItem="7uD-00-klf" secondAttribute="trailing" constant="20" id="Rbh-DM-Lxk"/>
@@ -5249,8 +5152,8 @@ to exclusive content from Kiki.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rgc-Sn-rrO">
-                                <rect key="frame" x="20" y="255.33333333333334" width="374" height="0.66666666666665719"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <rect key="frame" x="20" y="176" width="374" height="0.66666666666665719"/>
+                                <color key="backgroundColor" systemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.67000000000000004" id="whW-5q-NIU"/>
                                 </constraints>
@@ -5260,28 +5163,19 @@ to exclusive content from Kiki.</string>
                         <constraints>
                             <constraint firstItem="Oga-or-7FR" firstAttribute="top" secondItem="ymd-kp-NfJ" secondAttribute="bottom" constant="32" id="0Vf-6g-Wjw"/>
                             <constraint firstItem="Rgc-Sn-rrO" firstAttribute="trailing" secondItem="mot-vY-qiF" secondAttribute="trailingMargin" id="5ZT-rW-zG6"/>
+                            <constraint firstItem="6sE-7U-pZC" firstAttribute="top" secondItem="Oga-or-7FR" secondAttribute="bottom" id="7UV-S3-egy"/>
                             <constraint firstItem="BXU-i3-sAb" firstAttribute="trailing" secondItem="mot-vY-qiF" secondAttribute="trailingMargin" id="9aJ-Po-srI"/>
-                            <constraint firstItem="tUG-7o-cXg" firstAttribute="trailing" secondItem="mot-vY-qiF" secondAttribute="trailingMargin" id="9wG-FH-bX6"/>
-                            <constraint firstItem="Fd7-aR-vOn" firstAttribute="leading" secondItem="mot-vY-qiF" secondAttribute="leading" id="AVb-eU-od9"/>
                             <constraint firstAttribute="trailing" secondItem="Oga-or-7FR" secondAttribute="trailing" id="BbP-Ra-JKv"/>
-                            <constraint firstItem="tUG-7o-cXg" firstAttribute="top" secondItem="Fd7-aR-vOn" secondAttribute="bottom" constant="0.99999999999991473" id="DKl-7P-Bl8"/>
                             <constraint firstItem="6sE-7U-pZC" firstAttribute="leading" secondItem="mot-vY-qiF" secondAttribute="leading" id="JPt-eW-wrV"/>
                             <constraint firstAttribute="trailing" secondItem="6sE-7U-pZC" secondAttribute="trailing" id="SOV-c4-ivC"/>
-                            <constraint firstItem="Fd7-aR-vOn" firstAttribute="top" secondItem="BXU-i3-sAb" secondAttribute="bottom" constant="13.000000000000071" id="SYp-Ll-o5P"/>
                             <constraint firstItem="Oga-or-7FR" firstAttribute="leading" secondItem="mot-vY-qiF" secondAttribute="leading" id="TwP-T1-UBS"/>
                             <constraint firstItem="BXU-i3-sAb" firstAttribute="leading" secondItem="mot-vY-qiF" secondAttribute="leadingMargin" id="WAi-4v-Whg"/>
                             <constraint firstItem="Rgc-Sn-rrO" firstAttribute="top" secondItem="6sE-7U-pZC" secondAttribute="bottom" id="Xbx-cw-Aeg"/>
                             <constraint firstItem="BXU-i3-sAb" firstAttribute="top" secondItem="Oga-or-7FR" secondAttribute="bottom" id="dlp-VZ-7Vn"/>
-                            <constraint firstItem="6sE-7U-pZC" firstAttribute="top" secondItem="tUG-7o-cXg" secondAttribute="bottom" constant="14" id="eA7-NL-iLM"/>
-                            <constraint firstAttribute="trailing" secondItem="Fd7-aR-vOn" secondAttribute="trailing" id="ev9-yt-5av"/>
                             <constraint firstItem="Rgc-Sn-rrO" firstAttribute="leading" secondItem="mot-vY-qiF" secondAttribute="leadingMargin" id="jv3-6F-PCe"/>
-                            <constraint firstItem="tUG-7o-cXg" firstAttribute="leading" secondItem="mot-vY-qiF" secondAttribute="leadingMargin" id="kTw-BD-QPR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rB4-Nf-oF1"/>
-                    <connections>
-                        <outlet property="hideVw" destination="Fd7-aR-vOn" id="BvO-iQ-Cvj"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XxA-bt-HlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -5299,7 +5193,7 @@ to exclusive content from Kiki.</string>
                     <nil name="viewControllers"/>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zEt-k2-sWj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WCM-Bu-OLz">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="WCM-Bu-OLz">
                     <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </button>
@@ -5317,17 +5211,17 @@ to exclusive content from Kiki.</string>
                 <view contentMode="scaleToFill" id="Rpf-uI-u2Y">
                     <rect key="frame" x="0.0" y="0.0" width="374" height="0.66666666666666663"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                    <color key="backgroundColor" systemColor="lightTextColor"/>
                 </view>
             </objects>
             <point key="canvasLocation" x="5112" y="1761"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ojL-bA-RMP"/>
-        <segue reference="pTO-01-Sqb"/>
-        <segue reference="ZEh-Qh-c4z"/>
-        <segue reference="cL8-Z7-ifL"/>
+        <segue reference="VyR-FX-szS"/>
+        <segue reference="Mh9-A6-8Lq"/>
+        <segue reference="hac-DG-uXz"/>
+        <segue reference="4kt-9H-yFb"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Background P" width="1080" height="1920"/>
@@ -5370,5 +5264,20 @@ to exclusive content from Kiki.</string>
         <image name="step_backward" width="20" height="20"/>
         <image name="step_forward" width="20" height="20"/>
         <image name="television-guide" width="24" height="24"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="lightTextColor">
+            <color white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tableCellGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

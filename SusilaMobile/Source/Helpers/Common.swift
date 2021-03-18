@@ -7,6 +7,8 @@
 
 import Reachability
 import FBSDKLoginKit
+import PhoneNumberKit
+
 class Common: NSObject {
 
     /**
@@ -23,7 +25,7 @@ class Common: NSObject {
 //        var perent = perent
         
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: .default, handler: { (action) -> Void in
             alert.dismiss(animated: true, completion: nil)
         }))
         
@@ -37,7 +39,7 @@ class Common: NSObject {
     }
     
     class func getUnknowError(){
-        Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: NSLocalizedString("ERROR_UNKNOW".localized(using: "Localizable"), comment: ""))
+        Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: "ERROR_UNKNOW".localizedString)
     }
     
 //    class func createAccessToken(accessToken:String) -> String{
@@ -46,7 +48,7 @@ class Common: NSObject {
     
     class func mobileNovalidate(phoneNumber: String, regionCode: String) -> Bool {
         var results = true
-        if (Utils.isSriLankanPhoneNumber(phoneNumber)) {
+        if (ValidationManager.isSriLankanPhoneNumber(phoneNumber)) {
             let PHONE_REGEX = "^(\\+\\d{2})[7][0-9]{8}"
             //"^\\d{3}\\d{3}\\d{4}$"
             let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
@@ -62,8 +64,8 @@ class Common: NSObject {
     }
     
     class func logout(){
-        Preferences.setUser(nil)
-        Preferences.setAccessToken(nil)
+        UserDefaultsManager.setUser(nil)
+        UserDefaultsManager.setAccessToken(nil)
         
         let loginManager = LoginManager()
         loginManager.logOut() // this is an instance function
@@ -175,7 +177,7 @@ class Common: NSObject {
             if let phoneCallURL:NSURL = NSURL(string: "tel://\(editedPhoneNumber)") {
                 let application:UIApplication = UIApplication.shared
                 if (application.canOpenURL(phoneCallURL as URL)) {
-                    application.openURL(phoneCallURL as URL);
+                    application.open(phoneCallURL as URL);
                 }else{
                     return false
                 }

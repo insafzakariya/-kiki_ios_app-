@@ -11,6 +11,7 @@ import GoogleSignIn
 import Firebase
 import FBSDKLoginKit
 import FBSDKCoreKit
+import AuthenticationServices
 
 class SMSocialMediaLoginViewController: BaseViewController {
     
@@ -23,17 +24,49 @@ class SMSocialMediaLoginViewController: BaseViewController {
     @IBOutlet weak var orLable: UILabel!
     @IBOutlet weak var createAccntBtn: UIButton!
     @IBOutlet weak var backButton: UIButton!
-
+    @IBOutlet weak var signInWithAppleHolderView: UIStackView!
+    @IBOutlet weak var signInWithAppleHolderViewHeightConstraint: NSLayoutConstraint!
+    
     fileprivate let registerViewModel = SMRegisterViewModel()
     
     override func viewDidLoad() {
         self.setText()
-
-        GIDSignIn.sharedInstance().uiDelegate = self
+        setupSignInWithApple()
         GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance()?.presentingViewController = self
         let translateSet = defaults.object(forKey: "loadToMainLogin") as? String
         if translateSet == "true" {
             backButton.isHidden = true
+        }
+    }
+    
+    private func setupSignInWithApple(){
+        if #available(iOS 13.0, *) {
+            UIHelper.show(view: signInWithAppleHolderView)
+            signInWithAppleHolderViewHeightConstraint.constant = 50
+            UIHelper.addCornerRadius(to: signInWithAppleHolderView,withRadius: 6.0)
+            let authButton = ASAuthorizationAppleIDButton()
+            authButton.cornerRadius = 6.0
+            authButton.addTarget(self, action: #selector(appleSignInOnTapped), for: .touchUpInside)
+            self.signInWithAppleHolderView.addArrangedSubview(authButton)
+        } else {
+            signInWithAppleHolderViewHeightConstraint.constant = 0
+            UIHelper.hide(view: signInWithAppleHolderView)
+        }
+    }
+    
+    @objc func appleSignInOnTapped(){
+        Log("Tapped")
+        if #available(iOS 13.0, *) {
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            let request = appleIDProvider.createRequest()
+            request.requestedScopes = [.fullName,.email]
+            
+            let autherizationController = ASAuthorizationController(authorizationRequests: [request])
+            autherizationController.delegate = self
+            autherizationController.presentationContextProvider = self
+            autherizationController.performRequests()
+            
         }
     }
     
@@ -94,7 +127,6 @@ class SMSocialMediaLoginViewController: BaseViewController {
                 }
             }
         }
-        
     }
     
     @IBAction func tappedGoogleButton(_ sender: Any) {
@@ -154,11 +186,11 @@ class SMSocialMediaLoginViewController: BaseViewController {
         if let error = error {
             switch error.code {
             case ResponseCode.noNetwork.rawValue:
-                Common.showAlert(alertTitle: NSLocalizedString("NO_INTERNET_ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: NSLocalizedString("NO_INTERNET_ALERT_MESSAGE".localized(using: "Localizable"), comment: ""), perent: self)
+                Common.showAlert(alertTitle: "NO_INTERNET_ALERT_TITLE".localizedString, alertMessage: "NO_INTERNET_ALERT_MESSAGE".localizedString, perent: self)
                 //                case 1001, 1003, 1031:
                 //                    Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE", comment: ""), alertMessage: error.localizedDescription, perent: self)
                 
-            default: Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: error.localizedDescription, perent: self)
+            default: Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: error.localizedDescription, perent: self)
             }
         }
     }
@@ -175,7 +207,8 @@ class SMSocialMediaLoginViewController: BaseViewController {
 }
 
 //Google
-extension SMSocialMediaLoginViewController: GIDSignInUIDelegate, GIDSignInDelegate {
+extension SMSocialMediaLoginViewController: GIDSignInDelegate {
+    
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil) {
             ProgressView.shared.hide()
@@ -196,7 +229,33 @@ extension SMSocialMediaLoginViewController: GIDSignInUIDelegate, GIDSignInDelega
     }
 }
 
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
-	return input.rawValue
+typealias AppleSignIn = SMSocialMediaLoginViewController
+extension AppleSignIn:ASAuthorizationControllerDelegate,ASAuthorizationControllerPresentationContextProviding{
+    
+    @available(iOS 13.0, *)
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+    @available(iOS 13.0, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let appleIDCredentaials as ASAuthorizationAppleIDCredential:
+            let userID = appleIDCredentaials.user
+            let fullName = "\(appleIDCredentaials.fullName?.givenName ?? "") \(appleIDCredentaials.fullName?.familyName ?? "")"
+            let email = appleIDCredentaials.email ?? ""
+            let user = User(username: "", password: "", name: fullName, provider: .APPLE, gender: nil, language: nil, accessToken: "", socialAccessToken: userID, socialAccessTokenSecret: nil, mobileNumber: nil, whitelisted: nil, country: nil, device_id: Messaging.messaging().fcmToken!,email: email)
+            self.callSocialRegistrationAPI(user: user)
+            
+        default:()
+            
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        Log(error.localizedDescription)
+    }
+    
+    
 }

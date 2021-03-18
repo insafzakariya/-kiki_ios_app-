@@ -28,7 +28,7 @@ class AllSongViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = Constants.color_background
         
-        self.createPopularArtistSongsView(view: view, title: NSLocalizedString("Song".localized(using: "Localizable"), comment: ""))
+        self.createPopularArtistSongsView(view: view, title: "Song".localizedString)
         
         if type == "song" {
             search(key: key!, type: type!, offset: 0)
@@ -67,7 +67,7 @@ class AllSongViewController: UIViewController {
         searchViewModel.searchByWordAll(key: key, type: type, offset: offset) { (status, error, isEmpty) in
             if (status && isEmpty) {
                 let alert = UIAlertController(title: "Kiki", message: "No results available", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 ProgressView.shared.hide()
             } else {

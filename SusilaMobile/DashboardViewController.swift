@@ -44,6 +44,8 @@ class DashboardViewController: UIViewController, UITabBarDelegate {
             print(error.localizedDescription)
         }
         
+        
+        
         self.tabBar.delegate = self
         self.tabBar.selectedItem = self.tabBar.items?.first
         if home == nil {
@@ -62,11 +64,11 @@ class DashboardViewController: UIViewController, UITabBarDelegate {
         
         initializeVCs()
         
-        self.title = "Home"//NSLocalizedString("Home".localized(using: "Localizable"), comment: "")
+        self.title = "Home"
         
-        tabBar.items?[0].title = "Home"//NSLocalizedString("Home".localized(using: "Localizable"), comment: "")
-        tabBar.items?[1].title = "Browse"//NSLocalizedString("Browse".localized(using: "Localizable"), comment: "")
-        tabBar.items?[2].title = "Library"//NSLocalizedString("MySongs".localized(using: "Localizable"), comment: "")
+        tabBar.items?[0].title = "Home"//"Home".localizedString
+        tabBar.items?[1].title = "Browse"//"Browse".localizedString
+        tabBar.items?[2].title = "Library"//"MySongs".localizedString
         
         let numberOfItems = CGFloat(tabBar.items!.count)
         let tabBarItemSize = CGSize(width: tabBar.frame.width / numberOfItems, height: tabBar.frame.height)
@@ -89,9 +91,9 @@ class DashboardViewController: UIViewController, UITabBarDelegate {
         
         
         
-        //self.allSongs?.loadAllSongs()
-        //self.home?.loadPopularSongsList()
-        //self.playlist?.loadAllPlaylists()
+//        self.allSongs?.loadAllSongs()
+//        self.home?.loadPopularSongsList()
+//        self.playlist?.loadAllPlaylists(view: self.view)
 //        self.home!.playLists = (self.playlist?.playlistModel.globalPlayList)!
         
         playerView.btnClickExpand.addTarget(self, action: #selector(self.actExpand(_:)), for: UIControl.Event.touchUpInside)
@@ -197,8 +199,6 @@ class DashboardViewController: UIViewController, UITabBarDelegate {
             playerView.btnExpanShuffle.isHidden = false
             playerView.btnExpanRepeat.isHidden = false
         }
-        
-         
         playerView.expandedView.isHidden = false
     }
     
@@ -302,7 +302,7 @@ class DashboardViewController: UIViewController, UITabBarDelegate {
                     home?.viewLatestPlaylistDetails.isHidden = true
                     
                     self.mainView.addSubview(home ?? tempUI)
-                    self.title = "Home"//NSLocalizedString("Home".localized(using: "Localizable"), comment: "")
+                    self.title = "Home"//"Home".localizedString
                      hidePlayerFullView()
                     
                     break
@@ -329,7 +329,7 @@ class DashboardViewController: UIViewController, UITabBarDelegate {
                     allSongs?.viewAllPlayList.isHidden = true
                     
                     self.mainView.addSubview(allSongs ?? tempUI)
-                    self.title = "Browse"//NSLocalizedString("Browse".localized(using: "Localizable"), comment: "")
+                    self.title = "Browse"//"Browse".localizedString
                     
                     //let browseController = BrowseController()
                     //browseController.playerView = self.playerView
@@ -356,7 +356,7 @@ class DashboardViewController: UIViewController, UITabBarDelegate {
                     self.addChild(libraryController)
                     self.mainView.addSubview(libraryController.view)
                     //self.title = "Library"
-                    //self.title = NSLocalizedString("MySongs".localized(using: "Localizable"), comment: "")
+                    //self.title = "MySongs".localizedString
                     
                     
                     hidePlayerFullView()
@@ -373,7 +373,7 @@ class DashboardViewController: UIViewController, UITabBarDelegate {
                     tempUI.tag = 101
                     home?.tag = 100
                     self.mainView.addSubview(home ?? tempUI)
-                    self.title = NSLocalizedString("Home".localized(using: "Localizable"), comment: "")
+                    self.title = "Home".localizedString
                     hidePlayerFullView()
                     break
         
@@ -384,6 +384,7 @@ class DashboardViewController: UIViewController, UITabBarDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        Log("Memory Warning Issued!")
         // Dispose of any resources that can be recreated.
     }
     

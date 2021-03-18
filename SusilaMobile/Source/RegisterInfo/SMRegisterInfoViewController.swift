@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import PhoneNumberKit
 
 class SMRegisterInfoViewController: BaseViewController,CountryPickerDelegate,UIGestureRecognizerDelegate {
 
@@ -50,10 +51,10 @@ class SMRegisterInfoViewController: BaseViewController,CountryPickerDelegate,UIG
         mobileNoTextField.setLeftPaddingPoints(10)
 
 //        var phoneNum = Preferences.getMobeCode() ?? ""
-        var phoneNum = "\(Preferences.getMobileNo() ?? "")"
+        var phoneNum = "\(UserDefaultsManager.getMobileNo() ?? "")"
         var countryCode: String? = nil
         do {
-            let phoneNumber = try PhoneNumberKit().parse(Preferences.getMobileNo() ?? "", withRegion: PhoneNumberKit.defaultRegionCode(), ignoreType: true)
+            let phoneNumber = try PhoneNumberKit().parse(UserDefaultsManager.getMobileNo() ?? "", withRegion: PhoneNumberKit.defaultRegionCode(), ignoreType: true)
             phoneNum = "\(phoneNumber.nationalNumber)"
             countryCode = "+\(phoneNumber.countryCode)"
         } catch {
@@ -112,7 +113,7 @@ class SMRegisterInfoViewController: BaseViewController,CountryPickerDelegate,UIG
         if (countryCode != nil) {
             countryPicker.setCountryByPhoneCode(countryCode!)
         } else {
-            countryPicker.setCountry(code!)
+            countryPicker.setCountry(code ?? "+94")
         }
     }
     
@@ -120,15 +121,15 @@ class SMRegisterInfoViewController: BaseViewController,CountryPickerDelegate,UIG
         headingLabel.text = "EnterYourPhoneNumber".localized(using: "Localizable")
         mobileNoTextField.placeholder = "TypeYourNumber".localized(using: "Localizable")
         
-        confirmBtn.setTitle(NSLocalizedString("Confirm".localized(using: "Localizable"), comment: ""), for: UIControl.State.normal)
+        confirmBtn.setTitle("Confirm".localizedString, for: UIControl.State.normal)
         
-        let color = colorWithHexString(hex: "#999999")
+        let color = UIHelper.colorWithHexString(hex: "#999999")
         mobileNoTextField.attributedPlaceholder = NSAttributedString(string: mobileNoTextField.placeholder ?? "", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : color]))
         
     }
     override func viewDidAppear(_ animated: Bool) {
         if (lblCode.text! == "+94") {
-            mobileNoTextField.placeholder = (Preferences.getMobeCode()?.isEmpty)! ? "123456789" : Preferences.getMobeCode()
+            mobileNoTextField.placeholder = (UserDefaultsManager.getMobeCode()?.isEmpty)! ? "123456789" : UserDefaultsManager.getMobeCode()
         }
     }
     @IBAction func tappedBackButton(_ sender: Any) {
@@ -162,7 +163,7 @@ class SMRegisterInfoViewController: BaseViewController,CountryPickerDelegate,UIG
         self.regionCode = countryCode
         self.ivFlag.image = flag
         if (lblCode.text! == "+94" && mobileNoTextField.text == "") {
-            mobileNoTextField.placeholder = (Preferences.getMobeCode()?.isEmpty)! ? "123456789" : Preferences.getMobeCode()
+            mobileNoTextField.placeholder = (UserDefaultsManager.getMobeCode()?.isEmpty)! ? "123456789" : UserDefaultsManager.getMobeCode()
         }
     }
     
@@ -207,8 +208,8 @@ class SMRegisterInfoViewController: BaseViewController,CountryPickerDelegate,UIG
         if validateInfo != StatusCode.passedValidation {
             let message = validateInfo.getFailedMessage()
             
-            let alert = UIAlertController(title: NSLocalizedString("LOGIN_ERROR_ALERT_TITLE".localized(using: "Localizable"), comment: ""), message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: { (action) -> Void in
+            let alert = UIAlertController(title:"LOGIN_ERROR_ALERT_TITLE".localizedString, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: .default, handler: { (action) -> Void in
                 ProgressView.shared.hide()
             }))
             showDetailViewController(alert, sender: nil)
@@ -371,14 +372,14 @@ class SMRegisterInfoViewController: BaseViewController,CountryPickerDelegate,UIG
     }
     
     func connectionTimeoutMessage(){
-        let alertTitle = NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: "")
-        let alertMessage = NSLocalizedString("CONNECTION_TIME_OUT".localized(using: "Localizable"), comment: "")
+        let alertTitle = "ALERT_TITLE".localizedString
+        let alertMessage = "CONNECTION_TIME_OUT".localizedString
         
         let alert = UIAlertController(title: alertTitle, message:alertMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("CANCEL_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "CANCEL_BUTTON_TITLE".localizedString, style: .default, handler: { (action) -> Void in
             alert.dismiss(animated: true, completion: nil)
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: .default, handler: { (action) -> Void in
             self.updateUserInfo()
         }))
         showDetailViewController(alert, sender: nil)
@@ -402,7 +403,7 @@ extension SMRegisterInfoViewController: RegisterInfoDelegate {
             if let error = error {
                 switch error.code {
                 case ResponseCode.noNetwork.rawValue:
-                    Common.showAlert(alertTitle: NSLocalizedString("NO_INTERNET_ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: NSLocalizedString("NO_INTERNET_ALERT_MESSAGE".localized(using: "Localizable"), comment: ""), perent: self)
+                    Common.showAlert(alertTitle: "NO_INTERNET_ALERT_TITLE".localizedString, alertMessage: "NO_INTERNET_ALERT_MESSAGE".localizedString, perent: self)
                 default:// 1017:
                     Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE", comment: ""), alertMessage: error.localizedDescription, perent: self)
                     
@@ -505,13 +506,3 @@ extension SMRegisterInfoViewController: PopoverTableViewDelegate{
     }
 }
 
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
-	return input.rawValue
-}

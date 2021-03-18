@@ -30,7 +30,8 @@ class SongTile: UIView {
     var imageURL = "" {
         willSet {}
         didSet {
-            image.downloadImageSongTile(from: URL(string: imageURL)!)
+            image.kf.setImage(with: URL(string: imageURL)!)
+//            image.downloadImageSongTile(from: URL(string: imageURL)!)
         }
     }
     

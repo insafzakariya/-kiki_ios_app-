@@ -41,7 +41,9 @@ class SubtitleModel: NSObject {
                     let endTime = convertStringToTime((subtitleElement?.attribute(by: "end")?.text)!)
                     selectedSubtitles?.append(SubtitleLine(beginTime: beginTime, endTime: endTime, text: subtitleElement?.text))
                 }
-                selectedSubtitles?.append(SubtitleLine(beginTime: (selectedSubtitles?.last?.endTime)!, endTime: (selectedSubtitles?.last?.endTime)! + 60, text: ""))
+                let startTime = selectedSubtitles?.last?.endTime
+                let endTime = startTime! + 60
+                selectedSubtitles?.append(SubtitleLine(beginTime: startTime!, endTime: endTime + 60, text: ""))
             } catch let error {
                 print(error)
             }

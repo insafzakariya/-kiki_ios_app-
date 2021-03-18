@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SMVerificationViewController: BaseViewController {
+class SMVerificationViewController: UIViewController {
     
     fileprivate let resetViewModel = SMVerificationViewModel()
     fileprivate let resendViewModel = SMResetViewModel()
@@ -37,27 +37,27 @@ class SMVerificationViewController: BaseViewController {
         
         let borderLayer = CALayer()
         borderLayer.backgroundColor = UIColor.white.cgColor
-        borderLayer.frame = CGRect(x: 0, y: codeText.frame.size.height - 1, width:  codeText.frame.width+60, height: 2)
+        borderLayer.frame = CGRect(x: 0, y: codeText.frame.size.height - 1, width:  codeText.frame.width, height: 2)
         codeText.layer.addSublayer(borderLayer)
     }
     
     fileprivate func smsCodeVerify(viwerId: String, otp: String) {
-        
         ProgressView.shared.show(view, mainText: nil, detailText: nil)
-        
         if let smsCodeString = codeText.text, !smsCodeString.isEmpty {
             codeText.resignFirstResponder()
-            
-            self.resetViewModel.passwordResetCodeSend(viwer_id:viwerId, otp:otp, callFinished: { (status, error) in
+            self.resetViewModel.passwordResetCodeSend(viwer_id:viwerId, otp:otp, onComplete: { (status, error) in
                 if status {
                     self.goToResetView()
-                    
                 } else {
-                    self.alert(message: "Invalid OTP, Please enter valid OTP number.")
                     ProgressView.shared.hide()
+                    let alert = UIHelper.getAlert(title:"Invalid Code",message: "Looks like you have entered an expired or an invalid code. Please resend a new code.")
+                    let resendAction = UIAlertAction(title: "Resend Code", style: .default) { _ in
+                        self.resendCode()
+                    }
+                    alert.addAction(resendAction)
+                    self.present(alert, animated: true, completion: nil)
                 }
             })
-            
         } else{
             ProgressView.shared.hide()
             Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: NSLocalizedString("ENTER_VALID_MOBILENO", comment: ""), perent: self)
@@ -76,42 +76,37 @@ class SMVerificationViewController: BaseViewController {
         self.navigationController?.pushViewController(resetViewController, animated: true)
     }
     
-   
+    
     @IBAction func resetPasswordPressed(_ sender: Any) {
         print(mainInstance.viwerId, codeText.text!)
         if codeText.text!.count != 4 {
-            self.alert(message: NSLocalizedString("OTP_CHARACTERS".localized(using: "Localizable"), comment: ""))
+            UIHelper.makeOKAlert(title: "", message: NSLocalizedString("OTP_CHARACTERS".localized(using: "Localizable"), comment: ""), viewController: self)
         } else {
             smsCodeVerify(viwerId: String(mainInstance.viwerId), otp: codeText.text!)
         }
-        
     }
     
     @IBAction func resendCodeButtonPressed(_ sender: Any) {
-        var num = mainInstance.mobileNo
-        num.remove(at: num.startIndex)
-        resendSmsCodeVerify(number: num)
+        resendCode()
+    }
+    
+    private func resendCode(){
+        if let num = UserDefaultsManager.getMobileNo(){
+            Log("Mobile number retrieved from UserDef: \(num)")
+            resendSmsCodeVerify(number: num)
+        }else{
+            Log("Couldn't get the user Mobile No", type: .CRITICAL)
+        }
     }
     
     fileprivate func resendSmsCodeVerify(number: String) {
-        
         ProgressView.shared.show(view, mainText: nil, detailText: nil)
-        
-        self.resendViewModel.passwordResetCodeRequest(genre:number,callFinished: { (status, error) in
+        self.resendViewModel.passwordResetCodeRequest(genre:number,onComplete: { (status, error) in
             if status {
                 ProgressView.shared.hide()
             } else {
                 ProgressView.shared.hide()
-                
             }
         })
     }
-    
-    func alert(message: String, title: String = "") {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: nil)
-        alertController.addAction(OKAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
 }

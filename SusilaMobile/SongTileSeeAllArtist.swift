@@ -85,7 +85,7 @@ class SongTileSeeAllArtist: UIView {
         add = UIButton(frame: CGRect(x:  UIScreen.main.bounds.width-80, y: image.frame.height/2-10, width: 60, height: 20))
         add.layer.cornerRadius = 10
         add.layer.borderWidth = 1
-        add.setTitle(NSLocalizedString("Add".localized(using: "Localizable"), comment: ""), for: .normal)
+        add.setTitle("Add".localizedString, for: .normal)
         add.backgroundColor = Constants.color_brand
         add.layer.borderColor = Constants.color_brand.cgColor
         add.setTitleColor(.white, for: .normal)

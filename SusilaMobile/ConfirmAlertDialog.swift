@@ -28,7 +28,7 @@ class ConfirmAlertDialog: UIView {
     private func commonInit() {
         
         lblTitle = UILabel(frame: CGRect(x: 15, y: 10, width: self.frame.width - 30, height: 80))
-        lblTitle.text = NSLocalizedString("DO_YOU_WANT_TO_REMOVE".localized(using: "Localizable"), comment: "")
+        lblTitle.text = "DO_YOU_WANT_TO_REMOVE".localizedString
         lblTitle.textAlignment = NSTextAlignment.left
         lblTitle.lineBreakMode = NSLineBreakMode.byWordWrapping
         lblTitle.numberOfLines = 3

@@ -97,7 +97,7 @@ class SMWebViewController: MenuChiledViewController {
                 if let package = userInfo?["currentPackage"] as? JSON{
                     let packageId = package[Package.JsonKeys.id].numberValue
                     let remoteConfig = (UIApplication.shared.delegate as! AppDelegate).getRemoteConfig()
-                    let isSpecialUser = Preferences.getUserId() == remoteConfig[specialUserIdConfigKey].stringValue!
+                    let isSpecialUser = UserDefaultsManager.getUserId() == remoteConfig[specialUserIdConfigKey].stringValue!
                     if (packageId == 1 && !isSpecialUser) {
                         mainInstance.subscribeStatus = true
                         self.navigationController?.popViewController(animated: true)
@@ -131,9 +131,9 @@ class SMWebViewController: MenuChiledViewController {
                 if let error = error {
                     switch error.code {
                     case ResponseCode.noNetwork.rawValue:
-                        Common.showAlert(alertTitle: NSLocalizedString("NO_INTERNET_ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: NSLocalizedString("NO_INTERNET_ALERT_MESSAGE".localized(using: "Localizable"), comment: ""), perent: self)
+                        Common.showAlert(alertTitle: "NO_INTERNET_ALERT_TITLE".localizedString, alertMessage: "NO_INTERNET_ALERT_MESSAGE".localizedString, perent: self)
                         
-                    default: Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: error.localizedDescription, perent: self)
+                    default: Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: error.localizedDescription, perent: self)
                         
                     }
                 }
@@ -166,7 +166,7 @@ class SMWebViewController: MenuChiledViewController {
 //
                                     if (packageId == 46 || packageId == 81 || packageId == 101 || packageId == 106) {
                                         
-                                        //                                        let alertMessage = NSLocalizedString("PACKAGE_ALREADY_SUBSCRIBED".localized(using: "Localizable"), comment: "")
+                                        //                                        let alertMessage = "PACKAGE_ALREADY_SUBSCRIBED".localizedString
                                         //                                        self.displayPackageActivationWarningOverlay(alertMessage, packageSubscribe: packageSubscribe)
                                         let packagePageUrl = (UIApplication.shared.delegate as! AppDelegate).getRemoteConfig()[mobilePaymentGatewayUrlConfigKey].stringValue!
                                         
@@ -174,7 +174,7 @@ class SMWebViewController: MenuChiledViewController {
                                         print("1222",self.webViewLink)
                                         
                                     } else {
-                                        //                                        let alertMessage = NSLocalizedString("ACTIVATE_THIS_PACKAGE".localized(using: "Localizable"), comment: "")
+                                        //                                        let alertMessage = "ACTIVATE_THIS_PACKAGE".localizedString
                                         //                                        self.displayPackageActivationWarningOverlay(alertMessage, packageSubscribe: packageSubscribe)
                                         
                                         let packagePageUrl = (UIApplication.shared.delegate as! AppDelegate).getRemoteConfig()[mobilePaymentGatewayUrlConfigKey].stringValue!
@@ -194,8 +194,8 @@ class SMWebViewController: MenuChiledViewController {
                                 if let error = error {
                                     switch error.code {
                                     case ResponseCode.noNetwork.rawValue:
-                                        Common.showAlert(alertTitle: NSLocalizedString("NO_INTERNET_ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: NSLocalizedString("NO_INTERNET_ALERT_MESSAGE".localized(using: "Localizable"), comment: ""), perent: self)
-                                    default: Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: error.localizedDescription, perent: self)
+                                        Common.showAlert(alertTitle: "NO_INTERNET_ALERT_TITLE".localizedString, alertMessage: "NO_INTERNET_ALERT_MESSAGE".localizedString, perent: self)
+                                    default: Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: error.localizedDescription, perent: self)
                                     }
                                 }
                             }
@@ -206,8 +206,8 @@ class SMWebViewController: MenuChiledViewController {
                     if let error = error {
                         switch error.code {
                         case ResponseCode.noNetwork.rawValue:
-                            Common.showAlert(alertTitle: NSLocalizedString("NO_INTERNET_ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: NSLocalizedString("NO_INTERNET_ALERT_MESSAGE".localized(using: "Localizable"), comment: ""), perent: self)
-                        default: Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: error.localizedDescription, perent: self)
+                            Common.showAlert(alertTitle: "NO_INTERNET_ALERT_TITLE".localizedString, alertMessage: "NO_INTERNET_ALERT_MESSAGE".localizedString, perent: self)
+                        default: Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: error.localizedDescription, perent: self)
                         }
                     }
                 }

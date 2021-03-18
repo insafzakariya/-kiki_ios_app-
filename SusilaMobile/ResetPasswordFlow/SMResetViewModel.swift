@@ -11,23 +11,21 @@ import SwiftyJSON
 class SMResetViewModel: NSObject {
     fileprivate let api = ApiClient()
     
-    func passwordResetCodeRequest( genre:String, callFinished: @escaping (_ status: Bool, _ error: NSError?) -> Void) {
+    func passwordResetCodeRequest( genre:String, onComplete: @escaping (_ status: Bool, _ error: NSError?) -> Void) {
         api.passwordResetCodeRequest(number:genre, success: { (data, code) -> Void in
             
             switch code {
             case 200:
                 let jsonData = JSON(data as Any)
-                
-                
                 let userName = jsonData["userName"].string ?? ""
                 let mobileNo = jsonData["mobileNo"].string ?? ""
                 let viwerId = jsonData["viwerId"].int ?? -1
                 let status = jsonData["status"].bool ?? false
                 
                 if status {
-                     callFinished(true, nil)
+                    onComplete(true, nil)
                 } else {
-                     callFinished(false, nil)
+                    onComplete(false, nil)
                 }
                 
                 mainInstance.userName = userName
@@ -40,21 +38,17 @@ class SMResetViewModel: NSObject {
                 print("Tester", mainInstance.viwerId)
                 print("Tester", mainInstance.status)
                 
-               
-                
-                
             default:
-                 let jsonData = JSON(data as Any)
+                let jsonData = JSON(data as Any)
                 let error = Common.getErrorFromJson(description: jsonData[ErrorJsonKeys.errorMessage].string ?? "", errorType: "\(jsonData[ErrorJsonKeys.errorCode].int ?? -1)", errorCode: jsonData[ErrorJsonKeys.errorCode].int ?? -1)
-                callFinished(false, error)
+                Log(error.localizedDescription)
+//                onComplete(false, error)
                 
             }
-            
-            
         }) { (error) -> Void in
             //            Common.logout()
-            NSLog("Error (getSongsOfGenreCallFinished): \(error.localizedDescription)")
-            callFinished(false, error)
+            Log(error.localizedDescription)
+//            onComplete(false, error)
         }
     }
     

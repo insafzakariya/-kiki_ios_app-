@@ -32,22 +32,22 @@ class PlaylistDetailViewController: UIViewController {
         addAlertDialog.isHidden = true
         addAlertDialog.layer.zPosition = 1002
         addAlertDialog.btnCancel.addTarget(self, action: #selector(cancelClickAddAlertDialog), for: .touchUpInside)
-            
+        
         let tapAddToLibrary = PlaylistPlayGesture(target: self, action: #selector(buttonClick_AddToLibrary))
         addAlertDialog.lblAddToLibrary.isUserInteractionEnabled = true
         addAlertDialog.lblAddToLibrary.addGestureRecognizer(tapAddToLibrary)
-            
+        
         let tapAddToPlaylist = PlaylistPlayGesture(target: self, action: #selector(buttonClick_AddToPlaylist))
         //tapAddToPlaylist.id =
         addAlertDialog.lblAddToPlaylist.isUserInteractionEnabled = true
         addAlertDialog.lblAddToPlaylist.addGestureRecognizer(tapAddToPlaylist)
-            
+        
         addToPlaylistAlertDialog = AddToPlaylistAlertDialog(frame: getCenteredFrameForOverlay(300))
         addToPlaylistAlertDialog.isHidden = true
         addToPlaylistAlertDialog.layer.zPosition = 2002
         //addToPlaylistAlertDialog.scrollCollection = self
         addToPlaylistAlertDialog.btnCancel.addTarget(self, action: #selector(cancelClickAddToPlaylistAlertDialog), for: .touchUpInside)
-            
+        
         view.addSubview(addAlertDialog)
         view.addSubview(addToPlaylistAlertDialog)
     }
@@ -81,7 +81,7 @@ class PlaylistDetailViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.libraryAllPlaylists = self.libraryDataModel.playlists
                     if self.libraryAllPlaylists.count < 1 {
-                        self.alert(message: NSLocalizedString("NoPlayListFound".localized(using: "Localizable"), comment: ""))
+                        self.alert(message: "NoPlayListFound".localizedString)
                     }
                     self.loadList(view: self.addToPlaylistAlertDialog.scrollList)
                 }
@@ -98,7 +98,7 @@ class PlaylistDetailViewController: UIViewController {
         
         var xLength: CGFloat = 0
         for (_, tileData) in libraryAllPlaylists.enumerated(){
-           
+            
             
             let songTile = PlaylistTileAlertAllPlaylist(frame: CGRect(x: 10, y: xLength, width: UIScreen.main.bounds.width-10, height: UIScreen.main.bounds.width/6))
             songTile.lblTitle.text = tileData.name
@@ -124,7 +124,7 @@ class PlaylistDetailViewController: UIViewController {
         var songsid = [String]()
         songsid.append(String(self.addAlertDialog.id))
         addSongToPlaylist(playlistId: recognizer.id, songs: songsid)
-        self.alert(message: NSLocalizedString("AddedToPlayList".localized(using: "Localizable"), comment: ""))
+        self.alert(message: "AddedToPlayList".localizedString)
         self.addToPlaylistAlertDialog.isHidden = true
         self.addToPlaylistAlertDialog.removeFromSuperview()
         
@@ -168,7 +168,7 @@ class PlaylistDetailViewController: UIViewController {
         addToPlaylistAlertDialog.id = addAlertDialog.id
         addToPlaylistAlertDialog.isHidden = false
     }
-
+    
     func getCenteredFrameForOverlay(_ height: CGFloat) -> CGRect {
         return CGRect(x: 15, y: (UIScreen.main.bounds.height - 250 - height)/2, width: UIScreen.main.bounds.width - 30 , height: height)
     }
@@ -206,15 +206,13 @@ class PlaylistDetailViewController: UIViewController {
     func getRootViewController() -> KYDrawerController{
         return windows.rootViewController as! KYDrawerController
     }
+    
     func subscribeAlert() {
-        let title = NSLocalizedString("SubscribeToListen".localized(using: "Localizable"), comment: "")
-        let alert = UIAlertController(title: title, message: NSLocalizedString("PleaseActivateaPackageToUnlockAccess".localized(using: "Localizable"), comment: "")+NSLocalizedString("toExclusiveContentFromKiki".localized(using: "Localizable"), comment: ""), preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("SubscribeNow".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: { action in
-            let mainMenu = self.getRootViewController().drawerViewController as! SMMainMenuViewController
-            mainMenu.navigateToPackagePage()
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("CLOSE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+        if AppStoreManager.IS_ON_REVIEW{
+            UIHelper.makeNoContentAlert(on: self.view.window!)
+        }else{
+            UIHelper.makeSubscribeToListenAlert(on: self.view.window!)
+        }
     }
     
     var currentPlayingListId = ""
@@ -228,7 +226,7 @@ class PlaylistDetailViewController: UIViewController {
         let titleContainer = UIView(frame: CGRect(x: 0, y: 10, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width/4+90))
         titleContainer.backgroundColor = Constants.color_background
         
-          titleContainer.isUserInteractionEnabled = true
+        titleContainer.isUserInteractionEnabled = true
         var image = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.width/4))
         
         let img : UIImage = UIImage(named:"logo_grayscale")!
@@ -243,19 +241,19 @@ class PlaylistDetailViewController: UIViewController {
         image.center.x = titleContainer.center.x
         image.layer.cornerRadius = 5
         image.clipsToBounds = true
-         
+        
         let lblTitle = UILabel(frame: CGRect(x: 0, y: image.frame.height, width: UIScreen.main.bounds.width, height: 30))
         lblTitle.text = title
         lblTitle.textColor = UIColor.white
         lblTitle.textAlignment = .center
         lblTitle.font = UIFont(name: "Roboto", size: 16.0)
-         
+        
         let songs = UILabel(frame: CGRect(x: 0, y: lblTitle.frame.height+image.frame.height, width: UIScreen.main.bounds.width/2-10, height: 20))
         songs.text = songs_count+" songs"
         songs.textColor = UIColor.gray
         songs.textAlignment = .right
         songs.font = UIFont(name: "Roboto", size: 11.0)
-         
+        
         let year = UILabel(frame: CGRect(x: UIScreen.main.bounds.width/2+10, y: lblTitle.frame.height+image.frame.height, width: UIScreen.main.bounds.width/2-10, height: 20))
         year.text = date
         year.textColor = UIColor.gray
@@ -271,7 +269,7 @@ class PlaylistDetailViewController: UIViewController {
         let attachmentString = NSAttributedString(attachment: imageAttachment)
         let completeText = NSMutableAttributedString(string: "")
         completeText.append(attachmentString)
-        let  textAfterIcon = NSMutableAttributedString(string: NSLocalizedString("Play".localized(using: "Localizable"), comment: ""))
+        let  textAfterIcon = NSMutableAttributedString(string: "Play".localizedString)
         completeText.append(textAfterIcon)
         labelPlaySong.textAlignment = .center
         labelPlaySong.attributedText = completeText
@@ -289,7 +287,7 @@ class PlaylistDetailViewController: UIViewController {
         
         let labelAddSong = UILabel()
         labelAddSong.frame = CGRect(x: UIScreen.main.bounds.width/2+5, y: lblTitle.frame.height+image.frame.height+songs.frame.height+10, width: 70, height:20)
-        labelAddSong.text = NSLocalizedString("Add".localized(using: "Localizable"), comment: "")
+        labelAddSong.text = "Add".localizedString
         labelAddSong.textAlignment = .center
         labelAddSong.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelAddSong.layer.cornerRadius = 10
@@ -300,7 +298,7 @@ class PlaylistDetailViewController: UIViewController {
         tap2.id = Int(id)!
         labelAddSong.isUserInteractionEnabled = true
         labelAddSong.addGestureRecognizer(tap2)
-         
+        
         titleContainer.addSubview(image)
         titleContainer.addSubview(lblTitle)
         titleContainer.addSubview(songs)
@@ -353,7 +351,7 @@ class PlaylistDetailViewController: UIViewController {
         
         viewLatestPlaylistDetails.addSubview(topBar)
         viewLatestPlaylistDetails.addSubview(one)
-       
+        
         view.addSubview(viewLatestPlaylistDetails)
     }
     
@@ -382,7 +380,7 @@ class PlaylistDetailViewController: UIViewController {
         self.homeDataModel.addToLibrary(key: key, songs: songs, addToLibraryCallFinished: { (status, error, userInfo) in
             if status{
                 DispatchQueue.main.async(execute: {
-                    self.alert(message: NSLocalizedString("AddedToLibrary".localized(using: "Localizable"), comment: ""))
+                    self.alert(message: "AddedToLibrary".localizedString)
                     self.addAlertDialog.isHidden = true
                     self.addAlertDialog.removeFromSuperview()
                     self.overLayView.removeFromSuperview()
@@ -401,7 +399,7 @@ class PlaylistDetailViewController: UIViewController {
         present(alert, animated: true, completion: nil)
         let when = DispatchTime.now() + 1
         DispatchQueue.main.asyncAfter(deadline: when) {
-          alert.dismiss(animated: true, completion: nil)
+            alert.dismiss(animated: true, completion: nil)
         }
     }
 }

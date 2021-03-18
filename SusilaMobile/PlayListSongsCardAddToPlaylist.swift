@@ -73,7 +73,7 @@ class PlayListSongsCardAddToPlaylist: UIView {
         add = UIButton(frame: CGRect(x:  UIScreen.main.bounds.width-120, y: self.frame.height/2-10, width: 110, height: 20))
         add.layer.cornerRadius = 10
         add.layer.borderWidth = 1
-        add.setTitle(NSLocalizedString("AddtoPlaylistPlus".localized(using: "Localizable"), comment: ""), for: .normal)
+        add.setTitle("AddtoPlaylistPlus".localizedString, for: .normal)
         add.layer.borderColor = Constants.color_brand.cgColor
         add.setTitleColor(Constants.color_brand, for: .normal)
         add.clipsToBounds = true
@@ -90,12 +90,12 @@ class PlayListSongsCardAddToPlaylist: UIView {
     
     @objc func buttonClick_AddPlaylist(sender:PlaylistTapGesture) {
         addToTempPlaylistSongs(session_id: mainInstance.playlistSessionToken, ref_id: id, type: "S")
-        if self.add.titleLabel?.text == NSLocalizedString("AddtoPlaylistPlus".localized(using: "Localizable"), comment: "") {
+        if self.add.titleLabel?.text == "AddtoPlaylistPlus".localizedString {
             self.add.backgroundColor = Constants.color_brand
             self.add.setTitleColor( .white, for: .normal)
-            self.add.setTitle(NSLocalizedString("AddedToPlayList".localized(using: "Localizable"), comment: ""), for: .normal)
+            self.add.setTitle("AddedToPlayList".localizedString, for: .normal)
         } else {
-            self.add.setTitle(NSLocalizedString("AddtoPlaylistPlus".localized(using: "Localizable"), comment: ""), for: .normal)
+            self.add.setTitle("AddtoPlaylistPlus".localizedString, for: .normal)
             self.add.backgroundColor = .clear
             self.add.setTitleColor( Constants.color_brand, for: .normal)
         }

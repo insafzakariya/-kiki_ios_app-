@@ -40,22 +40,22 @@ class SearchResultViewController: UIViewController {
         addAlertDialog.isHidden = true
         addAlertDialog.layer.zPosition = 1002
         addAlertDialog.btnCancel.addTarget(self, action: #selector(cancelClickAddAlertDialog), for: .touchUpInside)
-            
+        
         let tapAddToLibrary = PlaylistPlayGesture(target: self, action: #selector(buttonClick_AddToLibrary))
         addAlertDialog.lblAddToLibrary.isUserInteractionEnabled = true
         addAlertDialog.lblAddToLibrary.addGestureRecognizer(tapAddToLibrary)
-            
+        
         let tapAddToPlaylist = PlaylistPlayGesture(target: self, action: #selector(buttonClick_AddToPlaylist))
         //tapAddToPlaylist.id =
         addAlertDialog.lblAddToPlaylist.isUserInteractionEnabled = true
         addAlertDialog.lblAddToPlaylist.addGestureRecognizer(tapAddToPlaylist)
-            
+        
         addToPlaylistAlertDialog = AddToPlaylistAlertDialog(frame: getCenteredFrameForOverlay(300))
         addToPlaylistAlertDialog.isHidden = true
         addToPlaylistAlertDialog.layer.zPosition = 2002
         //addToPlaylistAlertDialog.scrollCollection = self
         addToPlaylistAlertDialog.btnCancel.addTarget(self, action: #selector(cancelClickAddToPlaylistAlertDialog), for: .touchUpInside)
-            
+        
         view.addSubview(addAlertDialog)
         view.addSubview(addToPlaylistAlertDialog)
     }
@@ -90,7 +90,7 @@ class SearchResultViewController: UIViewController {
         self.homeDataModel.addToLibrary(key: key, songs: songs, addToLibraryCallFinished: { (status, error, userInfo) in
             if status{
                 DispatchQueue.main.async(execute: {
-                    self.alert(message: NSLocalizedString("AddedToLibrary".localized(using: "Localizable"), comment: ""))
+                    self.alert(message: "AddedToLibrary".localizedString)
                     self.addAlertDialog.isHidden = true
                     self.addAlertDialog.removeFromSuperview()
                     self.overLayView.removeFromSuperview()
@@ -138,7 +138,7 @@ class SearchResultViewController: UIViewController {
         
         var xLength: CGFloat = 0
         for (_, tileData) in libraryAllPlaylists.enumerated(){
-           
+            
             
             let songTile = PlaylistTileAlertAllPlaylist(frame: CGRect(x: 10, y: xLength, width: UIScreen.main.bounds.width-10, height: UIScreen.main.bounds.width/6))
             songTile.lblTitle.text = tileData.name
@@ -164,7 +164,7 @@ class SearchResultViewController: UIViewController {
         var songsid = [String]()
         songsid.append(String(self.addAlertDialog.id))
         addSongToPlaylist(playlistId: recognizer.id, songs: songsid)
-        self.alert(message: NSLocalizedString("AddedToPlayList".localized(using: "Localizable"), comment: ""))
+        self.alert(message: "AddedToPlayList".localizedString)
         self.addToPlaylistAlertDialog.isHidden = true
         self.addToPlaylistAlertDialog.removeFromSuperview()
         
@@ -192,12 +192,12 @@ class SearchResultViewController: UIViewController {
     func alert(message: String) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
         present(alert, animated: true, completion: nil)
-
+        
         // change to desired number of seconds (in this case 5 seconds)
         let when = DispatchTime.now() + 1
         DispatchQueue.main.asyncAfter(deadline: when){
-          // your code with delay
-          alert.dismiss(animated: true, completion: nil)
+            // your code with delay
+            alert.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -219,7 +219,7 @@ class SearchResultViewController: UIViewController {
         searchViewModel.searchByWordAll(key: key, type: type, offset: offset) { (status, error, isEmpty) in
             if (status && isEmpty) {
                 let alert = UIAlertController(title: "Kiki", message: "No results available", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 self.tableView.reloadData()
                 ProgressView.shared.hide()
@@ -250,15 +250,13 @@ class SearchResultViewController: UIViewController {
     func getRootViewController() -> KYDrawerController{
         return windows.rootViewController as! KYDrawerController
     }
+    
     func subscribeAlert() {
-        let title = NSLocalizedString("SubscribeToListen".localized(using: "Localizable"), comment: "")
-        let alert = UIAlertController(title: title, message: NSLocalizedString("PleaseActivateaPackageToUnlockAccess".localized(using: "Localizable"), comment: "")+NSLocalizedString("toExclusiveContentFromKiki".localized(using: "Localizable"), comment: ""), preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("SubscribeNow".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: { action in
-            let mainMenu = self.getRootViewController().drawerViewController as! SMMainMenuViewController
-            mainMenu.navigateToPackagePage()
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("CLOSE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+        if AppStoreManager.IS_ON_REVIEW{
+            UIHelper.makeNoContentAlert(on: self.view.window!)
+        }else{
+            UIHelper.makeSubscribeToListenAlert(on: self.view.window!)
+        }
     }
     
     @objc func buttonClickedAddArtistToLibrary(recognizer: PlaylistPlayGesture) {
@@ -267,7 +265,7 @@ class SearchResultViewController: UIViewController {
     
     @objc func buttonClickedArtist(recognizer: MyTapGesture) {
         //self.loadPopularArtistSongsList(id: recognizer.id)
-       // self.createArtistDetails(id: recognizer.id, name: recognizer.aname, url: recognizer.url, album: "", song: String(recognizer.songs)+" Songs")
+        // self.createArtistDetails(id: recognizer.id, name: recognizer.aname, url: recognizer.url, album: "", song: String(recognizer.songs)+" Songs")
         let controller = ArtistDetailViewController()
         controller.id = recognizer.id
         controller.name = recognizer.aname
@@ -279,7 +277,7 @@ class SearchResultViewController: UIViewController {
     }
     
     @objc func buttonClickedPlaylistDetails(recognizer: PlaylistTapGesture) {
-           print("Printer ", recognizer.id," ", recognizer.title," ", recognizer.image)
+        print("Printer ", recognizer.id," ", recognizer.title," ", recognizer.image)
         let controller = PlaylistDetailViewController()
         controller.id = recognizer.id
         controller.image = recognizer.image
@@ -293,14 +291,14 @@ class SearchResultViewController: UIViewController {
     
     func timeString(time: TimeInterval) -> String {
         /*let hour = Int(time) / 3600
-        let minute = Int(time) / 60 % 60
-        let second = Int(time) % 60*/
+         let minute = Int(time) / 60 % 60
+         let second = Int(time) % 60*/
         
         let t = time*60
         
         let minute = Int(t) / 60
         let second = Int(t) % 60
-
+        
         // return formated string
         return String(format: "%02i:%02i", minute, second)
     }

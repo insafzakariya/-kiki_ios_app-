@@ -47,7 +47,7 @@ class SongsTileSelectPlaylistDetails: UIView {
         lblTime.textColor = .gray
         
         add = UIButton(frame: CGRect(x:  UIScreen.main.bounds.width-130, y: image.frame.height/2-10, width: 110, height: 20))
-        add.setTitle(NSLocalizedString("AddtoPlaylistPlus".localized(using: "Localizable"), comment: ""), for: .normal)
+        add.setTitle("AddtoPlaylistPlus".localizedString, for: .normal)
         add.layer.cornerRadius = 10
         add.layer.borderWidth = 1
         add.layer.borderColor = Constants.color_brand.cgColor
@@ -82,9 +82,9 @@ class SongsTileSelectPlaylistDetails: UIView {
     @objc func buttonClick_AddPlaylist(sender:PlaylistTapGesture) {
         addToTempPlaylistSongs(session_id: mainInstance.playlistSessionToken, ref_id: id, type: "S")
         
-        if self.add.titleLabel?.text == NSLocalizedString("AddtoPlaylistPlus".localized(using: "Localizable"), comment: "") {
+        if self.add.titleLabel?.text == "AddtoPlaylistPlus".localizedString {
             mainInstance.songArray.append(id)
-            self.add.setTitle(NSLocalizedString("AddedToPlayList".localized(using: "Localizable"), comment: ""), for: .normal)
+            self.add.setTitle("AddedToPlayList".localizedString, for: .normal)
             self.add.backgroundColor = Constants.color_brand
             self.add.layer.borderColor = Constants.color_brand.cgColor
             self.add.setTitleColor(.white, for: .normal)
@@ -92,7 +92,7 @@ class SongsTileSelectPlaylistDetails: UIView {
             if let idx = mainInstance.songArray.firstIndex(of:id) {
                 mainInstance.songArray.remove(at: idx)
             }
-            self.add.setTitle(NSLocalizedString("AddtoPlaylistPlus".localized(using: "Localizable"), comment: ""), for: .normal)
+            self.add.setTitle("AddtoPlaylistPlus".localizedString, for: .normal)
             self.add.backgroundColor = .clear
             self.add.layer.borderColor = Constants.color_brand.cgColor
             self.add.setTitleColor(Constants.color_brand, for: .normal)

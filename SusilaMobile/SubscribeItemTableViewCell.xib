@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="subscribeItemTableViewCell" rowHeight="94" id="KGk-i7-Jjw" customClass="SubscribeItemTableViewCell" customModule="SusilaMobile" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="394" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="394" height="90"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kfw-W4-41Z">
+                        <rect key="frame" x="20" y="10" width="354" height="70"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Weekly" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sHp-43-IYt">
+                                <rect key="frame" x="10" y="10" width="304" height="27"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 0.49 per week" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mK-ip-LhC">
+                                <rect key="frame" x="10" y="42" width="304" height="15.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select" translatesAutoresizingMaskIntoConstraints="NO" id="Psm-Nf-C4S">
+                                <rect key="frame" x="314" y="20" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DB1-Co-jx7"/>
+                                    <constraint firstAttribute="width" constant="30" id="Hfg-Ka-TP3"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="sHp-43-IYt" secondAttribute="trailing" constant="40" id="8MR-UV-sWD"/>
+                            <constraint firstAttribute="trailing" secondItem="2mK-ip-LhC" secondAttribute="trailing" constant="40" id="EKF-9K-yjx"/>
+                            <constraint firstAttribute="trailing" secondItem="Psm-Nf-C4S" secondAttribute="trailing" constant="10" id="Ec2-92-QSR"/>
+                            <constraint firstItem="sHp-43-IYt" firstAttribute="top" secondItem="Kfw-W4-41Z" secondAttribute="top" constant="10" id="JMg-4Y-fsb"/>
+                            <constraint firstItem="2mK-ip-LhC" firstAttribute="leading" secondItem="Kfw-W4-41Z" secondAttribute="leading" constant="10" id="Myn-LD-8Qi"/>
+                            <constraint firstItem="2mK-ip-LhC" firstAttribute="top" secondItem="sHp-43-IYt" secondAttribute="bottom" constant="5" id="XKt-wE-dT9"/>
+                            <constraint firstItem="Psm-Nf-C4S" firstAttribute="centerY" secondItem="Kfw-W4-41Z" secondAttribute="centerY" id="jB7-j6-RS9"/>
+                            <constraint firstItem="sHp-43-IYt" firstAttribute="leading" secondItem="Kfw-W4-41Z" secondAttribute="leading" constant="10" id="wi0-Gd-Dgn"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="Kfw-W4-41Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ESH-8l-cqg"/>
+                    <constraint firstAttribute="trailing" secondItem="Kfw-W4-41Z" secondAttribute="trailing" constant="20" id="jpM-NU-V2X"/>
+                    <constraint firstItem="Kfw-W4-41Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="tnE-pK-tUq"/>
+                    <constraint firstAttribute="bottom" secondItem="Kfw-W4-41Z" secondAttribute="bottom" constant="10" id="zRM-G7-Zts"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="containerView" destination="Kfw-W4-41Z" id="wUf-Sg-biA"/>
+                <outlet property="priceLabel" destination="2mK-ip-LhC" id="vQh-Xt-Q7F"/>
+                <outlet property="selectImageView" destination="Psm-Nf-C4S" id="VyR-Cn-C4u"/>
+                <outlet property="titleLabel" destination="sHp-43-IYt" id="LDc-kw-gz0"/>
+            </connections>
+            <point key="canvasLocation" x="146.37681159420291" y="103.125"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="select" width="63" height="63"/>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class AdvertisementViewController: UIView {
     @IBOutlet weak var topLeft: UIView!
     @IBOutlet weak var topRight: UIView!
@@ -69,7 +70,7 @@ class AdvertisementViewController: UIView {
                         controller.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_arrow"), style: .plain, target: self, action: #selector(self.back))
                     } )
                 } else {
-                    UIApplication.shared.openURL(URL(string: (fullScreenAdvertisement?.webUrl)!)!)
+                    UIApplication.shared.open(URL(string: (fullScreenAdvertisement?.webUrl)!)!)
                 }
             }
         }
@@ -81,7 +82,7 @@ class AdvertisementViewController: UIView {
     
     func webView(shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         if navigationType == UIWebView.NavigationType.linkClicked {
-            UIApplication.shared.openURL(request.url!)
+            UIApplication.shared.open(request.url!)
             return false
         }
         return true
@@ -154,10 +155,4 @@ class AdvertisementViewController: UIView {
             return self.fullScreenImage
         }
     }
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

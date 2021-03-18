@@ -55,10 +55,10 @@ class BrowseViewController: UIView {
     var viewLatestPlaylistDetails = UIView(frame: CGRect.zero)
     
     var allSongs:[Song] = [Song]()
-   // var genreViewArray:[GenreTiles] = [GenreTiles]()
+    // var genreViewArray:[GenreTiles] = [GenreTiles]()
     let homeDataModel = HomeDataModel()
     let browseDataModel = BrowseDataModel()
-    var homeViewController = HomeViewController()
+    
     
     var viewPopularArtists: UIView!
     var viewScrollPopularArtists: UIView!
@@ -120,7 +120,7 @@ class BrowseViewController: UIView {
     var addAlertDialog = AddAlertDialog()
     var addToPlaylistAlertDialog = AddToPlaylistAlertDialog()
     var overLayView = UIView(frame: UIScreen.main.bounds)
-
+    
     //initWithFrame to init view from code
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -134,7 +134,7 @@ class BrowseViewController: UIView {
     }
     
     private func commonInit() {
-       
+        
         loadAllSongsGenres()
         self.backgroundColor = Constants.color_background
         scrollMain = UIScrollView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
@@ -143,14 +143,14 @@ class BrowseViewController: UIView {
         
         let labelByGenre = UILabel()
         labelByGenre.frame = CGRect(x: 10, y: 0, width: self.frame.width, height:40)
-        labelByGenre.text = NSLocalizedString("ByGenre".localized(using: "Localizable"), comment: "")
+        labelByGenre.text = "ByGenre".localizedString
         labelByGenre.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelByGenre.textColor = UIColor.white
         scrollMain.addSubview(labelByGenre);
         
         let labelByGenreSeeAll = UILabel()
         labelByGenreSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: 10, width: 70, height:20)
-        labelByGenreSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelByGenreSeeAll.text = "ViewAll".localizedString
         labelByGenreSeeAll.textAlignment = .center
         labelByGenreSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelByGenreSeeAll.layer.cornerRadius = 10
@@ -174,14 +174,14 @@ class BrowseViewController: UIView {
         
         let labelByArtist = UILabel()
         labelByArtist.frame = CGRect(x: 10, y: labelByGenre.frame.height+scrollGenres.frame.height+10, width: self.frame.width, height:40)
-        labelByArtist.text = NSLocalizedString("Byartist".localized(using: "Localizable"), comment: "")
+        labelByArtist.text = "Byartist".localizedString
         labelByArtist.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelByArtist.textColor = UIColor.white
         scrollMain.addSubview(labelByArtist);
         
         let labelByArtistSeeAll = UILabel()
         labelByArtistSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: labelByGenre.frame.height+genreButtonContainer.frame.height+20, width: 70, height:20)
-        labelByArtistSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelByArtistSeeAll.text = "ViewAll".localizedString
         labelByArtistSeeAll.textAlignment = .center
         labelByArtistSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelByArtistSeeAll.layer.cornerRadius = 10
@@ -221,20 +221,20 @@ class BrowseViewController: UIView {
         addAlertDialog.isHidden = true
         addAlertDialog.layer.zPosition = 1002
         addAlertDialog.btnCancel.addTarget(self, action: #selector(cancelClickAddAlertDialog), for: .touchUpInside)
-            
+        
         let tapAddToLibrary = PlaylistPlayGesture(target: self, action: #selector(buttonClick_AddToLibrary))
         addAlertDialog.lblAddToLibrary.isUserInteractionEnabled = true
         addAlertDialog.lblAddToLibrary.addGestureRecognizer(tapAddToLibrary)
-            
+        
         let tapAddToPlaylist = PlaylistPlayGesture(target: self, action: #selector(buttonClick_AddToPlaylist))
         addAlertDialog.lblAddToPlaylist.isUserInteractionEnabled = true
         addAlertDialog.lblAddToPlaylist.addGestureRecognizer(tapAddToPlaylist)
-            
+        
         addToPlaylistAlertDialog = AddToPlaylistAlertDialog(frame: getCenteredFrameForOverlay(300))
         addToPlaylistAlertDialog.isHidden = true
         addToPlaylistAlertDialog.layer.zPosition = 2002
         addToPlaylistAlertDialog.btnCancel.addTarget(self, action: #selector(cancelClickAddToPlaylistAlertDialog), for: .touchUpInside)
-            
+        
         self.addSubview(addAlertDialog)
         self.addSubview(addToPlaylistAlertDialog)
     }
@@ -268,7 +268,7 @@ class BrowseViewController: UIView {
                 DispatchQueue.main.async {
                     self.libraryAllPlaylists = self.libraryDataModel.playlists
                     if self.libraryAllPlaylists.count < 1 {
-                        self.alert(message: NSLocalizedString("NoPlayListFound".localized(using: "Localizable"), comment: ""))
+                        self.alert(message: "NoPlayListFound".localizedString)
                     }
                     self.loadList(view: self.addToPlaylistAlertDialog.scrollList)
                 }
@@ -285,7 +285,7 @@ class BrowseViewController: UIView {
         
         var xLength: CGFloat = 0
         for (_, tileData) in libraryAllPlaylists.enumerated(){
-           
+            
             
             let songTile = PlaylistTileAlertAllPlaylist(frame: CGRect(x: 10, y: xLength, width: UIScreen.main.bounds.width-10, height: UIScreen.main.bounds.width/6))
             songTile.lblTitle.text = tileData.name
@@ -311,7 +311,7 @@ class BrowseViewController: UIView {
         var songsid = [String]()
         songsid.append(String(self.addAlertDialog.id))
         addSongToPlaylist(playlistId: recognizer.id, songs: songsid)
-        self.alert(message: NSLocalizedString("AddedToPlayList".localized(using: "Localizable"), comment: ""))
+        self.alert(message:"AddedToPlayList".localizedString)
         self.addToPlaylistAlertDialog.isHidden = true
         self.addToPlaylistAlertDialog.removeFromSuperview()
         
@@ -378,56 +378,56 @@ class BrowseViewController: UIView {
         scrollGenresSeeAll.contentSize = CGSize(width: UIScreen.main.bounds.width-20, height: genreButtonContainerSeeAll.frame.height)
         
         var buttonY: CGFloat = 0, buttonY2: CGFloat = 0, buttonY3: CGFloat = 0, buttonY4: CGFloat = 0, buttonY5: CGFloat = 0, buttonY6: CGFloat = 0
-         
-         
-         for (index, genreData) in songGenresAll.enumerated(){
-             //let color = colorArray[index]
-             let color:UIColor = colorWithHexString(hex: genreData.genreColor)
-             
-             let button = UIButton()
-             button.backgroundColor = color
-             button.setTitle(genreData.genreName, for: .normal)
+        
+        
+        for (index, genreData) in songGenresAll.enumerated(){
+            //let color = colorArray[index]
+            let color:UIColor = UIHelper.colorWithHexString(hex: genreData.genreColor)
+            
+            let button = UIButton()
+            button.backgroundColor = color
+            button.setTitle(genreData.genreName, for: .normal)
             button.titleLabel!.font = UIFont(name: "Roboto", size: 11.0)
-             button.titleLabel?.textColor = UIColor.white
-             button.accessibilityHint = genreData.genreName!
-             
-             if (index>11) {
-                 button.frame = CGRect(x: buttonY5+10, y: ((UIScreen.main.bounds.width-40)*1/3+10)*4, width:(UIScreen.main.bounds.width-40)*1/3, height:(UIScreen.main.bounds.width-40)*1/3)
-                 buttonY5 += (UIScreen.main.bounds.width-40)*1/3 + 10
-                 buttonY6 = 5
-             } else if (index>8) {
-                 button.frame = CGRect(x: buttonY4+10, y: ((UIScreen.main.bounds.width-40)*1/3+10)*3, width:(UIScreen.main.bounds.width-40)*1/3, height:(UIScreen.main.bounds.width-40)*1/3)
-                 buttonY4 += (UIScreen.main.bounds.width-40)*1/3 + 10
-                 buttonY6 = 4
-             } else if (index>5) {
-                 button.frame = CGRect(x: buttonY3+10, y: ((UIScreen.main.bounds.width-40)*1/3+10)*2, width:(UIScreen.main.bounds.width-40)*1/3, height:(UIScreen.main.bounds.width-40)*1/3)
-                 buttonY3 += (UIScreen.main.bounds.width-40)*1/3 + 10
-                 buttonY6 = 3
-             } else if (index>2) {
-                 button.frame = CGRect(x: buttonY2+10, y: (UIScreen.main.bounds.width-40)*1/3+10, width:(UIScreen.main.bounds.width-40)*1/3, height:(UIScreen.main.bounds.width-40)*1/3)
-                 buttonY2 += (UIScreen.main.bounds.width-40)*1/3 + 10
-                 buttonY6 = 2
-             } else {
-                 button.frame = CGRect(x: buttonY+10, y: 0, width:(UIScreen.main.bounds.width-40)*1/3, height:(UIScreen.main.bounds.width-40)*1/3)
-                 buttonY6 = 1
-             }
-             button.contentMode = UIView.ContentMode.scaleToFill
-             button.layer.cornerRadius = 10
-             buttonY += (UIScreen.main.bounds.width-40)*1/3 + 10
-             button.tag = index
-             let tap = GenreTapGesture(target: self, action: #selector(buttonClicked))
-             tap.id = String(genreData.genreId)
-             tap.title = genreData.genreName!
-             button.isUserInteractionEnabled = true
-             button.addGestureRecognizer(tap)
+            button.titleLabel?.textColor = UIColor.white
+            button.accessibilityHint = genreData.genreName!
+            
+            if (index>11) {
+                button.frame = CGRect(x: buttonY5+10, y: ((UIScreen.main.bounds.width-40)*1/3+10)*4, width:(UIScreen.main.bounds.width-40)*1/3, height:(UIScreen.main.bounds.width-40)*1/3)
+                buttonY5 += (UIScreen.main.bounds.width-40)*1/3 + 10
+                buttonY6 = 5
+            } else if (index>8) {
+                button.frame = CGRect(x: buttonY4+10, y: ((UIScreen.main.bounds.width-40)*1/3+10)*3, width:(UIScreen.main.bounds.width-40)*1/3, height:(UIScreen.main.bounds.width-40)*1/3)
+                buttonY4 += (UIScreen.main.bounds.width-40)*1/3 + 10
+                buttonY6 = 4
+            } else if (index>5) {
+                button.frame = CGRect(x: buttonY3+10, y: ((UIScreen.main.bounds.width-40)*1/3+10)*2, width:(UIScreen.main.bounds.width-40)*1/3, height:(UIScreen.main.bounds.width-40)*1/3)
+                buttonY3 += (UIScreen.main.bounds.width-40)*1/3 + 10
+                buttonY6 = 3
+            } else if (index>2) {
+                button.frame = CGRect(x: buttonY2+10, y: (UIScreen.main.bounds.width-40)*1/3+10, width:(UIScreen.main.bounds.width-40)*1/3, height:(UIScreen.main.bounds.width-40)*1/3)
+                buttonY2 += (UIScreen.main.bounds.width-40)*1/3 + 10
+                buttonY6 = 2
+            } else {
+                button.frame = CGRect(x: buttonY+10, y: 0, width:(UIScreen.main.bounds.width-40)*1/3, height:(UIScreen.main.bounds.width-40)*1/3)
+                buttonY6 = 1
+            }
+            button.contentMode = UIView.ContentMode.scaleToFill
+            button.layer.cornerRadius = 10
+            buttonY += (UIScreen.main.bounds.width-40)*1/3 + 10
+            button.tag = index
+            let tap = GenreTapGesture(target: self, action: #selector(buttonClicked))
+            tap.id = String(genreData.genreId)
+            tap.title = genreData.genreName!
+            button.isUserInteractionEnabled = true
+            button.addGestureRecognizer(tap)
             // button.addTarget(self, action:#selector(buttonClicked),for:.touchUpInside)
-             //button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
-             //button.isUserInteractionEnabled = true
-             //button.addGestureRecognizer(tapGestureRecognizer)
-             genreButtonContainerSeeAll.addSubview(button)
-             
+            //button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+            //button.isUserInteractionEnabled = true
+            //button.addGestureRecognizer(tapGestureRecognizer)
+            genreButtonContainerSeeAll.addSubview(button)
+            
             // genreButtonContainer.addSubview(genreTileFetched)
-         }
+        }
         
         view.addSubview(genreSeeAllView)
         
@@ -439,7 +439,7 @@ class BrowseViewController: UIView {
     
     @objc func buttonClickedSeeAllGenre(recognizer: HomeTapGesture) {
         
-        createGenreSeeAllView(view: self, title: NSLocalizedString("ByGenre".localized(using: "Localizable"), comment: ""))
+        createGenreSeeAllView(view: self, title: "ByGenre".localizedString)
         print(recognizer.lname)
     }
     
@@ -453,7 +453,7 @@ class BrowseViewController: UIView {
             
             for (index, genreData) in songGenres.enumerated(){
                 //let color = colorArray[index]
-                let color:UIColor = colorWithHexString(hex: genreData.genreColor)
+                let color:UIColor = UIHelper.colorWithHexString(hex: genreData.genreColor)
                 
                 let button = UIButton()
                 button.backgroundColor = color
@@ -486,7 +486,7 @@ class BrowseViewController: UIView {
                 button.layer.cornerRadius = 10
                 buttonY += (UIScreen.main.bounds.width-40)*1/3 + 10
                 button.tag = index
-               // button.addTarget(self, action:#selector(buttonClicked),for:.touchUpInside)
+                // button.addTarget(self, action:#selector(buttonClicked),for:.touchUpInside)
                 let tap = GenreTapGesture(target: self, action: #selector(buttonClicked))
                 tap.id = String(genreData.genreId)
                 tap.title = genreData.genreName!
@@ -496,11 +496,11 @@ class BrowseViewController: UIView {
                 //button.addGestureRecognizer(tapGestureRecognizer)
                 genreButtonContainer.addSubview(button)
                 
-               // genreButtonContainer.addSubview(genreTileFetched)
+                // genreButtonContainer.addSubview(genreTileFetched)
             }
             //scrollGenres.contentSize = CGSize(width: UIScreen.main.bounds.width-20, height: ((UIScreen.main.bounds.width-40)*1/3)*buttonY6+30)
             //scrollGenres.isScrollEnabled = false
-           // scrollGenres.scrollRectToVisible(genreViewArray[0].frame, animated: true)
+            // scrollGenres.scrollRectToVisible(genreViewArray[0].frame, animated: true)
         }
     }
     
@@ -511,10 +511,10 @@ class BrowseViewController: UIView {
         createGenre(id: Int(recognizer.id)!, genreName: recognizer.title)
         
         /*if(sender.tag == 5){
-            
-            var abc = "argOne" //Do something for tag 5
-        }
-        print("hello")*/
+         
+         var abc = "argOne" //Do something for tag 5
+         }
+         print("hello")*/
     }
     
     func loadAllArtistsList() {
@@ -527,7 +527,7 @@ class BrowseViewController: UIView {
                     self.allArtistListSeeAll = self.browseDataModel.allArtistsList
                     
                     self.loadBrowseAllArtistsViews(view: self.scrollMain)
-                    self.createBrowseArtistSeeAllView(view: self.viewAllBrowseArtists, title: NSLocalizedString("Byartist".localized(using: "Localizable"), comment: ""))
+                    self.createBrowseArtistSeeAllView(view: self.viewAllBrowseArtists, title: "Byartist".localizedString)
                 })
             } else {
                 DispatchQueue.main.async(execute: {})
@@ -578,13 +578,13 @@ class BrowseViewController: UIView {
         
         let labelSongs = UILabel()
         labelSongs.frame = CGRect(x: 10, y: 0, width: self.frame.width, height:40)
-        labelSongs.text = NSLocalizedString("Song".localized(using: "Localizable"), comment: "")
+        labelSongs.text = "Song".localizedString
         labelSongs.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelSongs.textColor = UIColor.white
         
         let labelSongsSeeAll = UILabel()
         labelSongsSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: 10, width: 70, height:20)
-        labelSongsSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongsSeeAll.text = "ViewAll".localizedString
         labelSongsSeeAll.textAlignment = .center
         labelSongsSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongsSeeAll.layer.cornerRadius = 10
@@ -598,13 +598,13 @@ class BrowseViewController: UIView {
         
         let labelArtists = UILabel()
         labelArtists.frame = CGRect(x: 10, y: 0, width: self.frame.width, height:40)
-        labelArtists.text = NSLocalizedString("Artist".localized(using: "Localizable"), comment: "")
+        labelArtists.text = "Artist".localizedString
         labelArtists.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelArtists.textColor = UIColor.white
         
         let labelByArtistsSeeAll = UILabel()
         labelByArtistsSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: 10, width: 70, height:20)
-        labelByArtistsSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelByArtistsSeeAll.text = "ViewAll".localizedString
         labelByArtistsSeeAll.textAlignment = .center
         labelByArtistsSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelByArtistsSeeAll.layer.cornerRadius = 10
@@ -617,13 +617,13 @@ class BrowseViewController: UIView {
         
         let labelPlayList = UILabel()
         labelPlayList.frame = CGRect(x: 10, y: 0, width: self.frame.width, height:40)
-        labelPlayList.text = NSLocalizedString("Playlists".localized(using: "Localizable"), comment: "")
+        labelPlayList.text = "Playlists".localizedString
         labelPlayList.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelPlayList.textColor = UIColor.white
         
         let labelPlayListSeeAll = UILabel()
         labelPlayListSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: 10, width: 70, height:20)
-        labelPlayListSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelPlayListSeeAll.text = "ViewAll".localizedString
         labelPlayListSeeAll.textAlignment = .center
         labelPlayListSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelPlayListSeeAll.layer.cornerRadius = 10
@@ -683,7 +683,7 @@ class BrowseViewController: UIView {
         arrow.addTarget(self, action: #selector(goGenreButtonClickedArtist), for: .touchUpInside)
         
         let text = UILabel(frame: CGRect(x: 40, y: 10, width: 100, height: 20))
-        text.text = NSLocalizedString("Artist".localized(using: "Localizable"), comment: "")
+        text.text = "Artist".localizedString
         text.textColor = UIColor.white
         
         topBar.addSubview(arrow)
@@ -754,7 +754,7 @@ class BrowseViewController: UIView {
     @objc func buttonClickedBrowseArtist(recognizer: MyTapGesture) {
         createArtistDetails(id: recognizer.id, name: recognizer.aname, url: recognizer.url, album: "", song: String(recognizer.songs)+" Songs")
     }
-
+    
     var vi = UIView(frame: CGRect.zero)
     func createArtistDetails(id: Int, name: String, url: String, album: String, song: String) {
         vi = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height))
@@ -813,7 +813,7 @@ class BrowseViewController: UIView {
         let labelAddArtist = UILabel()
         labelAddArtist.frame = CGRect(x: 0, y: lblTitle.frame.height+image.frame.height+albums.frame.height+5, width: 70, height:20)
         labelAddArtist.center.x = titleContainer.center.x
-        labelAddArtist.text = NSLocalizedString("Add".localized(using: "Localizable"), comment: "")
+        labelAddArtist.text = "Add".localizedString
         labelAddArtist.textAlignment = .center
         labelAddArtist.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelAddArtist.layer.cornerRadius = 10
@@ -840,7 +840,7 @@ class BrowseViewController: UIView {
         
         let labelAlbumByArtistSeeAll = UILabel()
         labelAlbumByArtistSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: titleContainer.frame.height+10, width: 70, height:20)
-        labelAlbumByArtistSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelAlbumByArtistSeeAll.text = "ViewAll".localizedString
         labelAlbumByArtistSeeAll.textAlignment = .center
         labelAlbumByArtistSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelAlbumByArtistSeeAll.layer.cornerRadius = 10
@@ -860,7 +860,7 @@ class BrowseViewController: UIView {
         
         labelSong.frame = CGRect(x: 10, y: titleContainer.frame.height, width: UIScreen.main.bounds.width-10, height:40)
         
-        labelSong.text = NSLocalizedString("Song".localized(using: "Localizable"), comment: "")
+        labelSong.text = "Song".localizedString
         labelSong.font = UIFont(name: "Roboto-Bold", size: 18.0)
         labelSong.textColor = UIColor.white
         //labelSong.backgroundColor = UIColor.green
@@ -868,7 +868,7 @@ class BrowseViewController: UIView {
         let labelSongByArtistSeeAll = UILabel()
         //labelSongByArtistSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: titleContainer.frame.height+10+UIScreen.main.bounds.width/2+50, width: 70, height:20)
         labelSongByArtistSeeAll.frame = CGRect(x: UIScreen.main.bounds.width-80, y: titleContainer.frame.height+10, width: 70, height:20)
-        labelSongByArtistSeeAll.text = NSLocalizedString("ViewAll".localized(using: "Localizable"), comment: "")
+        labelSongByArtistSeeAll.text = "ViewAll".localizedString
         labelSongByArtistSeeAll.textAlignment = .center
         labelSongByArtistSeeAll.font = UIFont(name: "Roboto-Bold", size: 10.0)
         labelSongByArtistSeeAll.layer.cornerRadius = 10
@@ -892,7 +892,7 @@ class BrowseViewController: UIView {
     }
     
     @objc func buttonClickedAddArtistToLibrary(recognizer: PlaylistPlayGesture) {
-       
+        
         addToLibrary(key: "A", songs: recognizer.id)
     }
     
@@ -901,7 +901,7 @@ class BrowseViewController: UIView {
         self.homeDataModel.addToLibrary(key: key, songs: songs, addToLibraryCallFinished: { (status, error, userInfo) in
             if status{
                 DispatchQueue.main.async(execute: {
-                    self.alert(message: NSLocalizedString("AddedToLibrary".localized(using: "Localizable"), comment: ""))
+                    self.alert(message: "AddedToLibrary".localizedString)
                     ProgressView.shared.hide()
                 })
             } else {
@@ -915,12 +915,12 @@ class BrowseViewController: UIView {
     func alert(message: String) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
         self.window?.rootViewController?.present(alert, animated: true, completion: nil)
-
+        
         // change to desired number of seconds (in this case 5 seconds)
         let when = DispatchTime.now() + 1
         DispatchQueue.main.asyncAfter(deadline: when){
-          // your code with delay
-          alert.dismiss(animated: true, completion: nil)
+            // your code with delay
+            alert.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -1048,17 +1048,17 @@ class BrowseViewController: UIView {
     }
     
     /*func loadPopularArtistsList() {
-        self.homeDataModel.getPopularSongs(getPopularSongsListCallFinished: { (status, error, userInfo) in
-            if status{
-                DispatchQueue.main.async(execute: {
-                    let minimizedArray = self.homeDataModel.popularSongsList.chunked(into: 10)
-                    self.currentPlayingList = self.homeDataModel.popularSongsList.count > 10 ? minimizedArray[0] : self.homeDataModel.popularSongsList
-                })
-            } else {
-                DispatchQueue.main.async(execute: {})
-            }
-        })
-    }*/
+     self.homeDataModel.getPopularSongs(getPopularSongsListCallFinished: { (status, error, userInfo) in
+     if status{
+     DispatchQueue.main.async(execute: {
+     let minimizedArray = self.homeDataModel.popularSongsList.chunked(into: 10)
+     self.currentPlayingList = self.homeDataModel.popularSongsList.count > 10 ? minimizedArray[0] : self.homeDataModel.popularSongsList
+     })
+     } else {
+     DispatchQueue.main.async(execute: {})
+     }
+     })
+     }*/
     
     func loadGenreSongList(genre:String) {
         ProgressView.shared.show(genreView, mainText: nil, detailText: nil)
@@ -1123,7 +1123,7 @@ class BrowseViewController: UIView {
                     let minimizedArray = self.homeDataModel.popularSongsList.chunked(into: 10)
                     self.scrollCollectionMinimizedGenrePlaylist?.browsePlayingList = self.homeDataModel.popularSongsList.count > 10 ? minimizedArray[0] : self.homeDataModel.popularSongsList
                     
-                   // self.scrollCollectionExapndedPopularArtists?.currentPlayingList = self.homeDataModel.popularSongsList
+                    // self.scrollCollectionExapndedPopularArtists?.currentPlayingList = self.homeDataModel.popularSongsList
                 })
             } else {
                 DispatchQueue.main.async(execute: {})
@@ -1154,7 +1154,7 @@ class BrowseViewController: UIView {
                     
                     let minimizedArray = self.browseDataModel.SongsByArtistList.chunked(into: 10)
                     self.scrollCollectionSongByArtist?.browsePlayingList = self.browseDataModel.SongsByArtistList.count > 10 ? minimizedArray[0] : self.browseDataModel.SongsByArtistList
-                     ProgressView.shared.hide()
+                    ProgressView.shared.hide()
                 })
             } else {
                 DispatchQueue.main.async(execute: {})
@@ -1216,7 +1216,7 @@ class BrowseViewController: UIView {
             xLength += ((UIScreen.main.bounds.width-40)*1/3)
             artistContent.addSubview(songTile)
             if index == 0 {
-               // selectedTileArtists = songTile
+                // selectedTileArtists = songTile
             }
             //tilesArtists.append(songTile)
         }
@@ -1352,13 +1352,13 @@ class BrowseViewController: UIView {
         }
         view.addSubview(viewArtist)
     }
-
+    
     @objc func buttonClickedSeeAllSongs(recognizer: HomeTapGesture) {
         genreSongsList.removeAll()
         self.createSongsSeeAllView(view: self.viewAllSongs, title: genreInstance.name)
         self.addSubview(self.viewAllSongs)
         loadAllGenreSongsList(offset: 0, genre: genreInstance.name)
-       
+        
     }
     
     func timeString(time: TimeInterval) -> String {
@@ -1366,7 +1366,7 @@ class BrowseViewController: UIView {
         
         let minute = Int(t) / 60
         let second = Int(t) % 60
-
+        
         return String(format: "%02i:%02i", minute, second)
     }
     
@@ -1386,7 +1386,7 @@ class BrowseViewController: UIView {
         arrow.addTarget(self, action: #selector(viewAllSongsButtonClicked), for: .touchUpInside)
         
         let label = UILabel(frame: CGRect(x: 40, y: 10, width: UIScreen.main.bounds.width-50, height: 20))
-        label.text = NSLocalizedString("Song".localized(using: "Localizable"), comment: "")
+        label.text = "Song".localizedString
         label.textColor = .white
         
         topBar.addSubview(arrow)
@@ -1441,11 +1441,11 @@ class BrowseViewController: UIView {
                 tapGestureRecognizer.id = index
                 songTile.isUserInteractionEnabled = true
                 songTile.addGestureRecognizer(tapGestureRecognizer)
-               // songTile.styleType = self.styleType
+                // songTile.styleType = self.styleType
                 xLength += UIScreen.main.bounds.width/6+20
                 contentView.addSubview(songTile)
                 if index == 0 {
-                   // selectedTileListSquareSongs = songTile
+                    // selectedTileListSquareSongs = songTile
                     songTile.isSelected = true
                 }
                 
@@ -1535,7 +1535,7 @@ class BrowseViewController: UIView {
         view.addSubview(scrollPlayList)
     }
     
-   
+    
     func createGenrePlaylistAllView(view: UIView) {
         viewAllPlayList = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         
@@ -1594,7 +1594,7 @@ class BrowseViewController: UIView {
     }
     
     @objc func buttonClickedPlaylistDetails(recognizer: PlaylistTapGesture) {
-           print("Printer ", recognizer.id," ", recognizer.title)
+        print("Printer ", recognizer.id," ", recognizer.title)
         ProgressView.shared.show(genreView, mainText: nil, detailText: nil)
         loadAllLatestPlaylistSongsList(id: recognizer.id, url: recognizer.image, title: recognizer.title, songs_count: recognizer.songs, date: recognizer.year)
         
@@ -1636,7 +1636,7 @@ class BrowseViewController: UIView {
         let one = UIScrollView(frame: CGRect(x: 0, y: topBar.frame.height+titleContainer.frame.height, width: self.frame.width, height: self.frame.height))
         one.showsHorizontalScrollIndicator = false
         one.showsVerticalScrollIndicator = false
-         
+        
         let two = UIView(frame: CGRect(x: 0, y: 0, width: one.frame.width, height: CGFloat(genrePlayList.count)*(UIScreen.main.bounds.width/6)+(CGFloat(genrePlayList.count)*20)+370+UIScreen.main.bounds.width/4+40))
         one.addSubview(two)
         one.contentSize = CGSize(width: one.frame.width, height:CGFloat(genrePlayList.count)*(UIScreen.main.bounds.width/6)+(CGFloat(genrePlayList.count)*20)+370+UIScreen.main.bounds.width/4+40)
@@ -1651,19 +1651,19 @@ class BrowseViewController: UIView {
         image.center.x = titleContainer.center.x
         image.layer.cornerRadius = 5
         image.clipsToBounds = true
-         
+        
         let lblTitle = UILabel(frame: CGRect(x: 0, y: image.frame.height, width: UIScreen.main.bounds.width, height: 30))
         lblTitle.text = title
         lblTitle.textColor = UIColor.white
         lblTitle.textAlignment = .center
         lblTitle.font = UIFont(name: "Roboto", size: 16.0)
-         
+        
         let songs = UILabel(frame: CGRect(x: 0, y: lblTitle.frame.height+image.frame.height, width: UIScreen.main.bounds.width/2-10, height: 20))
         songs.text = songs_count+" songs"
         songs.textColor = UIColor.gray
         songs.textAlignment = .right
         songs.font = UIFont(name: "Roboto", size: 11.0)
-         
+        
         let year = UILabel(frame: CGRect(x: UIScreen.main.bounds.width/2+10, y: lblTitle.frame.height+image.frame.height, width: UIScreen.main.bounds.width/2-10, height: 20))
         year.text = genreInstance.name
         year.textColor = UIColor.gray
@@ -1679,7 +1679,7 @@ class BrowseViewController: UIView {
         let attachmentString = NSAttributedString(attachment: imageAttachment)
         let completeText = NSMutableAttributedString(string: "")
         completeText.append(attachmentString)
-        let  textAfterIcon = NSMutableAttributedString(string: NSLocalizedString("Play".localized(using: "Localizable"), comment: ""))
+        let  textAfterIcon = NSMutableAttributedString(string: "Play".localizedString)
         completeText.append(textAfterIcon)
         labelPlaySong.textAlignment = .center
         labelPlaySong.attributedText = completeText
@@ -1697,7 +1697,7 @@ class BrowseViewController: UIView {
         
         let labelAddSong = UILabel()
         labelAddSong.frame = CGRect(x: UIScreen.main.bounds.width/2+5, y: lblTitle.frame.height+image.frame.height+songs.frame.height+10, width: 70, height:20)
-        labelAddSong.text = NSLocalizedString("Add".localized(using: "Localizable"), comment: "")
+        labelAddSong.text = "Add".localizedString
         labelAddSong.textAlignment = .center
         labelAddSong.font = UIFont(name: "Roboto-Bold", size: 9.0)
         labelAddSong.layer.cornerRadius = 10
@@ -1708,7 +1708,7 @@ class BrowseViewController: UIView {
         tap2.id = Int(id)!
         labelAddSong.isUserInteractionEnabled = true
         labelAddSong.addGestureRecognizer(tap2)
-         
+        
         titleContainer.addSubview(image)
         titleContainer.addSubview(lblTitle)
         titleContainer.addSubview(songs)
@@ -1740,16 +1740,16 @@ class BrowseViewController: UIView {
             //songTile.isUserInteractionEnabled = true
             //songTile.addGestureRecognizer(tap)
             /*songTile.playListId = tileData.id
-            songTile.btnPlay?.tag = tileData.id
-            songTile.btnPlay!.addTarget(self, action: #selector(self.actPlayList(_:)), for: UIControl.Event.touchUpInside)*/
+             songTile.btnPlay?.tag = tileData.id
+             songTile.btnPlay!.addTarget(self, action: #selector(self.actPlayList(_:)), for: UIControl.Event.touchUpInside)*/
             
             
             songTile.styleType = self.styleType
             xLength += UIScreen.main.bounds.width/6+20
             two.addSubview(songTile)
             //if index == 0 {
-              //  selectedTileSeeAllArtist = songTile
-             //   songTile.isSelected = true
+            //  selectedTileSeeAllArtist = songTile
+            //   songTile.isSelected = true
             //}
             //tilesSeeAllArtist.append(songTile)
         }
@@ -1757,7 +1757,7 @@ class BrowseViewController: UIView {
         viewLatestPlaylistDetails.addSubview(topBar)
         viewLatestPlaylistDetails.addSubview(titleContainer)
         viewLatestPlaylistDetails.addSubview(one)
-       
+        
         self.addSubview(viewLatestPlaylistDetails)
     }
     
@@ -1814,23 +1814,23 @@ class BrowseViewController: UIView {
     let playlistModel = PlaylistModel()
     func loadSongsOfGlobalPlaylistGlobal(listID:Int){
         /*self.playlistModel.getSongsOfPlaylistGlobal(listID: listID, getSongsOfPlaylistCallFinished:{ (status, error, songs) in
-            if (status) {
-                if (songs == nil || (songs?.isEmpty)!) {
-                    let alert = UIAlertController(title: "Kiki", message: "No Songs Availabale", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-                    self.parentVC!.present(alert, animated: true, completion: nil)
-                } else {
-                    self.parentVC.playerView.pause()
-                    self.parentVC.playerView.currentPlayingList = songs!
-                    self.parentVC.playerView.currentPlayingTime = 0
-                    self.parentVC.playerView.play()
-                }
-            } else {
-                let alert = UIAlertController(title: "Kiki", message: "Unexpected error occured", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-                self.parentVC!.present(alert, animated: true, completion: nil)
-            }
-        })*/
+         if (status) {
+         if (songs == nil || (songs?.isEmpty)!) {
+         let alert = UIAlertController(title: "Kiki", message: "No Songs Availabale", preferredStyle: UIAlertController.Style.alert)
+         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+         self.parentVC!.present(alert, animated: true, completion: nil)
+         } else {
+         self.parentVC.playerView.pause()
+         self.parentVC.playerView.currentPlayingList = songs!
+         self.parentVC.playerView.currentPlayingTime = 0
+         self.parentVC.playerView.play()
+         }
+         } else {
+         let alert = UIAlertController(title: "Kiki", message: "Unexpected error occured", preferredStyle: UIAlertController.Style.alert)
+         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+         self.parentVC!.present(alert, animated: true, completion: nil)
+         }
+         })*/
         self.parentVC.playerView?.radioStatus = "song"
         if mainInstance.subscribeStatus {
             subscribeAlert()
@@ -1850,15 +1850,13 @@ class BrowseViewController: UIView {
     func getRootViewController() -> KYDrawerController{
         return windows.rootViewController as! KYDrawerController
     }
+    
     func subscribeAlert() {
-        let title = NSLocalizedString("SubscribeToListen".localized(using: "Localizable"), comment: "")
-        let alert = UIAlertController(title: title, message: NSLocalizedString("PleaseActivateaPackageToUnlockAccess".localized(using: "Localizable"), comment: "")+NSLocalizedString("toExclusiveContentFromKiki".localized(using: "Localizable"), comment: ""), preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("SubscribeNow".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.default, handler: { action in
-            let mainMenu = self.getRootViewController().drawerViewController as! SMMainMenuViewController
-            mainMenu.navigateToPackagePage()
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("CLOSE".localized(using: "Localizable"), comment: ""), style: UIAlertAction.Style.cancel, handler: nil))
-        self.window!.rootViewController!.present(alert, animated: true, completion: nil)
+        if AppStoreManager.IS_ON_REVIEW{
+            UIHelper.makeNoContentAlert(on: self.window!)
+        }else{
+            UIHelper.makeSubscribeToListenAlert(on: self.window!)
+        }
     }
     
     @objc func goPlaylistButtonClicked(sender:UIButton) {
@@ -1879,7 +1877,7 @@ extension BrowseViewController: UIScrollViewDelegate {
             
             //self.addSubview(viewAllSongs)
             //self.fetchRemainingSongs()
-           // self.scrollHeight = scrollView2.contentSize.height - scrollView2.frame.size.height
+            // self.scrollHeight = scrollView2.contentSize.height - scrollView2.frame.size.height
         }
     }
 }

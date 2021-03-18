@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import Crashlytics
 import Firebase
 
 class SMLoginViewController: BaseViewController {
-
+    
     @IBOutlet fileprivate var usernameTextField: UITextField!
     @IBOutlet fileprivate var passwordTextField: UITextField!
     @IBOutlet weak var logoImageView: UIImageView!
@@ -25,7 +24,7 @@ class SMLoginViewController: BaseViewController {
     fileprivate let loginViewModel = SMLoginViewModel()
     fileprivate let registerViewModel = SMRegisterViewModel()
     
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +34,13 @@ class SMLoginViewController: BaseViewController {
         passwordResetBtn.setTitle("ForgetPassword".localized(using: "Localizable"), for: .normal)
         lblUsername.text = "username".localized(using: "Localizable")
         lblPassword.text = "password".localized(using: "Localizable")
-//        usernameTextField.setTitle(NSLocalizedString("GOBACK", comment: ""), for: .normal)
+        //        usernameTextField.setTitle(NSLocalizedString("GOBACK", comment: ""), for: .normal)
         // Uncomment to automatically sign in the user.
         //GIDSignIn.sharedInstance().signInSilently()
-        
-        loginViewModel.delegate = self
         loginViewModel.requestMobileCode()
         if #available(iOS 9.0, *) {
             if usernameTextField.responds(to: #selector(getter: UIResponder.inputAssistantItem)){
-               
+                
                 let inputAssistantItem = usernameTextField.inputAssistantItem
                 inputAssistantItem.leadingBarButtonGroups = [];
                 inputAssistantItem.trailingBarButtonGroups = [];
@@ -51,47 +48,47 @@ class SMLoginViewController: BaseViewController {
                 let passwordAssistantItem = passwordTextField.inputAssistantItem
                 passwordAssistantItem.leadingBarButtonGroups = [];
                 passwordAssistantItem.trailingBarButtonGroups = [];
-           
+                
             }
         } else {
             // Fallback on earlier versions
         }
         
         //setCurrentUserName()
-//        Crashlytics.sharedInstance().crash()
+        //        Crashlytics.sharedInstance().crash()
         
         usernameTextField.addShadow()
         passwordTextField.addShadow()
     }
     @objc func setText(){
-
+        
         loginLable.text = "Login".localized(using: "Localizable")
         usernameTextField.placeholder = "usernamePlaceHolder".localized(using: "Localizable")
         passwordTextField.placeholder = "passwordPlaceHolder".localized(using: "Localizable")
         loginBtn.setTitle("LoginBtn".localized(using: "Localizable"), for: UIControl.State.normal)
         createAccountBtn.setTitle("CreateAccount".localized(using: "Localizable"), for: UIControl.State.normal)
         
-        let color = colorWithHexString(hex: "#999999")
+        let color = UIHelper.colorWithHexString(hex: "#999999")
         usernameTextField.attributedPlaceholder = NSAttributedString(string: usernameTextField.placeholder ?? "", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : color]))
         passwordTextField.attributedPlaceholder = NSAttributedString(string: passwordTextField.placeholder ?? "", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : color]))
     }
-
+    
     
     func keyboardDismiss(){
         usernameTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
     }
     
-//    func setCurrentUserName(){
-//        if let lastUsername = Preferences.getLastLogoutUsername(){
-//            if !lastUsername.isEmpty{
-//                self.usernameTextField.text = lastUsername
-//            }
-//        }
-//        
-//    }
+    //    func setCurrentUserName(){
+    //        if let lastUsername = Preferences.getLastLogoutUsername(){
+    //            if !lastUsername.isEmpty{
+    //                self.usernameTextField.text = lastUsername
+    //            }
+    //        }
+    //
+    //    }
     
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -105,12 +102,12 @@ class SMLoginViewController: BaseViewController {
             let message = validateResult.getFailedMessage()
             
             //            if iOS8 {
-            let alert = UIAlertController(title: NSLocalizedString("LOGIN_ERROR_ALERT_TITLE".localized(using: "Localizable"), comment: ""), message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: { (action) -> Void in
+            let alert = UIAlertController(title: "LOGIN_ERROR_ALERT_TITLE".localizedString, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK_BUTTON_TITLE".localizedString, style: .default, handler: { (action) -> Void in
                 ProgressView.shared.hide()
             }))
             showDetailViewController(alert, sender: nil)
-
+            
             return false
         }
         
@@ -130,15 +127,13 @@ class SMLoginViewController: BaseViewController {
     
     
     fileprivate func login() {
-        
         ProgressView.shared.show(view, mainText: nil, detailText: nil)
-        
         if validateLoginForm() {
             passwordTextField.resignFirstResponder()
             let trimmedUserName = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-
-            loginViewModel.login(username: trimmedUserName ?? "", password: passwordTextField.text ?? "")
-
+            loginViewModel.login(username: trimmedUserName ?? "", password: passwordTextField.text ?? "") { (isSuccess, error) in
+                self.loginCallFinished(isSuccess, error: error as NSError?)
+            }
         }else{
             ProgressView.shared.hide()
         }
@@ -173,16 +168,16 @@ class SMLoginViewController: BaseViewController {
             }
         })
     }
-
+    
     func connectionTimeoutMessage(){
-        let alertTitle = NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: "")
-        let alertMessage = NSLocalizedString("CONNECTION_TIME_OUT".localized(using: "Localizable"), comment: "")
+        let alertTitle = "ALERT_TITLE".localizedString
+        let alertMessage = "CONNECTION_TIME_OUT".localizedString
         
         let alert = UIAlertController(title: alertTitle, message:alertMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("CANCEL_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "CANCEL_BUTTON_TITLE".localizedString, style: .default, handler: { (action) -> Void in
             self.dismiss(animated: true, completion: nil)
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK_BUTTON_TITLE".localized(using: "Localizable"), comment: ""), style: .default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title:"OK_BUTTON_TITLE".localizedString, style: .default, handler: { (action) -> Void in
             self.login()
         }))
         showDetailViewController(alert, sender: nil)
@@ -198,7 +193,7 @@ class SMLoginViewController: BaseViewController {
         self.present(navController, animated: true) { 
             
         }
-//        self.navigationController?.pushViewController(registerInfoViewController, animated: true)
+        //        self.navigationController?.pushViewController(registerInfoViewController, animated: true)
     }
     
     func goToResetView() {
@@ -227,20 +222,18 @@ extension UITextField {
 }
 
 // MARK: - LoginDelegate
-extension SMLoginViewController: LoginDelegate {
-    func loginCallFinished(_ status: Bool, error: NSError?, userInfo: [String: AnyObject]?) {
+extension SMLoginViewController {
+    
+    func loginCallFinished(_ status: Bool, error: NSError?) {
         ProgressView.shared.hide()
         if status {
-            if Preferences.getIsActiveUser(){
-                if Preferences.getMobileNo() == nil || Preferences.getMobileNo() == ""{
-//                    self.goToRegisterInfoView()
+            if UserDefaultsManager.getIsActiveUser(){
+                if UserDefaultsManager.getMobileNo() == nil || UserDefaultsManager.getMobileNo() == ""{
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    
                     let registerInfoViewController = storyboard.instantiateViewController(withIdentifier: "SMRegisterInfoViewController") as! SMRegisterInfoViewController
                     registerInfoViewController.fromRegisterVwe = "true"
                     self.navigationController?.pushViewController(registerInfoViewController, animated: true)
-                }
-                else{
+                }else{
                     goToHomeView()
                 }
             }else{
@@ -251,13 +244,12 @@ extension SMLoginViewController: LoginDelegate {
             if let error = error {
                 switch error.code {
                 case ResponseCode.noNetwork.rawValue:
-                    Common.showAlert(alertTitle: NSLocalizedString("NO_INTERNET_ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: NSLocalizedString("NO_INTERNET_ALERT_MESSAGE".localized(using: "Localizable"), comment: ""))
+                    Common.showAlert(alertTitle: "NO_INTERNET_ALERT_TITLE".localizedString, alertMessage: "NO_INTERNET_ALERT_MESSAGE".localizedString)
                 case ResponseCode.userCredentialsNotCorrect.rawValue:
-                    Common.showAlert(alertTitle: NSLocalizedString("LOGIN_ERROR_ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: "LOGIN_ERROR_IN_FIELDS".localized(using: "Localizable"))
-
+                    Common.showAlert(alertTitle: "LOGIN_ERROR_ALERT_TITLE".localizedString, alertMessage: "LOGIN_ERROR_IN_FIELDS".localizedString)
                 case ResponseCode.connectionTimeout.rawValue:
                     connectionTimeoutMessage()
-                default: Common.showAlert(alertTitle: NSLocalizedString("ALERT_TITLE".localized(using: "Localizable"), comment: ""), alertMessage: "LOGIN_SEVERRETURN_FIELD_ERROR_ALERT_MESSAGE".localized(using: "Localizable"), perent: self)
+                default: Common.showAlert(alertTitle: "ALERT_TITLE".localizedString, alertMessage: "LOGIN_SEVERRETURN_FIELD_ERROR_ALERT_MESSAGE".localizedString, perent: self)
                 }
             }
         }
@@ -306,7 +298,6 @@ extension UITextField {
 }
 extension UIButton {
     func underlined(){
-        
         let border = CALayer()
         let width = CGFloat(1.0)
         border.borderColor = UIColor.white.cgColor
@@ -317,15 +308,3 @@ extension UIButton {
     }
 }
 
-
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
-	return input.rawValue
-}

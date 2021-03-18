@@ -14,8 +14,11 @@ let kiOS_API_key = "AIzaSyDX2hS-C8riiI4tZzLHFOHP2zAC5NxX2bE" //"1iM721UXrVaiqDVs
 //let kAPIBaseUrl = "http://35.200.217.24/mobile-tv-webservice/api/v1/" // staging URL
 //let remoteConfig = (UIApplication.shared.delegate as! AppDelegate).getRemoteConfig()
 //let kAPIBaseUrl = remoteConfig[baseURL] as String
-var kAPIBaseUrl = "http://35.200.234.252/mobile-tv-webservice/api/v1/" // staging URL
+var kAPIBaseUrl = "http://35.200.234.252/mobile-tv-webservice/api/v1" //"http://35.200.234.252:7070/mobile-tv-webservice/api/v1/" // staging URL
+var IAPBaseURL = "https://payv2.kiki.lk/susilawebpay" // staging URL
 
+var chatWebViewBaseURL = "http://35.200.142.38:8080"
+var chatBaseURL = " http://35.200.142.38:8082/kiki-chat/api/v1"
 
 let mobileCodeRequestUrl = "http://220.247.201.206:90/"
 
@@ -29,7 +32,7 @@ let AVPlayerVCSetFullScreenVideoNotification = "avplayervcsetfullScreenvideourl"
 let kFBlink = "https://www.facebook.com/mv.kiki.lk/"
 //let kShareUrl = "https://cdn.kiki.lk/social/share/episode/"
 
-let kAPPThemeOrangeColor = colorWithHexString(hex: "#2ecc71")
+let kAPPThemeOrangeColor = UIHelper.colorWithHexString(hex: "#2ecc71")
 
 //UIColor(red: 255/255, green: 110/255, blue: 64/255, alpha: 1)
 let kAPPThemeWhiteColor = UIColor.white.cgColor
@@ -43,6 +46,7 @@ enum AuthMethod: String {
     case GOOGLE
     case TWITTER
     case DIALOG
+    case APPLE
 }
 
 enum Gender: String {
@@ -70,6 +74,7 @@ internal struct ErrorJsonKeys{
 }
 
 // Firebase remote config keys
+let termsAndConditionsKey = "USER_TERMS_PAGE_URL"
 let licenseAgreementConfigKey = "USER_AGREEMENT_PAGE_URL"
 let contactTelephoneConfigKey = "CONTACT_TELEPHONE"
 let specialUserIdConfigKey = "SPECIAL_USER_ID"
@@ -78,6 +83,8 @@ let enableSMSVerificationConfigKey = "ENABLE_SMS_VERIFICATION"
 let mobilePaymentGatewayUrlConfigKey = "MOBILE_PAYMENT_GATEWAY_URL_V2"
 let baseURL_STAGING = "STAGING_SERVER_API_V_1"
 let baseURL_LIVE = "MAIN_SERVER_API_V_2"
+let chatBaseURLKey = "CHAT_SERVER_API_V_1"
+let IAP_LIVE = "APPLE_MOBILE_PAYMENT_GATEWAY_URL_V1"
 //let mobilePaymentGatewayUrlConfigKey = "STAGING_MOBILE_PAYMENT_GATEWAY_URL" // staging
 
 

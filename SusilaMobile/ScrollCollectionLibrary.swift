@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import AVKit
 import AVFoundation
+import SDWebImage
 
 class ScrollCollectionLibrary: UIView, UIScrollViewDelegate {
     

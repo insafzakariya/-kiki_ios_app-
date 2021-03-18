@@ -212,9 +212,9 @@ class MainHomeViewController: UIViewController, UICollectionViewDataSource, UICo
             //            cell.name.text = channel.name
             cell.videoImageView.image = nil
             cell.videoImageView.image = UIImage(named: "logo_grayscale_video")
-            
             cell.videoImageView.contentMode = UIView.ContentMode.scaleAspectFit
-            cell.videoImageView.loadImage(urlString: channel.image?.removingPercentEncoding ?? "")
+            cell.videoImageView.kf.setImage(with: URL(string: (channel.image?.removingPercentEncoding!)!)!)
+//            cell.videoImageView.loadImage(urlString: channel.image?.removingPercentEncoding ?? "")
             
         }
         return cell
@@ -240,8 +240,8 @@ class MainHomeViewController: UIViewController, UICollectionViewDataSource, UICo
             
             
             let channel = viewModel.channelList[indexPath.row]
-            Preferences.setChannelID(channel.id)
-            Preferences.setChannelName(channel.name)
+            UserDefaultsManager.setChannelID(channel.id)
+            UserDefaultsManager.setChannelName(channel.name)
         }
     }
 }

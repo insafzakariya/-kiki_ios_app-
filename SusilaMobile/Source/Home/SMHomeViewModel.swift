@@ -20,13 +20,13 @@ import SwiftyJSON
     
     /**
      Executes when trailers are fetched from the API
-    **/
+     **/
     @objc optional func fetchTrailersCallFinished(_ status: Bool, error: NSError?, userInfo: [String: AnyObject]?)
 }
 
 
 class SMHomeViewModel: BaseEpisodeModel {
-
+    
     fileprivate let api = ApiClient()
     
     var delegate: HomeDelegate?
@@ -35,8 +35,8 @@ class SMHomeViewModel: BaseEpisodeModel {
     var trailerList: [Program] = [Program]()
     
     var newCategroyProg = Dictionary<String, Any>()
-//    var userHostList = NSMutableArray()
-
+    //    var userHostList = NSMutableArray()
+    
     func dateFormatterForProgramListAPI(){
         
         let dateFormatter = DateFormatter()
@@ -57,7 +57,7 @@ class SMHomeViewModel: BaseEpisodeModel {
                 NSLog("getSubscribe : \(String(describing: jsonArray))")
                 
                 getSubscribeCallFinished(true, nil, nil)
-
+                
                 
             default:
                 let jsonData = JSON(data as Any)
@@ -158,7 +158,7 @@ class SMHomeViewModel: BaseEpisodeModel {
     
     func trailer(programId: Int, trailerProgramCallFinished: @escaping (_ status: Bool, _ error: NSError?) -> Void) {
         api.trailer(programId: programId, success: { (data, code) -> Void in
-           
+            
             if code == 200 {
                 
                 let jsonData = JSON(data as Any)
@@ -180,6 +180,6 @@ class SMHomeViewModel: BaseEpisodeModel {
             trailerProgramCallFinished(false, error)
         }
     }
-
+    
     
 }
